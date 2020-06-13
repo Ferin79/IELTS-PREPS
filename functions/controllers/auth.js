@@ -204,7 +204,7 @@ exports.deleteMember = (req, res) => {
 
   if (deleteUserType === "staff") {
     if (req.user.isAdmin) {
-      deleteUserFromSystem(deleteEmail, deleteUserId);
+      deleteUserFromSystem(deleteEmail, deleteUserId, res);
     } else {
       res.status(403).json({
         success: false,
@@ -214,7 +214,7 @@ exports.deleteMember = (req, res) => {
   }
   if (deleteUserType === "student") {
     if (req.user.isAdmin || req.user.isStaff) {
-      deleteUserFromSystem(deleteEmail, deleteUserId);
+      deleteUserFromSystem(deleteEmail, deleteUserId, res);
     } else {
       res.status(403).json({
         success: false,
@@ -227,7 +227,7 @@ exports.deleteMember = (req, res) => {
   });
 };
 
-function deleteUserFromSystem(deleteEmail, deleteUserId) {
+function deleteUserFromSystem(deleteEmail, deleteUserId, res) {
   admin
     .auth()
     .deleteUser(deleteUserId)

@@ -21,6 +21,10 @@ const Dashboard = () => {
     document.querySelector("#manageStudent").addEventListener("click", () => {
       history.push("/student");
     });
+
+    document.querySelector("#listening").addEventListener("click", () => {
+      history.push("/listening");
+    });
   }, [history, role]);
 
   if (isLoading) {
@@ -53,13 +57,14 @@ const Dashboard = () => {
           lg={true}
           className="d-flex flex-column justify-content-center align-items-center addHoverCursor"
         >
-          <Image src={require("../images/lock.png")} rounded />
-          <h5>Reset Password</h5>
+          <Image src={require("../images/profile.png")} rounded />
+          <h5>Manage Profile</h5>
         </Col>
       </Row>
       <Row className="m-5" style={{ border: "1px solid black" }}></Row>
       <Row>
         <Col
+          id="listening"
           lg={true}
           className="d-flex flex-column justify-content-center align-items-center addHoverCursor"
         >

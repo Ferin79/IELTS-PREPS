@@ -9,6 +9,7 @@ import Login from "./pages/login";
 import Staff from "./pages/staff";
 import Student from "./pages/student";
 import jwtDecode from "jwt-decode";
+import Listening from "./views/listening";
 
 const App = () => {
   const DynamicRoutes = () => {
@@ -49,6 +50,7 @@ const App = () => {
           <Route path="/" exact component={Dashboard} />
           <Route path="/staff" component={Staff} />
           <Route path="/student" component={Student} />
+          <Route path="/listening" component={Listening} />
           <Redirect to="/" />
         </Switch>
       );

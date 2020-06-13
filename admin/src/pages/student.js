@@ -155,7 +155,7 @@ const Student = () => {
             xl="6"
             md="12"
             sm
-            className="w-50 overflow-auto"
+            className="overflow-auto"
             style={{ height: "50vh" }}
           >
             <Table striped bordered hover responsive>
@@ -203,7 +203,7 @@ const Student = () => {
             xl="6"
             md="12"
             sm
-            className="d-flex flex-column justify-content-center align-items-center w-50"
+            className="d-flex flex-column justify-content-center align-items-center "
             style={{ border: "1px solid black" }}
           >
             <h3 className="m-3">Add Student</h3>
