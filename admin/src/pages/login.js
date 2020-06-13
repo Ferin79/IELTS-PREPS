@@ -11,7 +11,6 @@ import { useHistory } from "react-router-dom";
 const Login = () => {
   const history = useHistory();
   const { isLoading, setIsLoading, setToken, setIsLogin } = useContext(Context);
-  const [role, setRole] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorText, setErrorText] = useState("");
@@ -20,11 +19,9 @@ const Login = () => {
     event.preventDefault();
     setIsLoading(true);
     setErrorText("");
-    if (role.length === 0) {
-      setErrorText("Select Role");
-    } else if (email.length === 0) {
+    if (email.trim() === "") {
       setErrorText("Email cannot be empty");
-    } else if (password.length === 0) {
+    } else if (password.trim() === "") {
       setErrorText("Password cannot be empty");
     } else {
       const response = await fetch(
@@ -36,7 +33,6 @@ const Login = () => {
             accept: "application/json",
           },
           body: JSON.stringify({
-            role,
             email,
             password,
           }),
@@ -50,11 +46,15 @@ const Login = () => {
           role: responseData.role,
           institute_id: responseData.institute_id,
         };
-        localStorage.setItem("credentials", JSON.stringify(cred));
-        setIsLoading(false);
-        setToken(responseData.token);
-        setIsLogin(true);
-        history.push("/");
+        if (!(responseData.role === "student")) {
+          localStorage.setItem("credentials", JSON.stringify(cred));
+          setIsLoading(false);
+          setToken(responseData.token);
+          setIsLogin(true);
+          history.push("/");
+        } else {
+          setErrorText("Students Cannot Login Here....");
+        }
       } else {
         setIsLoading(false);
         setErrorText(responseData.error);
@@ -72,20 +72,6 @@ const Login = () => {
       <Row className="d-flex justify-content-center align-items-center m-5">
         <Col xl="6" lg={true}>
           <Form>
-            <Form.Group controlId="exampleForm.ControlSelect1">
-              <Form.Label>Role</Form.Label>
-              <Form.Control
-                as="select"
-                onChange={(event) => setRole(event.target.value)}
-              >
-                <option selected disabled>
-                  Select Your Role
-                </option>
-                <option value="admin">Admin</option>
-                <option value="staff">Staff</option>
-              </Form.Control>
-            </Form.Group>
-
             <Form.Group controlId="formBasicEmail">
               <Form.Label>Email address</Form.Label>
               <Form.Control

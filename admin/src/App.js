@@ -7,6 +7,8 @@ import Dashboard from "./pages/dashboard";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Login from "./pages/login";
 import Staff from "./pages/staff";
+import Student from "./pages/student";
+import jwtDecode from "jwt-decode";
 
 const App = () => {
   const DynamicRoutes = () => {
@@ -27,10 +29,13 @@ const App = () => {
       storedData.institute_id &&
       storedData.role
     ) {
-      setToken(storedData.token);
-      setInstitution(storedData.institute_id);
-      setRole(storedData.role);
-      setIsLogin(true);
+      const decodeToken = jwtDecode(storedData.token);
+      if (!(decodeToken.exp * 1000 < Date.now())) {
+        setToken(storedData.token);
+        setInstitution(storedData.institute_id);
+        setRole(storedData.role);
+        setIsLogin(true);
+      }
     } else {
       setToken(null);
       setIsLogin(false);
@@ -43,6 +48,7 @@ const App = () => {
         <Switch>
           <Route path="/" exact component={Dashboard} />
           <Route path="/staff" component={Staff} />
+          <Route path="/student" component={Student} />
           <Redirect to="/" />
         </Switch>
       );

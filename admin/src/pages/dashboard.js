@@ -9,16 +9,19 @@ import { useHistory } from "react-router-dom";
 
 const Dashboard = () => {
   const history = useHistory();
-  const { isLoading } = useContext(Context);
+  const { isLoading, role } = useContext(Context);
 
   useEffect(() => {
-    document.querySelector("#manageStaff").addEventListener("click", () => {
-      history.push("/staff");
-    });
+    if (role === "admin") {
+      document.querySelector("#manageStaff").addEventListener("click", () => {
+        history.push("/staff");
+      });
+    }
+
     document.querySelector("#manageStudent").addEventListener("click", () => {
       history.push("/student");
     });
-  }, [history]);
+  }, [history, role]);
 
   if (isLoading) {
     return <LoadingScreen />;
@@ -27,14 +30,17 @@ const Dashboard = () => {
     <Container>
       <Row className="m-5"></Row>
       <Row>
-        <Col
-          id="manageStaff"
-          lg={true}
-          className="d-flex flex-column justify-content-center align-items-center addHoverCursor"
-        >
-          <Image src={require("../images/staff.png")} rounded />
-          <h5>Manage Staff</h5>
-        </Col>
+        {role === "admin" && (
+          <Col
+            id="manageStaff"
+            lg={true}
+            className="d-flex flex-column justify-content-center align-items-center addHoverCursor"
+          >
+            <Image src={require("../images/staff.png")} rounded />
+            <h5>Manage Staff</h5>
+          </Col>
+        )}
+
         <Col
           id="manageStudent"
           lg={true}

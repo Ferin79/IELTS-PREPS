@@ -1,28 +1,21 @@
 const firebase = require("firebase");
 const config = require("../util/config");
-const { db } = require("../util/admin");
+const { db, admin } = require("../util/admin");
 
 firebase.initializeApp(config);
 
 exports.login = (req, res, next) => {
   try {
-    const { role, email, password } = req.body;
+    const { email, password } = req.body;
 
-    if (role.length === 0) {
-      return res.status(400).json({
-        success: false,
-        error: "Select Role",
-      });
-    }
-
-    if (email.length === 0) {
+    if (email.trim() === "") {
       return res.status(400).json({
         success: false,
         error: "Email cannot be empty",
       });
     }
 
-    if (password.length === 0) {
+    if (password.trim() === "") {
       return res.status(400).json({
         success: false,
         error: "Password cannot be empty",
@@ -40,10 +33,20 @@ exports.login = (req, res, next) => {
         db.doc(`users/${email}`)
           .get()
           .then((doc) => {
+            let roleData = "";
+            if (doc.data().isAdmin) {
+              roleData = "admin";
+            }
+            if (doc.data().isStaff) {
+              roleData = "staff";
+            }
+            if (doc.data().isStudent) {
+              roleData = "student";
+            }
             res.status(200).json({
               success: true,
               token,
-              role,
+              role: roleData,
               institute_id: doc.data().institute_id,
             });
           });
@@ -69,49 +72,49 @@ exports.register = (req, res, next) => {
       institute_id,
     } = req.body;
 
-    if (role.length === 0) {
+    if (role.trim() === "") {
       return res.status(400).json({
         success: false,
         error: "Select Role",
       });
     }
 
-    if (email.length === 0) {
+    if (email.trim() === "") {
       return res.status(400).json({
         success: false,
         error: "Email cannot be empty",
       });
     }
 
-    if (password.length === 0) {
+    if (password.trim() === "") {
       return res.status(400).json({
         success: false,
         error: "Password cannot be empty",
       });
     }
 
-    if (repeatPassword.length === 0) {
+    if (repeatPassword.trim() === "") {
       return res.status(400).json({
         success: false,
         error: "Repeat Password cannot be empty",
       });
     }
 
-    if (firstname.length === 0) {
+    if (firstname.trim() === "") {
       return res.status(400).json({
         success: false,
         error: "First Name cannot be empty",
       });
     }
 
-    if (lastname.length === 0) {
+    if (lastname.trim() === 0) {
       return res.status(400).json({
         success: false,
         error: "Last Name cannot be empty",
       });
     }
 
-    if (institute_id.length === 0) {
+    if (institute_id.trim() === "") {
       return res.status(400).json({
         success: false,
         error: "Institue Id cannot be empty",
@@ -195,3 +198,53 @@ exports.register = (req, res, next) => {
     });
   }
 };
+
+exports.deleteMember = (req, res) => {
+  const { deleteEmail, deleteUserId, deleteUserType } = req.body;
+
+  if (deleteUserType === "staff") {
+    if (req.user.isAdmin) {
+      deleteUserFromSystem(deleteEmail, deleteUserId);
+    } else {
+      res.status(403).json({
+        success: false,
+        error: "Unauthorized",
+      });
+    }
+  }
+  if (deleteUserType === "student") {
+    if (req.user.isAdmin || req.user.isStaff) {
+      deleteUserFromSystem(deleteEmail, deleteUserId);
+    } else {
+      res.status(403).json({
+        success: false,
+        error: "Unauthorized",
+      });
+    }
+  }
+  res.json({
+    success: 1,
+  });
+};
+
+function deleteUserFromSystem(deleteEmail, deleteUserId) {
+  admin
+    .auth()
+    .deleteUser(deleteUserId)
+    .then(() => {
+      db.doc(`/users/${deleteEmail}`)
+        .delete()
+        .then((result) => {
+          res.status(200).json({
+            success: true,
+            result,
+          });
+        });
+    })
+    .catch((error) => {
+      res.status(403).json({
+        success: false,
+        error,
+      });
+    });
+}

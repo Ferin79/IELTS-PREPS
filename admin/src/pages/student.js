@@ -11,7 +11,7 @@ import { ToastContainer, toast } from "react-toastify";
 import firebase from "../data/firebase";
 import "react-toastify/dist/ReactToastify.css";
 
-const Staff = () => {
+const Student = () => {
   const { isLoading, institution, role, setIsLoading, token } = useContext(
     Context
   );
@@ -23,7 +23,7 @@ const Staff = () => {
   const [errorText, setErrorText] = useState("");
   const [staffDataList, setStaffDataList] = useState([]);
 
-  const handleStaffAdd = async (event) => {
+  const handleStudentAdd = async (event) => {
     event.preventDefault();
     setIsLoading(true);
     setErrorText("");
@@ -57,7 +57,7 @@ const Staff = () => {
             email,
             password,
             repeatPassword,
-            role: "staff",
+            role: "student",
             institute_id: institution,
           }),
         }
@@ -71,7 +71,7 @@ const Staff = () => {
         setEmail("");
         setPassword("");
         setRepeatPassword("");
-        toast("Staff Added Successfully");
+        toast("Student Added Successfully");
       } else {
         setIsLoading(false);
         setErrorText(responseData.error);
@@ -81,7 +81,7 @@ const Staff = () => {
   };
 
   const fetchStaff = useCallback(() => {
-    if (role !== "admin") {
+    if (role === "student") {
       return;
     }
     setIsLoading(true);
@@ -89,7 +89,7 @@ const Staff = () => {
       .firestore()
       .collection("users")
       .where("institute_id", "==", institution)
-      .where("isStaff", "==", true)
+      .where("isStudent", "==", true)
       .get()
       .then((docs) => {
         const staffData = [];
@@ -121,7 +121,7 @@ const Staff = () => {
         body: JSON.stringify({
           deleteEmail: email,
           deleteUserId: userId,
-          deleteUserType: "staff",
+          deleteUserType: "student",
         }),
       }
     );
@@ -145,7 +145,7 @@ const Staff = () => {
   if (isLoading) {
     return <LoadingScreen text="Loading Staff Details" />;
   }
-  if (role === "admin") {
+  if (role === "admin" || role === "staff") {
     return (
       <Container fluid>
         <Row className="m-5"></Row>
@@ -206,7 +206,7 @@ const Staff = () => {
             className="d-flex flex-column justify-content-center align-items-center w-50"
             style={{ border: "1px solid black" }}
           >
-            <h3 className="m-3">Add Staff</h3>
+            <h3 className="m-3">Add Student</h3>
             <Form>
               <Form.Row>
                 <Form.Group controlId="formBasicEmail" className="mr-5">
@@ -262,9 +262,9 @@ const Staff = () => {
               variant="primary"
               type="submit"
               className="m-2"
-              onClick={handleStaffAdd}
+              onClick={handleStudentAdd}
             >
-              Add Staff
+              Add Student
             </Button>
           </Col>
         </Row>
@@ -283,4 +283,4 @@ const Staff = () => {
     );
   }
 };
-export default Staff;
+export default Student;
