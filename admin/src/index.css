@@ -20,3 +20,13 @@ a {
 .addHoverCursor:hover {
   cursor: pointer !important;
 }
+.uploadLink {
+  width: 10%;
+  overflow: hidden;
+  text-decoration: none !important;
+  color: blue !important;
+}
+.dropdownData {
+  text-emphasis: none;
+  color: black;
+}

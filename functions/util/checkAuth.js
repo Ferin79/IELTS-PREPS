@@ -29,6 +29,7 @@ module.exports = (req, res, next) => {
           req.user.isAdmin = data.docs[0].data().isAdmin;
           req.user.isStaff = data.docs[0].data().isStaff;
           req.user.isStudent = data.docs[0].data().isStudent;
+          req.user.institute = data.docs[0].data().institute_id;
           next();
         })
         .catch((error) => {

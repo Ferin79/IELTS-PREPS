@@ -172,6 +172,7 @@ exports.register = (req, res, next) => {
           createdAt: new Date().toISOString(),
           userId,
           ...roleTab,
+          createdAt: new Date().toISOString(),
         };
         return db.doc(`/users/${email}`).set(userCredentails);
       })
