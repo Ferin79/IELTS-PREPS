@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -11,31 +11,6 @@ const Dashboard = () => {
   const history = useHistory();
   const { isLoading, role } = useContext(Context);
 
-  useEffect(() => {
-    if (role === "admin") {
-      document.querySelector("#manageStaff").addEventListener("click", () => {
-        history.push("/staff");
-      });
-    }
-
-    document.querySelector("#manageStudent").addEventListener("click", () => {
-      history.push("/student");
-    });
-
-    document.querySelector("#listening").addEventListener("click", () => {
-      history.push("/listening");
-    });
-    document.querySelector("#reading").addEventListener("click", () => {
-      history.push("/reading");
-    });
-    document.querySelector("#speaking").addEventListener("click", () => {
-      history.push("/speaking");
-    });
-    document.querySelector("#writing").addEventListener("click", () => {
-      history.push("/writing");
-    });
-  }, [history, role]);
-
   if (isLoading) {
     return <LoadingScreen />;
   }
@@ -45,6 +20,7 @@ const Dashboard = () => {
       <Row>
         {role === "admin" && (
           <Col
+            onClick={() => history.push("/staff")}
             id="manageStaff"
             lg={true}
             className="d-flex flex-column justify-content-center align-items-center addHoverCursor"
@@ -55,6 +31,7 @@ const Dashboard = () => {
         )}
 
         <Col
+          onClick={() => history.push("/student")}
           id="manageStudent"
           lg={true}
           className="d-flex flex-column justify-content-center align-items-center addHoverCursor"
@@ -62,6 +39,7 @@ const Dashboard = () => {
           <Image src={require("../images/student.png")} rounded />
           <h5>Manage Students</h5>
         </Col>
+
         <Col
           lg={true}
           className="d-flex flex-column justify-content-center align-items-center addHoverCursor"
@@ -73,6 +51,7 @@ const Dashboard = () => {
       <Row className="m-5" style={{ border: "1px solid black" }}></Row>
       <Row>
         <Col
+          onClick={() => history.push("/listening")}
           id="listening"
           lg={true}
           className="d-flex flex-column justify-content-center align-items-center addHoverCursor"
@@ -81,6 +60,7 @@ const Dashboard = () => {
           <h5>Listening Module</h5>
         </Col>
         <Col
+          onClick={() => history.push("/reading")}
           id="reading"
           lg={true}
           className="d-flex flex-column justify-content-center align-items-center addHoverCursor"
@@ -89,6 +69,7 @@ const Dashboard = () => {
           <h5>Reading Module</h5>
         </Col>
         <Col
+          onClick={() => history.push("/speaking")}
           id="speaking"
           lg={true}
           className="d-flex flex-column justify-content-center align-items-center addHoverCursor"
@@ -97,6 +78,7 @@ const Dashboard = () => {
           <h5>Speaking Module</h5>
         </Col>
         <Col
+          onClick={() => history.push("/writing")}
           id="writing"
           lg={true}
           className="d-flex flex-column justify-content-center align-items-center addHoverCursor"

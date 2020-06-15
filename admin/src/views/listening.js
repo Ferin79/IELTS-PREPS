@@ -31,7 +31,7 @@ const Listening = () => {
   const [name, setName] = useState("");
   const [complexity, setComplexity] = useState("easy");
 
-  const { isLoading, setIsLoading, token, role } = useContext(Context);
+  const { isLoading, setIsLoading, role } = useContext(Context);
 
   const uploadFileToStorage = (fileToUpload, fileType) => {
     setIsUploading(true);
@@ -86,35 +86,28 @@ const Listening = () => {
 
   const addToDB = async (formdata) => {
     setIsLoading(true);
-    const response = await fetch(
-      "https://us-central1-ielts-preps.cloudfunctions.net/api/add-listening-module",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-          accept: "application/json",
-          authorization: `Bearer ${token}`,
-        },
-        body: formdata,
-      }
-    );
-    const responseData = await response.json();
-    console.log(responseData);
-    if (responseData.success) {
-      toast("Listening Module Added");
-      setAudioUrl(null);
-      setVideoUrl(null);
-      setPdfUrl(null);
-      setIsUploading(false);
-      setIsUploadingComplete(false);
-      setSelectedFile(null);
-      setSelectedPDF(null);
-      setErrorText(null);
-      fetchListeningData();
-    } else {
-      alert(responseData.error);
-    }
-    setIsLoading(false);
+    firebase
+      .firestore()
+      .collection("/listening")
+      .add({ ...formdata, addedBy: firebase.auth().currentUser.email })
+      .then(() => {
+        toast("Listening Module Added");
+        setAudioUrl(null);
+        setVideoUrl(null);
+        setPdfUrl(null);
+        setIsUploading(false);
+        setIsUploadingComplete(false);
+        setSelectedFile(null);
+        setSelectedPDF(null);
+        setErrorText(null);
+        fetchListeningData();
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        setErrorText(error.message);
+        setIsLoading(false);
+      });
   };
 
   const fetchListeningData = useCallback(() => {
@@ -481,7 +474,7 @@ const Listening = () => {
                     if (type === "audio") {
                       if (audioUrl && pdfUrl) {
                         console.log("Done Uploading Audio and Video");
-                        const formData = JSON.stringify({
+                        const formData = {
                           type: "audio",
                           audioUrl,
                           pdfUrl,
@@ -489,7 +482,7 @@ const Listening = () => {
                           answers: answersData,
                           name,
                           complexity,
-                        });
+                        };
                         addToDB(formData);
                       } else {
                         alert("Please upload PDF and Audio Files");
@@ -498,7 +491,7 @@ const Listening = () => {
                     if (type === "video") {
                       if (videoUrl) {
                         console.log("All Done With Video");
-                        const formData = JSON.stringify({
+                        const formData = {
                           type: "video",
                           audioUrl: "",
                           pdfUrl: "",
@@ -506,7 +499,7 @@ const Listening = () => {
                           answers: answersData,
                           name,
                           complexity,
-                        });
+                        };
 
                         addToDB(formData);
                       } else {

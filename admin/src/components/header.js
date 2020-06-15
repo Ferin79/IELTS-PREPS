@@ -1,30 +1,12 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-import { Context } from "../data/context";
+import { AuthContext } from "../data/Auth";
 import { NavLink } from "react-router-dom";
+import firebase from "../data/firebase";
 
 const Header = () => {
-  const { isLogin, token, setToken, setInstitution, setRole } = useContext(
-    Context
-  );
-
-  useEffect(() => {
-    document.addEventListener("DOMContentLoaded", () => {
-      if (isLogin) {
-        document
-          .querySelector("#logoutBtn")
-          .addEventListener("click", (event) => {
-            event.preventDefault();
-            console.log("Click Logout Called");
-            localStorage.removeItem("credentials");
-            setToken(null);
-            setInstitution(null);
-            setRole(null);
-          });
-      }
-    });
-  }, [setToken, setInstitution, setRole, isLogin]);
+  const { currentUser } = useContext(AuthContext);
 
   return (
     <Navbar bg="dark" expand="lg" variant="dark">
@@ -32,7 +14,7 @@ const Header = () => {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav center">
         <Nav className="mx-auto">
-          {isLogin && token ? (
+          {currentUser ? (
             <>
               <Nav.Link>
                 <NavLink to="/">Dashboard</NavLink>
@@ -53,14 +35,21 @@ const Header = () => {
             <NavLink to="/privacy">Privacy Policy</NavLink>
           </Nav.Link>
 
-          {isLogin && token && (
-            <>
-              <Nav.Link>
-                <a id="logoutBtn" href="#/">
-                  Logout
-                </a>
-              </Nav.Link>
-            </>
+          {currentUser && (
+            <Nav.Link>
+              <button
+                id="logoutBtn"
+                style={{
+                  background: "transparent",
+                  border: "none",
+                  color: "white",
+                }}
+                onClick={() => firebase.auth().signOut()}
+                href="#/"
+              >
+                Logout
+              </button>
+            </Nav.Link>
           )}
         </Nav>
       </Navbar.Collapse>

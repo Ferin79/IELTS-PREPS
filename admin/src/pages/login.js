@@ -11,12 +11,14 @@ import firebase from "../data/firebase";
 
 const Login = () => {
   const history = useHistory();
-  const { isLoading, setIsLoading, setToken, setIsLogin } = useContext(Context);
+  const { isLoading, setIsLoading, setInstitution, setRole } = useContext(
+    Context
+  );
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorText, setErrorText] = useState("");
 
-  const handleSubmitLogin = async (event) => {
+  const handleSubmitLogin = (event) => {
     event.preventDefault();
 
     setErrorText("");
@@ -27,51 +29,60 @@ const Login = () => {
     } else {
       setIsLoading(true);
       firebase
-        .auth()
-        .signInWithEmailAndPassword(email, password)
-        .then((res) => {
-          const userEmail = res.user.email;
-          firebase
-            .firestore()
-            .collection(`users`)
-            .doc(userEmail)
-            .get()
-            .then(async (snapshot) => {
-              var role = "";
-              if (snapshot.data().isStudent) {
-                role = "student";
-              }
-              if (snapshot.data().isAdmin) {
-                role = "admin";
-              }
-              if (snapshot.data().isStaff) {
-                role = "staff";
-              }
-
-              const token = await firebase.auth().currentUser.getIdToken();
-
-              const cred = {
-                token: token,
+        .firestore()
+        .doc(`/users/${email}`)
+        .get()
+        .then(async (snapshot) => {
+          if (!snapshot.exists) {
+            setErrorText("User not Found");
+            setIsLoading(false);
+            return;
+          }
+          var role = "";
+          if (snapshot.data().isStudent) {
+            role = "student";
+          }
+          if (snapshot.data().isAdmin) {
+            role = "admin";
+          }
+          if (snapshot.data().isStaff) {
+            role = "staff";
+          }
+          if (!(role === "student")) {
+            setInstitution(snapshot.data().institute_id);
+            setRole(role);
+            localStorage.setItem(
+              "userInfo",
+              JSON.stringify({
                 role,
                 institute_id: snapshot.data().institute_id,
-              };
-              if (!(role === "student")) {
-                localStorage.setItem("credentials", JSON.stringify(cred));
+              })
+            );
+            firebase
+              .auth()
+              .signInWithEmailAndPassword(email, password)
+              .then((user) => {
+                console.log(user);
                 setIsLoading(false);
-                setToken(token);
-                setIsLogin(true);
                 history.push("/");
-              } else {
-                setErrorText("Students Cannot Login Here....");
-              }
-            });
+              })
+              .catch((error) => {
+                console.log(error.message);
+                setIsLoading(false);
+                setErrorText(error.message);
+                setInstitution(null);
+                setRole(null);
+              });
+          } else {
+            setErrorText("Students Cannot Login Here....");
+          }
         })
         .catch((error) => {
           console.log(error.message);
           setIsLoading(false);
           setErrorText(error.message);
-          setToken(null);
-          setIsLogin(false);
+          setInstitution(null);
+          setRole(null);
         });
     }
   };
@@ -110,7 +121,7 @@ const Login = () => {
             </h6>
           </Form.Text>
 
-          <Button variant="primary" type="submit" onClick={handleSubmitLogin}>
+          <Button variant="primary" onClick={handleSubmitLogin}>
             Login
           </Button>
         </Col>

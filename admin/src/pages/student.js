@@ -12,9 +12,7 @@ import firebase from "../data/firebase";
 import "react-toastify/dist/ReactToastify.css";
 
 const Student = () => {
-  const { isLoading, institution, role, setIsLoading, token } = useContext(
-    Context
-  );
+  const { isLoading, institution, role, setIsLoading } = useContext(Context);
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
@@ -109,6 +107,7 @@ const Student = () => {
 
   const handleStaffDelete = async (email, userId) => {
     setIsLoading(true);
+    const token = await firebase.auth().currentUser.getIdToken();
     const response = await fetch(
       "https://us-central1-ielts-preps.cloudfunctions.net/api/delete-member",
       {
@@ -143,7 +142,7 @@ const Student = () => {
   }, [fetchStaff]);
 
   if (isLoading) {
-    return <LoadingScreen text="Loading Staff Details" />;
+    return <LoadingScreen text="Loading Students Details" />;
   }
   if (role === "admin" || role === "staff") {
     return (

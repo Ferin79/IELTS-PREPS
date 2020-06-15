@@ -1,12 +1,10 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import Conatiner from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Table from "react-bootstrap/Table";
-import Accordion from "react-bootstrap/Accordion";
-import Card from "react-bootstrap/Card";
 import firebase from "../data/firebase";
 import { Context } from "../data/context";
 import LoadingScreen from "../components/LoadingScreen";
