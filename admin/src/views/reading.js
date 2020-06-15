@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect, useCallback } from "react";
 import Conatiner from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -7,6 +7,7 @@ import Form from "react-bootstrap/Form";
 import Table from "react-bootstrap/Table";
 import Accordion from "react-bootstrap/Accordion";
 import Card from "react-bootstrap/Card";
+import Dropdown from "react-bootstrap/Dropdown";
 import firebase from "../data/firebase";
 import { Context } from "../data/context";
 import LoadingScreen from "../components/LoadingScreen";
@@ -25,6 +26,28 @@ const Reading = () => {
   const [answersData, setAnswersData] = useState([]);
   const [name, setName] = useState("");
   const [complexity, setComplexity] = useState("easy");
+  const [readingData, setReadingData] = useState([]);
+
+  const fetchReadingData = useCallback(() => {
+    setIsLoading(true);
+    firebase
+      .firestore()
+      .collection("reading")
+      .get()
+      .then((docs) => {
+        const data = [];
+        docs.forEach((doc) => {
+          data.push({ ...doc.data(), id: doc.id });
+        });
+        setReadingData([...data]);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        alert(error.message);
+        setIsLoading(false);
+      });
+  }, [setIsLoading]);
 
   const handleAddModule = () => {
     if (role === "admin" || role === "staff") {
@@ -32,10 +55,22 @@ const Reading = () => {
       firebase
         .firestore()
         .collection("reading")
-        .add({})
+        .add({
+          addedBy: firebase.auth().currentUser.email,
+          section1Passage: section1,
+          section2Passage: section2,
+          section3Passage: section3,
+          section1Ques,
+          section2Ques,
+          section3Ques,
+          name,
+          answersData,
+          complexity,
+        })
         .then(() => {
           toast("Reading Module Added Successfully");
           setIsLoading(false);
+          fetchReadingData();
         })
         .catch((error) => {
           console.log(error);
@@ -47,7 +82,23 @@ const Reading = () => {
     }
   };
 
+  const deleteReadingModule = (id) => {
+    setIsLoading(true);
+    firebase
+      .firestore()
+      .doc(`/reading/${id}`)
+      .delete()
+      .then(() => {
+        setIsLoading(false);
+        toast.warning("Listening Module Deleted");
+        let data = readingData;
+        data = data.filter((item) => item.id !== id);
+        setReadingData([...data]);
+      });
+  };
+
   useEffect(() => {
+    fetchReadingData();
     const data = [];
     for (var i = 0; i < 40; i++) {
       data.push({
@@ -56,10 +107,10 @@ const Reading = () => {
       });
     }
     setAnswersData([...data]);
-  }, []);
+  }, [fetchReadingData]);
 
   if (isLoading) {
-    return <LoadingScreen />;
+    return <LoadingScreen text="Loading Reading Data" />;
   }
 
   if (role === "student") {
@@ -80,11 +131,61 @@ const Reading = () => {
               <tr>
                 <th>#</th>
                 <th>Type</th>
+                <th>Name</th>
                 <th>Answers</th>
                 <th>Added By</th>
                 <th>Action</th>
               </tr>
             </thead>
+            <tbody>
+              {readingData.length ? (
+                readingData.map((item, index) => {
+                  let answers = item.answersData;
+                  return (
+                    <tr key={index}>
+                      <td>{index + 1}</td>
+                      <td>{item.complexity}</td>
+                      <td>{item.name}</td>
+                      <td>
+                        <Dropdown>
+                          <Dropdown.Toggle
+                            variant="outline-dark"
+                            id="dropdown-basic"
+                          >
+                            View Answers
+                          </Dropdown.Toggle>
+
+                          <Dropdown.Menu>
+                            {answers.map((answer, index) => {
+                              return (
+                                <Dropdown.Item key={index}>
+                                  <p className="dropdownData">
+                                    {index + 1}
+                                    {". "}
+                                    {answer.value}
+                                  </p>
+                                </Dropdown.Item>
+                              );
+                            })}
+                          </Dropdown.Menu>
+                        </Dropdown>
+                      </td>
+                      <td>{item.addedBy}</td>
+                      <td>
+                        <Button
+                          variant="danger"
+                          onClick={() => deleteReadingModule(item.id)}
+                        >
+                          <i className="fa fa-trash"></i>
+                        </Button>
+                      </td>
+                    </tr>
+                  );
+                })
+              ) : (
+                <p>No Data to Show</p>
+              )}
+            </tbody>
           </Table>
         </Col>
         <Col
@@ -138,8 +239,15 @@ const Reading = () => {
                         rows="10"
                         cols="10"
                         value={section1}
+                        onKeyDown={(event) => {
+                          if (event.key === "Enter") {
+                            console.log("enter key pressed");
+                            setSection1((section1) => section1 + "<br/> ");
+                          }
+                        }}
                         onChange={(event) => {
                           console.log(event.target.value);
+
                           setSection1(event.target.value);
                         }}
                       />
@@ -152,6 +260,14 @@ const Reading = () => {
                         rows="10"
                         cols="10"
                         value={section1Ques}
+                        onKeyDown={(event) => {
+                          if (event.key === "Enter") {
+                            console.log("enter key pressed");
+                            setSection1Ques(
+                              (section1Ques) => section1Ques + "<br/> "
+                            );
+                          }
+                        }}
                         onChange={(event) => {
                           console.log(event.target.value);
                           setSection1Ques(event.target.value);
@@ -176,6 +292,12 @@ const Reading = () => {
                         rows="10"
                         cols="10"
                         value={section2}
+                        onKeyDown={(event) => {
+                          if (event.key === "Enter") {
+                            console.log("enter key pressed");
+                            setSection2((section2) => section2 + "<br/> ");
+                          }
+                        }}
                         onChange={(event) => setSection2(event.target.value)}
                       />
                     </Form.Group>
@@ -186,6 +308,14 @@ const Reading = () => {
                         rows="10"
                         cols="10"
                         value={section2Ques}
+                        onKeyDown={(event) => {
+                          if (event.key === "Enter") {
+                            console.log("enter key pressed");
+                            setSection2Ques(
+                              (section2Ques) => section2Ques + "<br/> "
+                            );
+                          }
+                        }}
                         onChange={(event) => {
                           console.log(event.target.value);
                           setSection2Ques(event.target.value);
@@ -210,6 +340,12 @@ const Reading = () => {
                         rows="10"
                         cols="10"
                         value={section3}
+                        onKeyDown={(event) => {
+                          if (event.key === "Enter") {
+                            console.log("enter key pressed");
+                            setSection3((section3) => section3 + "<br/> ");
+                          }
+                        }}
                         onChange={(event) => setSection3(event.target.value)}
                       />
                     </Form.Group>
@@ -220,6 +356,14 @@ const Reading = () => {
                         rows="10"
                         cols="10"
                         value={section3Ques}
+                        onKeyDown={(event) => {
+                          if (event.key === "Enter") {
+                            console.log("enter key pressed");
+                            setSection3Ques(
+                              (section3Ques) => section3Ques + "<br/> "
+                            );
+                          }
+                        }}
                         onChange={(event) => {
                           console.log(event.target.value);
                           setSection3Ques(event.target.value);

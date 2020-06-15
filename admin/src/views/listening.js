@@ -89,7 +89,10 @@ const Listening = () => {
     firebase
       .firestore()
       .collection("/listening")
-      .add({ ...formdata, addedBy: firebase.auth().currentUser.email })
+      .add({
+        ...formdata,
+        addedBy: firebase.auth().currentUser.email,
+      })
       .then(() => {
         toast("Listening Module Added");
         setAudioUrl(null);
@@ -209,7 +212,7 @@ const Listening = () => {
                           <Dropdown.Menu>
                             {answers.map((answer, index) => {
                               return (
-                                <Dropdown.Item>
+                                <Dropdown.Item key={index}>
                                   <p className="dropdownData">
                                     {index + 1}
                                     {". "}

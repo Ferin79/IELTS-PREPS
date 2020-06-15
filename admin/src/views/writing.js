@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useCallback, useEffect } from "react";
 import Conatiner from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -18,16 +18,46 @@ const Writing = () => {
   const [type, setType] = useState("");
   const [question, setQuestion] = useState("");
 
+  const [writingData, setWritingData] = useState([]);
+
+  const handleFetchWriting = useCallback(() => {
+    setIsLoading(true);
+    firebase
+      .firestore()
+      .collection("writing")
+      .get()
+      .then((docs) => {
+        const data = [];
+        docs.forEach((doc) => {
+          data.push({ ...doc.data(), id: doc.id });
+        });
+        setWritingData([...data]);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        alert(error.message);
+        setIsLoading(false);
+      });
+  }, [setIsLoading]);
+
   const handleAddModule = (event) => {
     if (role === "admin" || role === "staff") {
+      event.preventDefault();
       setIsLoading(true);
       firebase
         .firestore()
         .collection("writing")
-        .add({})
+        .add({
+          addedBy: firebase.auth().currentUser.email,
+          name,
+          type,
+          question,
+        })
         .then(() => {
           toast("Reading Module Added Successfully");
           setIsLoading(false);
+          handleFetchWriting();
         })
         .catch((error) => {
           console.log(error);
@@ -40,8 +70,27 @@ const Writing = () => {
     setIsLoading(false);
   };
 
+  const deleteWritingModule = (id) => {
+    setIsLoading(true);
+    firebase
+      .firestore()
+      .doc(`/writing/${id}`)
+      .delete()
+      .then(() => {
+        setIsLoading(false);
+        toast.warning("Listening Module Deleted");
+        let data = writingData;
+        data = data.filter((item) => item.id !== id);
+        setWritingData([...data]);
+      });
+  };
+
+  useEffect(() => {
+    handleFetchWriting();
+  }, [handleFetchWriting]);
+
   if (isLoading) {
-    return <LoadingScreen />;
+    return <LoadingScreen text="Loading Writing Data" />;
   }
 
   if (role === "student") {
@@ -62,11 +111,37 @@ const Writing = () => {
               <tr>
                 <th>#</th>
                 <th>Type</th>
-                <th>Answers</th>
+                <th>Name</th>
+                <th>Topic</th>
                 <th>Added By</th>
                 <th>Action</th>
               </tr>
             </thead>
+            <tbody>
+              {writingData.length ? (
+                writingData.map((item, index) => {
+                  return (
+                    <tr key={index}>
+                      <td>{index + 1}</td>
+                      <td>{item.type}</td>
+                      <td>{item.name}</td>
+                      <td>{item.question}</td>
+                      <td>{item.addedBy}</td>
+                      <td>
+                        <Button
+                          variant="danger"
+                          onClick={() => deleteWritingModule(item.id)}
+                        >
+                          <i className="fa fa-trash"></i>
+                        </Button>
+                      </td>
+                    </tr>
+                  );
+                })
+              ) : (
+                <p>No Data to Show</p>
+              )}
+            </tbody>
           </Table>
         </Col>
         <Col
