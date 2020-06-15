@@ -7,6 +7,7 @@ import Button from "react-bootstrap/Button";
 import { Context } from "../data/context";
 import LoadingScreen from "../components/LoadingScreen";
 import { useHistory } from "react-router-dom";
+import firebase from "../data/firebase"
 
 const Login = () => {
   const history = useHistory();
@@ -14,6 +15,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorText, setErrorText] = useState("");
+  const [userData, setUserData] = useState("")
 
   const handleSubmitLogin = async (event) => {
     event.preventDefault();
@@ -24,42 +26,92 @@ const Login = () => {
     } else if (password.trim() === "") {
       setErrorText("Password cannot be empty");
     } else {
-      const response = await fetch(
-        "https://us-central1-ielts-preps.cloudfunctions.net/api/login",
-        {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-            accept: "application/json",
-          },
-          body: JSON.stringify({
-            email,
-            password,
-          }),
-        }
-      );
-      const responseData = await response.json();
-      console.log(responseData);
-      if (responseData.success) {
-        const cred = {
-          token: responseData.token,
-          role: responseData.role,
-          institute_id: responseData.institute_id,
-        };
-        if (!(responseData.role === "student")) {
-          localStorage.setItem("credentials", JSON.stringify(cred));
-          setIsLoading(false);
-          setToken(responseData.token);
-          setIsLogin(true);
-          history.push("/");
-        } else {
-          setErrorText("Students Cannot Login Here....");
-        }
-      } else {
+      // SIGN IN
+      firebase.auth().signInWithEmailAndPassword(email, password) 
+      .then((res) => {
+        console.log(res.user.email);
+        const userEmail =  res.user.email
+        
+        // Fetch data after sign-in
+        firebase.firestore().collection(`users`).doc(userEmail).get().then(snapshot => {
+          console.log(snapshot.data());
+          setUserData(snapshot.data())
+
+          var role = "";
+          if (userData.isStudent){
+            role = "student"
+          }
+          if (userData.isAdmin){
+            role = "admin"
+          }
+          if (userData.isStaff){
+            role = "staff"
+          }
+
+          const cred = {
+            // token: responseData.token,
+            role,
+            institute_id: userData.institute_id,
+          };
+          if (!(role === "student")) {
+            localStorage.setItem("credentials", JSON.stringify(cred));
+            setIsLoading(false);
+            // setToken(responseData.token);
+            setIsLogin(true);
+            history.push("/");
+          } else {
+            setErrorText("Students Cannot Login Here....");
+          }
+
+        }) 
+         
+
+        
+      }).catch((error) => {
+        console.log(error.message);      
+        // error
         setIsLoading(false);
-        setErrorText(responseData.error);
-      }
+        setErrorText(error.message); 
+      })
+      // const response = await fetch(
+      //   "https://us-central1-ielts-preps.cloudfunctions.net/api/login",
+      //   {
+      //     method: "POST",
+      //     headers: {
+      //       "content-type": "application/json",
+      //       accept: "application/json",
+      //     },
+      //     body: JSON.stringify({
+      //       email,
+      //       password,
+      //     }),
+      //   }
+      // );
+
+      // const responseData = await response.json();
+      // console.log(responseData);
+      // if (responseData.success) {
+      //   const cred = {
+      //     token: responseData.token,
+      //     role: responseData.role,
+      //     institute_id: responseData.institute_id,
+      //   };
+      //   if (!(responseData.role === "student")) {
+      //     localStorage.setItem("credentials", JSON.stringify(cred));
+      //     setIsLoading(false);
+      //     setToken(responseData.token);
+      //     setIsLogin(true);
+      //     history.push("/");
+      //   } else {
+      //     setErrorText("Students Cannot Login Here....");
+      //   }
+      // } else {
+      //   setIsLoading(false);
+      //   setErrorText(responseData.error);
+      // }
+
     }
+
     setIsLoading(false);
   };
 
