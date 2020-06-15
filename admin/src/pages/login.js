@@ -26,16 +26,21 @@ const Login = () => {
     } else if (password.trim() === "") {
       setErrorText("Password cannot be empty");
     } else {
-      // SIGN IN
+// SIGN IN
       firebase.auth().signInWithEmailAndPassword(email, password) 
       .then((res) => {
         console.log(res.user.email);
         const userEmail =  res.user.email
-        
-        // Fetch data after sign-in
+        var token = ""
+        firebase.auth().currentUser.getIdToken().then(res => {
+          console.log(res)
+          token = res
+        });
+
+// AFTER SIGN-IN, Fetch user data 
         firebase.firestore().collection(`users`).doc(userEmail).get().then(snapshot => {
           console.log(snapshot.data());
-          setUserData(snapshot.data())
+          setUserData(snapshot.data())          
 
           var role = "";
           if (userData.isStudent){
@@ -56,7 +61,7 @@ const Login = () => {
           if (!(role === "student")) {
             localStorage.setItem("credentials", JSON.stringify(cred));
             setIsLoading(false);
-            // setToken(responseData.token);
+            setToken(token);
             setIsLogin(true);
             history.push("/");
           } else {
