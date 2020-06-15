@@ -28,6 +28,8 @@ const Listening = () => {
   const [answersData, setAnswersData] = useState([]);
   const [errorText, setErrorText] = useState("");
   const [listeningData, setListeningData] = useState([]);
+  const [name, setName] = useState("");
+  const [complexity, setComplexity] = useState("easy");
 
   const { isLoading, setIsLoading, token, role } = useContext(Context);
 
@@ -185,6 +187,8 @@ const Listening = () => {
               <tr>
                 <th>#</th>
                 <th>Type</th>
+                <th>Name</th>
+                <th>Complexity</th>
                 <th>Answers</th>
                 <th>Added By</th>
                 <th>Action</th>
@@ -198,6 +202,8 @@ const Listening = () => {
                     <tr key={index}>
                       <td>{index + 1}</td>
                       <td>{item.type}</td>
+                      <td>{item.name}</td>
+                      <td>{item.complexity}</td>
                       <td>
                         <Dropdown>
                           <Dropdown.Toggle
@@ -250,9 +256,21 @@ const Listening = () => {
         >
           <h3 className="m-5">Add Listening Module</h3>
           <Form>
+            <Form.Group controlId="formBasicEmail">
+              <Form.Label>Enter Name</Form.Label>
+              <Form.Control
+                required
+                type="text"
+                placeholder="Enter Descriptive Name"
+                value={name}
+                onChange={(event) => setName(event.target.value)}
+              />
+            </Form.Group>
+
             <Form.Group controlId="exampleForm.ControlSelect1">
               <Form.Label>Select Type</Form.Label>
               <Form.Control
+                required
                 as="select"
                 value={type}
                 onChange={(event) => {
@@ -271,6 +289,22 @@ const Listening = () => {
                 </option>
                 <option value="audio">Audio</option>
                 <option value="video">Video</option>
+              </Form.Control>
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Select Complexity</Form.Label>
+              <Form.Control
+                required
+                as="select"
+                value={complexity}
+                onChange={(event) => setComplexity(event.target.value)}
+              >
+                <option value="" disabled>
+                  Select Complexity Type
+                </option>
+                <option value="easy">Easy</option>
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
               </Form.Control>
             </Form.Group>
             {type.trim() !== "" ? (
@@ -420,6 +454,7 @@ const Listening = () => {
                                   <div>
                                     <Form.Control
                                       type="text"
+                                      required
                                       placeholder="Enter Answer"
                                       onChange={(event) => {
                                         const data = answersData;
@@ -439,6 +474,7 @@ const Listening = () => {
                 </Accordion>
 
                 <Button
+                  type="submit"
                   className="mt-5 mb-5"
                   variant="info"
                   onClick={() => {
@@ -451,6 +487,8 @@ const Listening = () => {
                           pdfUrl,
                           videoUrl: "",
                           answers: answersData,
+                          name,
+                          complexity,
                         });
                         addToDB(formData);
                       } else {
@@ -466,6 +504,8 @@ const Listening = () => {
                           pdfUrl: "",
                           videoUrl,
                           answers: answersData,
+                          name,
+                          complexity,
                         });
 
                         addToDB(formData);

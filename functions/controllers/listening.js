@@ -1,7 +1,15 @@
 const { db } = require("../util/admin");
 
 exports.addModule = (req, res) => {
-  const { type, audioUrl, pdfUrl, videoUrl, answers } = req.body;
+  const {
+    type,
+    audioUrl,
+    pdfUrl,
+    videoUrl,
+    answers,
+    name,
+    complexity,
+  } = req.body;
 
   if (req.user.isAdmin || req.user.isStaff) {
     console.log(req.body);
@@ -12,6 +20,8 @@ exports.addModule = (req, res) => {
         pdfUrl,
         videoUrl,
         answers,
+        name,
+        complexity,
         addedBy: req.user.email,
         institute_id: req.user.institute,
         createdAt: new Date().toISOString(),

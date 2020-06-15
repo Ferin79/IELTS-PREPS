@@ -25,6 +25,15 @@ const Dashboard = () => {
     document.querySelector("#listening").addEventListener("click", () => {
       history.push("/listening");
     });
+    document.querySelector("#reading").addEventListener("click", () => {
+      history.push("/reading");
+    });
+    document.querySelector("#speaking").addEventListener("click", () => {
+      history.push("/speaking");
+    });
+    document.querySelector("#writing").addEventListener("click", () => {
+      history.push("/writing");
+    });
   }, [history, role]);
 
   if (isLoading) {
@@ -72,6 +81,7 @@ const Dashboard = () => {
           <h5>Listening Module</h5>
         </Col>
         <Col
+          id="reading"
           lg={true}
           className="d-flex flex-column justify-content-center align-items-center addHoverCursor"
         >
@@ -79,6 +89,7 @@ const Dashboard = () => {
           <h5>Reading Module</h5>
         </Col>
         <Col
+          id="speaking"
           lg={true}
           className="d-flex flex-column justify-content-center align-items-center addHoverCursor"
         >
@@ -86,6 +97,7 @@ const Dashboard = () => {
           <h5>Speaking Module</h5>
         </Col>
         <Col
+          id="writing"
           lg={true}
           className="d-flex flex-column justify-content-center align-items-center addHoverCursor"
         >

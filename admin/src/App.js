@@ -10,6 +10,8 @@ import Staff from "./pages/staff";
 import Student from "./pages/student";
 import jwtDecode from "jwt-decode";
 import Listening from "./views/listening";
+import Reading from "./views/reading";
+import Writing from "./views/writing";
 
 const App = () => {
   const DynamicRoutes = () => {
@@ -51,6 +53,8 @@ const App = () => {
           <Route path="/staff" component={Staff} />
           <Route path="/student" component={Student} />
           <Route path="/listening" component={Listening} />
+          <Route path="/reading" component={Reading} />
+          <Route path="/writing" component={Writing} />
           <Redirect to="/" />
         </Switch>
       );
