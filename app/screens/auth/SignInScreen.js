@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Text,
   View,
@@ -9,10 +9,66 @@ import {
 } from "react-native";
 import { TextInput, Button } from "react-native-paper";
 import { ScrollView } from "react-native-gesture-handler";
+import firebase from "../../data/firebase";
+import LoadingScreen from "../components/LoadingScreen";
 
 const SignIn = ({ navigation }) => {
   const SCREEN_HEIGHT = Dimensions.get("window").height;
   const SCREEN_WIDTH = Dimensions.get("window").width;
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorText, setErrorText] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const signInhandle = () => {
+    setErrorText("");
+    if (email.trim() === "") {
+      setErrorText("Email annot be empty");
+      return;
+    } else if (password.trim() === "") {
+      setErrorText("Password annot be empty");
+      return;
+    } else {
+      setIsLoading(false);
+      firebase
+        .firestore()
+        .doc(`/users/${email}`)
+        .get()
+        .then((doc) => {
+          if (doc.exists) {
+            if (doc.data().isStudent) {
+              firebase
+                .auth()
+                .signInWithEmailAndPassword(email, password)
+                .then(() => {
+                  setIsLoading(false);
+                })
+                .catch((error) => {
+                  setIsLoading(false);
+                  console.log(error);
+                  setErrorText(error.message);
+                });
+            } else {
+              setIsLoading(false);
+              setErrorText("Admin and Staff are not allowed to login here");
+            }
+          } else {
+            setIsLoading(false);
+            setErrorText("User Account Not found");
+          }
+        })
+        .catch((error) => {
+          setIsLoading(false);
+          console.log(error);
+          setErrorText(error.message);
+        });
+    }
+  };
+
+  if (isLoading) {
+    return <LoadingScreen />;
+  }
 
   return (
     <SafeAreaView style={{ display: "flex", flex: 1 }}>
@@ -57,7 +113,7 @@ const SignIn = ({ navigation }) => {
           >
             <TextInput
               label="Email"
-              onChangeText={(text) => {}}
+              onChangeText={(text) => setEmail(text)}
               style={{
                 backgroundColor: "#F5F5F5",
                 borderWidth: 1,
@@ -66,7 +122,8 @@ const SignIn = ({ navigation }) => {
             />
             <TextInput
               label="Password"
-              onChangeText={(text) => {}}
+              secureTextEntry
+              onChangeText={(text) => setPassword(text)}
               style={{
                 backgroundColor: "#F5F5F5",
                 borderWidth: 1,
@@ -74,10 +131,20 @@ const SignIn = ({ navigation }) => {
                 marginVertical: 20,
               }}
             />
+            <Text
+              style={{
+                textAlign: "center",
+                margin: 10,
+                fontSize: 15,
+                color: "red",
+              }}
+            >
+              {errorText}
+            </Text>
             <Button
               mode="contained"
               color="rgb(70,130,100)"
-              onPress={() => console.log("Pressed")}
+              onPress={() => signInhandle()}
               style={{ padding: 10 }}
             >
               Sign In
