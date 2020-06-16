@@ -33,6 +33,16 @@ const Listening = () => {
 
   const { isLoading, setIsLoading, role } = useContext(Context);
 
+  const emptyAnswers = () => {
+    answersData.forEach(answer => {
+      if (answer.value.trim() === ""){
+        console.log("Empty answers");      
+        return true;                        
+      }      
+    });
+    return false;
+  }
+
   const uploadFileToStorage = (fileToUpload, fileType) => {
     setIsUploading(true);
     setIsUploadingComplete(false);
@@ -86,9 +96,7 @@ const Listening = () => {
 
   const addToDB = async (formdata) => {
     setIsLoading(true);
-    firebase
-      .firestore()
-      .collection("/listening")
+    firebase.firestore().collection("/listening")
       .add({
         ...formdata,
         addedBy: firebase.auth().currentUser.email,
@@ -474,6 +482,11 @@ const Listening = () => {
                   className="mt-5 mb-5"
                   variant="info"
                   onClick={() => {
+                   if(emptyAnswers){ 
+                    toast("Please add all answers!");
+                    return; 
+                    }
+                    console.log(answersData);
                     if (type === "audio") {
                       if (audioUrl && pdfUrl) {
                         console.log("Done Uploading Audio and Video");
