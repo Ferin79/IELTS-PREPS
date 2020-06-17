@@ -9,12 +9,50 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { TextInput, Button, Checkbox } from "react-native-paper";
+import firebase from "../../data/firebase";
 
 const SignUp = ({ navigation }) => {
   const SCREEN_HEIGHT = Dimensions.get("window").height;
   const SCREEN_WIDTH = Dimensions.get("window").width;
 
+  // const [firstName, setFirstName] = useState("");
+  // const [lastName, setLastName] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [confirmPassword, setConfirmPassword] = useState("");
+  // const [termsAndConditions, setTermsAndConditions] = useState(false);
+  // const [errorText, setErrorText] = useState("");
+
   const [checked, setChecked] = useState(false);
+
+  // const validate = () => {
+
+  //   if (email.trim() === ""){
+  //     setErrorText("Email cannot be empty!"); return false;
+  //   }else if (firstName.trim() === ""){
+  //     setErrorText("firstName cannot be empty!"); return false;
+  //   }else if (lastName.trim() === ""){
+  //     setErrorText("lastName cannot be empty!"); return false;
+  //   }else if (password.trim() === ""){
+  //     setErrorText("password cannot be empty!"); return false;
+  //   }else if (confirmPassword.trim() === ""){
+  //     setErrorText("password cannot be empty!"); return false;
+  //   }else if (password != confirmPassword){
+  //     setErrorText("Passwords don't match!"); return false;
+  //   }
+
+  //   return true;
+
+  // }
+
+  // const signUpPressed = () => {
+    
+  //   if (validate) {
+
+  //   }
+
+  // }
+
 
   return (
     <SafeAreaView>
@@ -89,7 +127,7 @@ const SignUp = ({ navigation }) => {
             </View>
             <TextInput
               label="Email"
-              onChangeText={(text) => {}}
+              onChangeText={(text) => {} }
               style={{
                 backgroundColor: "#F5F5F5",
                 borderWidth: 1,
@@ -152,7 +190,7 @@ const SignUp = ({ navigation }) => {
             <Button
               mode="contained"
               color="rgb(50,105,210)"
-              onPress={() => console.log("Pressed")}
+              onPress={() => {}}
               style={{ padding: 10 }}
             >
               Sign Up
