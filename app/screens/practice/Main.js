@@ -5,11 +5,12 @@ import {
   Text,
   Image,
   TouchableWithoutFeedback,
+  Platform,
 } from "react-native";
 import Swiper from "react-native-deck-swiper";
 import { LinearGradient } from "expo-linear-gradient";
 
-const PracticeMain = () => {
+const PracticeMain = ({ navigation }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const moduleList = [
@@ -20,6 +21,7 @@ const PracticeMain = () => {
       icon: require("../../images/headphones.png"),
       grad1: "#ff9a9e",
       grad2: "#fad0c4",
+      to: "PracticeListening",
     },
     {
       id: 2,
@@ -28,6 +30,7 @@ const PracticeMain = () => {
       icon: require("../../images/book.png"),
       grad1: "#fbc2eb",
       grad2: "#a6c1ee",
+      to: "PracticeReading",
     },
     {
       id: 3,
@@ -37,6 +40,7 @@ const PracticeMain = () => {
       icon: require("../../images/discussion.png"),
       grad1: "#84fab0",
       grad2: "#8fd3f4",
+      to: "PracticeSpeaking",
     },
     {
       id: 4,
@@ -45,20 +49,22 @@ const PracticeMain = () => {
       icon: require("../../images/write.png"),
       grad1: "#f093fb",
       grad2: "#f5576c",
+      to: "PracticeWriting",
     },
   ];
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ display: "flex", flex: 1 }}>
       <View
         style={{
           display: "flex",
-          flex: 1,
-          justifyContent: "center",
+          flex: 10,
+          justifyContent: "flex-end",
           alignItems: "center",
           backgroundColor: "#fff",
         }}
       >
         <Swiper
+          useViewOverflow={Platform.OS === "ios"}
           cards={moduleList}
           cardIndex={currentIndex}
           onSwiper={() =>
@@ -76,7 +82,10 @@ const PracticeMain = () => {
             return (
               <TouchableWithoutFeedback
                 style={{ flex: 1 }}
-                onPress={() => console.log(`Preesed ${card.title}`)}
+                onPress={() => {
+                  console.log(`Pressed ${card.title}`);
+                  navigation.navigate(`${card.to}`);
+                }}
               >
                 <LinearGradient
                   colors={[card.grad1, card.grad2]}
@@ -116,6 +125,23 @@ const PracticeMain = () => {
             );
           }}
         />
+      </View>
+      <View
+        style={{
+          display: "flex",
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: "#fff",
+        }}
+      >
+        <Text style={{ fontSize: 15 }}>
+          Swipe <Text style={{ fontWeight: "bold" }}>Left</Text> or{" "}
+          <Text style={{ fontWeight: "bold" }}>Right</Text> to change
+        </Text>
+        <Text style={{ fontSize: 15 }}>
+          <Text style={{ fontWeight: "bold" }}>Tap</Text> to Select Module
+        </Text>
       </View>
     </SafeAreaView>
   );

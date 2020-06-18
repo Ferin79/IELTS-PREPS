@@ -34,12 +34,6 @@ const Listening = () => {
   const { isLoading, setIsLoading, role } = useContext(Context);
 
   const emptyAnswers = () => {
-    answersData.forEach((answer) => {
-      if (answer.value.trim() === "") {
-        console.log("Empty answers");
-        return true;
-      }
-    });
     return false;
   };
 
@@ -483,11 +477,15 @@ const Listening = () => {
                   type="submit"
                   className="mt-5 mb-5"
                   variant="info"
-                  onClick={() => {
-                    if (emptyAnswers) {
-                      toast.error("Please add all answers!");
-                      return;
-                    }
+                  onClick={(event) => {
+                    event.preventDefault();
+                    answersData.forEach((answer) => {
+                      if (answer.value.trim() === "") {
+                        toast.error("Please Enter All Answers");
+                        console.log("Empty Answer " + answer);
+                        return;
+                      }
+                    });
                     console.log(answersData);
                     if (type === "audio") {
                       if (audioUrl && pdfUrl) {
