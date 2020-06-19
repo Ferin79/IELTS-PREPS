@@ -16,6 +16,8 @@ import Dropdown from "react-bootstrap/Dropdown";
 import "react-toastify/dist/ReactToastify.css";
 
 const Listening = () => {
+  var t = new Date(0); // Epoch 
+
   const [type, setType] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
   const [selectedPDF, setSelectedPDF] = useState(null);
@@ -125,12 +127,19 @@ const Listening = () => {
     firebase
       .firestore()
       .collection("listening")
+      .orderBy("createdAt","desc")
       .get()
       .then((docs) => {
         let data = [];
         docs.forEach((doc) => {
-          data.push({ ...doc.data(), id: doc.id });
+          console.log();
+          
+          data.push({ ...doc.data(), 
+                    id: doc.id, 
+                    createdAt: doc.data().createdAt.toDate()  
+          });
         });
+        console.log([...data])
         setListeningData([...data]);
         setIsLoading(false);
       })
@@ -189,6 +198,7 @@ const Listening = () => {
                 <th>Type</th>
                 <th>Name</th>
                 <th>Complexity</th>
+                <th>createdAt</th>
                 <th>Answers</th>
                 <th>Added By</th>
                 <th>Action</th>
@@ -204,6 +214,7 @@ const Listening = () => {
                       <td>{item.type}</td>
                       <td>{item.name}</td>
                       <td>{item.complexity}</td>
+                      <td>{item.createdAt.getDate()}/{item.createdAt.getMonth()}/{item.createdAt.getFullYear()} </td>
                       <td>
                         <Dropdown>
                           <Dropdown.Toggle
