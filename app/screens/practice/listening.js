@@ -38,13 +38,32 @@ const Listening = ({ navigation }) => {
       .collection("listening")
       .get()
       .then((docs) => {
-        const data = [];
+        let data = [];
         docs.forEach((doc) => {
-          console.log({ ...doc.data(), id: doc.id });
           data.push({ ...doc.data(), id: doc.id });
         });
-        setExamSet([...data]);
-        setIsLoading(false);
+        firebase
+          .firestore()
+          .collection("listeningUser")
+          .where("email", "==", firebase.auth().currentUser.email)
+          .get()
+          .then((docs) => {
+            if (!docs.empty) {
+              docs.forEach((doc) => {
+                let givenId = doc.data().listeningTestId;
+                data.forEach((item, index) => {
+                  if (item.id === givenId) {
+                    data = data.concat(data.splice(index, 1));
+                    item.isVisited = true;
+                    item.prevBand = doc.data().band;
+                  }
+                });
+              });
+            }
+            console.log(data);
+            setExamSet([...data]);
+            setIsLoading(false);
+          });
       })
       .catch((error) => {
         console.log(error);
@@ -120,7 +139,9 @@ const Listening = ({ navigation }) => {
                 <View
                   style={{
                     padding: 40,
-                    backgroundColor: COLORS[colorIndex++],
+                    backgroundColor: item.isVisited
+                      ? "lightgrey"
+                      : COLORS[colorIndex++],
                     margin: 10,
                     borderRadius: 50,
                   }}
@@ -161,12 +182,44 @@ const Listening = ({ navigation }) => {
                           {item.complexity}
                         </Text>
                       </Text>
+                      {item.isVisited && (
+                        <Text
+                          style={{
+                            fontSize: 15,
+                            color: "green",
+                            marginVertical: 10,
+                          }}
+                        >
+                          Completed
+                        </Text>
+                      )}
+
+                      {item.isVisited && (
+                        <Text
+                          style={{
+                            fontSize: 15,
+                            color: "green",
+                            marginVertical: 10,
+                          }}
+                        >
+                          Past Bands: <Text>{item.prevBand}</Text>
+                        </Text>
+                      )}
                     </View>
-                    {item.type === "audio" ? (
-                      <MaterialIcons name="audiotrack" size={30} color="#fff" />
-                    ) : (
-                      <Feather name="video" size={30} color="#fff" />
-                    )}
+                    <View>
+                      {item.type === "audio" ? (
+                        <MaterialIcons
+                          name="audiotrack"
+                          size={30}
+                          color="#fff"
+                        />
+                      ) : (
+                        <Feather name="video" size={30} color="#fff" />
+                      )}
+                      {item.isVisited && (
+                        <MaterialIcons name="check" size={50} color="green" />
+                      )}
+                    </View>
                   </View>
                 </View>
               </TouchableOpacity>

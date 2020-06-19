@@ -164,7 +164,8 @@ const ListeningTest = ({ navigation, route }) => {
     firebase
       .firestore()
       .collection("listeningUser")
-      .add({
+      .doc(`${firebase.auth().currentUser.email}${examData.id}`)
+      .set({
         correctScore,
         incorrectScore,
         notattemptScore,
