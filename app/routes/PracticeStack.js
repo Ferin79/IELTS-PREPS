@@ -6,6 +6,8 @@ import Reading from "../screens/practice/reading";
 import Writing from "../screens/practice/writing";
 import Speaking from "../screens/practice/speaking";
 import ListeningTest from "../screens/practice/ListeningTest";
+import PDFOpener from "../screens/components/pdfOpener";
+import Result from "../screens/practice/Result";
 
 const PracticeStackScreen = () => {
   const PracticeStack = createStackNavigator();
@@ -49,6 +51,18 @@ const PracticeStackScreen = () => {
       <PracticeStack.Screen
         name="ListeningTest"
         component={ListeningTest}
+        options={{
+          headerTitle: "Listening Test",
+        }}
+      />
+      <PracticeStack.Screen
+        name="PDFOpener"
+        component={PDFOpener}
+        options={{ headerTitle: "PDF Viewer" }}
+      />
+      <PracticeStack.Screen
+        name="Result"
+        component={Result}
         options={{
           header: () => null,
         }}
