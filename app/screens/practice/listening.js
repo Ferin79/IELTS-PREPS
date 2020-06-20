@@ -12,6 +12,8 @@ import firebase from "../../data/firebase";
 import LoadingScreen from "../components/LoadingScreen";
 import { Ionicons, MaterialIcons, Feather } from "@expo/vector-icons";
 import { Context } from "../../data/context";
+import { Button, Paragraph, Menu, Divider, Provider } from 'react-native-paper';
+
 
 const Listening = ({ navigation }) => {
   YellowBox.ignoreWarnings(["Setting a timer"]);
@@ -26,6 +28,15 @@ const Listening = ({ navigation }) => {
 
   const [isLoading, setIsLoading] = useState(false);
   const [examSet, setExamSet] = useState([]);
+  const [filteredExamSet, setFilteredExamSet] = useState([])
+// MENU
+  const [visible, setVisible] = useState(true)
+  const _openMenu = () => {
+    setVisible(true)
+  }
+  const _closeMenu = () => {
+    setVisible(false)
+  }
 
   const SCREEN_HEIGHT = Dimensions.get("window").height;
   const SCREEN_WIDTH = Dimensions.get("window").width;
@@ -33,6 +44,52 @@ const Listening = ({ navigation }) => {
   const { institute_id } = useContext(Context);
 
   let colorIndex = 0;
+
+
+  // FILTERS
+  const filterVideo = () => {
+    const result = examSet.filter(exam => exam.type === "video")
+    console.log(result);    
+    setFilteredExamSet([...result])
+    setVisible(false)
+  }
+  const filterAudio = () => {
+    const result = examSet.filter(exam => exam.type === "audio")
+    console.log(result);    
+    setFilteredExamSet([...result])
+    setVisible(false)
+  }
+  const filterComplexityHard = () => {
+    const result = examSet.filter(exam => exam.complexity === "hard")
+    console.log(result);    
+    setFilteredExamSet([...result])
+    setVisible(false)
+  }
+  const filterComplexityMedium = () => {
+    const result = examSet.filter(exam => exam.complexity === "medium")
+    console.log(result);    
+    setFilteredExamSet([...result])
+    setVisible(false)
+  }
+  const filterComplexityEasy = () => {
+    const result = examSet.filter(exam => exam.complexity === "easy")
+    console.log(result);    
+    setFilteredExamSet([...result])
+    setVisible(false)
+  }
+  
+  const filterVisited = () => {
+    const result = examSet.filter(exam => exam.isVisited === true)
+    console.log(result);    
+    setFilteredExamSet([...result])
+    setVisible(false)
+  }
+  const filterNone = () => {    
+    setFilteredExamSet([...examSet])
+    setVisible(false)
+  }
+
+
 
   const fetchListeningLists = () => {
     setIsLoading(true);
@@ -116,16 +173,58 @@ const Listening = ({ navigation }) => {
           Select Listening Test
         </Text>
       </View>
+      {/* DropDown menu */}
       <View
         style={{
-          height: SCREEN_HEIGHT * 0.8,
+          height: SCREEN_HEIGHT * 0.6,
+          backgroundColor: "#fff",
+          width: SCREEN_WIDTH,          
+        }}
+      >                      
+      <Provider>
+        <View
+          style={{            
+            flexDirection: 'row',
+            justifyContent: 'flex-end',            
+            backgroundColor: "#fff",
+            width: SCREEN_WIDTH,            
+          }}>
+          <Menu
+            style={{
+              marginTop: -30,
+              zIndex: 100
+            }}
+            visible={visible}
+            onDismiss={_closeMenu}
+            anchor={
+              <Button onPress={_openMenu}>Filter</Button>
+            }
+          >
+            <Menu.Item onPress={filterAudio} title="Only Audio" />
+            <Menu.Item onPress={filterVideo} title="Only Video" />
+            <Divider style={{backgroundColor: "#000"}} />
+            <Menu.Item onPress={filterComplexityHard} title="Hard" />
+            <Menu.Item onPress={filterComplexityMedium} title="Medium" />
+            <Menu.Item onPress={filterComplexityEasy} title="Easy" />
+            <Divider style={{backgroundColor: "#000"}} />
+            <Menu.Item onPress={filterVisited} title="Visited" />            
+            <Menu.Item onPress={filterNone} title="All" />            
+          </Menu>
+        </View>
+      </Provider>
+      </View>
+
+
+      <View
+        style={{
+          height: SCREEN_HEIGHT * 0.9,
           backgroundColor: "#fff",
           width: SCREEN_WIDTH,
           marginVertical: 20,
         }}
       >
         <FlatList
-          data={examSet}
+          data={filteredExamSet}
           keyExtractor={(item) => item.id}
           onRefresh={() => fetchListeningLists()}
           refreshing={isLoading}
