@@ -13,11 +13,11 @@ import { Context } from "../data/context";
 import LoadingScreen from "../components/LoadingScreen";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import CKEditor from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import CKEditor from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 const Reading = () => {
-  const { isLoading, setIsLoading, role } = useContext(Context);
+  const { isLoading, setIsLoading, role, institution } = useContext(Context);
 
   const [section1, setSection1] = useState("");
   const [section2, setSection2] = useState("");
@@ -35,6 +35,7 @@ const Reading = () => {
     firebase
       .firestore()
       .collection("reading")
+      .where("institute_id", "==", institution)
       .get()
       .then((docs) => {
         const data = [];
@@ -49,7 +50,7 @@ const Reading = () => {
         alert(error.message);
         setIsLoading(false);
       });
-  }, [setIsLoading]);
+  }, [setIsLoading, institution]);
 
   const handleAddModule = () => {
     if (role === "admin" || role === "staff") {
@@ -68,6 +69,7 @@ const Reading = () => {
           name,
           answersData,
           complexity,
+          institute_id: institution,
         })
         .then(() => {
           toast("Reading Module Added Successfully");
@@ -237,24 +239,24 @@ const Reading = () => {
                     <Form.Group controlId="exampleForm.ControlTextarea1">
                       <Form.Label>Reading Section 1 Passage</Form.Label>
                       <CKEditor
-                        editor={ ClassicEditor }
+                        editor={ClassicEditor}
                         data=""
-                        onInit={ editor => {
-                            // You can store the "editor" and use when it is needed.
-                            console.log( 'Editor is ready to use!', editor );
-                        } }
-                        onChange={ ( event, editor ) => {
-                            const data = editor.getData();
-                            console.log( { event, editor, data } );
-                            setSection1(data);
-                        } }
-                        onBlur={ ( event, editor ) => {
-                            console.log( 'Blur.', editor );
-                        } }
-                        onFocus={ ( event, editor ) => {
-                            console.log( 'Focus.', editor );
-                        } }
-                     />
+                        onInit={(editor) => {
+                          // You can store the "editor" and use when it is needed.
+                          console.log("Editor is ready to use!", editor);
+                        }}
+                        onChange={(event, editor) => {
+                          const data = editor.getData();
+                          console.log({ event, editor, data });
+                          setSection1(data);
+                        }}
+                        onBlur={(event, editor) => {
+                          console.log("Blur.", editor);
+                        }}
+                        onFocus={(event, editor) => {
+                          console.log("Focus.", editor);
+                        }}
+                      />
                       {/* <Form.Control
                         as="textarea"
                         rows="10"
@@ -277,24 +279,24 @@ const Reading = () => {
                     <Form.Group controlId="exampleForm.ControlTextarea1">
                       <Form.Label>Reading Section 1 Question</Form.Label>
                       <CKEditor
-                        editor={ ClassicEditor }
+                        editor={ClassicEditor}
                         data=""
-                        onInit={ editor => {
-                            // You can store the "editor" and use when it is needed.
-                            console.log( 'Editor is ready to use!', editor );
-                        } }
-                        onChange={ ( event, editor ) => {
-                            const data = editor.getData();
-                            console.log( { event, editor, data } );
-                            setSection1Ques(data);
-                        } }
-                        onBlur={ ( event, editor ) => {
-                            console.log( 'Blur.', editor );
-                        } }
-                        onFocus={ ( event, editor ) => {
-                            console.log( 'Focus.', editor );
-                        } }
-                     />
+                        onInit={(editor) => {
+                          // You can store the "editor" and use when it is needed.
+                          console.log("Editor is ready to use!", editor);
+                        }}
+                        onChange={(event, editor) => {
+                          const data = editor.getData();
+                          console.log({ event, editor, data });
+                          setSection1Ques(data);
+                        }}
+                        onBlur={(event, editor) => {
+                          console.log("Blur.", editor);
+                        }}
+                        onFocus={(event, editor) => {
+                          console.log("Focus.", editor);
+                        }}
+                      />
                       {/* <Form.Control
                         as="textarea"
                         rows="10"
@@ -312,7 +314,7 @@ const Reading = () => {
                           console.log(event.target.value);
                           setSection1Ques(event.target.value);
                         }}
-                      /> */}                      
+                      /> */}
                     </Form.Group>
                   </Card.Body>
                 </Accordion.Collapse>
@@ -328,24 +330,24 @@ const Reading = () => {
                     <Form.Group controlId="exampleForm.ControlTextarea1">
                       <Form.Label>Reading Section 2 Passage</Form.Label>
                       <CKEditor
-                        editor={ ClassicEditor }
+                        editor={ClassicEditor}
                         data=""
-                        onInit={ editor => {
-                            // You can store the "editor" and use when it is needed.
-                            console.log( 'Editor is ready to use!', editor );
-                        } }
-                        onChange={ ( event, editor ) => {
-                            const data = editor.getData();
-                            console.log( { event, editor, data } );
-                            setSection2(data);
-                        } }
-                        onBlur={ ( event, editor ) => {
-                            console.log( 'Blur.', editor );
-                        } }
-                        onFocus={ ( event, editor ) => {
-                            console.log( 'Focus.', editor );
-                        } }
-                     />
+                        onInit={(editor) => {
+                          // You can store the "editor" and use when it is needed.
+                          console.log("Editor is ready to use!", editor);
+                        }}
+                        onChange={(event, editor) => {
+                          const data = editor.getData();
+                          console.log({ event, editor, data });
+                          setSection2(data);
+                        }}
+                        onBlur={(event, editor) => {
+                          console.log("Blur.", editor);
+                        }}
+                        onFocus={(event, editor) => {
+                          console.log("Focus.", editor);
+                        }}
+                      />
                       {/* <Form.Control
                         as="textarea"
                         rows="10"
@@ -363,24 +365,24 @@ const Reading = () => {
                     <Form.Group controlId="exampleForm.ControlTextarea1">
                       <Form.Label>Reading Section 2 Question</Form.Label>
                       <CKEditor
-                        editor={ ClassicEditor }
+                        editor={ClassicEditor}
                         data=""
-                        onInit={ editor => {
-                            // You can store the "editor" and use when it is needed.
-                            console.log( 'Editor is ready to use!', editor );
-                        } }
-                        onChange={ ( event, editor ) => {
-                            const data = editor.getData();
-                            console.log( { event, editor, data } );
-                            setSection2Ques(data);
-                        } }
-                        onBlur={ ( event, editor ) => {
-                            console.log( 'Blur.', editor );
-                        } }
-                        onFocus={ ( event, editor ) => {
-                            console.log( 'Focus.', editor );
-                        } }
-                     />
+                        onInit={(editor) => {
+                          // You can store the "editor" and use when it is needed.
+                          console.log("Editor is ready to use!", editor);
+                        }}
+                        onChange={(event, editor) => {
+                          const data = editor.getData();
+                          console.log({ event, editor, data });
+                          setSection2Ques(data);
+                        }}
+                        onBlur={(event, editor) => {
+                          console.log("Blur.", editor);
+                        }}
+                        onFocus={(event, editor) => {
+                          console.log("Focus.", editor);
+                        }}
+                      />
                       {/* <Form.Control
                         as="textarea"
                         rows="10"
@@ -414,24 +416,24 @@ const Reading = () => {
                     <Form.Group controlId="exampleForm.ControlTextarea1">
                       <Form.Label>Reading Section 3 Passage</Form.Label>
                       <CKEditor
-                        editor={ ClassicEditor }
+                        editor={ClassicEditor}
                         data=""
-                        onInit={ editor => {
-                            // You can store the "editor" and use when it is needed.
-                            console.log( 'Editor is ready to use!', editor );
-                        } }
-                        onChange={ ( event, editor ) => {
-                            const data = editor.getData();
-                            console.log( { event, editor, data } );
-                            setSection3(data);
-                        } }
-                        onBlur={ ( event, editor ) => {
-                            console.log( 'Blur.', editor );
-                        } }
-                        onFocus={ ( event, editor ) => {
-                            console.log( 'Focus.', editor );
-                        } }
-                     />
+                        onInit={(editor) => {
+                          // You can store the "editor" and use when it is needed.
+                          console.log("Editor is ready to use!", editor);
+                        }}
+                        onChange={(event, editor) => {
+                          const data = editor.getData();
+                          console.log({ event, editor, data });
+                          setSection3(data);
+                        }}
+                        onBlur={(event, editor) => {
+                          console.log("Blur.", editor);
+                        }}
+                        onFocus={(event, editor) => {
+                          console.log("Focus.", editor);
+                        }}
+                      />
                       {/* <Form.Control
                         as="textarea"
                         rows="10"
@@ -449,24 +451,24 @@ const Reading = () => {
                     <Form.Group controlId="exampleForm.ControlTextarea1">
                       <Form.Label>Reading Section 3 Question</Form.Label>
                       <CKEditor
-                        editor={ ClassicEditor }
+                        editor={ClassicEditor}
                         data=""
-                        onInit={ editor => {
-                            // You can store the "editor" and use when it is needed.
-                            console.log( 'Editor is ready to use!', editor );
-                        } }
-                        onChange={ ( event, editor ) => {
-                            const data = editor.getData();
-                            console.log( { event, editor, data } );
-                            setSection3Ques(data);
-                        } }
-                        onBlur={ ( event, editor ) => {
-                            console.log( 'Blur.', editor );
-                        } }
-                        onFocus={ ( event, editor ) => {
-                            console.log( 'Focus.', editor );
-                        } }
-                     />
+                        onInit={(editor) => {
+                          // You can store the "editor" and use when it is needed.
+                          console.log("Editor is ready to use!", editor);
+                        }}
+                        onChange={(event, editor) => {
+                          const data = editor.getData();
+                          console.log({ event, editor, data });
+                          setSection3Ques(data);
+                        }}
+                        onBlur={(event, editor) => {
+                          console.log("Blur.", editor);
+                        }}
+                        onFocus={(event, editor) => {
+                          console.log("Focus.", editor);
+                        }}
+                      />
                       {/* <Form.Control
                         as="textarea"
                         rows="10"

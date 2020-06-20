@@ -16,8 +16,6 @@ import Dropdown from "react-bootstrap/Dropdown";
 import "react-toastify/dist/ReactToastify.css";
 
 const Listening = () => {
-  var t = new Date(0); // Epoch 
-
   const [type, setType] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
   const [selectedPDF, setSelectedPDF] = useState(null);
@@ -33,11 +31,7 @@ const Listening = () => {
   const [name, setName] = useState("");
   const [complexity, setComplexity] = useState("easy");
 
-  const { isLoading, setIsLoading, role } = useContext(Context);
-
-  const emptyAnswers = () => {
-    return false;
-  };
+  const { isLoading, setIsLoading, role, institution } = useContext(Context);
 
   const uploadFileToStorage = (fileToUpload, fileType) => {
     setIsUploading(true);
@@ -98,6 +92,7 @@ const Listening = () => {
       .add({
         ...formdata,
         addedBy: firebase.auth().currentUser.email,
+        institute_id: institution,
       })
       .then(() => {
         toast("Listening Module Added");
@@ -127,19 +122,19 @@ const Listening = () => {
     firebase
       .firestore()
       .collection("listening")
-      .orderBy("createdAt","desc")
+      .where("institute_id", "==", institution)
       .get()
       .then((docs) => {
         let data = [];
         docs.forEach((doc) => {
           console.log();
-          
-          data.push({ ...doc.data(), 
-                    id: doc.id, 
-                    createdAt: doc.data().createdAt.toDate()  
+
+          data.push({
+            ...doc.data(),
+            id: doc.id,
           });
         });
-        console.log([...data])
+        console.log([...data]);
         setListeningData([...data]);
         setIsLoading(false);
       })
@@ -148,7 +143,7 @@ const Listening = () => {
         alert("Eror Occured");
         setIsLoading(false);
       });
-  }, [setIsLoading, role]);
+  }, [setIsLoading, role, institution]);
 
   const deleteListeningModule = (id) => {
     setIsLoading(true);
@@ -198,7 +193,6 @@ const Listening = () => {
                 <th>Type</th>
                 <th>Name</th>
                 <th>Complexity</th>
-                <th>createdAt</th>
                 <th>Answers</th>
                 <th>Added By</th>
                 <th>Action</th>
@@ -214,7 +208,7 @@ const Listening = () => {
                       <td>{item.type}</td>
                       <td>{item.name}</td>
                       <td>{item.complexity}</td>
-                      <td>{item.createdAt.getDate()}/{item.createdAt.getMonth()}/{item.createdAt.getFullYear()} </td>
+
                       <td>
                         <Dropdown>
                           <Dropdown.Toggle

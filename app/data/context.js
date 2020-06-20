@@ -3,12 +3,11 @@ import React, { useState, createContext } from "react";
 export const Context = createContext();
 
 export const ContextProvider = ({ children }) => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [isLogin, setIsLogin] = useState(false);
+  const [institute_id, setInstitute_id] = useState(null);
 
   return (
-    <Context value={{ isLoading, setIsLoading, isLogin, setIsLogin }}>
+    <Context.Provider value={{ institute_id, setInstitute_id }}>
       {children}
-    </Context>
+    </Context.Provider>
   );
 };

@@ -46,13 +46,12 @@ const SignUp = ({ navigation }) => {
   // }
 
   // const signUpPressed = () => {
-    
+
   //   if (validate) {
 
   //   }
 
   // }
-
 
   return (
     <SafeAreaView>
@@ -61,13 +60,13 @@ const SignUp = ({ navigation }) => {
           <View
             style={{
               height: SCREEN_HEIGHT * 0.3,
-              backgroundColor: "rgba(50,105,210,0.3)",
+              backgroundColor: "rgba(70,130,100,0.3)",
             }}
           >
             <Text
               style={{
                 fontSize: 35,
-                color: "#336ad0",
+                color: "#0e8264",
                 textAlign: "center",
                 marginTop: 20,
               }}
@@ -127,7 +126,7 @@ const SignUp = ({ navigation }) => {
             </View>
             <TextInput
               label="Email"
-              onChangeText={(text) => {} }
+              onChangeText={(text) => {}}
               style={{
                 backgroundColor: "#F5F5F5",
                 borderWidth: 1,
@@ -184,12 +183,12 @@ const SignUp = ({ navigation }) => {
               />
               <Text>
                 I accept the{" "}
-                <Text style={{ color: "#336ad0" }}>Terms and Conditions</Text>
+                <Text style={{ color: "#0e8264" }}>Terms and Conditions</Text>
               </Text>
             </View>
             <Button
               mode="contained"
-              color="rgb(50,105,210)"
+              color="rgb(70,130,100)"
               onPress={() => {}}
               style={{ padding: 10 }}
             >
@@ -205,7 +204,7 @@ const SignUp = ({ navigation }) => {
             >
               <Text style={{ textAlign: "center", fontSize: 20 }}>
                 Already a member?{" "}
-                <Text style={{ color: "#336ad0", fontWeight: "bold" }}>
+                <Text style={{ color: "#0e8264", fontWeight: "bold" }}>
                   Sign In
                 </Text>
               </Text>

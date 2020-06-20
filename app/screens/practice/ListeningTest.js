@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   SafeAreaView,
   View,
@@ -7,19 +7,20 @@ import {
   ScrollView,
   Slider,
   Alert,
+  Image,
 } from "react-native";
 import { TextInput, Button } from "react-native-paper";
 import { Video, Audio } from "expo-av";
 import { Ionicons } from "@expo/vector-icons";
 import LoadingScreen from "../components/LoadingScreen";
 import firebase from "../../data/firebase";
+import { Context } from "../../data/context";
 
 let playbackObject = new Audio.Sound();
 let IS_MOUNTED = false;
 
 const ListeningTest = ({ navigation, route }) => {
   const examData = route.params.data;
-  console.log(examData);
 
   const SCREEN_WIDTH = Dimensions.get("window").width;
   const SCREEN_HEIGHT = Dimensions.get("window").height;
@@ -29,6 +30,8 @@ const ListeningTest = ({ navigation, route }) => {
   const [totalTime, setTotalTime] = useState(null);
   const [passTime, setPassTime] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+
+  const { institute_id } = useContext(Context);
 
   const initializeEmptyUserAnswer = () => {
     const data = [];
@@ -44,7 +47,7 @@ const ListeningTest = ({ navigation, route }) => {
   const loadAudio = async () => {
     try {
       await playbackObject.loadAsync({
-        uri: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+        uri: examData.audioUrl,
       });
     } catch (error) {
       Alert.alert(error.message + "\n\n\n\n Contact Developer");
@@ -174,6 +177,7 @@ const ListeningTest = ({ navigation, route }) => {
         email: firebase.auth().currentUser.email,
         createdAt: firebase.firestore.Timestamp.now(),
         listeningTestId: examData.id,
+        institute_id,
       })
       .then(() => {
         setIsLoading(false);
@@ -223,9 +227,25 @@ const ListeningTest = ({ navigation, route }) => {
                 marginVertical: 20,
                 borderWidth: 1,
                 padding: 20,
-                borderRadius: 50,
+                borderRadius: 30,
+                backgroundColor: "#fff",
+                shadowOffset: {
+                  width: 10,
+                  height: 10,
+                },
+                shadowOpacity: 0.2,
+                shadowRadius: 10,
               }}
             >
+              <Image
+                source={require("../../images/headphones.gif")}
+                style={{
+                  marginLeft: "auto",
+                  marginRight: "auto",
+                  height: 150,
+                  width: 150,
+                }}
+              />
               <Slider
                 maximumValue={totalTime}
                 minimumValue={0}
@@ -271,7 +291,7 @@ const ListeningTest = ({ navigation, route }) => {
               }}
               onPress={() => {
                 navigation.navigate("PDFOpener", {
-                  pdfUrl: "http://www.africau.edu/images/default/sample.pdf",
+                  pdfUrl: examData.pdfUrl,
                 });
               }}
             >

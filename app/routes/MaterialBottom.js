@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Home from "../screens/home/home";
 import Test from "../screens/home/test";
 import PracticeStackScreen from "./PracticeStack";
+import { Context } from "../data/context";
 
 const Tab = createMaterialBottomTabNavigator();
 
-function MyTabs() {
+function MyTabs(props) {
+  const { setInstitute_id } = useContext(Context);
+  setInstitute_id(props.institute_id);
+
   return (
     <Tab.Navigator
       initialRouteName="Home"

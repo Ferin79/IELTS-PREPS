@@ -1,21 +1,29 @@
 import React, { useState, useEffect } from "react";
-import { SafeAreaView, StatusBar } from "react-native";
+import { SafeAreaView, StatusBar, AsyncStorage } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import AuthStackScreen from "./routes/AuthStack";
 import firebase from "./data/firebase";
 import BottomScreen from "./routes/MaterialBottom";
 import LoadingScreen from "./screens/components/LoadingScreen";
 import SafeViewAndroid from "./screens/components/SafeAndroidView";
+import { ContextProvider } from "./data/context";
+
+let institute_id = "";
 
 export default function App() {
   const [isLogin, setIsLogin] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    firebase.auth().onAuthStateChanged((user) => {
+    firebase.auth().onAuthStateChanged(async (user) => {
       if (user) {
-        setIsLoading(false);
-        setIsLogin(true);
+        institute_id = await AsyncStorage.getItem("@institute_id");
+        if (institute_id) {
+          setIsLoading(false);
+          setIsLogin(true);
+        } else {
+          firebase.auth().signOut();
+        }
       } else {
         setIsLoading(false);
         setIsLogin(false);
@@ -31,7 +39,13 @@ export default function App() {
     <SafeAreaView style={SafeViewAndroid.AndroidSafeArea}>
       <StatusBar backgroundColor="black" />
       <NavigationContainer>
-        {!isLogin ? <AuthStackScreen /> : <BottomScreen />}
+        <ContextProvider>
+          {!isLogin ? (
+            <AuthStackScreen />
+          ) : (
+            <BottomScreen institute_id={institute_id} />
+          )}
+        </ContextProvider>
       </NavigationContainer>
     </SafeAreaView>
   );

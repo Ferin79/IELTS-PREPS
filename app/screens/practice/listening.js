@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import {
   View,
   Text,
@@ -11,6 +11,7 @@ import {
 import firebase from "../../data/firebase";
 import LoadingScreen from "../components/LoadingScreen";
 import { Ionicons, MaterialIcons, Feather } from "@expo/vector-icons";
+import { Context } from "../../data/context";
 
 const Listening = ({ navigation }) => {
   YellowBox.ignoreWarnings(["Setting a timer"]);
@@ -29,6 +30,8 @@ const Listening = ({ navigation }) => {
   const SCREEN_HEIGHT = Dimensions.get("window").height;
   const SCREEN_WIDTH = Dimensions.get("window").width;
 
+  const { institute_id } = useContext(Context);
+
   let colorIndex = 0;
 
   const fetchListeningLists = () => {
@@ -36,6 +39,7 @@ const Listening = ({ navigation }) => {
     firebase
       .firestore()
       .collection("listening")
+      .where("institute_id", "in", [institute_id, "all"])
       .get()
       .then((docs) => {
         let data = [];
@@ -182,6 +186,13 @@ const Listening = ({ navigation }) => {
                           {item.complexity}
                         </Text>
                       </Text>
+                      {item.institute_id === "all" && (
+                        <Text
+                          style={{ fontSize: 15, color: "#fff", margin: 5 }}
+                        >
+                          This Test is offered by Admin
+                        </Text>
+                      )}
                       {item.isVisited && (
                         <Text
                           style={{

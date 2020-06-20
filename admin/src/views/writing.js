@@ -12,7 +12,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Writing = () => {
-  const { isLoading, setIsLoading, role } = useContext(Context);
+  const { isLoading, setIsLoading, role, institution } = useContext(Context);
 
   const [name, setName] = useState("");
   const [type, setType] = useState("");
@@ -25,6 +25,7 @@ const Writing = () => {
     firebase
       .firestore()
       .collection("writing")
+      .where("institute_id", "==", institution)
       .get()
       .then((docs) => {
         const data = [];
@@ -39,7 +40,7 @@ const Writing = () => {
         alert(error.message);
         setIsLoading(false);
       });
-  }, [setIsLoading]);
+  }, [setIsLoading, institution]);
 
   const handleAddModule = (event) => {
     if (role === "admin" || role === "staff") {
@@ -53,10 +54,14 @@ const Writing = () => {
           name,
           type,
           question,
+          institute_id: institution,
         })
         .then(() => {
           toast("Reading Module Added Successfully");
           setIsLoading(false);
+          setName("");
+          setType("");
+          setQuestion("");
           handleFetchWriting();
         })
         .catch((error) => {

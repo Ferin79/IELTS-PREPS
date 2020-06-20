@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   Text,
   View,
@@ -6,11 +6,13 @@ import {
   SafeAreaView,
   Image,
   TouchableOpacity,
+  AsyncStorage,
 } from "react-native";
 import { TextInput, Button } from "react-native-paper";
 import { ScrollView } from "react-native-gesture-handler";
 import firebase from "../../data/firebase";
 import LoadingScreen from "../components/LoadingScreen";
+import { Context } from "../../data/context";
 
 const SignIn = ({ navigation }) => {
   const SCREEN_HEIGHT = Dimensions.get("window").height;
@@ -20,6 +22,8 @@ const SignIn = ({ navigation }) => {
   const [password, setPassword] = useState("");
   const [errorText, setErrorText] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
+  const { setInstitute_id } = useContext(Context);
 
   const signInhandle = () => {
     setErrorText("");
@@ -35,9 +39,14 @@ const SignIn = ({ navigation }) => {
         .firestore()
         .doc(`/users/${email}`)
         .get()
-        .then((doc) => {
+        .then(async (doc) => {
           if (doc.exists) {
             if (doc.data().isStudent) {
+              await AsyncStorage.setItem(
+                "@institute_id",
+                doc.data().institute_id
+              );
+              setInstitute_id(doc.data().institute_id);
               firebase
                 .auth()
                 .signInWithEmailAndPassword(email, password)
@@ -77,13 +86,13 @@ const SignIn = ({ navigation }) => {
           <View
             style={{
               height: SCREEN_HEIGHT * 0.3,
-              backgroundColor: "rgba(70,130,100,0.3)",
+              backgroundColor: "rgba(50,105,210,0.3)",
             }}
           >
             <Text
               style={{
                 fontSize: 35,
-                color: "#0e8264",
+                color: "#336ad0",
                 textAlign: "center",
                 marginTop: 20,
               }}
@@ -143,7 +152,7 @@ const SignIn = ({ navigation }) => {
             </Text>
             <Button
               mode="contained"
-              color="rgb(70,130,100)"
+              color="rgb(50,105,210)"
               onPress={() => signInhandle()}
               style={{ padding: 10 }}
             >
@@ -170,7 +179,7 @@ const SignIn = ({ navigation }) => {
             >
               <Text style={{ textAlign: "center", fontSize: 20 }}>
                 Wait!!! New User?{" "}
-                <Text style={{ color: "#0e8264", fontWeight: "bold" }}>
+                <Text style={{ color: "#336ad0", fontWeight: "bold" }}>
                   Sign Up
                 </Text>
               </Text>
