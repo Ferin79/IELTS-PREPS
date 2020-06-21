@@ -30,6 +30,7 @@ const Reading = () => {
   const [complexity, setComplexity] = useState("easy");
   const [readingData, setReadingData] = useState([]);
 
+
   const fetchReadingData = useCallback(() => {
     setIsLoading(true);
     firebase
@@ -52,7 +53,26 @@ const Reading = () => {
       });
   }, [setIsLoading, institution]);
 
-  const handleAddModule = () => {
+
+  // Validation
+  const emptyAnswers = () => {
+    for (var i = 0; i < 40; i++) {
+        if (answersData[i].value.trim() === ""){
+          return true;
+        }
+    }
+    return false;
+  }
+
+  const handleAddModule = (event) => {
+    event.preventDefault();
+    if (emptyAnswers()){
+      toast.error("Please Enter All Answers");
+      console.log("Empty Answer");
+      return;
+    }
+    console.log(answersData);
+    
     if (role === "admin" || role === "staff") {
       setIsLoading(true);
       firebase
@@ -70,6 +90,7 @@ const Reading = () => {
           answersData,
           complexity,
           institute_id: institution,
+          createdAt: firebase.firestore.Timestamp.now(),
         })
         .then(() => {
           toast("Reading Module Added Successfully");

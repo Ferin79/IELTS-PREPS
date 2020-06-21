@@ -84,6 +84,15 @@ const Listening = () => {
     );
   };
 
+  const emptyAnswers = () => {
+    for (var i = 0; i < 40; i++) {
+        if (answersData[i].value.trim() === ""){
+          return true;
+        }
+    }
+    return false;
+  }
+
   const addToDB = async (formdata) => {
     setIsLoading(true);
     firebase
@@ -93,6 +102,7 @@ const Listening = () => {
         ...formdata,
         addedBy: firebase.auth().currentUser.email,
         institute_id: institution,
+        createdAt: firebase.firestore.Timestamp.now(),
       })
       .then(() => {
         toast("Listening Module Added");
@@ -484,13 +494,11 @@ const Listening = () => {
                   variant="info"
                   onClick={(event) => {
                     event.preventDefault();
-                    answersData.forEach((answer) => {
-                      if (answer.value.trim() === "") {
-                        toast.error("Please Enter All Answers");
-                        console.log("Empty Answer " + answer);
-                        return;
-                      }
-                    });
+                    if (emptyAnswers()){
+                      toast.error("Please Enter All Answers");
+                      console.log("Empty Answer");
+                      return;
+                    }
                     console.log(answersData);
                     if (type === "audio") {
                       if (audioUrl && pdfUrl) {

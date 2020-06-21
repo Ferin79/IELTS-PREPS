@@ -42,7 +42,24 @@ const Writing = () => {
       });
   }, [setIsLoading, institution]);
 
+  const validate = () => {
+    if (name.trim() === ""  
+      && type.trim() === "" 
+      && question.trim() === "") 
+    {
+        return false;
+    }
+    return true;
+  }
+
   const handleAddModule = (event) => {
+
+    if ( !validate() ) {
+      toast.error("All fields required");
+      console.log("Empty Fields");
+      return;
+    }
+
     if (role === "admin" || role === "staff") {
       event.preventDefault();
       setIsLoading(true);
@@ -55,6 +72,7 @@ const Writing = () => {
           type,
           question,
           institute_id: institution,
+          createdAt: firebase.firestore.Timestamp.now(),
         })
         .then(() => {
           toast("Reading Module Added Successfully");
