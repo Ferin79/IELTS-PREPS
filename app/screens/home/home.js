@@ -7,7 +7,7 @@ const Home = () => {
   const { institute_id } = useContext(Context);
   return (
     <View>
-      <Text>Home Screen</Text>
+      <Text>Home Screen </Text>
       <Text>{institute_id}</Text>
       <Button
         title="Logout"

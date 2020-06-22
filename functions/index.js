@@ -3,6 +3,7 @@ const express = require("express");
 const { login, register, deleteMember } = require("./controllers/auth");
 const checkAuth = require("./util/checkAuth");
 const { addModule } = require("./controllers/listening");
+const { getUserList } = require("./controllers/users");
 
 const app = express();
 

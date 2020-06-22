@@ -7,15 +7,16 @@ import {
   Alert,
   TouchableOpacity,
   Dimensions,
+  Image,
 } from "react-native";
 import { Button, ProgressBar } from "react-native-paper";
 import * as DocumentPicker from "expo-document-picker";
 import firebase from "../../data/firebase";
 import LoadingScreen from "../components/LoadingScreen";
 import { Context } from "../../data/context";
+import Lightbox from "react-native-lightbox";
 
-const WritingTest = ({ route, navigation }) => {
-  console.log(route.params);
+const WritingTest = ({ route, navigation, navigator }) => {
   const data = route.params.data;
 
   const [isUploading, setIsUploading] = useState(false);
@@ -173,6 +174,20 @@ const WritingTest = ({ route, navigation }) => {
             </Text>
           </View>
         </View>
+        {data.isSummary && (
+          <Lightbox navigator={navigator}>
+            <Image
+              source={{ uri: data.imageUrl }}
+              style={{
+                height: SCREEN_HEIGHT * 0.3,
+                width: SCREEN_WIDTH * 0.9,
+                resizeMode: "contain",
+                marginLeft: "auto",
+                marginRight: "auto",
+              }}
+            />
+          </Lightbox>
+        )}
         <View style={{ margin: 20 }}>
           <Text style={{ fontSize: 20 }}>{data.question}</Text>
         </View>

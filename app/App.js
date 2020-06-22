@@ -37,7 +37,7 @@ export default function App() {
 
   return (
     <SafeAreaView style={SafeViewAndroid.AndroidSafeArea}>
-      <StatusBar backgroundColor="black" />
+      <StatusBar backgroundColor="#000" />
       <NavigationContainer>
         <ContextProvider>
           {!isLogin ? (
