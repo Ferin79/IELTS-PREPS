@@ -10,6 +10,8 @@ import { Context } from "../data/context";
 import LoadingScreen from "../components/LoadingScreen";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import CKEditor from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 const Writing = () => {
   const { isLoading, setIsLoading, role, institution } = useContext(Context);
@@ -26,6 +28,7 @@ const Writing = () => {
       .firestore()
       .collection("writing")
       .where("institute_id", "==", institution)
+      .orderBy("createdAt", "desc")
       .get()
       .then((docs) => {
         const data = [];
@@ -209,14 +212,33 @@ const Writing = () => {
               <Form.Label style={{ textTransform: "capitalize" }}>
                 Enter Question {"for " + type} :
               </Form.Label>
-              <Form.Control
+              <CKEditor
+                        editor={ClassicEditor}
+                        data=""
+                        onInit={(editor) => {
+                          // You can store the "editor" and use when it is needed.
+                          console.log("Editor is ready to use!", editor);
+                        }}
+                        onChange={(event, editor) => {
+                          const data = editor.getData();
+                          console.log({ event, editor, data });
+                          setQuestion(data);
+                        }}
+                        onBlur={(event, editor) => {
+                          console.log("Blur.", editor);
+                        }}
+                        onFocus={(event, editor) => {
+                          console.log("Focus.", editor);
+                        }}
+                      />
+              {/* <Form.Control
                 as="textarea"
                 rows="10"
                 cols="10"
                 required
                 value={question}
                 onChange={(event) => setQuestion(event.target.value)}
-              />
+              /> */}
             </Form.Group>
             <Button
               type="submit"

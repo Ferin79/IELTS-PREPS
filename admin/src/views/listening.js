@@ -133,6 +133,7 @@ const Listening = () => {
       .firestore()
       .collection("listening")
       .where("institute_id", "==", institution)
+      .orderBy("createdAt", "desc")
       .get()
       .then((docs) => {
         let data = [];

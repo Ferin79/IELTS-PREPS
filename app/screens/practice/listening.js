@@ -123,6 +123,7 @@ const Listening = ({ navigation }) => {
             }
             console.log(data);
             setExamSet([...data]);
+            setFilteredExamSet([...data])
             setIsLoading(false);
           });
       })

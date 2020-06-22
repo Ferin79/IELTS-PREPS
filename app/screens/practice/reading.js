@@ -12,6 +12,7 @@ import firebase from "../../data/firebase";
 import LoadingScreen from "../components/LoadingScreen";
 import { FontAwesome5, Ionicons } from "@expo/vector-icons";
 import { Context } from "../../data/context";
+import { Button, Paragraph, Menu, Divider, Provider } from 'react-native-paper';
 
 const Listening = ({ navigation }) => {
   YellowBox.ignoreWarnings(["Setting a timer"]);
@@ -26,6 +27,41 @@ const Listening = ({ navigation }) => {
 
   const [isLoading, setIsLoading] = useState(false);
   const [examSet, setExamSet] = useState([]);
+  const [filteredExamSet, setFilteredExamSet] = useState([])
+  // MENU
+  const [visible, setVisible] = useState(true)
+  const _openMenu = () => {
+    setVisible(true)
+  }
+  const _closeMenu = () => {
+    setVisible(false)
+  }
+
+  // FILTERS
+  const filterComplexityHard = () => {
+    const result = examSet.filter(exam => exam.complexity === "hard")
+    console.log(result);    
+    setFilteredExamSet([...result])
+    setVisible(false)
+  }
+  const filterComplexityMedium = () => {
+    const result = examSet.filter(exam => exam.complexity === "medium")
+    console.log(result);    
+    setFilteredExamSet([...result])
+    setVisible(false)
+  }
+  const filterComplexityEasy = () => {
+    const result = examSet.filter(exam => exam.complexity === "easy")
+    console.log(result);    
+    setFilteredExamSet([...result])
+    setVisible(false)
+  }
+  const filterVisited = () => {
+    const result = examSet.filter(exam => exam.isVisited === true)
+    console.log(result);    
+    setFilteredExamSet([...result])
+    setVisible(false)
+  }
 
   const SCREEN_HEIGHT = Dimensions.get("window").height;
   const SCREEN_WIDTH = Dimensions.get("window").width;
@@ -65,6 +101,9 @@ const Listening = ({ navigation }) => {
               });
             }
             setExamSet([...data]);
+            setFilteredExamSet([...data]);
+            console.log([...data]);
+            
             setIsLoading(false);
           });
       })
@@ -115,6 +154,45 @@ const Listening = ({ navigation }) => {
           Select Reading Test
         </Text>
       </View>
+
+    {/* Drop Down menu */}
+    
+    <View
+        style={{
+          height: SCREEN_HEIGHT * 0.4,
+          backgroundColor: "#fff",
+          width: SCREEN_WIDTH,          
+        }}
+      >                      
+      <Provider>
+        <View
+          style={{            
+            flexDirection: 'row',
+            justifyContent: 'flex-end',            
+            backgroundColor: "#fff",
+            width: SCREEN_WIDTH,            
+          }}>
+          <Menu
+            style={{
+              marginTop: -30,
+              zIndex: 100
+            }}
+            visible={visible}
+            onDismiss={_closeMenu}
+            anchor={
+              <Button onPress={_openMenu}>Filter</Button>
+            }
+          >
+            <Menu.Item onPress={filterComplexityHard} title="Hard" />
+            <Menu.Item onPress={filterComplexityMedium} title="Medium" />
+            <Menu.Item onPress={filterComplexityEasy} title="Easy" />
+            <Divider style={{backgroundColor: "#000"}} />           
+            <Menu.Item onPress={filterVisited} title="Attempted" />
+          </Menu>
+        </View>
+      </Provider>
+      </View>
+
       <View
         style={{
           height: SCREEN_HEIGHT * 0.8,
@@ -124,7 +202,7 @@ const Listening = ({ navigation }) => {
         }}
       >
         <FlatList
-          data={examSet}
+          data={filteredExamSet}
           keyExtractor={(item) => item.id}
           onRefresh={() => fetchListeningLists()}
           refreshing={isLoading}

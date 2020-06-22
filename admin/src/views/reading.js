@@ -36,7 +36,8 @@ const Reading = () => {
     firebase
       .firestore()
       .collection("reading")
-      .where("institute_id", "==", institution)
+      .where("institute_id", "==", institution)      
+      .orderBy("createdAt", "desc")
       .get()
       .then((docs) => {
         const data = [];

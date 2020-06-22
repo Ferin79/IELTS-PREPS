@@ -12,6 +12,7 @@ import firebase from "../../data/firebase";
 import LoadingScreen from "../components/LoadingScreen";
 import { FontAwesome, Ionicons } from "@expo/vector-icons";
 import { Context } from "../../data/context";
+import { Button, Paragraph, Menu, Divider, Provider } from 'react-native-paper';
 
 const Listening = ({ navigation }) => {
   YellowBox.ignoreWarnings(["Setting a timer"]);
@@ -26,6 +27,43 @@ const Listening = ({ navigation }) => {
 
   const [isLoading, setIsLoading] = useState(false);
   const [examSet, setExamSet] = useState([]);
+  const [filteredExamSet, setFilteredExamSet] = useState([])
+
+  // MENU
+  const [visible, setVisible] = useState(true)
+  const _openMenu = () => {
+    setVisible(true)
+  }
+  const _closeMenu = () => {
+    setVisible(false)
+  }
+  
+  // FILTERS
+  const filterVisited = () => {
+    const result = examSet.filter(exam => exam.isVisited === true)
+    console.log(result);    
+    setFilteredExamSet([...result])
+    setVisible(false)
+  }
+  // letter summary essay
+  const filterTypeLetter = () => {
+    const result = examSet.filter(exam => exam.type === "letter")
+    console.log(result);    
+    setFilteredExamSet([...result])
+    setVisible(false)
+  }
+  const filterTypeSummary = () => {
+    const result = examSet.filter(exam => exam.type === "summary")
+    console.log(result);    
+    setFilteredExamSet([...result])
+    setVisible(false)
+  }
+  const filterTypeEssay = () => {
+    const result = examSet.filter(exam => exam.type === "essay")
+    console.log(result);    
+    setFilteredExamSet([...result])
+    setVisible(false)
+  }
 
   const SCREEN_HEIGHT = Dimensions.get("window").height;
   const SCREEN_WIDTH = Dimensions.get("window").width;
@@ -44,7 +82,7 @@ const Listening = ({ navigation }) => {
       .then((docs) => {
         let data = [];
         docs.forEach((doc) => {
-          data.push({ ...doc.data(), id: doc.id });
+          data.push({ ...doc.data(), id: doc.id, isVisited:false });
         });
         firebase
           .firestore()
@@ -65,7 +103,9 @@ const Listening = ({ navigation }) => {
               });
             }
             setExamSet([...data]);
+            setFilteredExamSet([...data])
             setIsLoading(false);
+            console.log([...data]);            
           });
       })
       .catch((error) => {
@@ -115,6 +155,44 @@ const Listening = ({ navigation }) => {
           Select Writing Test
         </Text>
       </View>
+
+      {/* Drop Down Menu */}
+      <View
+        style={{
+          height: SCREEN_HEIGHT * 0.4,
+          backgroundColor: "#fff",
+          width: SCREEN_WIDTH,          
+        }}
+      >                      
+      <Provider>
+        <View
+          style={{            
+            flexDirection: 'row',
+            justifyContent: 'flex-end',            
+            backgroundColor: "#fff",
+            width: SCREEN_WIDTH,            
+          }}>
+          <Menu
+            style={{
+              marginTop: -30,
+              zIndex: 100
+            }}
+            visible={visible}
+            onDismiss={_closeMenu}
+            anchor={
+              <Button onPress={_openMenu}>Filter</Button>
+            }
+          >
+            <Menu.Item onPress={filterTypeSummary} title="Summary" />
+            <Menu.Item onPress={filterTypeEssay} title="Essay" />
+            <Menu.Item onPress={filterTypeLetter} title="Letter" />
+            <Divider style={{backgroundColor: "#000"}} />           
+            <Menu.Item onPress={filterVisited} title="Attempted" />
+          </Menu>
+        </View>
+      </Provider>
+      </View>
+
       <View
         style={{
           height: SCREEN_HEIGHT * 0.8,
@@ -124,7 +202,7 @@ const Listening = ({ navigation }) => {
         }}
       >
         <FlatList
-          data={examSet}
+          data={filteredExamSet}
           keyExtractor={(item) => item.id}
           onRefresh={() => fetchListeningLists()}
           refreshing={isLoading}
