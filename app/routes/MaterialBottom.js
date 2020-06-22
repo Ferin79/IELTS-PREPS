@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
 import Home from "../screens/home/home";
 import Test from "../screens/home/test";
 import PracticeStackScreen from "./PracticeStack";
 import { Context } from "../data/context";
+import Chat from "../screens/chat/Chat";
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -35,13 +36,24 @@ function MyTabs(props) {
         component={PracticeStackScreen}
         options={{
           tabBarLabel: "Practice",
-          tabBarColor: "#00cec9",
+          tabBarColor: "#00b894",
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons
               name="play-circle-outline"
               color={color}
               size={26}
             />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Chat"
+        component={Chat}
+        options={{
+          tabBarLabel: "Chat",
+          tabBarColor: "#6c5ce7",
+          tabBarIcon: ({ color }) => (
+            <Ionicons name="ios-chatboxes" color={color} size={26} />
           ),
         }}
       />

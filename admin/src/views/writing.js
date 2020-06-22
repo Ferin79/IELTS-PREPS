@@ -10,6 +10,7 @@ import { Context } from "../data/context";
 import LoadingScreen from "../components/LoadingScreen";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ProgressBar from "react-bootstrap/ProgressBar";
 
 const Writing = () => {
   const { isLoading, setIsLoading, role, institution } = useContext(Context);
@@ -17,8 +18,56 @@ const Writing = () => {
   const [name, setName] = useState("");
   const [type, setType] = useState("");
   const [question, setQuestion] = useState("");
-
+  const [isSummary, setIsSummary] = useState(false);
   const [writingData, setWritingData] = useState([]);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [isUploading, setIsUploading] = useState(false);
+  const [imageUrl, setImageUrl] = useState(null);
+  const [isUploadingCompleted, setIsUploadingCompleted] = useState(false);
+  const [errorText, setErrorText] = useState("");
+  const [percentage, setPercentage] = useState(0);
+
+  const uploadFileToStorage = () => {
+    setIsUploading(true);
+    setIsUploadingCompleted(false);
+    setErrorText("");
+    var storageRef = firebase.storage().ref();
+
+    var uploadTask = storageRef.child(`${Date.now()}`).put(selectedFile);
+
+    uploadTask.on(
+      "state_changed",
+      function (snapshot) {
+        var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        console.log("Upload is " + progress + "% done");
+        setPercentage(Math.round(parseInt(progress)));
+        switch (snapshot.state) {
+          case firebase.storage.TaskState.PAUSED:
+            console.log("Upload is paused");
+            break;
+          case firebase.storage.TaskState.RUNNING:
+            console.log("Upload is running");
+            break;
+          default:
+            break;
+        }
+      },
+      function (error) {
+        console.log(error);
+        setErrorText("Error While Uploading. Please try again");
+        setIsUploading(false);
+      },
+      function () {
+        console.log(uploadTask.snapshot.ref.name);
+        uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
+          console.log("File available at", downloadURL);
+          setImageUrl(downloadURL);
+          setIsUploadingCompleted(true);
+          setIsUploading(false);
+        });
+      }
+    );
+  };
 
   const handleFetchWriting = useCallback(() => {
     setIsLoading(true);
@@ -43,18 +92,14 @@ const Writing = () => {
   }, [setIsLoading, institution]);
 
   const validate = () => {
-    if (name.trim() === ""  
-      && type.trim() === "" 
-      && question.trim() === "") 
-    {
-        return false;
+    if (name.trim() === "" && type.trim() === "" && question.trim() === "") {
+      return false;
     }
     return true;
-  }
+  };
 
   const handleAddModule = (event) => {
-
-    if ( !validate() ) {
+    if (!validate()) {
       toast.error("All fields required");
       console.log("Empty Fields");
       return;
@@ -73,6 +118,8 @@ const Writing = () => {
           question,
           institute_id: institution,
           createdAt: firebase.firestore.Timestamp.now(),
+          isSummary,
+          imageUrl,
         })
         .then(() => {
           toast("Reading Module Added Successfully");
@@ -194,7 +241,14 @@ const Writing = () => {
                 required
                 as="select"
                 value={type}
-                onChange={(event) => setType(event.target.value)}
+                onChange={(event) => {
+                  if (event.target.value === "summary") {
+                    setIsSummary(true);
+                  } else {
+                    setIsSummary(false);
+                  }
+                  setType(event.target.value);
+                }}
               >
                 <option value="" disabled>
                   Select Type
@@ -204,6 +258,59 @@ const Writing = () => {
                 <option value="essay">Essay</option>
               </Form.Control>
             </Form.Group>
+
+            {isSummary && (
+              <Form.Group>
+                <Form.Label>Select Image</Form.Label>
+                <input
+                  type="file"
+                  accept="image/*"
+                  className="form-control"
+                  onChange={(event) => {
+                    if (
+                      event.target.files[0] &&
+                      (event.target.files[0].type === "image/jpeg" ||
+                        event.target.files[0].type === "image/png" ||
+                        event.target.files[0].type === "image/jpg" ||
+                        event.target.files[0].type === "image/gif")
+                    ) {
+                      setSelectedFile(event.target.files[0]);
+                    } else {
+                      alert("Please Select Valid Image File");
+                      setSelectedFile(null);
+                    }
+                  }}
+                />
+                <div className="mt-3 mb-3">
+                  {isUploading && <ProgressBar now={percentage} />}
+                  {isUploading ? (
+                    <p>Uploading Please Wait.. ({percentage}%)</p>
+                  ) : (
+                    <p></p>
+                  )}
+                  {isUploadingCompleted && <p>Upload Complete</p>}
+                  {errorText && <p className="red-text">{errorText}</p>}
+                  {imageUrl && (
+                    <p className="mt-3">
+                      Image is Uploaded to{" "}
+                      <a className="uploadLink" href={imageUrl}>
+                        {imageUrl}
+                      </a>
+                    </p>
+                  )}
+                </div>
+                <Button
+                  className="mt-3"
+                  disabled={!selectedFile}
+                  variant="outline-info"
+                  onClick={() => {
+                    uploadFileToStorage();
+                  }}
+                >
+                  Upload Image File
+                </Button>
+              </Form.Group>
+            )}
 
             <Form.Group controlId="exampleForm.ControlTextarea1">
               <Form.Label style={{ textTransform: "capitalize" }}>

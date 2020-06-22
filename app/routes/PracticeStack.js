@@ -26,7 +26,8 @@ const PracticeStackScreen = () => {
         name="PracticeListening"
         component={Listening}
         options={{
-          header: () => null,
+          headerTitle: "",
+          headerBackTitle: "Back",
         }}
       />
       <PracticeStack.Screen
