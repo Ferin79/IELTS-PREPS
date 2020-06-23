@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
-import Home from "../screens/home/home";
-import Test from "../screens/home/test";
-import PracticeStackScreen from "./PracticeStack";
 import { Context } from "../data/context";
+import Home from "../screens/home/home";
+import PracticeStackScreen from "./PracticeStack";
 import Chat from "../screens/chat/Chat";
+import AccountStackScreen from "./AccountStack";
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -59,7 +59,7 @@ function MyTabs(props) {
       />
       <Tab.Screen
         name="Account"
-        component={Test}
+        component={AccountStackScreen}
         options={{
           tabBarLabel: "Account",
           tabBarColor: "#fd79a8",

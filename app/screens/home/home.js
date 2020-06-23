@@ -5,6 +5,7 @@ import { Context } from "../../data/context";
 
 const Home = () => {
   const { institute_id } = useContext(Context);
+
   return (
     <View>
       <Text>Home Screen </Text>

@@ -10,12 +10,9 @@ import { Context } from "../data/context";
 import LoadingScreen from "../components/LoadingScreen";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-<<<<<<< HEAD
 import CKEditor from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-=======
 import ProgressBar from "react-bootstrap/ProgressBar";
->>>>>>> 82e33aeefb7aa99fa8d396cd11709fc77bb0a143
 
 const Writing = () => {
   const { isLoading, setIsLoading, role, institution } = useContext(Context);
@@ -323,24 +320,24 @@ const Writing = () => {
                 Enter Question {"for " + type} :
               </Form.Label>
               <CKEditor
-                        editor={ClassicEditor}
-                        data=""
-                        onInit={(editor) => {
-                          // You can store the "editor" and use when it is needed.
-                          console.log("Editor is ready to use!", editor);
-                        }}
-                        onChange={(event, editor) => {
-                          const data = editor.getData();
-                          console.log({ event, editor, data });
-                          setQuestion(data);
-                        }}
-                        onBlur={(event, editor) => {
-                          console.log("Blur.", editor);
-                        }}
-                        onFocus={(event, editor) => {
-                          console.log("Focus.", editor);
-                        }}
-                      />
+                editor={ClassicEditor}
+                data=""
+                onInit={(editor) => {
+                  // You can store the "editor" and use when it is needed.
+                  console.log("Editor is ready to use!", editor);
+                }}
+                onChange={(event, editor) => {
+                  const data = editor.getData();
+                  console.log({ event, editor, data });
+                  setQuestion(data);
+                }}
+                onBlur={(event, editor) => {
+                  console.log("Blur.", editor);
+                }}
+                onFocus={(event, editor) => {
+                  console.log("Focus.", editor);
+                }}
+              />
               {/* <Form.Control
                 as="textarea"
                 rows="10"

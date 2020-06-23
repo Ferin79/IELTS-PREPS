@@ -57,6 +57,8 @@ const Student = () => {
             repeatPassword,
             role: "student",
             institute_id: institution,
+            photoUrl:
+              "https://firebasestorage.googleapis.com/v0/b/ielts-preps.appspot.com/o/person.png?alt=media",
           }),
         }
       );

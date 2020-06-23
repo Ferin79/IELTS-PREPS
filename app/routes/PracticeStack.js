@@ -26,7 +26,8 @@ const PracticeStackScreen = () => {
         name="PracticeListening"
         component={Listening}
         options={{
-          headerTitle: "",
+          headerTitle: "Listening",
+          headerTitleAlign: "center",
           headerBackTitle: "Back",
         }}
       />
@@ -34,14 +35,18 @@ const PracticeStackScreen = () => {
         name="PracticeReading"
         component={Reading}
         options={{
-          header: () => null,
+          headerTitle: "Reading",
+          headerTitleAlign: "center",
+          headerBackTitle: "Back",
         }}
       />
       <PracticeStack.Screen
         name="PracticeWriting"
         component={Writing}
         options={{
-          header: () => null,
+          headerTitle: "Writing",
+          headerTitleAlign: "center",
+          headerBackTitle: "Back",
         }}
       />
       <PracticeStack.Screen

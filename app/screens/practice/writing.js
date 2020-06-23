@@ -12,7 +12,7 @@ import firebase from "../../data/firebase";
 import LoadingScreen from "../components/LoadingScreen";
 import { FontAwesome, Ionicons } from "@expo/vector-icons";
 import { Context } from "../../data/context";
-import { Button, Paragraph, Menu, Divider, Provider } from 'react-native-paper';
+import { Button, Menu, Divider, Provider } from "react-native-paper";
 
 const Listening = ({ navigation }) => {
   YellowBox.ignoreWarnings(["Setting a timer"]);
@@ -27,43 +27,43 @@ const Listening = ({ navigation }) => {
 
   const [isLoading, setIsLoading] = useState(false);
   const [examSet, setExamSet] = useState([]);
-  const [filteredExamSet, setFilteredExamSet] = useState([])
+  const [filteredExamSet, setFilteredExamSet] = useState([]);
 
   // MENU
-  const [visible, setVisible] = useState(true)
+  const [visible, setVisible] = useState(true);
   const _openMenu = () => {
-    setVisible(true)
-  }
+    setVisible(true);
+  };
   const _closeMenu = () => {
-    setVisible(false)
-  }
-  
+    setVisible(false);
+  };
+
   // FILTERS
   const filterVisited = () => {
-    const result = examSet.filter(exam => exam.isVisited === true)
-    console.log(result);    
-    setFilteredExamSet([...result])
-    setVisible(false)
-  }
+    const result = examSet.filter((exam) => exam.isVisited === true);
+    console.log(result);
+    setFilteredExamSet([...result]);
+    setVisible(false);
+  };
   // letter summary essay
   const filterTypeLetter = () => {
-    const result = examSet.filter(exam => exam.type === "letter")
-    console.log(result);    
-    setFilteredExamSet([...result])
-    setVisible(false)
-  }
+    const result = examSet.filter((exam) => exam.type === "letter");
+    console.log(result);
+    setFilteredExamSet([...result]);
+    setVisible(false);
+  };
   const filterTypeSummary = () => {
-    const result = examSet.filter(exam => exam.type === "summary")
-    console.log(result);    
-    setFilteredExamSet([...result])
-    setVisible(false)
-  }
+    const result = examSet.filter((exam) => exam.type === "summary");
+    console.log(result);
+    setFilteredExamSet([...result]);
+    setVisible(false);
+  };
   const filterTypeEssay = () => {
-    const result = examSet.filter(exam => exam.type === "essay")
-    console.log(result);    
-    setFilteredExamSet([...result])
-    setVisible(false)
-  }
+    const result = examSet.filter((exam) => exam.type === "essay");
+    console.log(result);
+    setFilteredExamSet([...result]);
+    setVisible(false);
+  };
 
   const SCREEN_HEIGHT = Dimensions.get("window").height;
   const SCREEN_WIDTH = Dimensions.get("window").width;
@@ -82,7 +82,7 @@ const Listening = ({ navigation }) => {
       .then((docs) => {
         let data = [];
         docs.forEach((doc) => {
-          data.push({ ...doc.data(), id: doc.id, isVisited:false });
+          data.push({ ...doc.data(), id: doc.id, isVisited: false });
         });
         firebase
           .firestore()
@@ -103,9 +103,9 @@ const Listening = ({ navigation }) => {
               });
             }
             setExamSet([...data]);
-            setFilteredExamSet([...data])
+            setFilteredExamSet([...data]);
             setIsLoading(false);
-            console.log([...data]);            
+            console.log([...data]);
           });
       })
       .catch((error) => {
@@ -122,163 +122,134 @@ const Listening = ({ navigation }) => {
     return <LoadingScreen />;
   }
   return (
-    <SafeAreaView style={{ backgroundColor: "#fff" }}>
-      <View
-        style={{
-          width: SCREEN_WIDTH,
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
-          justifyContent: "flex-start",
-          backgroundColor: "#fff",
-          borderBottomWidth: 1,
-          borderBottomColor: "grey",
-        }}
-      >
-        <Ionicons
-          name="ios-arrow-back"
-          size={40}
-          style={{ marginLeft: 10 }}
-          onPress={() => {
-            navigation.goBack();
-          }}
-        />
-        <Text
-          style={{
-            textAlign: "center",
-            fontSize: 20,
-            marginVertical: 20,
-            marginLeft: "auto",
-            marginRight: "auto",
-          }}
-        >
-          Select Writing Test
-        </Text>
-      </View>
-
-      {/* Drop Down Menu */}
-      <View
-        style={{
-          height: SCREEN_HEIGHT * 0.4,
-          backgroundColor: "#fff",
-          width: SCREEN_WIDTH,          
-        }}
-      >                      
-      <Provider>
-        <View
-          style={{            
-            flexDirection: 'row',
-            justifyContent: 'flex-end',            
-            backgroundColor: "#fff",
-            width: SCREEN_WIDTH,            
-          }}>
-          <Menu
-            style={{
-              marginTop: -30,
-              zIndex: 100
-            }}
-            visible={visible}
-            onDismiss={_closeMenu}
-            anchor={
-              <Button onPress={_openMenu}>Filter</Button>
-            }
-          >
-            <Menu.Item onPress={filterTypeSummary} title="Summary" />
-            <Menu.Item onPress={filterTypeEssay} title="Essay" />
-            <Menu.Item onPress={filterTypeLetter} title="Letter" />
-            <Divider style={{backgroundColor: "#000"}} />           
-            <Menu.Item onPress={filterVisited} title="Attempted" />
-          </Menu>
-        </View>
-      </Provider>
-      </View>
-
-      <View
-        style={{
-          height: SCREEN_HEIGHT * 0.8,
-          backgroundColor: "#fff",
-          width: SCREEN_WIDTH,
-          marginVertical: 20,
-        }}
-      >
-        <FlatList
-          data={filteredExamSet}
-          keyExtractor={(item) => item.id}
-          onRefresh={() => fetchListeningLists()}
-          refreshing={isLoading}
-          renderItem={({ item }) => {
-            if (colorIndex === 6) {
-              colorIndex = 0;
-            }
-            return (
-              <TouchableOpacity
+    <Provider>
+      <SafeAreaView style={{ backgroundColor: "#fff" }}>
+        <Menu
+          visible={visible}
+          onDismiss={_closeMenu}
+          anchor={
+            <View
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}
+            >
+              <Button
+                style={{
+                  padding: 5,
+                  backgroundColor: "#0af",
+                  width: 150,
+                  margin: 25,
+                }}
+                mode="contained"
                 onPress={() => {
-                  const data = examSet.filter((data) => data.id === item.id);
-                  navigation.navigate("WritingTest", { data: data[0] });
+                  setVisible(true);
                 }}
               >
-                <View
-                  style={{
-                    padding: 40,
-                    backgroundColor: item.isVisited
-                      ? "lightgrey"
-                      : COLORS[colorIndex++],
-                    margin: 10,
-                    borderRadius: 50,
+                Filter
+              </Button>
+              <Text style={{ marginHorizontal: 10, fontSize: 18 }}>
+                Total Available Test: {examSet.length}
+              </Text>
+            </View>
+          }
+        >
+          <Menu.Item onPress={filterTypeSummary} title="Summary" />
+          <Menu.Item onPress={filterTypeEssay} title="Essay" />
+          <Menu.Item onPress={filterTypeLetter} title="Letter" />
+          <Divider style={{ backgroundColor: "#000" }} />
+          <Menu.Item onPress={filterVisited} title="Attempted" />
+        </Menu>
+
+        <View
+          style={{
+            height: SCREEN_HEIGHT * 0.8,
+            backgroundColor: "#fff",
+            width: SCREEN_WIDTH,
+            marginVertical: 20,
+          }}
+        >
+          <FlatList
+            data={filteredExamSet}
+            keyExtractor={(item) => item.id}
+            onRefresh={() => fetchListeningLists()}
+            refreshing={isLoading}
+            renderItem={({ item }) => {
+              if (colorIndex === 6) {
+                colorIndex = 0;
+              }
+              return (
+                <TouchableOpacity
+                  onPress={() => {
+                    const data = examSet.filter((data) => data.id === item.id);
+                    navigation.navigate("WritingTest", { data: data[0] });
                   }}
                 >
                   <View
                     style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      justifyContent: "space-between",
-                      alignItems: "center",
+                      padding: 40,
+                      backgroundColor: item.isVisited
+                        ? "lightgrey"
+                        : COLORS[colorIndex++],
+                      margin: 10,
+                      borderRadius: 50,
                     }}
                   >
                     <View
                       style={{
                         display: "flex",
-                        flex: 1,
-                        justifyContent: "space-evenly",
-                        alignItems: "flex-start",
+                        flexDirection: "row",
+                        justifyContent: "space-between",
+                        alignItems: "center",
                       }}
                     >
-                      <Text
+                      <View
                         style={{
-                          color: "#fff",
-                          fontSize: 20,
-                          marginVertical: 10,
+                          display: "flex",
+                          flex: 1,
+                          justifyContent: "space-evenly",
+                          alignItems: "flex-start",
                         }}
                       >
-                        {item.name}
-                      </Text>
-                      <Text style={{ color: "#fff", fontSize: 14 }}>
-                        Type:{" "}
                         <Text
                           style={{
-                            textTransform: "capitalize",
-                            fontWeight: "bold",
+                            color: "#fff",
+                            fontSize: 20,
+                            marginVertical: 10,
                           }}
                         >
-                          {item.type}
+                          {item.name}
                         </Text>
-                      </Text>
-                    </View>
-                    <View>
-                      <FontAwesome
-                        name="pencil-square-o"
-                        size={30}
-                        color="#fff"
-                      />
+                        <Text style={{ color: "#fff", fontSize: 14 }}>
+                          Type:{" "}
+                          <Text
+                            style={{
+                              textTransform: "capitalize",
+                              fontWeight: "bold",
+                            }}
+                          >
+                            {item.type}
+                          </Text>
+                        </Text>
+                      </View>
+                      <View>
+                        <FontAwesome
+                          name="pencil-square-o"
+                          size={30}
+                          color="#fff"
+                        />
+                      </View>
                     </View>
                   </View>
-                </View>
-              </TouchableOpacity>
-            );
-          }}
-        />
-      </View>
-    </SafeAreaView>
+                </TouchableOpacity>
+              );
+            }}
+          />
+        </View>
+      </SafeAreaView>
+    </Provider>
   );
 };
 
