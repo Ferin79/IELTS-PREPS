@@ -6,19 +6,21 @@ import {
   TouchableOpacity,
   ScrollView,
   StyleSheet,
+  Alert,
 } from "react-native";
 import { Avatar, Divider } from "react-native-paper";
 import {
   AntDesign,
   MaterialCommunityIcons,
   Ionicons,
-  Fontisto,
   MaterialIcons,
 } from "@expo/vector-icons";
 import firebase from "../../data/firebase";
 import { Context } from "../../data/context";
 
 const Settings = ({ navigation }) => {
+  const { userData } = useContext(Context);
+
   return (
     <SafeAreaView>
       <View>
@@ -48,13 +50,12 @@ const Settings = ({ navigation }) => {
           <Avatar.Image
             size={75}
             source={{
-              uri:
-                "https://firebasestorage.googleapis.com/v0/b/ielts-preps.appspot.com/o/person.png?alt=media&token=c008c65c-aee6-426d-bc1d-aad8143c11b2",
+              uri: userData.photoUrl,
             }}
           />
           <View>
             <Text style={{ fontSize: 20, fontWeight: "bold" }}>
-              Ferin Patel
+              {userData.firstname} {userData.lastname}
             </Text>
             <Text>{firebase.auth().currentUser.email}</Text>
           </View>
@@ -78,7 +79,25 @@ const Settings = ({ navigation }) => {
               </Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={async () => {
+              firebase
+                .auth()
+                .sendPasswordResetEmail(await firebase.auth().currentUser.email)
+                .then(() => {
+                  Alert.alert(
+                    "Link Sent",
+                    `Password Reset Link has been mailed to Email ${
+                      firebase.auth().currentUser.email
+                    } Check Your Mail.`
+                  );
+                })
+                .catch((error) => {
+                  console.log(error);
+                  Alert.alert(error.message);
+                });
+            }}
+          >
             <View style={styles.defaultInLineStyle}>
               <View
                 style={{
@@ -97,22 +116,9 @@ const Settings = ({ navigation }) => {
               </Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity>
-            <View style={styles.defaultInLineStyle}>
-              <View
-                style={{
-                  ...styles.circleBackground,
-                  backgroundColor: "#e84393",
-                }}
-              >
-                <AntDesign name="questioncircleo" size={25} color="#fff" />
-              </View>
-              <Text style={{ marginLeft: 20, fontSize: 18 }}>
-                Ask a Question
-              </Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => Alert.alert("FAQ Section Will be Added Soon")}
+          >
             <View style={styles.defaultInLineStyle}>
               <View
                 style={{
@@ -123,6 +129,21 @@ const Settings = ({ navigation }) => {
                 <Ionicons name="ios-book" size={25} color="#fff" />
               </View>
               <Text style={{ marginLeft: 20, fontSize: 18 }}>FAQ</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => firebase.auth().signOut()}>
+            <View style={styles.defaultInLineStyle}>
+              <View
+                style={{
+                  ...styles.circleBackground,
+                  backgroundColor: "#e84393",
+                }}
+              >
+                <AntDesign name="logout" size={25} color="#fff" />
+              </View>
+              <Text style={{ marginLeft: 20, fontSize: 20, color: "red" }}>
+                Logout
+              </Text>
             </View>
           </TouchableOpacity>
           <Divider
@@ -157,19 +178,6 @@ const Settings = ({ navigation }) => {
               <Text style={{ marginLeft: 20, fontSize: 18 }}>
                 Feedback (Developers)
               </Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <View style={styles.defaultInLineStyle}>
-              <View
-                style={{
-                  ...styles.circleBackground,
-                  backgroundColor: "#686de0",
-                }}
-              >
-                <Fontisto name="persons" size={25} color="#fff" />
-              </View>
-              <Text style={{ marginLeft: 20, fontSize: 18 }}>Developers</Text>
             </View>
           </TouchableOpacity>
         </View>

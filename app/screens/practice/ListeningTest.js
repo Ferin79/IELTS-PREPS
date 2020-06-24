@@ -57,7 +57,7 @@ const ListeningTest = ({ navigation, route }) => {
     if (IS_MOUNTED) {
       playbackObject.setOnPlaybackStatusUpdate((onPlaybackStatusUpdate) => {
         console.log(onPlaybackStatusUpdate);
-        setTotalTime(onPlaybackStatusUpdate.playableDurationMillis);
+        setTotalTime(onPlaybackStatusUpdate.durationMillis);
         setPassTime(onPlaybackStatusUpdate.positionMillis);
         setIsAudioPlaying(onPlaybackStatusUpdate.isPlaying);
       });
@@ -197,6 +197,12 @@ const ListeningTest = ({ navigation, route }) => {
       });
   };
 
+  function millisToMinutesAndSeconds(millis) {
+    var minutes = Math.floor(millis / 60000);
+    var seconds = ((millis % 60000) / 1000).toFixed(0);
+    return minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+  }
+
   useEffect(() => {
     IS_MOUNTED = true;
     initializeEmptyUserAnswer();
@@ -246,12 +252,23 @@ const ListeningTest = ({ navigation, route }) => {
                   width: 150,
                 }}
               />
+              <View
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                }}
+              >
+                <Text>{millisToMinutesAndSeconds(passTime)}</Text>
+                <Text>{millisToMinutesAndSeconds(totalTime)}</Text>
+              </View>
               <Slider
                 maximumValue={totalTime}
                 minimumValue={0}
                 value={passTime}
-                onValueChange={(event) =>
-                  playbackObject.setPositionAsync(event)
+                onValueChange={async (event) =>
+                  await playbackObject.playFromPositionAsync(event)
                 }
               />
               <View
@@ -420,6 +437,7 @@ const ListeningTest = ({ navigation, route }) => {
               Submit Exam
             </Button>
           </View>
+          <View style={{ height: SCREEN_HEIGHT * 0.3 }}></View>
         </ScrollView>
       </View>
     </SafeAreaView>

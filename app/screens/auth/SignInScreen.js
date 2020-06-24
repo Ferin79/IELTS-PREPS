@@ -34,7 +34,7 @@ const SignIn = ({ navigation }) => {
       setErrorText("Password annot be empty");
       return;
     } else {
-      setIsLoading(false);
+      setIsLoading(true);
       firebase
         .firestore()
         .doc(`/users/${email}`)
@@ -76,7 +76,7 @@ const SignIn = ({ navigation }) => {
   };
 
   if (isLoading) {
-    return <LoadingScreen />;
+    return <LoadingScreen text="Logging In ..." />;
   }
 
   return (

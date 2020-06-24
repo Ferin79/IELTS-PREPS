@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   SafeAreaView,
   View,
@@ -6,20 +6,23 @@ import {
   Dimensions,
   ImageBackground,
   Alert,
-  AsyncStorage,
 } from "react-native";
 import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
 import { TextInput, Button } from "react-native-paper";
-import { Context } from "../../data/context";
 import * as ImagePicker from "expo-image-picker";
 import firebase from "../../data/firebase";
 import LoadingScreen from "../components/LoadingScreen";
+import { Context } from "../../data/context";
 
 const Profile = ({ navigation }) => {
   const SCREEN_HEIGHT = Dimensions.get("window").height;
   const SCREEN_WIDTH = Dimensions.get("window").width;
+  const { userData, setUserData } = useContext(Context);
 
   const [isLoading, setIsLoading] = useState(false);
+  const [firstname, setFirstname] = useState(userData.firstname);
+  const [lastname, setLastname] = useState(userData.lastname);
+  const [errorText, setErrorText] = useState("");
 
   const pickImage = async () => {
     setIsLoading(true);
@@ -69,6 +72,9 @@ const Profile = ({ navigation }) => {
                   photoUrl: downloadURL,
                 })
                 .then(async () => {
+                  const data = userData;
+                  data.photoUrl = downloadURL;
+                  setUserData({ ...data });
                   setIsLoading(false);
                 })
                 .catch((error) => {
@@ -99,6 +105,31 @@ const Profile = ({ navigation }) => {
     });
   };
 
+  const handleNameChange = () => {
+    if (firstname.trim() === "") {
+      setErrorText("First Name cannot be empty");
+    } else if (lastname.trim() === "") {
+      setErrorText("Last Name cannot be empty");
+    } else {
+      setIsLoading(true);
+      firebase
+        .firestore()
+        .doc(`/users/${firebase.auth().currentUser.email}`)
+        .update({
+          firstname,
+          lastname,
+        })
+        .then(() => {
+          const data = userData;
+          data.firstname = firstname;
+          data.lastname = lastname;
+          setUserData({ ...data });
+          setIsLoading(false);
+        })
+        .catch((error) => console.log(error));
+    }
+  };
+
   if (isLoading) {
     return <LoadingScreen />;
   }
@@ -108,8 +139,7 @@ const Profile = ({ navigation }) => {
       <ScrollView>
         <ImageBackground
           source={{
-            uri:
-              "https://firebasestorage.googleapis.com/v0/b/ielts-preps.appspot.com/o/person.png?alt=media&token=c008c65c-aee6-426d-bc1d-aad8143c11b2",
+            uri: userData.photoUrl,
           }}
           style={{ width: SCREEN_WIDTH, height: SCREEN_HEIGHT * 0.4 }}
         >
@@ -148,17 +178,17 @@ const Profile = ({ navigation }) => {
         >
           <TextInput
             label="First Name"
-            value={"Ferin"}
+            value={firstname}
             mode="flat"
-            onChangeText={(text) => {}}
+            onChangeText={(text) => setFirstname(text)}
             style={{ margin: 20, backgroundColor: "#fff" }}
           />
 
           <TextInput
             label="Last Name"
-            value={"Patel"}
+            value={lastname}
             mode="flat"
-            onChangeText={(text) => {}}
+            onChangeText={(text) => setLastname(text)}
             style={{ margin: 20, backgroundColor: "#fff" }}
           />
 
@@ -170,7 +200,7 @@ const Profile = ({ navigation }) => {
               padding: 10,
             }}
             mode="contained"
-            onPress={() => console.log("Pressed")}
+            onPress={() => handleNameChange()}
           >
             Update
           </Button>

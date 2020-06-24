@@ -1,28 +1,44 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
 import { Context } from "../data/context";
-import Home from "../screens/home/home";
 import PracticeStackScreen from "./PracticeStack";
 import Chat from "../screens/chat/Chat";
 import AccountStackScreen from "./AccountStack";
+import firebase from "../data/firebase";
+import HomeStackScreen from "./HomeStack";
 
 const Tab = createMaterialBottomTabNavigator();
 
 function MyTabs(props) {
-  const { setInstitute_id } = useContext(Context);
+  const { setUserData, setInstitute_id } = useContext(Context);
   setInstitute_id(props.institute_id);
 
+  useEffect(() => {
+    firebase
+      .firestore()
+      .doc(`/users/${firebase.auth().currentUser.email}`)
+      .get()
+      .then((doc) => {
+        const data = {
+          firstname: doc.data().firstname,
+          lastname: doc.data().lastname,
+          photoUrl:
+            doc.data().photoUrl ||
+            "https://firebasestorage.googleapis.com/v0/b/ielts-preps.appspot.com/o/person.png?alt=media&token=c008c65c-aee6-426d-bc1d-aad8143c11b2",
+        };
+        setUserData(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
   return (
-    <Tab.Navigator
-      initialRouteName="Home"
-      activeColor="#fff"
-      style={{ backgroundColor: "tomato" }}
-      shifting
-    >
+    <Tab.Navigator initialRouteName="HomeScreen" activeColor="#fff" shifting>
       <Tab.Screen
-        name="Home"
-        component={Home}
+        name="HomeScreen"
+        component={HomeStackScreen}
         options={{
           tabBarLabel: "Home",
           tabBarColor: "#0984e3",
