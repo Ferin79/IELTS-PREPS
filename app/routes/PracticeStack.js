@@ -10,6 +10,7 @@ import PDFOpener from "../screens/components/pdfOpener";
 import Result from "../screens/practice/Result";
 import ReadingTest from "../screens/practice/ReadingTest";
 import WritingTest from "../screens/practice/WritingTest";
+import Video from "../screens/practice/video";
 
 const PracticeStackScreen = () => {
   const PracticeStack = createStackNavigator();
@@ -85,6 +86,13 @@ const PracticeStackScreen = () => {
       <PracticeStack.Screen
         name="Result"
         component={Result}
+        options={{
+          header: () => null,
+        }}
+      />
+      <PracticeStack.Screen
+        name="Video"
+        component={Video}
         options={{
           header: () => null,
         }}

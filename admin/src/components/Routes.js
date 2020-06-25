@@ -9,6 +9,7 @@ import Reading from "../views/reading";
 import Writing from "../views/writing";
 import Login from "../pages/login";
 import Home from "../pages/home";
+import videoStart from "../video/videoStart";
 
 const Routes = () => {
   const { currentUser } = useContext(AuthContext);
@@ -21,6 +22,7 @@ const Routes = () => {
         <Route path="/listening" component={Listening} />
         <Route path="/reading" component={Reading} />
         <Route path="/writing" component={Writing} />
+        <Route path="/video" component={videoStart} />
         <Redirect to="/" />
       </Switch>
     );

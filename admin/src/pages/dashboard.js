@@ -69,7 +69,7 @@ const Dashboard = () => {
           <h5>Reading Module</h5>
         </Col>
         <Col
-          onClick={() => history.push("/speaking")}
+          onClick={() => history.push("/video")}
           id="speaking"
           lg={true}
           className="d-flex flex-column justify-content-center align-items-center addHoverCursor"
