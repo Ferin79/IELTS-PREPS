@@ -64,6 +64,10 @@ const Listening = ({ navigation }) => {
     setFilteredExamSet([...result]);
     setVisible(false);
   };
+  const filterNone = () => {
+    setFilteredExamSet([...examSet]);
+    setVisible(false);
+  };
 
   const SCREEN_HEIGHT = Dimensions.get("window").height;
   const SCREEN_WIDTH = Dimensions.get("window").width;
@@ -160,7 +164,8 @@ const Listening = ({ navigation }) => {
           <Menu.Item onPress={filterTypeEssay} title="Essay" />
           <Menu.Item onPress={filterTypeLetter} title="Letter" />
           <Divider style={{ backgroundColor: "#000" }} />
-          <Menu.Item onPress={filterVisited} title="Attempted" />
+          <Menu.Item onPress={filterVisited} title="Completed" />
+          <Menu.Item onPress={filterNone} title="All" />
         </Menu>
 
         <View
