@@ -3,8 +3,6 @@ import StreamPlayer from "agora-stream-player";
 import { SnackbarProvider, useSnackbar } from "notistack";
 import { useMediaStream } from "./hooks";
 import AgoraRTC from "./util/AgoraEnhancer";
-import firebase from "../data/firebase";
-
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
@@ -29,6 +27,7 @@ const useStyles = () => ({
   },
   buttonItem: {
     width: "38.2%",
+    margin: 5,
   },
   advanceSettings: {
     marginTop: 16,
@@ -73,25 +72,20 @@ const reducer = (state, action) => {
   }
 };
 
-let CHANNEL;
-
-function App() {
-  // Declaring different states used by our application.
+const App = ({ match }) => {
   const classes = useStyles();
+  const [appId, setAppId] = useState("4f746271be5f4a1daade603da022bdcf");
+  const [channelName, setChannelName] = useState(match.params.channel);
   const [isJoined, setisJoined] = useState(false);
-  const [isPublished, setIsPublished] = useState(false);
+  const [, setIsPublished] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [state, dispatch] = useReducer(reducer, defaultState);
   const [agoraClient, setClient] = useState(null);
-  // const agoraClient = AgoraRTC.createClient({ mode: state.mode, codec: state.codec });
-
-  // All hooks are called to get the necessary data
-  // const cameraList = useCamera();
-  // const microphoneList = useMicrophone();
   let [localStream, remoteStreamList] = useMediaStream(agoraClient);
 
   const { enqueueSnackbar } = useSnackbar();
 
+  // eslint-disable-next-line
   const update = (actionType) => (e) => {
     return dispatch({
       type: actionType,
@@ -100,84 +94,56 @@ function App() {
   };
 
   // Starts the video call
+
   const join = async () => {
-    if (state.channel.trim() === "") {
-      alert("Enter Channel Name");
-      return;
+    // Creates a new agora client with given parameters.
+    // mode can be 'rtc' for real time communications or 'live' for live broadcasting.
+    const client = AgoraRTC.createClient({
+      mode: state.mode,
+      codec: state.codec,
+    });
+    // Loads client into the state
+    setClient(client);
+    setIsLoading(true);
+    try {
+      const uid = isNaN(Number(state.uid)) ? null : Number(state.uid);
+
+      // initializes the client with appId
+      await client.init(appId);
+
+      // joins a channel with a token, channel, user id
+      await client.join(state.token, channelName, uid);
+
+      // create a ne stream
+      const stream = AgoraRTC.createStream({
+        streamID: uid || 12345,
+        video: true,
+        audio: true,
+        screen: false,
+      });
+
+      // stream.setVideoProfile('480p_4')
+
+      // Initalize the stream
+      await stream.init();
+
+      // Publish the stream to the channel.
+      await client.publish(stream);
+
+      // Set the state appropriately
+      setIsPublished(true);
+      setisJoined(true);
+      enqueueSnackbar(`Joined channel ${channelName}`, { variant: "info" });
+    } catch (err) {
+      enqueueSnackbar(`Failed to join, ${err}`, { variant: "error" });
+    } finally {
+      setIsLoading(false);
     }
-    CHANNEL = state.channel;
-    CHANNEL = CHANNEL.split(" ").join("_");
-    firebase
-      .firestore()
-      .collection("videoList")
-      .where("startedBy", "==", firebase.auth().currentUser.email)
-      .get()
-      .then((docs) => {
-        docs.forEach((doc) => {
-          doc.ref.delete();
-        });
-        firebase
-          .firestore()
-          .collection("videoList")
-          .add({
-            channel: state.channel,
-            startedBy: firebase.auth().currentUser.email,
-            channelName: CHANNEL,
-            users: [firebase.auth().currentUser.email],
-          })
-          .then(async () => {
-            // Creates a new agora client with given parameters.
-            // mode can be 'rtc' for real time communications or 'live' for live broadcasting.
-            const client = AgoraRTC.createClient({
-              mode: state.mode,
-              codec: state.codec,
-            });
-            // Loads client into the state
-            setClient(client);
-            setIsLoading(true);
-            try {
-              const uid = isNaN(Number(state.uid)) ? null : Number(state.uid);
-
-              // initializes the client with appId
-              await client.init(state.appId);
-
-              // joins a channel with a token, channel, user id
-              await client.join(state.token, CHANNEL, uid);
-
-              // create a ne stream
-              const stream = AgoraRTC.createStream({
-                streamID: uid || 12345,
-                video: true,
-                audio: true,
-                screen: false,
-              });
-
-              // stream.setVideoProfile('480p_4')
-
-              // Initalize the stream
-              await stream.init();
-
-              // Publish the stream to the channel.
-              await client.publish(stream);
-
-              // Set the state appropriately
-              setIsPublished(true);
-              setisJoined(true);
-              enqueueSnackbar(`Joined channel ${CHANNEL}`, {
-                variant: "info",
-              });
-            } catch (err) {
-              enqueueSnackbar(`Failed to join, ${err}`, { variant: "error" });
-            } finally {
-              setIsLoading(false);
-            }
-          });
-      })
-      .catch((error) => console.log(error));
   };
 
   // Publish function to publish the stream to Agora. No need to invoke this after join.
   // This is to be invoke only after an unpublish
+  // eslint-disable-next-line
   const publish = async () => {
     setIsLoading(true);
     try {
@@ -196,40 +162,28 @@ function App() {
 
   // Leaves the channel on invoking the function call.
   const leave = async () => {
-    firebase
-      .firestore()
-      .collection("videoList")
-      .where("channelName", "==", CHANNEL)
-      .get()
-      .then(async (docs) => {
-        docs.forEach((doc) => {
-          doc.ref.delete();
-        });
-        setIsLoading(true);
-        try {
-          if (localStream) {
-            // Closes the local stream. This de-allocates the resources and turns off the camera light
-            localStream.close();
-            // unpublish the stream from the client
-            agoraClient.unpublish(localStream);
-          }
-          // leave the channel
-          await agoraClient.leave();
-          setIsPublished(false);
-          setisJoined(false);
-          enqueueSnackbar("Left channel", { variant: "info" });
-        } catch (err) {
-          enqueueSnackbar(`Failed to leave, ${err}`, { variant: "error" });
-        } finally {
-          setIsLoading(false);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    setIsLoading(true);
+    try {
+      if (localStream) {
+        // Closes the local stream. This de-allocates the resources and turns off the camera light
+        localStream.close();
+        // unpublish the stream from the client
+        agoraClient.unpublish(localStream);
+      }
+      // leave the channel
+      await agoraClient.leave();
+      setIsPublished(false);
+      setisJoined(false);
+      enqueueSnackbar("Left channel", { variant: "info" });
+    } catch (err) {
+      enqueueSnackbar(`Failed to leave, ${err}`, { variant: "error" });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   // Used to unpublish the stream.
+  // eslint-disable-next-line
   const unpublish = () => {
     if (localStream) {
       // unpublish the stream from the client
@@ -243,26 +197,11 @@ function App() {
     return (
       <Button
         className={classes.buttonItem}
-        color={isJoined ? "secondary" : "primary"}
         onClick={isJoined ? leave : join}
-        variant="contained"
+        variant={isJoined ? "outline-danger" : "outline-info"}
         disabled={isLoading}
       >
         {isJoined ? "Leave" : "Join"}
-      </Button>
-    );
-  };
-
-  const PubUnpubBtn = () => {
-    return (
-      <Button
-        className={classes.buttonItem}
-        color={isPublished ? "secondary" : "default"}
-        onClick={isPublished ? unpublish : publish}
-        variant="contained"
-        disabled={!isJoined || isLoading}
-      >
-        {isPublished ? "Unpublish" : "Publish"}
       </Button>
     );
   };
@@ -279,8 +218,8 @@ function App() {
                   <Form.Control
                     required
                     readOnly
-                    value={state.appId}
-                    onChange={update("setAppId")}
+                    value={appId}
+                    onChange={(event) => setAppId(event.target.value)}
                     id="appId"
                     label="App ID"
                     fullWidth
@@ -289,8 +228,9 @@ function App() {
                   <Form.Label>Channel</Form.Label>
                   <Form.Control
                     required
-                    value={state.channel}
-                    onChange={update("setChannel")}
+                    readOnly
+                    value={channelName}
+                    onChange={(event) => setChannelName(event.target.value)}
                     id="channel"
                     label="Channel"
                     fullWidth
@@ -300,7 +240,6 @@ function App() {
               </Card.Body>
               <Card.Body className={classes.buttonContainer}>
                 <JoinLeaveBtn />
-                <PubUnpubBtn />
               </Card.Body>
             </Card>
           </Col>
@@ -323,16 +262,16 @@ function App() {
       </Container>
     </React.Fragment>
   );
-}
+};
 
-export default function AppWithNotification() {
+export default function AppWithNotification({ match }) {
   return (
     <SnackbarProvider
       anchorOrigin={{ vertical: "top", horizontal: "right" }}
       autoHideDuration={2500}
       maxSnack={5}
     >
-      <App />
+      <App match={match} />
     </SnackbarProvider>
   );
 }

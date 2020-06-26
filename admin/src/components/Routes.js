@@ -10,6 +10,7 @@ import Writing from "../views/writing";
 import Login from "../pages/login";
 import Home from "../pages/home";
 import videoStart from "../video/videoStart";
+import UserVideo from "../video/userVideo";
 
 const Routes = () => {
   const { currentUser } = useContext(AuthContext);
@@ -23,6 +24,7 @@ const Routes = () => {
         <Route path="/reading" component={Reading} />
         <Route path="/writing" component={Writing} />
         <Route path="/video" component={videoStart} />
+        <Route path="/userVideo/:channel" component={UserVideo} />
         <Redirect to="/" />
       </Switch>
     );
@@ -31,6 +33,7 @@ const Routes = () => {
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/login" component={Login} />
+        <Route exact path="/userVideo/:channel" component={UserVideo} />
         <Redirect to="/login" />
       </Switch>
     );

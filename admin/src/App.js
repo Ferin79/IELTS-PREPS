@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "./components/header";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter as Router } from "react-router-dom";
 import { ContextProvider } from "./data/context";
 import { AuthProvider } from "./data/Auth";
 import Routes from "./components/Routes";
@@ -10,10 +10,10 @@ const App = () => {
   return (
     <ContextProvider>
       <AuthProvider>
-        <BrowserRouter>
+        <Router>
           <Header />
           <Routes />
-        </BrowserRouter>
+        </Router>
       </AuthProvider>
     </ContextProvider>
   );

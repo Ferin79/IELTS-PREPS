@@ -44,7 +44,6 @@ const Chat = ({ navigation }) => {
   const [message, setMessage] = useState([]);
   const [typedMessage, setTypedMessage] = useState("");
   const [selectedImageUrl, setSelectedImageUrl] = useState("");
-  const [expoPushToken, setExpoPushToken] = useState("");
   const [showBanner, setShowBanner] = useState(false);
 
   const { institute_id } = useContext(Context);
@@ -68,7 +67,14 @@ const Chat = ({ navigation }) => {
       }
       const token = await Notifications.getExpoPushTokenAsync();
       console.log(token);
-      setExpoPushToken(token);
+      firebase
+        .firestore()
+        .doc(`/usersNotificationToken/${firebase.auth().currentUser.email}`)
+        .set({
+          email: firebase.auth().currentUser.email,
+          token,
+          institute_id,
+        });
     } else {
       alert("Must use physical device for Push Notifications");
     }
@@ -158,6 +164,7 @@ const Chat = ({ navigation }) => {
   useEffect(() => {
     IS_MOUNTED = true;
     setShowBanner(true);
+    registerForPushNotificationsAsync();
     getPermissionAsync();
     firebase
       .firestore()
@@ -175,7 +182,6 @@ const Chat = ({ navigation }) => {
         });
       });
     return () => {
-      console.log("Component Unmounted");
       IS_MOUNTED = false;
     };
   }, []);

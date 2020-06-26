@@ -17,6 +17,26 @@ import { AntDesign } from "@expo/vector-icons";
 const Home = ({ navigation }) => {
   const { userData } = useContext(Context);
 
+  const speaking = () => {
+    return (
+      <TouchableOpacity
+        onPress={() =>
+          navigation.navigate("Statistics", { module: "speaking" })
+        }
+      >
+        <Card style={{ margin: 10, backgroundColor: "#0984e3" }}>
+          <Card.Content style={styles.defaultCardLayout}>
+            <View>
+              <Title style={{ color: "#fff" }}>Speaking</Title>
+              <Paragraph style={{ color: "#fff" }}>See Stats</Paragraph>
+            </View>
+            <AntDesign name="right" size={30} color="#fff" />
+          </Card.Content>
+        </Card>
+      </TouchableOpacity>
+    );
+  };
+
   return (
     <SafeAreaView>
       <ScrollView>
@@ -234,22 +254,6 @@ const Home = ({ navigation }) => {
               <Card.Content style={styles.defaultCardLayout}>
                 <View>
                   <Title style={{ color: "#fff" }}>Reading</Title>
-                  <Paragraph style={{ color: "#fff" }}>See Stats</Paragraph>
-                </View>
-                <AntDesign name="right" size={30} color="#fff" />
-              </Card.Content>
-            </Card>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            onPress={() =>
-              navigation.navigate("Statistics", { module: "speaking" })
-            }
-          >
-            <Card style={{ margin: 10, backgroundColor: "#0984e3" }}>
-              <Card.Content style={styles.defaultCardLayout}>
-                <View>
-                  <Title style={{ color: "#fff" }}>Speaking</Title>
                   <Paragraph style={{ color: "#fff" }}>See Stats</Paragraph>
                 </View>
                 <AntDesign name="right" size={30} color="#fff" />
