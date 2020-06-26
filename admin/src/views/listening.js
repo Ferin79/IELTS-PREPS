@@ -5,6 +5,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Table from "react-bootstrap/Table";
+import Modal from "react-bootstrap/Modal";
 import firebase from "../data/firebase";
 import ProgressBar from "react-bootstrap/ProgressBar";
 import Accordion from "react-bootstrap/Accordion";
@@ -33,7 +34,83 @@ const Listening = () => {
 
   const { isLoading, setIsLoading, role, institution } = useContext(Context);
 
+  // Modal
+  const [modalShow, setModalShow] = useState(false);    
+  const [detailsModalData, setDetailsModalData] = useState({data:[]});
+  const [loadingModalData, setLoadingModalData] = useState(false);
+  const [studentListInModel, setStudentListInModel] = useState([]);
+  const MyVerticallyCenteredModal = (props) => {
+    return (
+      <Modal
+        {...props}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+            Test Statistics
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>          
+            <Row>
+              <h5>Average score :&nbsp; {detailsModalData.averageBand}</h5>
+            </Row>
+            <Row>
+              <h5>Average Correct Score :&nbsp; {detailsModalData.averageCorrectScore}</h5>
+            </Row>
+            <Row>
+              <h5>Average Not Attempted :&nbsp; {detailsModalData.averageNotAttempted}</h5>
+            </Row>
+            <Row>List of students who attempted this test</Row>          
+            {
+              studentListInModel.map((student) => {
+                return(
+                 <li>{student.email} : {student.band} </li> 
+                  )
+              })
+            }          
+        </Modal.Body>
+        <Modal.Footer>
+          <Button onClick={props.onHide}>Close</Button>
+        </Modal.Footer>
+      </Modal>
+    );
+  }
+
+  const showTestData = (id) => {
+    setLoadingModalData(true);
+      firebase.firestore().collection("listeningUser").get()
+        .then((docs) => {
+          let data = [];
+          let totalBand = 0;
+          let totalCorrectAnswers = 0;
+          let totalNotAttempted = 0;
+          docs.forEach(doc => {
+            if(doc.data().listeningTestId === id){              
+              data.push(doc.data());
+              totalBand += doc.data().band;
+              totalCorrectAnswers += doc.data().correctScore;
+              totalNotAttempted += doc.data().notattemptScore;
+            }
+          });
+          const stats = {
+            averageBand:totalBand/data.length,
+            averageCorrectScore: totalCorrectAnswers/data.length,
+            averageNotAttempted: totalNotAttempted/data.length,
+          }
+          console.log(data);
+          setDetailsModalData(stats);
+          setStudentListInModel(data)
+          setLoadingModalData(false)
+          setModalShow(true);
+        });
+  }
+
+
   const uploadFileToStorage = (fileToUpload, fileType) => {
+
+
     setIsUploading(true);
     setIsUploadingComplete(false);
     setErrorText("");
@@ -185,6 +262,8 @@ const Listening = () => {
 
   if (isLoading) {
     return <LoadingScreen text="Listening Module is Loading..." />;
+  }else if (loadingModalData) {
+    return <LoadingScreen text="Loading Test Data..." />
   }
 
   return (
@@ -207,6 +286,7 @@ const Listening = () => {
                 <th>Answers</th>
                 <th>Added By</th>
                 <th>Action</th>
+                <th>Details</th>
               </tr>
             </thead>
             <tbody>
@@ -253,6 +333,19 @@ const Listening = () => {
                           <i className="fa fa-trash"></i>
                         </Button>
                       </td>
+                      
+                      <td>
+
+                      <Button variant="primary" onClick={() => {showTestData(item.id); }}>
+                      <i className="fa fa-info"></i>
+                      </Button>
+
+                      <MyVerticallyCenteredModal
+                        show={modalShow}
+                        onHide={() => setModalShow(false)}
+                      />
+                      </td>
+
                     </tr>
                   );
                 })
