@@ -10,6 +10,8 @@ import LoadingScreen from "../components/LoadingScreen";
 import { ToastContainer, toast } from "react-toastify";
 import firebase from "../data/firebase";
 import "react-toastify/dist/ReactToastify.css";
+import Dropdown from "react-bootstrap/Dropdown";
+
 
 const Student = () => {
   const { isLoading, institution, role, setIsLoading } = useContext(Context);
@@ -19,7 +21,9 @@ const Student = () => {
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
   const [errorText, setErrorText] = useState("");
-  const [staffDataList, setStaffDataList] = useState([]);
+  const [studentDataList, setStudentDataList] = useState([]);
+  const [staffList, setStaffList] = useState([]);
+  const [underStaff, setUnderStaff] = useState(null);
 
   const handleStudentAdd = async (event) => {
     event.preventDefault();
@@ -40,6 +44,8 @@ const Student = () => {
       setErrorText("Repeat Password cannot be empty");
     } else if (repeatPassword !== password) {
       setErrorText("Password Did not match");
+    } else if (!underStaff) {
+      setErrorText("Select Under Staff");
     } else {
       const response = await fetch(
         "https://us-central1-ielts-preps.cloudfunctions.net/api/register",
@@ -57,6 +63,7 @@ const Student = () => {
             repeatPassword,
             role: "student",
             institute_id: institution,
+            underStaff: underStaff,
             photoUrl:
               "https://firebasestorage.googleapis.com/v0/b/ielts-preps.appspot.com/o/person.png?alt=media",
           }),
@@ -65,7 +72,7 @@ const Student = () => {
       const responseData = await response.json();
       console.log(responseData);
       if (responseData.success) {
-        fetchStaff();
+        fetchStudent();
         setFirstname("");
         setLastname("");
         setEmail("");
@@ -80,7 +87,7 @@ const Student = () => {
     setIsLoading(false);
   };
 
-  const fetchStaff = useCallback(() => {
+  const fetchStudent = useCallback(() => {
     if (role === "student") {
       return;
     }
@@ -89,15 +96,20 @@ const Student = () => {
       .firestore()
       .collection("users")
       .where("institute_id", "==", institution)
-      .where("isStudent", "==", true)
       .get()
-      .then((docs) => {
+      .then((docs) => {        
+        const studentData = [];
         const staffData = [];
         docs.forEach((doc) => {
-          staffData.push(doc.data());
+          if (doc.data().isStudent) {            
+            studentData.push(doc.data());
+          }else if (doc.data().isStaff) {
+            staffData.push(doc.data());  
+          }
         });
-        console.log(staffData);
-        setStaffDataList([...staffData]);
+        console.log(studentData, staffData);
+        setStudentDataList([...studentData]);
+        setStaffList([...staffData]);
         setIsLoading(false);
       })
       .catch((error) => {
@@ -129,19 +141,19 @@ const Student = () => {
     const responseData = await response.json();
     console.log(responseData);
     if (responseData.success) {
-      let dataFilter = staffDataList;
+      let dataFilter = studentDataList;
       dataFilter = dataFilter.filter((item) => {
         return item.userId !== userId;
       });
-      setStaffDataList([...dataFilter]);
+      setStudentDataList([...dataFilter]);
       toast.warning("User Deleted");
     }
     setIsLoading(false);
   };
 
   useEffect(() => {
-    fetchStaff();
-  }, [fetchStaff]);
+    fetchStudent();
+  }, [fetchStudent]);
 
   if (isLoading) {
     return <LoadingScreen text="Loading Students Details" />;
@@ -170,8 +182,8 @@ const Student = () => {
                 </tr>
               </thead>
               <tbody>
-                {staffDataList.length > 0 ? (
-                  staffDataList.map((item, index) => {
+                {studentDataList.length > 0 ? (
+                  studentDataList.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td>{index + 1}</td>
@@ -253,11 +265,54 @@ const Student = () => {
                   />
                 </Form.Group>
               </Form.Row>
+              
+
+              {/* Under Staff */}
+                <Form.Label>Under Staff</Form.Label>
+               
+                <Dropdown onSelect={(email) => {
+                  staffList.forEach(staff => {
+                    if(staff.email === email){
+                      setUnderStaff(staff);                
+                      console.log(staff.email);                    
+                    }
+                  });
+                }}>
+                  <Dropdown.Toggle
+                    variant="outline-dark"
+                    id="dropdown-basic">
+                    {underStaff ? underStaff.email  : "Select"}                  
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu>
+                    {staffList.map((staff, index) => {
+                      // if(staff == underStaff){
+                      //   return (
+                      //     <Dropdown.Item key={index} eventKey={staff.email} active>
+                      //     <p className="dropdownData">                   
+                      //       {staff.firstname}
+                      //     </p>
+                      //   </Dropdown.Item>
+                      // );
+                      // }else{
+                        return (
+                          <Dropdown.Item key={index} eventKey={staff.email}>
+                            <p className="dropdownData">                   
+                              {staff.firstname}
+                            </p>
+                        </Dropdown.Item>
+                        );
+                      // }
+                    })}
+                  </Dropdown.Menu>
+                </Dropdown>
+
               <Form.Text className="text-muted mt-1 mb-2 ">
                 <h6 className="text-danger">
                   {!errorText.length ? "" : `*${errorText}`}
                 </h6>
               </Form.Text>
+
             </Form>
             <Button
               variant="primary"

@@ -70,6 +70,7 @@ exports.register = (req, res, next) => {
       lastname,
       repeatPassword,
       institute_id,
+      underStaff,
     } = req.body;
 
     if (role.trim() === "") {
@@ -128,6 +129,8 @@ exports.register = (req, res, next) => {
       });
     }
 
+    
+
     let token = "";
     let userId = "";
 
@@ -172,6 +175,7 @@ exports.register = (req, res, next) => {
           createdAt: new Date().toISOString(),
           userId,
           ...roleTab,
+          underStaff,
           createdAt: new Date().toISOString(),
         };
         return db.doc(`/users/${email}`).set(userCredentails);
