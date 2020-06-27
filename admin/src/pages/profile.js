@@ -7,13 +7,64 @@ import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import firebase from "../data/firebase";
 import LoadingScreen from "../components/LoadingScreen";
+import { toast } from "react-toastify";
 
 let inputRef;
 const Profile = () => {
   const [photoUrl, setPhotoUrl] = useState(null);
+  const [uploadedPhotoUrl, setUploadedPhotoUrl] = useState(null)
+  const [selectedImage, setSelectedImage] = useState(null);
   const [userData, setUserData] = useState({});
   const [show, setShow] = useState(false);
   const [isLoading, setisLoading] = useState(false);
+
+
+  const uploadFile = (fileToUpload, fileType) => {
+
+    setisLoading(true);
+    // setErrorText("");
+    var storageRef = firebase.storage().ref('profile/');
+
+    var uploadTask = storageRef.child(`${firebase.auth().currentUser.uid}`).put(fileToUpload);
+
+    uploadTask.on(
+      "state_changed",
+      function (snapshot) {
+        var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        console.log("Upload is " + progress + "% done");
+        // setPercentage(Math.round(parseInt(progress)));
+        switch (snapshot.state) {
+          case firebase.storage.TaskState.PAUSED:
+            console.log("Upload is paused");
+            break;
+          case firebase.storage.TaskState.RUNNING:
+            console.log("Upload is running");
+            break;
+          default:
+            break;
+        }
+      },
+      function (error) {
+        console.log(error);
+        toast.error("Error While Uploading. Please try again")
+        // setErrorText("Error While Uploading. Please try again");
+        setisLoading(false);
+      },
+      function () {
+        console.log(uploadTask.snapshot.ref.name);
+        uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
+          console.log("File available at", downloadURL);
+          
+          firebase.firestore().doc(`/users/${firebase.auth().currentUser.email}`)
+            .update({photoUrl: downloadURL})
+          
+          setPhotoUrl(downloadURL)          
+          setisLoading(false);
+        });
+      }
+    );
+  };
+
 
   useEffect(() => {
     setisLoading(true);
@@ -33,6 +84,8 @@ const Profile = () => {
         setisLoading(false);
         console.log(error);
       });
+
+
   }, []);
 
   if (isLoading) {
@@ -67,6 +120,7 @@ const Profile = () => {
           style={{ display: "none" }}
           onChange={(event) => {
             console.log(event.target.files);
+            uploadFile(event.target.files[0]);
           }}
         />
         <OverlayTrigger
@@ -79,13 +133,24 @@ const Profile = () => {
           <Image
             src={photoUrl}
             rounded
+            height={100}
+            width={100}
             onClick={() => {
               inputRef.click();
             }}
             style={{ cursor: "pointer" }}
           />
         </OverlayTrigger>
-
+        
+        {/* {photoUrl && (
+          <p className="mt-3">
+            Audio File is Uploaded to{" "}
+            <a className="uploadLink" href={photoUrl}>
+              {photoUrl}
+            </a>
+          </p>
+        )}
+         */}
         <div>
           <h4>
             {userData.firstname} {userData.lastname}
