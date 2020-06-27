@@ -34,22 +34,33 @@ const Dashboard = () => {
       .collection("usersNotificationToken")
       .where("institute_id", "==", institution)
       .get()
-      .then(async (docs) => {
+      .then((docs) => {
         const tokenList = [];
         docs.forEach((doc) => {
           tokenList.push(doc.data().token);
         });
-        console.log(tokenList);
-        const message = {
-          to: tokenList,
-          sound: "default",
-          title: Title,
-          body: description,
-        };
-        await fetch("https://exp.host/--/api/v2/push/send", {
-          method: "POST",
-          body: JSON.stringify(message),
-        });
+        firebase
+          .firestore()
+          .collection("notifications")
+          .add({
+            title: Title,
+            body: description,
+            institute_id: institution,
+            email: firebase.auth().currentUser.email,
+            createdAt: firebase.firestore.Timestamp.now(),
+          })
+          .then(async () => {
+            const message = {
+              to: tokenList,
+              sound: "default",
+              title: Title,
+              body: description,
+            };
+            await fetch("https://exp.host/--/api/v2/push/send", {
+              method: "POST",
+              body: JSON.stringify(message),
+            });
+          });
       })
       .catch((error) => console.log(error));
   };

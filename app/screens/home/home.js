@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import {
   View,
   Text,
@@ -59,7 +59,7 @@ const Home = ({ navigation }) => {
           <Avatar.Image size={70} source={{ uri: userData.photoUrl }} />
         </View>
 
-        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+        <ScrollView horizontal>
           <View
             style={{
               marginTop: 50,
@@ -225,7 +225,7 @@ const Home = ({ navigation }) => {
           </View>
         </ScrollView>
 
-        <View style={{ marginVertical: 30 }}>
+        <View style={{ marginVertical: 30, backgroundColor: "#eee" }}>
           <View style={{ margin: 20 }}>
             <Text style={{ fontSize: 30 }}>Statistics</Text>
           </View>
@@ -290,5 +290,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+    borderLeftWidth: 10,
+    borderLeftColor: "#fff",
   },
 });

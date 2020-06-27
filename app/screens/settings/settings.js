@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   SafeAreaView,
   View,
@@ -7,19 +7,56 @@ import {
   ScrollView,
   StyleSheet,
   Alert,
+  Dimensions,
+  Modal,
 } from "react-native";
-import { Avatar, Divider } from "react-native-paper";
+import { Avatar, Divider, Badge } from "react-native-paper";
+import * as Linking from "expo-linking";
 import {
   AntDesign,
   MaterialCommunityIcons,
   Ionicons,
   MaterialIcons,
+  Entypo,
 } from "@expo/vector-icons";
 import firebase from "../../data/firebase";
 import { Context } from "../../data/context";
 
 const Settings = ({ navigation }) => {
-  const { userData } = useContext(Context);
+  const { userData, institute_id } = useContext(Context);
+  const [notifications, setNotifications] = useState([]);
+  const [showBadge, setShowBadge] = useState(true);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [instituteDetails, setInstituteDetails] = useState(null);
+
+  const fetchInstitutionDetails = () => {
+    firebase
+      .firestore()
+      .doc(`/institution/${institute_id}`)
+      .get()
+      .then((doc) => {
+        console.log(doc.data());
+        setInstituteDetails({ ...doc.data() });
+      })
+      .catch((error) => console.log(error));
+  };
+
+  useEffect(() => {
+    setShowBadge(true);
+    firebase
+      .firestore()
+      .collection("notifications")
+      .orderBy("createdAt", "desc")
+      .get()
+      .then((docs) => {
+        const data = [];
+        docs.forEach((doc) => {
+          data.push({ ...doc.data(), id: doc.id });
+        });
+        setNotifications([...data]);
+      })
+      .catch((error) => console.log(error));
+  }, []);
 
   return (
     <SafeAreaView>
@@ -64,7 +101,12 @@ const Settings = ({ navigation }) => {
       </TouchableOpacity>
       <ScrollView>
         <View style={{ margin: 50 }}>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              setShowBadge(false);
+              navigation.navigate("Notifications", { notifications });
+            }}
+          >
             <View style={styles.defaultInLineStyle}>
               <View
                 style={{
@@ -77,6 +119,19 @@ const Settings = ({ navigation }) => {
               <Text style={{ marginLeft: 20, fontSize: 18 }}>
                 Notifications
               </Text>
+              {showBadge && (
+                <Badge
+                  style={{
+                    backgroundColor: "#0af",
+                    color: "#fff",
+                    fontSize: 18,
+                    marginLeft: Dimensions.get("window").width * 0.3,
+                  }}
+                  size={25}
+                >
+                  {notifications.length}
+                </Badge>
+              )}
             </View>
           </TouchableOpacity>
           <TouchableOpacity
@@ -116,9 +171,7 @@ const Settings = ({ navigation }) => {
               </Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => Alert.alert("FAQ Section Will be Added Soon")}
-          >
+          <TouchableOpacity onPress={() => navigation.navigate("FAQ")}>
             <View style={styles.defaultInLineStyle}>
               <View
                 style={{
@@ -152,7 +205,12 @@ const Settings = ({ navigation }) => {
               backgroundColor: "#222",
             }}
           />
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              fetchInstitutionDetails();
+              setModalVisible(true);
+            }}
+          >
             <View style={styles.defaultInLineStyle}>
               <View
                 style={{
@@ -165,7 +223,9 @@ const Settings = ({ navigation }) => {
               <Text style={{ marginLeft: 20, fontSize: 18 }}>Contact us</Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => Linking.openURL("mailto: ferinpatel79@gmail.com")}
+          >
             <View style={styles.defaultInLineStyle}>
               <View
                 style={{
@@ -181,6 +241,175 @@ const Settings = ({ navigation }) => {
             </View>
           </TouchableOpacity>
         </View>
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={modalVisible}
+          onRequestClose={() => {}}
+        >
+          <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+              <AntDesign
+                name="closecircleo"
+                size={30}
+                style={{ marginLeft: 0 }}
+                onPress={() => setModalVisible(!modalVisible)}
+              />
+
+              <View>
+                <Text
+                  style={{
+                    textAlign: "center",
+                    fontSize: 20,
+                    fontWeight: "bold",
+                  }}
+                >
+                  Institution Details
+                </Text>
+                <Text style={{ fontSize: 16, marginTop: 20 }}>
+                  Institution Name:{" "}
+                  <Text
+                    style={{ fontWeight: "bold", textTransform: "capitalize" }}
+                  >
+                    {instituteDetails.name}
+                  </Text>
+                </Text>
+                <Text style={{ fontSize: 16, marginTop: 20 }}>
+                  Address:{" "}
+                  <Text
+                    style={{ fontWeight: "bold", textTransform: "capitalize" }}
+                  >
+                    {instituteDetails.address}
+                  </Text>
+                </Text>
+                <TouchableOpacity
+                  onPress={() =>
+                    Linking.openURL(`tel:${instituteDetails.phone}`)
+                  }
+                >
+                  <Text style={{ fontSize: 16, marginTop: 20 }}>
+                    Phone:{" "}
+                    <Text
+                      style={{
+                        fontWeight: "bold",
+                        textTransform: "capitalize",
+                      }}
+                    >
+                      {instituteDetails.phone}
+                    </Text>
+                  </Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() =>
+                    Linking.openURL(`mailto: ${instituteDetails.email}`)
+                  }
+                >
+                  <Text style={{ fontSize: 16, marginTop: 20 }}>
+                    Email:{" "}
+                    <Text style={{ fontWeight: "bold" }}>
+                      {instituteDetails.email}
+                    </Text>
+                  </Text>
+                </TouchableOpacity>
+              </View>
+              <Divider
+                style={{ backgroundColor: "#000", marginVertical: 50 }}
+              />
+              <Text
+                style={{
+                  textAlign: "center",
+                  fontSize: 20,
+                  fontWeight: "bold",
+                }}
+              >
+                Developers Details
+              </Text>
+
+              <Text style={{ fontSize: 16, marginTop: 30 }}>
+                Name: <Text style={{ fontWeight: "bold" }}>Ferin Patel</Text>
+              </Text>
+              <View
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "space-evenly",
+                  alignItems: "center",
+                  marginVertical: 10,
+                }}
+              >
+                <Entypo
+                  name="email"
+                  size={30}
+                  onPress={() =>
+                    Linking.openURL(`mailto: ferinpatel79@gmail.com`)
+                  }
+                />
+                <AntDesign
+                  name="instagram"
+                  size={30}
+                  color="#fd79a8"
+                  onPress={() =>
+                    Linking.openURL("instagram://user?username=ferin_patel_79")
+                  }
+                />
+                <AntDesign
+                  name="facebook-square"
+                  size={30}
+                  color="#0984e3"
+                  onPress={() =>
+                    Linking.openURL(
+                      "https://www.facebook.com/profile.php?id=100004905079172"
+                    )
+                  }
+                />
+                <AntDesign
+                  name="github"
+                  size={30}
+                  color="#00b894"
+                  onPress={() => Linking.openURL("https://github.com/ferin79")}
+                />
+              </View>
+
+              <Text style={{ fontSize: 16, marginTop: 20 }}>
+                Name: <Text style={{ fontWeight: "bold" }}>Jash Jariwala</Text>
+              </Text>
+              <View
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "space-evenly",
+                  alignItems: "center",
+                  marginVertical: 10,
+                }}
+              >
+                <Entypo
+                  name="email"
+                  size={30}
+                  onPress={() =>
+                    Linking.openURL(`mailto: jashjariwala7911@gmail.com`)
+                  }
+                />
+                <AntDesign
+                  name="instagram"
+                  size={30}
+                  color="#fd79a8"
+                  onPress={() =>
+                    Linking.openURL("instagram://user?username=__firemarshall_")
+                  }
+                />
+                <AntDesign name="facebook-square" size={30} color="#0984e3" />
+                <AntDesign
+                  name="github"
+                  size={30}
+                  color="#00b894"
+                  onPress={() =>
+                    Linking.openURL("https://github.com/JASH-JARIWALA")
+                  }
+                />
+              </View>
+            </View>
+          </View>
+        </Modal>
       </ScrollView>
     </SafeAreaView>
   );
@@ -204,5 +433,27 @@ const styles = StyleSheet.create({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 22,
+  },
+  modalView: {
+    height: Dimensions.get("window").height,
+    width: Dimensions.get("window").width,
+    margin: 20,
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: 35,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
 });
