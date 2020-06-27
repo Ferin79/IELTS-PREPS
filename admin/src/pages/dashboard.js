@@ -95,6 +95,7 @@ const Dashboard = () => {
         </Col>
 
         <Col
+          onClick={() => history.push("/profile")}
           lg={true}
           className="d-flex flex-column justify-content-center align-items-center addHoverCursor"
         >
