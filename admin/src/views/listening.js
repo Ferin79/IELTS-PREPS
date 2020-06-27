@@ -80,21 +80,20 @@ const Listening = () => {
 
   const showTestData = (id) => {
     setLoadingModalData(true);
-      firebase.firestore().collection("listeningUser").get()
+      firebase.firestore().collection("listeningUser").where("listeningTestId", "==",id).get()
         .then((docs) => {
           let data = [];
           let totalBand = 0;
           let totalCorrectAnswers = 0;
           let totalNotAttempted = 0;
           docs.forEach(doc => {
-            if(doc.data().listeningTestId === id){              
               data.push(doc.data());
               totalBand += doc.data().band;
               totalCorrectAnswers += doc.data().correctScore;
               totalNotAttempted += doc.data().notattemptScore;
-            }
           });
           const stats = {
+            data,
             averageBand:totalBand/data.length,
             averageCorrectScore: totalCorrectAnswers/data.length,
             averageNotAttempted: totalNotAttempted/data.length,
