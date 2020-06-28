@@ -106,8 +106,6 @@ const Listening = ({ navigation }) => {
             }
             setExamSet([...data]);
             setFilteredExamSet([...data]);
-            console.log([...data]);
-
             setIsLoading(false);
           });
       })
@@ -122,7 +120,7 @@ const Listening = ({ navigation }) => {
   }, []);
 
   if (isLoading) {
-    return <LoadingScreen />;
+    return <LoadingScreen text="Loading Test" />;
   }
   return (
     <Provider>
@@ -135,16 +133,15 @@ const Listening = ({ navigation }) => {
               style={{
                 display: "flex",
                 flexDirection: "row",
-                justifyContent: "space-between",
+                justifyContent: "space-evenly",
                 alignItems: "center",
               }}
             >
               <Button
                 style={{
-                  padding: 5,
                   backgroundColor: "#0af",
                   width: 150,
-                  margin: 25,
+                  margin: 5,
                 }}
                 mode="contained"
                 onPress={() => {

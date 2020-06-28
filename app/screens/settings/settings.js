@@ -27,7 +27,7 @@ const Settings = ({ navigation }) => {
   const [notifications, setNotifications] = useState([]);
   const [showBadge, setShowBadge] = useState(true);
   const [modalVisible, setModalVisible] = useState(false);
-  const [instituteDetails, setInstituteDetails] = useState(null);
+  const [instituteDetails, setInstituteDetails] = useState({});
 
   const fetchInstitutionDetails = () => {
     firebase
@@ -43,6 +43,7 @@ const Settings = ({ navigation }) => {
 
   useEffect(() => {
     setShowBadge(true);
+    fetchInstitutionDetails();
     firebase
       .firestore()
       .collection("notifications")
@@ -207,7 +208,6 @@ const Settings = ({ navigation }) => {
           />
           <TouchableOpacity
             onPress={() => {
-              fetchInstitutionDetails();
               setModalVisible(true);
             }}
           >

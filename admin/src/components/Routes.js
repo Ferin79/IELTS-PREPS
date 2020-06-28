@@ -12,6 +12,7 @@ import Home from "../pages/home";
 import videoStart from "../video/videoStart";
 import UserVideo from "../video/userVideo";
 import Profile from "../pages/profile";
+import CheckWriting from "../views/checkWriting";
 
 const Routes = () => {
   const { currentUser } = useContext(AuthContext);
@@ -27,6 +28,7 @@ const Routes = () => {
         <Route path="/video" component={videoStart} />
         <Route path="/userVideo/:channel" component={UserVideo} />
         <Route path="/profile" component={Profile} />
+        <Route path="/check-writing" component={CheckWriting} />
         <Redirect to="/" />
       </Switch>
     );

@@ -47,8 +47,8 @@ const PracticeMain = ({ navigation }) => {
       title: "Writing",
       desc: "Submit your Essays, Letters and Summaries ...",
       icon: require("../../images/write.png"),
-      grad1: "#f093fb",
-      grad2: "#f5576c",
+      grad1: "#a1c4fd",
+      grad2: "#c2e9fb",
       to: "PracticeWriting",
     },
   ];
@@ -83,7 +83,6 @@ const PracticeMain = ({ navigation }) => {
               <TouchableWithoutFeedback
                 style={{ flex: 1 }}
                 onPress={() => {
-                  console.log(`Pressed ${card.title}`);
                   navigation.navigate(`${card.to}`);
                 }}
               >

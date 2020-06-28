@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import firebase from "../../data/firebase";
 import LoadingScreen from "../components/LoadingScreen";
-import { FontAwesome, Ionicons } from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons";
 import { Context } from "../../data/context";
 import { Button, Menu, Divider, Provider } from "react-native-paper";
 
@@ -41,26 +41,22 @@ const Listening = ({ navigation }) => {
   // FILTERS
   const filterVisited = () => {
     const result = examSet.filter((exam) => exam.isVisited === true);
-    console.log(result);
     setFilteredExamSet([...result]);
     setVisible(false);
   };
   // letter summary essay
   const filterTypeLetter = () => {
     const result = examSet.filter((exam) => exam.type === "letter");
-    console.log(result);
     setFilteredExamSet([...result]);
     setVisible(false);
   };
   const filterTypeSummary = () => {
     const result = examSet.filter((exam) => exam.type === "summary");
-    console.log(result);
     setFilteredExamSet([...result]);
     setVisible(false);
   };
   const filterTypeEssay = () => {
     const result = examSet.filter((exam) => exam.type === "essay");
-    console.log(result);
     setFilteredExamSet([...result]);
     setVisible(false);
   };
@@ -109,7 +105,6 @@ const Listening = ({ navigation }) => {
             setExamSet([...data]);
             setFilteredExamSet([...data]);
             setIsLoading(false);
-            console.log([...data]);
           });
       })
       .catch((error) => {
@@ -123,7 +118,7 @@ const Listening = ({ navigation }) => {
   }, []);
 
   if (isLoading) {
-    return <LoadingScreen />;
+    return <LoadingScreen text="Loading Test" />;
   }
   return (
     <Provider>
@@ -136,16 +131,15 @@ const Listening = ({ navigation }) => {
               style={{
                 display: "flex",
                 flexDirection: "row",
-                justifyContent: "space-between",
+                justifyContent: "space-evenly",
                 alignItems: "center",
               }}
             >
               <Button
                 style={{
-                  padding: 5,
                   backgroundColor: "#0af",
                   width: 150,
-                  margin: 25,
+                  margin: 5,
                 }}
                 mode="contained"
                 onPress={() => {

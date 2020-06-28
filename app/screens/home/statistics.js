@@ -61,6 +61,39 @@ const Statistics = ({ route }) => {
           setIsLoading(false);
           console.log(error);
         });
+    } else if (module === "writing") {
+      firebase
+        .firestore()
+        .collection("writingUser")
+        .where("email", "==", firebase.auth().currentUser.email)
+        .where("isCheck", "==", true)
+        .get()
+        .then((docs) => {
+          if (docs.size) {
+            const data = [];
+            const fullData = [];
+            let totalRecievedBands = 0;
+            docs.forEach((doc) => {
+              fullData.push(doc.data());
+              totalRecievedBands =
+                parseInt(totalRecievedBands) + parseInt(doc.data().band);
+              data.push(doc.data().band);
+            });
+            setAllData([...fullData]);
+            setBandArray([...data]);
+            setAvgBand(
+              Math.round(parseInt(totalRecievedBands) / parseInt(docs.size))
+            );
+            setAppearedExam(docs.size);
+          } else {
+            setEmptyResults(true);
+          }
+          setIsLoading(false);
+        })
+        .catch((error) => {
+          setIsLoading(false);
+          console.log(error);
+        });
     } else {
       setIsLoading(false);
     }

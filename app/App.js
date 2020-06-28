@@ -5,7 +5,6 @@ import AuthStackScreen from "./routes/AuthStack";
 import firebase from "./data/firebase";
 import BottomScreen from "./routes/MaterialBottom";
 import LoadingScreen from "./screens/components/LoadingScreen";
-import SafeViewAndroid from "./screens/components/SafeAndroidView";
 import { ContextProvider } from "./data/context";
 
 let institute_id = "";
@@ -36,7 +35,7 @@ export default function App() {
   }
 
   return (
-    <SafeAreaView style={SafeViewAndroid.AndroidSafeArea}>
+    <SafeAreaView style={{ flex: 1 }}>
       <StatusBar backgroundColor="#000" />
       <NavigationContainer>
         <ContextProvider>
