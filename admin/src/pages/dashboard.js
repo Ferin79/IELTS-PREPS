@@ -142,7 +142,7 @@ const Dashboard = () => {
           <h5>Writing Module</h5>
         </Col>
       </Row>
-      <Row className="m-5" style={{ border: "1px solid black" }}></Row>
+      <Row className="m-5" style={{ border: "1px solid black" }}></Row>      
       <Row>
         <Col
           onClick={() => handleShow()}
@@ -153,6 +153,18 @@ const Dashboard = () => {
           <Image src={require("../images/notification.png")} rounded />
           <h5>Send Notifications</h5>
         </Col>
+      
+      {/* Writing Check */}      
+        <Col
+          onClick={() => {history.push("/submittedWriting")}}
+          // id="listening"
+          lg={true}
+          className="d-flex flex-column justify-content-center align-items-center addHoverCursor"
+          >
+          <Image src={require("../images/writing.png")} rounded />
+          <h5>Submitted Writing</h5>
+        </Col>
+      
       </Row>
       <Modal
         show={show}

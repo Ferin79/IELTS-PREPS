@@ -15,7 +15,6 @@ import CKEditor from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import ProgressBar from "react-bootstrap/ProgressBar";
 
-// Added_Under_Staff field in user table  to know which user is under which staff 
 
 const Writing = () => {
   const { isLoading, setIsLoading, role, institution } = useContext(Context);

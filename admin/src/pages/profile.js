@@ -12,8 +12,6 @@ import { toast } from "react-toastify";
 let inputRef;
 const Profile = () => {
   const [photoUrl, setPhotoUrl] = useState(null);
-  const [uploadedPhotoUrl, setUploadedPhotoUrl] = useState(null)
-  const [selectedImage, setSelectedImage] = useState(null);
   const [userData, setUserData] = useState({});
   const [show, setShow] = useState(false);
   const [isLoading, setisLoading] = useState(false);
@@ -58,6 +56,7 @@ const Profile = () => {
           firebase.firestore().doc(`/users/${firebase.auth().currentUser.email}`)
             .update({photoUrl: downloadURL})
           
+          toast.info("Profile picture updated");
           setPhotoUrl(downloadURL)          
           setisLoading(false);
         });
