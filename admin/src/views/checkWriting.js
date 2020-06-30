@@ -9,10 +9,12 @@ import { Context } from "../data/context";
 import { toast } from "react-toastify";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
-import FormText from "react-bootstrap/FormText";
+import LoadingScreen from "../components/LoadingScreen";
 
 const CheckWriting = () => {
-  const { institution } = useContext(Context);
+
+  const { isLoading, setIsLoading, role, institution } = useContext(Context);
+
   const [writingData, setWritingData] = useState([]);
 
   // Modal
@@ -24,7 +26,7 @@ const CheckWriting = () => {
     return (
       <Modal
         {...props}
-        size="sm"
+        size="md"
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
@@ -50,6 +52,13 @@ const CheckWriting = () => {
                 name='note'
                 maxLength={100}
               />
+
+            <Form.Label>PDF</Form.Label>
+              <Form.File
+                required                
+                name='pdf'
+                accept="application/pdf"                
+              />
               <div class="mt-3"> 
                 <Button type="submit" value="submit">Submit</Button> 
                 <button class="btn btn-danger ml-3" onClick={props.onHide}>Close</button>                    
@@ -68,25 +77,57 @@ const CheckWriting = () => {
     e.preventDefault();
     const band = e.target.band.value ;    
     const note = e.target.note.value ;    
+    const file = e.target.pdf.files[0] ;
+    console.log(file);        
     if(band > 10 || band < 0) {
       toast.error("Band should be between 0 and 9")
       return;
     }
     console.log(attemptedExamId); 
     console.log(band);
-    console.log(note);        
-    firebase.firestore().collection("writingUser").doc(`${attemptedExamId}`)
-      .update({
-        isChecked: true,
-        band: band, 
-        note: note
-      })
-      .then(() => {
-        toast("Score Updated");
-        setModalShow(false);
-      }).catch(() => {
-        toast.error("Error, try again");
-      }); 
+    console.log(note);      
+
+    setModalShow(false);
+    setIsLoading(true);
+
+    const uploadTask = firebase.storage().ref(`${institution}/CheckedWriting`).child(`${firebase.auth().currentUser.email}_${attemptedExamId}`);
+    
+    uploadTask.put(file)
+      .on("state_changed",
+          function (snapshot) {
+            switch(snapshot.state){
+              case firebase.storage.TaskState.RUNNING:
+                console.log("Upload running");
+                break;              
+              default:
+                break;
+            }
+          },
+          function (error) {
+            console.log(error);            
+          },
+          function () {
+            uploadTask.getDownloadURL().then((url) => {
+              firebase.firestore().collection("writingUser").doc(`${attemptedExamId}`)
+              .update({
+                isChecked: true,
+                band: band, 
+                note: note,
+                checkedFile: url
+              })
+              .then(() => {                              
+                setIsLoading(false);
+                toast("Score uploaded.");
+              }).catch(() => {
+                toast.error("Error, try again");
+              }); 
+           
+            })            
+           
+          }    
+      )
+    
+   
 
   }
 
@@ -108,6 +149,10 @@ const CheckWriting = () => {
         console.log(error);
       });
   }, [institution]);
+
+  if (isLoading) {
+    return <LoadingScreen text="Uploading checked file..."/>
+  }
 
   return (
     <Container>

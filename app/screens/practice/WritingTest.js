@@ -74,7 +74,7 @@ const WritingTest = ({ route, navigation, navigator }) => {
         if (file.type === "success") {
           setIsUploading(true);
           const fileBlob = await uriToBlob(file.uri);
-          var storageRef = firebase.storage().ref("/writingUser");
+          var storageRef = firebase.storage().ref(`${institution}/writingUser`);
           var uploadTask = storageRef
             .child(`${firebase.auth().currentUser.email}_${data.id}`)
             .put(fileBlob);

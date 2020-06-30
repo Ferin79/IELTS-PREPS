@@ -113,9 +113,9 @@ const Listening = () => {
     setIsUploading(true);
     setIsUploadingComplete(false);
     setErrorText("");
-    var storageRef = firebase.storage().ref();
+    var storageRef = firebase.storage().ref(`${institution}/listening`);
 
-    var uploadTask = storageRef.child(`${Date.now()}`).put(fileToUpload);
+    var uploadTask = storageRef.child(`${firebase.auth().currentUser.email}_${Date.now()}`).put(fileToUpload);
 
     uploadTask.on(
       "state_changed",
@@ -232,18 +232,77 @@ const Listening = () => {
       });
   }, [setIsLoading, role, institution]);
 
-  const deleteListeningModule = (id) => {
+  const deleteListeningModule = (item) => {
+
+    const id = item.id;
+    const type = item.type;
+    let refUrl = "";
+    let refPdfUrl = "";
+    
+    if (type == "video") {
+      refUrl = item.videoUrl
+    }else if (type == "audio"){
+      refUrl = item.audioUrl;
+      refPdfUrl = item.pdfUrl;
+    }
+
     setIsLoading(true);
     firebase
       .firestore()
       .doc(`/listening/${id}`)
       .delete()
       .then(() => {
-        setIsLoading(false);
-        toast.warning("Listening Module Deleted");
-        let data = listeningData;
-        data = data.filter((item) => item.id !== id);
-        setListeningData([...data]);
+
+
+        if (type == "video"){
+
+          firebase.storage().refFromURL(refUrl).delete().then(() => {
+            setIsLoading(false);
+            toast.warning("Listening file deleted");
+            toast.warning("Listening Module Deleted");
+            let data = listeningData;
+            data = data.filter((item) => item.id !== id);
+            setListeningData([...data]);
+          }).catch(function(error) {
+            setIsLoading(false);
+          toast.warning("Listening Module Deleted");
+          toast.error("Listening file not deleted :(");
+          let data = listeningData;
+          data = data.filter((item) => item.id !== id);
+          setListeningData([...data]);
+        });
+      
+      }else if (type == "audio") {
+          firebase.storage().refFromURL(refUrl).delete().then(() => {
+          
+            firebase.storage().refFromURL(refPdfUrl).delete().then(() => {
+                setIsLoading(false);
+                toast.warning("Listening file deleted");
+                toast.warning("Listening Module Deleted");
+                let data = listeningData;
+                data = data.filter((item) => item.id !== id);
+                setListeningData([...data]);
+            }).catch(function(error) {
+                setIsLoading(false);
+                toast.warning("Listening Module Deleted");
+                toast.error("Listening file not deleted :(");
+                let data = listeningData;
+                data = data.filter((item) => item.id !== id);
+                setListeningData([...data]);
+            });                
+
+          
+          }).catch(function(error) {
+            setIsLoading(false);
+            toast.warning("Listening Module Deleted");
+            toast.error("Listening file not deleted :(");
+            let data = listeningData;
+            data = data.filter((item) => item.id !== id);
+            setListeningData([...data]);
+          });
+      }
+        
+        
       });
   };
 
@@ -327,7 +386,7 @@ const Listening = () => {
                       <td>
                         <Button
                           variant="danger"
-                          onClick={() => deleteListeningModule(item.id)}
+                          onClick={() => deleteListeningModule(item)}
                         >
                           <i className="fa fa-trash"></i>
                         </Button>

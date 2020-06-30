@@ -100,9 +100,9 @@ const Writing = () => {
     setIsUploading(true);
     setIsUploadingCompleted(false);
     setErrorText("");
-    var storageRef = firebase.storage().ref();
+    var storageRef = firebase.storage().ref(`${institution}/writing`);
 
-    var uploadTask = storageRef.child(`${Date.now()}`).put(selectedFile);
+    var uploadTask = storageRef.child(`${firebase.auth().currentUser.email}_${Date.now()}`).put(selectedFile);
 
     uploadTask.on(
       "state_changed",
