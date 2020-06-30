@@ -270,7 +270,9 @@ const Home = ({ navigation }) => {
               <Card.Content style={styles.defaultCardLayout}>
                 <View>
                   <Title style={{ color: "#fff" }}>Writing</Title>
-                  <Paragraph style={{ color: "#fff" }}>See Stats</Paragraph>
+                  <Paragraph style={{ color: "#fff" }}>
+                    See Stats and Checked Answers
+                  </Paragraph>
                 </View>
                 <AntDesign name="right" size={30} color="#fff" />
               </Card.Content>

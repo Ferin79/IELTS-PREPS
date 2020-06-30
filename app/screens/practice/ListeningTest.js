@@ -230,9 +230,9 @@ const ListeningTest = ({ navigation, route }) => {
                 width: SCREEN_WIDTH * 0.8,
                 marginLeft: "auto",
                 marginRight: "auto",
-                marginVertical: 20,
+                marginVertical: 10,
                 borderWidth: 1,
-                padding: 20,
+                padding: 10,
                 borderRadius: 30,
                 backgroundColor: "#fff",
                 shadowOffset: {
@@ -248,8 +248,8 @@ const ListeningTest = ({ navigation, route }) => {
                 style={{
                   marginLeft: "auto",
                   marginRight: "auto",
-                  height: 150,
-                  width: 150,
+                  height: 125,
+                  width: 125,
                 }}
               />
               <View
@@ -301,7 +301,7 @@ const ListeningTest = ({ navigation, route }) => {
               mode="contained"
               style={{
                 width: SCREEN_WIDTH * 0.8,
-                padding: 15,
+                padding: 5,
                 marginLeft: "auto",
                 marginRight: "auto",
                 backgroundColor: "#0af",
@@ -437,7 +437,7 @@ const ListeningTest = ({ navigation, route }) => {
               Submit Exam
             </Button>
           </View>
-          <View style={{ height: SCREEN_HEIGHT * 0.3 }}></View>
+          <View style={{ height: SCREEN_HEIGHT * 0.2 }}></View>
         </ScrollView>
       </View>
     </SafeAreaView>

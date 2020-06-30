@@ -12,8 +12,7 @@ import Form from "react-bootstrap/Form";
 import LoadingScreen from "../components/LoadingScreen";
 
 const CheckWriting = () => {
-
-  const { isLoading, setIsLoading, role, institution } = useContext(Context);
+  const { isLoading, setIsLoading, institution } = useContext(Context);
 
   const [writingData, setWritingData] = useState([]);
 
@@ -36,100 +35,88 @@ const CheckWriting = () => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form  onSubmit={(e) => giveScore(e)}>
+          <Form onSubmit={(e) => giveScore(e)}>
             <Form.Label>Band</Form.Label>
-              <Form.Control
-                required
-                type="text"
-                name='band'
-                max={10}
-                min={0}
-              />
+            <Form.Control required type="text" name="band" max={10} min={0} />
             <Form.Label>Note</Form.Label>
-              <Form.Control
-                required
-                type="text"
-                name='note'
-                maxLength={100}
-              />
+            <Form.Control required type="text" name="note" maxLength={100} />
 
             <Form.Label>PDF</Form.Label>
-              <Form.File
-                required                
-                name='pdf'
-                accept="application/pdf"                
-              />
-              <div class="mt-3"> 
-                <Button type="submit" value="submit">Submit</Button> 
-                <button class="btn btn-danger ml-3" onClick={props.onHide}>Close</button>                    
-              </div>              
-            </Form>
+            <Form.File required name="pdf" accept="application/pdf" />
+            <div class="mt-3">
+              <Button type="submit" value="submit">
+                Submit
+              </Button>
+              <button class="btn btn-danger ml-3" onClick={props.onHide}>
+                Close
+              </button>
+            </div>
+          </Form>
         </Modal.Body>
-        <Modal.Footer>
-          
-        </Modal.Footer>
+        <Modal.Footer></Modal.Footer>
       </Modal>
     );
   };
 
-
-  const giveScore = (e) => {    
+  const giveScore = (e) => {
     e.preventDefault();
-    const band = e.target.band.value ;    
-    const note = e.target.note.value ;    
-    const file = e.target.pdf.files[0] ;
-    console.log(file);        
-    if(band > 10 || band < 0) {
-      toast.error("Band should be between 0 and 9")
+    const band = e.target.band.value;
+    const note = e.target.note.value;
+    const file = e.target.pdf.files[0];
+    console.log(file);
+    if (band > 10 || band < 0) {
+      toast.error("Band should be between 0 and 9");
       return;
     }
-    console.log(attemptedExamId); 
+    console.log(attemptedExamId);
     console.log(band);
-    console.log(note);      
+    console.log(note);
 
     setModalShow(false);
     setIsLoading(true);
 
-    const uploadTask = firebase.storage().ref(`${institution}/CheckedWriting`).child(`${firebase.auth().currentUser.email}_${attemptedExamId}`);
-    
-    uploadTask.put(file)
-      .on("state_changed",
-          function (snapshot) {
-            switch(snapshot.state){
-              case firebase.storage.TaskState.RUNNING:
-                console.log("Upload running");
-                break;              
-              default:
-                break;
-            }
-          },
-          function (error) {
-            console.log(error);            
-          },
-          function () {
-            uploadTask.getDownloadURL().then((url) => {
-              firebase.firestore().collection("writingUser").doc(`${attemptedExamId}`)
-              .update({
-                isChecked: true,
-                band: band, 
-                note: note,
-                checkedFile: url
-              })
-              .then(() => {                              
-                setIsLoading(false);
-                toast("Score uploaded.");
-              }).catch(() => {
-                toast.error("Error, try again");
-              }); 
-           
-            })            
-           
-          }    
-      )
-    
-   
+    const uploadTask = firebase
+      .storage()
+      .ref(`${institution}/CheckedWriting`)
+      .child(`${firebase.auth().currentUser.email}_${attemptedExamId}`);
 
-  }
+    uploadTask.put(file).on(
+      "state_changed",
+      function (snapshot) {
+        switch (snapshot.state) {
+          case firebase.storage.TaskState.RUNNING:
+            console.log("Upload running");
+            break;
+          default:
+            break;
+        }
+      },
+      function (error) {
+        console.log(error);
+      },
+      function () {
+        uploadTask.getDownloadURL().then((url) => {
+          firebase
+            .firestore()
+            .collection("writingUser")
+            .doc(`${attemptedExamId}`)
+            .update({
+              isChecked: true,
+              band: band,
+              note: note,
+              checkedFile: url,
+            })
+            .then(() => {
+              setIsLoading(false);
+              toast("Score uploaded.");
+            })
+            .catch(() => {
+              toast.error("Error, try again");
+            });
+        });
+      }
+    );
+  };
 
   useEffect(() => {
     firebase
@@ -141,9 +128,9 @@ const CheckWriting = () => {
       .then((docs) => {
         const data = [];
         docs.forEach((doc) => {
-          data.push({...doc.data(), id: doc.id});
+          data.push({ ...doc.data(), id: doc.id });
         });
-        setWritingData([...data]);        
+        setWritingData([...data]);
       })
       .catch((error) => {
         console.log(error);
@@ -151,7 +138,7 @@ const CheckWriting = () => {
   }, [institution]);
 
   if (isLoading) {
-    return <LoadingScreen text="Uploading checked file..."/>
+    return <LoadingScreen text="Uploading checked file..." />;
   }
 
   return (
@@ -184,15 +171,21 @@ const CheckWriting = () => {
                       <td>{item.email}</td>
                       <td>{item.isChecked ? "Yes" : "No"}</td>
                       <td>
-                        <a class="mr-3" href={item.pdfUrl} target="_blank">
-                          <Button variant="outline-info">
-                            View
-                          </Button>
+                        <a
+                          class="mr-3"
+                          href={item.pdfUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <Button variant="outline-info">View</Button>
                         </a>
-                        <Button variant="outline-info" onClick={()=>{
-                          setAttemptedExamId(item.id)                          
-                          setModalShow(true)                          
-                          }}>
+                        <Button
+                          variant="outline-info"
+                          onClick={() => {
+                            setAttemptedExamId(item.id);
+                            setModalShow(true);
+                          }}
+                        >
                           Score
                         </Button>
                       </td>

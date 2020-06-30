@@ -15,7 +15,6 @@ import CKEditor from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import ProgressBar from "react-bootstrap/ProgressBar";
 
-
 const Writing = () => {
   const { isLoading, setIsLoading, role, institution } = useContext(Context);
 
@@ -51,7 +50,7 @@ const Writing = () => {
         <Modal.Body>
           <Row>
             <h5>Average score :&nbsp; {detailsModalData.averageBand}</h5>
-          </Row>         
+          </Row>
           <Row>List of students who attempted this test</Row>
           {studentListInModel.map((student) => {
             return (
@@ -77,7 +76,9 @@ const Writing = () => {
       .then((docs) => {
         let data = [];
         let totalBand = 0;
+        // eslint-disable-next-line
         let totalCorrectAnswers = 0;
+        // eslint-disable-next-line
         let totalNotAttempted = 0;
         docs.forEach((doc) => {
           data.push(doc.data());
@@ -102,7 +103,9 @@ const Writing = () => {
     setErrorText("");
     var storageRef = firebase.storage().ref(`${institution}/writing`);
 
-    var uploadTask = storageRef.child(`${firebase.auth().currentUser.email}_${Date.now()}`).put(selectedFile);
+    var uploadTask = storageRef
+      .child(`${firebase.auth().currentUser.email}_${Date.now()}`)
+      .put(selectedFile);
 
     uploadTask.on(
       "state_changed",

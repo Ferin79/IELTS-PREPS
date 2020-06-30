@@ -2,6 +2,7 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import Home from "../screens/home/home";
 import Statistics from "../screens/home/statistics";
+import PDFOpener from "../screens/components/pdfOpener";
 
 const HomeStack = createStackNavigator();
 
@@ -21,6 +22,11 @@ const HomeStackScreen = () => {
           headerTitleAlign: "center",
           headerBackTitle: "Back",
         }}
+      />
+      <HomeStack.Screen
+        name="PDFOpener"
+        component={PDFOpener}
+        options={{ headerTitle: "PDF Viewer" }}
       />
     </HomeStack.Navigator>
   );

@@ -349,7 +349,7 @@ const Settings = ({ navigation }) => {
                   size={30}
                   color="#fd79a8"
                   onPress={() =>
-                    Linking.openURL("instagram://user?username=ferin_patel_79")
+                    Linking.openURL("https://www.instagram.com/ferin_patel_79/")
                   }
                 />
                 <AntDesign
@@ -394,7 +394,9 @@ const Settings = ({ navigation }) => {
                   size={30}
                   color="#fd79a8"
                   onPress={() =>
-                    Linking.openURL("instagram://user?username=__firemarshall_")
+                    Linking.openURL(
+                      "https://www.instagram.com/__firemarshall_/"
+                    )
                   }
                 />
                 <AntDesign name="facebook-square" size={30} color="#0984e3" />

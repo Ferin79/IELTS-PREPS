@@ -217,8 +217,8 @@ const Chat = ({ navigation }) => {
           <Ionicons name="ios-warning" color="#f39c12" size={size} />
         )}
       >
-        The Messages can seen by everyone with an institution. Sent message
-        cannot be deleted.
+        The Messages can seen by everyone within an institution. Sent message
+        cannot be deleted. Be kind.
       </Banner>
       <View
         style={{

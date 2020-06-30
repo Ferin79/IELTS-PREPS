@@ -1,12 +1,24 @@
 import React, { useEffect } from "react";
 import { View, Text, Button } from "react-native";
 import * as Linking from "expo-linking";
+import firebase from "../../data/firebase";
 
+let link = "";
+let adminURL = "";
 const Video = ({ navigation, route }) => {
-  let link = `https://elegant-kowalevski-7f9401.netlify.app/#/userVideo/${route.params.channelId}`;
-
   const openBrowser = () => {
-    Linking.openURL(link);
+    firebase
+      .firestore()
+      .collection("urls")
+      .get()
+      .then((docs) => {
+        docs.forEach((doc) => {
+          adminURL = doc.data().adminURL;
+        });
+        link = `${adminURL}#/userVideo/${route.params.channelId}`;
+        Linking.openURL(link);
+      })
+      .catch((error) => console.log(error));
   };
 
   useEffect(() => {

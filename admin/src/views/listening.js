@@ -35,8 +35,8 @@ const Listening = () => {
   const { isLoading, setIsLoading, role, institution } = useContext(Context);
 
   // Modal
-  const [modalShow, setModalShow] = useState(false);    
-  const [detailsModalData, setDetailsModalData] = useState({data:[]});
+  const [modalShow, setModalShow] = useState(false);
+  const [detailsModalData, setDetailsModalData] = useState({ data: [] });
   const [loadingModalData, setLoadingModalData] = useState(false);
   const [studentListInModel, setStudentListInModel] = useState([]);
   const MyVerticallyCenteredModal = (props) => {
@@ -52,70 +52,79 @@ const Listening = () => {
             Test Statistics
           </Modal.Title>
         </Modal.Header>
-        <Modal.Body>          
-            <Row>
-              <h5>Average score :&nbsp; {detailsModalData.averageBand}</h5>
-            </Row>
-            <Row>
-              <h5>Average Correct Score :&nbsp; {detailsModalData.averageCorrectScore}</h5>
-            </Row>
-            <Row>
-              <h5>Average Not Attempted :&nbsp; {detailsModalData.averageNotAttempted}</h5>
-            </Row>
-            <Row>List of students who attempted this test</Row>          
-            {
-              studentListInModel.map((student) => {
-                return(
-                 <li>{student.email} : {student.band} </li> 
-                  )
-              })
-            }          
+        <Modal.Body>
+          <Row>
+            <h5>Average score :&nbsp; {detailsModalData.averageBand}</h5>
+          </Row>
+          <Row>
+            <h5>
+              Average Correct Score :&nbsp;{" "}
+              {detailsModalData.averageCorrectScore}
+            </h5>
+          </Row>
+          <Row>
+            <h5>
+              Average Not Attempted :&nbsp;{" "}
+              {detailsModalData.averageNotAttempted}
+            </h5>
+          </Row>
+          <Row>List of students who attempted this test</Row>
+          {studentListInModel.map((student) => {
+            return (
+              <li>
+                {student.email} : {student.band}{" "}
+              </li>
+            );
+          })}
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={props.onHide}>Close</Button>
         </Modal.Footer>
       </Modal>
     );
-  }
+  };
 
   const showTestData = (id) => {
     setLoadingModalData(true);
-      firebase.firestore().collection("listeningUser").where("listeningTestId", "==",id).get()
-        .then((docs) => {
-          let data = [];
-          let totalBand = 0;
-          let totalCorrectAnswers = 0;
-          let totalNotAttempted = 0;
-          docs.forEach(doc => {
-              data.push(doc.data());
-              totalBand += doc.data().band;
-              totalCorrectAnswers += doc.data().correctScore;
-              totalNotAttempted += doc.data().notattemptScore;
-          });
-          const stats = {
-            data,
-            averageBand:totalBand/data.length,
-            averageCorrectScore: totalCorrectAnswers/data.length,
-            averageNotAttempted: totalNotAttempted/data.length,
-          }
-          console.log(data);
-          setDetailsModalData(stats);
-          setStudentListInModel(data)
-          setLoadingModalData(false)
-          setModalShow(true);
+    firebase
+      .firestore()
+      .collection("listeningUser")
+      .where("listeningTestId", "==", id)
+      .get()
+      .then((docs) => {
+        let data = [];
+        let totalBand = 0;
+        let totalCorrectAnswers = 0;
+        let totalNotAttempted = 0;
+        docs.forEach((doc) => {
+          data.push(doc.data());
+          totalBand += doc.data().band;
+          totalCorrectAnswers += doc.data().correctScore;
+          totalNotAttempted += doc.data().notattemptScore;
         });
-  }
-
+        const stats = {
+          data,
+          averageBand: totalBand / data.length,
+          averageCorrectScore: totalCorrectAnswers / data.length,
+          averageNotAttempted: totalNotAttempted / data.length,
+        };
+        console.log(data);
+        setDetailsModalData(stats);
+        setStudentListInModel(data);
+        setLoadingModalData(false);
+        setModalShow(true);
+      });
+  };
 
   const uploadFileToStorage = (fileToUpload, fileType) => {
-
-
     setIsUploading(true);
     setIsUploadingComplete(false);
     setErrorText("");
     var storageRef = firebase.storage().ref(`${institution}/listening`);
 
-    var uploadTask = storageRef.child(`${firebase.auth().currentUser.email}_${Date.now()}`).put(fileToUpload);
+    var uploadTask = storageRef
+      .child(`${firebase.auth().currentUser.email}_${Date.now()}`)
+      .put(fileToUpload);
 
     uploadTask.on(
       "state_changed",
@@ -162,12 +171,12 @@ const Listening = () => {
 
   const emptyAnswers = () => {
     for (var i = 0; i < 40; i++) {
-        if (answersData[i].value.trim() === ""){
-          return true;
-        }
+      if (answersData[i].value.trim() === "") {
+        return true;
+      }
     }
     return false;
-  }
+  };
 
   const addToDB = async (formdata) => {
     setIsLoading(true);
@@ -233,15 +242,14 @@ const Listening = () => {
   }, [setIsLoading, role, institution]);
 
   const deleteListeningModule = (item) => {
-
     const id = item.id;
     const type = item.type;
     let refUrl = "";
     let refPdfUrl = "";
-    
-    if (type == "video") {
-      refUrl = item.videoUrl
-    }else if (type == "audio"){
+
+    if (type === "video") {
+      refUrl = item.videoUrl;
+    } else if (type === "audio") {
       refUrl = item.audioUrl;
       refPdfUrl = item.pdfUrl;
     }
@@ -252,57 +260,63 @@ const Listening = () => {
       .doc(`/listening/${id}`)
       .delete()
       .then(() => {
-
-
-        if (type == "video"){
-
-          firebase.storage().refFromURL(refUrl).delete().then(() => {
-            setIsLoading(false);
-            toast.warning("Listening file deleted");
-            toast.warning("Listening Module Deleted");
-            let data = listeningData;
-            data = data.filter((item) => item.id !== id);
-            setListeningData([...data]);
-          }).catch(function(error) {
-            setIsLoading(false);
-          toast.warning("Listening Module Deleted");
-          toast.error("Listening file not deleted :(");
-          let data = listeningData;
-          data = data.filter((item) => item.id !== id);
-          setListeningData([...data]);
-        });
-      
-      }else if (type == "audio") {
-          firebase.storage().refFromURL(refUrl).delete().then(() => {
-          
-            firebase.storage().refFromURL(refPdfUrl).delete().then(() => {
-                setIsLoading(false);
-                toast.warning("Listening file deleted");
-                toast.warning("Listening Module Deleted");
-                let data = listeningData;
-                data = data.filter((item) => item.id !== id);
-                setListeningData([...data]);
-            }).catch(function(error) {
-                setIsLoading(false);
-                toast.warning("Listening Module Deleted");
-                toast.error("Listening file not deleted :(");
-                let data = listeningData;
-                data = data.filter((item) => item.id !== id);
-                setListeningData([...data]);
-            });                
-
-          
-          }).catch(function(error) {
-            setIsLoading(false);
-            toast.warning("Listening Module Deleted");
-            toast.error("Listening file not deleted :(");
-            let data = listeningData;
-            data = data.filter((item) => item.id !== id);
-            setListeningData([...data]);
-          });
-      }
-        
-        
+        if (type === "video") {
+          firebase
+            .storage()
+            .refFromURL(refUrl)
+            .delete()
+            .then(() => {
+              setIsLoading(false);
+              toast.warning("Listening file deleted");
+              toast.warning("Listening Module Deleted");
+              let data = listeningData;
+              data = data.filter((item) => item.id !== id);
+              setListeningData([...data]);
+            })
+            .catch(function (error) {
+              setIsLoading(false);
+              toast.warning("Listening Module Deleted");
+              toast.error("Listening file not deleted :(");
+              let data = listeningData;
+              data = data.filter((item) => item.id !== id);
+              setListeningData([...data]);
+            });
+        } else if (type === "audio") {
+          firebase
+            .storage()
+            .refFromURL(refUrl)
+            .delete()
+            .then(() => {
+              firebase
+                .storage()
+                .refFromURL(refPdfUrl)
+                .delete()
+                .then(() => {
+                  setIsLoading(false);
+                  toast.warning("Listening file deleted");
+                  toast.warning("Listening Module Deleted");
+                  let data = listeningData;
+                  data = data.filter((item) => item.id !== id);
+                  setListeningData([...data]);
+                })
+                .catch(function (error) {
+                  setIsLoading(false);
+                  toast.warning("Listening Module Deleted");
+                  toast.error("Listening file not deleted :(");
+                  let data = listeningData;
+                  data = data.filter((item) => item.id !== id);
+                  setListeningData([...data]);
+                });
+            })
+            .catch(function (error) {
+              setIsLoading(false);
+              toast.warning("Listening Module Deleted");
+              toast.error("Listening file not deleted :(");
+              let data = listeningData;
+              data = data.filter((item) => item.id !== id);
+              setListeningData([...data]);
+            });
+        }
       });
   };
 
@@ -320,8 +334,8 @@ const Listening = () => {
 
   if (isLoading) {
     return <LoadingScreen text="Listening Module is Loading..." />;
-  }else if (loadingModalData) {
-    return <LoadingScreen text="Loading Test Data..." />
+  } else if (loadingModalData) {
+    return <LoadingScreen text="Loading Test Data..." />;
   }
 
   return (
@@ -391,19 +405,22 @@ const Listening = () => {
                           <i className="fa fa-trash"></i>
                         </Button>
                       </td>
-                      
+
                       <td>
+                        <Button
+                          variant="primary"
+                          onClick={() => {
+                            showTestData(item.id);
+                          }}
+                        >
+                          <i className="fa fa-info"></i>
+                        </Button>
 
-                      <Button variant="primary" onClick={() => {showTestData(item.id); }}>
-                      <i className="fa fa-info"></i>
-                      </Button>
-
-                      <MyVerticallyCenteredModal
-                        show={modalShow}
-                        onHide={() => setModalShow(false)}
-                      />
+                        <MyVerticallyCenteredModal
+                          show={modalShow}
+                          onHide={() => setModalShow(false)}
+                        />
                       </td>
-
                     </tr>
                   );
                 })
@@ -646,7 +663,7 @@ const Listening = () => {
                   variant="info"
                   onClick={(event) => {
                     event.preventDefault();
-                    if (emptyAnswers()){
+                    if (emptyAnswers()) {
                       toast.error("Please Enter All Answers");
                       console.log("Empty Answer");
                       return;

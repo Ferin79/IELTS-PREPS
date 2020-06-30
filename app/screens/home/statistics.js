@@ -7,12 +7,12 @@ import {
   Text,
   RefreshControl,
 } from "react-native";
-import { Card, Title, Paragraph } from "react-native-paper";
+import { Card, Title, Paragraph, List, Button } from "react-native-paper";
 import { LineChart } from "react-native-chart-kit";
 import LoadingScreen from "../components/LoadingScreen";
 import firebase from "../../data/firebase";
 
-const Statistics = ({ route }) => {
+const Statistics = ({ navigation, route }) => {
   const module = route.params.module;
   const [isLoading, setIsLoading] = useState(false);
   const [appearedExam, setAppearedExam] = useState(0);
@@ -66,7 +66,7 @@ const Statistics = ({ route }) => {
         .firestore()
         .collection("writingUser")
         .where("email", "==", firebase.auth().currentUser.email)
-        .where("isCheck", "==", true)
+        .where("isChecked", "==", true)
         .get()
         .then((docs) => {
           if (docs.size) {
@@ -205,6 +205,66 @@ const Statistics = ({ route }) => {
             }}
           />
         </View>
+
+        {module === "writing" && (
+          <View style={{ margin: 10 }}>
+            <Text
+              style={{ fontSize: 20, textAlign: "center", marginVertical: 20 }}
+            >
+              {" "}
+              View Checked Writing Task
+            </Text>
+            <List.AccordionGroup>
+              {allData.map((item, index) => {
+                return (
+                  <List.Accordion
+                    title={"Writing " + parseInt(index + 1)}
+                    id={index + 1}
+                    key={index}
+                  >
+                    <View style={{ margin: 10, borderWidth: 1, padding: 15 }}>
+                      <Text style={{ fontSize: 18, marginVertical: 10 }}>
+                        Type:{" "}
+                        <Text style={{ fontSize: 20, fontWeight: "bold" }}>
+                          {item.type}
+                        </Text>
+                      </Text>
+                      <Text style={{ fontSize: 18, marginVertical: 10 }}>
+                        Bands:{" "}
+                        <Text style={{ fontSize: 20, fontWeight: "bold" }}>
+                          {item.band}
+                        </Text>
+                      </Text>
+                      <Text style={{ fontSize: 18, marginVertical: 10 }}>
+                        Note:{" "}
+                        <Text style={{ fontSize: 20, fontWeight: "bold" }}>
+                          {item.note}
+                        </Text>
+                      </Text>
+                      <Text style={{ fontSize: 18, marginVertical: 10 }}>
+                        Submitted At:{" "}
+                        <Text style={{ fontSize: 18, fontWeight: "bold" }}>
+                          {item.createdAt.toDate().toLocaleString()}
+                        </Text>
+                      </Text>
+                      <Button
+                        style={{ color: "#fff", backgroundColor: "#0af" }}
+                        mode="contained"
+                        onPress={() => {
+                          navigation.navigate("PDFOpener", {
+                            pdfUrl: item.checkedFile,
+                          });
+                        }}
+                      >
+                        View Checked PDF
+                      </Button>
+                    </View>
+                  </List.Accordion>
+                );
+              })}
+            </List.AccordionGroup>
+          </View>
+        )}
       </ScrollView>
     </SafeAreaView>
   );
