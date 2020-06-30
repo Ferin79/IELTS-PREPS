@@ -16,21 +16,19 @@ const Profile = () => {
   const [show, setShow] = useState(false);
   const [isLoading, setisLoading] = useState(false);
 
-
-  const uploadFile = (fileToUpload, fileType) => {
-
+  const uploadFile = (fileToUpload) => {
     setisLoading(true);
-    // setErrorText("");
-    var storageRef = firebase.storage().ref('profile/');
+    var storageRef = firebase.storage().ref("profile/");
 
-    var uploadTask = storageRef.child(`${firebase.auth().currentUser.uid}`).put(fileToUpload);
+    var uploadTask = storageRef
+      .child(`${firebase.auth().currentUser.uid}`)
+      .put(fileToUpload);
 
     uploadTask.on(
       "state_changed",
       function (snapshot) {
         var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         console.log("Upload is " + progress + "% done");
-        // setPercentage(Math.round(parseInt(progress)));
         switch (snapshot.state) {
           case firebase.storage.TaskState.PAUSED:
             console.log("Upload is paused");
@@ -44,26 +42,25 @@ const Profile = () => {
       },
       function (error) {
         console.log(error);
-        toast.error("Error While Uploading. Please try again")
-        // setErrorText("Error While Uploading. Please try again");
+        toast.error("Error While Uploading. Please try again");
         setisLoading(false);
       },
       function () {
         console.log(uploadTask.snapshot.ref.name);
         uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
           console.log("File available at", downloadURL);
-          
-          firebase.firestore().doc(`/users/${firebase.auth().currentUser.email}`)
-            .update({photoUrl: downloadURL})
-          
-          toast.info("Profile picture updated");
-          setPhotoUrl(downloadURL)          
+
+          firebase
+            .firestore()
+            .doc(`/users/${firebase.auth().currentUser.email}`)
+            .update({ photoUrl: downloadURL });
+
+          setPhotoUrl(downloadURL);
           setisLoading(false);
         });
       }
     );
   };
-
 
   useEffect(() => {
     setisLoading(true);
@@ -83,8 +80,6 @@ const Profile = () => {
         setisLoading(false);
         console.log(error);
       });
-
-
   }, []);
 
   if (isLoading) {
@@ -119,7 +114,15 @@ const Profile = () => {
           style={{ display: "none" }}
           onChange={(event) => {
             console.log(event.target.files);
-            uploadFile(event.target.files[0]);
+            if (
+              event.target.files[0].type === "image/jpeg" ||
+              event.target.files[0].type === "image/jpg" ||
+              event.target.files[0].type === "image/png"
+            ) {
+              uploadFile(event.target.files[0]);
+            } else {
+              alert("Please Select Valid Image File");
+            }
           }}
         />
         <OverlayTrigger
@@ -131,25 +134,15 @@ const Profile = () => {
         >
           <Image
             src={photoUrl}
-            rounded
-            height={100}
-            width={100}
+            roundedCircle
+            height={150}
+            width={150}
             onClick={() => {
               inputRef.click();
             }}
-            style={{ cursor: "pointer" }}
           />
         </OverlayTrigger>
-        
-        {/* {photoUrl && (
-          <p className="mt-3">
-            Audio File is Uploaded to{" "}
-            <a className="uploadLink" href={photoUrl}>
-              {photoUrl}
-            </a>
-          </p>
-        )}
-         */}
+
         <div>
           <h4>
             {userData.firstname} {userData.lastname}

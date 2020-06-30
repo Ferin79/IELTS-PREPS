@@ -9,15 +9,36 @@ import {
   Dimensions,
   Image,
 } from "react-native";
+import HTML from "react-native-render-html";
+import {
+  IGNORED_TAGS,
+  alterNode,
+  makeTableRenderer,
+} from "react-native-render-html-table-bridge";
 import { Button, ProgressBar } from "react-native-paper";
 import * as DocumentPicker from "expo-document-picker";
 import firebase from "../../data/firebase";
 import LoadingScreen from "../components/LoadingScreen";
 import { Context } from "../../data/context";
 import Lightbox from "react-native-lightbox";
+import WebView from "react-native-webview";
 
 const WritingTest = ({ route, navigation, navigator }) => {
   const data = route.params.data;
+
+  const config = {
+    WebViewComponent: WebView,
+  };
+
+  const renderers = {
+    table: makeTableRenderer(config),
+  };
+
+  const htmlConfig = {
+    alterNode,
+    renderers,
+    ignoredTags: IGNORED_TAGS,
+  };
 
   const [isUploading, setIsUploading] = useState(false);
   const [isUploadingCompleted, setIsUploadingCompleted] = useState(false);
@@ -53,8 +74,10 @@ const WritingTest = ({ route, navigation, navigator }) => {
         if (file.type === "success") {
           setIsUploading(true);
           const fileBlob = await uriToBlob(file.uri);
-          var storageRef = firebase.storage().ref();
-          var uploadTask = storageRef.child(`${Date.now()}`).put(fileBlob);
+          var storageRef = firebase.storage().ref("/writingUser");
+          var uploadTask = storageRef
+            .child(`${firebase.auth().currentUser.email}_${data.id}`)
+            .put(fileBlob);
           uploadTask.on(
             "state_changed",
             function (snapshot) {
@@ -111,10 +134,11 @@ const WritingTest = ({ route, navigation, navigator }) => {
           writingTestId: data.id,
           isChecked: false,
           institute_id,
+          type: data.type,
         })
         .then(() => {
           setIsLoading(false);
-          console.log("Added To Database");
+          navigation.navigate("PracticeMain");
         })
         .catch((error) => {
           console.log(error);
@@ -189,7 +213,11 @@ const WritingTest = ({ route, navigation, navigator }) => {
           </Lightbox>
         )}
         <View style={{ margin: 20 }}>
-          <Text style={{ fontSize: 20 }}>{data.question}</Text>
+          <HTML
+            html={data.question}
+            imagesMaxWidth={Dimensions.get("window").width}
+            {...htmlConfig}
+          />
         </View>
 
         <View style={{ marginHorizontal: 20, marginVertical: 10 }}>

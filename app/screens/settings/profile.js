@@ -22,7 +22,6 @@ const Profile = ({ navigation }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [firstname, setFirstname] = useState(userData.firstname);
   const [lastname, setLastname] = useState(userData.lastname);
-  const [errorText, setErrorText] = useState("");
 
   const pickImage = async () => {
     setIsLoading(true);
@@ -107,9 +106,9 @@ const Profile = ({ navigation }) => {
 
   const handleNameChange = () => {
     if (firstname.trim() === "") {
-      setErrorText("First Name cannot be empty");
+      Alert.alert("First Name cannot be empty");
     } else if (lastname.trim() === "") {
-      setErrorText("Last Name cannot be empty");
+      Alert.alert("Last Name cannot be empty");
     } else {
       setIsLoading(true);
       firebase
@@ -135,8 +134,8 @@ const Profile = ({ navigation }) => {
   }
 
   return (
-    <SafeAreaView style={{ display: "flex", flex: 1 }}>
-      <ScrollView>
+    <SafeAreaView style={{ flex: 1 }}>
+      <ScrollView style={{ flex: 1, height: SCREEN_HEIGHT }}>
         <ImageBackground
           source={{
             uri: userData.photoUrl,

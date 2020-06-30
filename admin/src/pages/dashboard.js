@@ -146,25 +146,22 @@ const Dashboard = () => {
       <Row>
         <Col
           onClick={() => handleShow()}
-          id="listening"
+          id="notifications"
           lg={true}
           className="d-flex flex-column justify-content-center align-items-center addHoverCursor"
         >
           <Image src={require("../images/notification.png")} rounded />
           <h5>Send Notifications</h5>
         </Col>
-      
-      {/* Writing Check */}      
         <Col
-          onClick={() => {history.push("/submittedWriting")}}
-          // id="listening"
+          onClick={() => history.push("/check-writing")}
+          id="check"
           lg={true}
           className="d-flex flex-column justify-content-center align-items-center addHoverCursor"
-          >
-          <Image src={require("../images/writing.png")} rounded />
-          <h5>Submitted Writing</h5>
+        >
+          <Image src={require("../images/check.png")} rounded />
+          <h5>Check Writing Section</h5>
         </Col>
-      
       </Row>
       <Modal
         show={show}
