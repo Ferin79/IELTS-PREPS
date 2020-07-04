@@ -11,9 +11,11 @@ import { ToastContainer, toast } from "react-toastify";
 import firebase from "../data/firebase";
 import "react-toastify/dist/ReactToastify.css";
 import Dropdown from "react-bootstrap/Dropdown";
-
+import { useHistory } from "react-router-dom";
 
 const Student = () => {
+  const history = useHistory();
+
   const { isLoading, institution, role, setIsLoading } = useContext(Context);
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
@@ -97,14 +99,14 @@ const Student = () => {
       .collection("users")
       .where("institute_id", "==", institution)
       .get()
-      .then((docs) => {        
+      .then((docs) => {
         const studentData = [];
         const staffData = [];
         docs.forEach((doc) => {
-          if (doc.data().isStudent) {            
+          if (doc.data().isStudent) {
             studentData.push(doc.data());
-          }else if (doc.data().isStaff) {
-            staffData.push(doc.data());  
+          } else if (doc.data().isStaff) {
+            staffData.push(doc.data());
           }
         });
         console.log(studentData, staffData);
@@ -199,6 +201,15 @@ const Student = () => {
                           >
                             <i className="fa fa-trash"></i>
                           </Button>
+                          <Button
+                            className="ml-3"
+                            variant="info"
+                            onClick={() =>
+                              history.push(`/students/${item.email}`)
+                            }
+                          >
+                            <i className="fa fa-info"></i>
+                          </Button>
                         </td>
                       </tr>
                     );
@@ -265,54 +276,50 @@ const Student = () => {
                   />
                 </Form.Group>
               </Form.Row>
-              
 
               {/* Under Staff */}
-                <Form.Label>Under Staff</Form.Label>
-               
-                <Dropdown onSelect={(email) => {
-                  staffList.forEach(staff => {
-                    if(staff.email === email){
-                      setUnderStaff(staff);                
-                      console.log(staff.email);                    
+              <Form.Label>Under Staff</Form.Label>
+
+              <Dropdown
+                onSelect={(email) => {
+                  staffList.forEach((staff) => {
+                    if (staff.email === email) {
+                      setUnderStaff(staff);
+                      console.log(staff.email);
                     }
                   });
-                }}>
-                  <Dropdown.Toggle
-                    variant="outline-dark"
-                    id="dropdown-basic">
-                    {underStaff ? underStaff.email  : "Select"}                  
-                  </Dropdown.Toggle>
+                }}
+              >
+                <Dropdown.Toggle variant="outline-dark" id="dropdown-basic">
+                  {underStaff ? underStaff.email : "Select"}
+                </Dropdown.Toggle>
 
-                  <Dropdown.Menu>
-                    {staffList.map((staff, index) => {
-                      // if(staff == underStaff){
-                      //   return (
-                      //     <Dropdown.Item key={index} eventKey={staff.email} active>
-                      //     <p className="dropdownData">                   
-                      //       {staff.firstname}
-                      //     </p>
-                      //   </Dropdown.Item>
-                      // );
-                      // }else{
-                        return (
-                          <Dropdown.Item key={index} eventKey={staff.email}>
-                            <p className="dropdownData">                   
-                              {staff.firstname}
-                            </p>
-                        </Dropdown.Item>
-                        );
-                      // }
-                    })}
-                  </Dropdown.Menu>
-                </Dropdown>
+                <Dropdown.Menu>
+                  {staffList.map((staff, index) => {
+                    // if(staff == underStaff){
+                    //   return (
+                    //     <Dropdown.Item key={index} eventKey={staff.email} active>
+                    //     <p className="dropdownData">
+                    //       {staff.firstname}
+                    //     </p>
+                    //   </Dropdown.Item>
+                    // );
+                    // }else{
+                    return (
+                      <Dropdown.Item key={index} eventKey={staff.email}>
+                        <p className="dropdownData">{staff.firstname}</p>
+                      </Dropdown.Item>
+                    );
+                    // }
+                  })}
+                </Dropdown.Menu>
+              </Dropdown>
 
               <Form.Text className="text-muted mt-1 mb-2 ">
                 <h6 className="text-danger">
                   {!errorText.length ? "" : `*${errorText}`}
                 </h6>
               </Form.Text>
-
             </Form>
             <Button
               variant="primary"

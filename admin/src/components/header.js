@@ -17,22 +17,30 @@ const Header = () => {
           {currentUser ? (
             <>
               <Nav.Link>
-                <NavLink to="/">Dashboard</NavLink>
+                <NavLink to="/" className="changeNavColor">
+                  Dashboard
+                </NavLink>
               </Nav.Link>
             </>
           ) : (
             <>
               <Nav.Link>
-                <NavLink to="/login">Login</NavLink>
+                <NavLink to="/login" className="changeNavColor">
+                  Login
+                </NavLink>
               </Nav.Link>
             </>
           )}
           <Nav.Link>
-            <NavLink to="/contact">Contact Us</NavLink>
+            <NavLink to="/contact" className="changeNavColor">
+              Contact Us
+            </NavLink>
           </Nav.Link>
 
           <Nav.Link>
-            <NavLink to="/privacy">Privacy Policy</NavLink>
+            <NavLink to="/privacy" className="changeNavColor">
+              Privacy Policy
+            </NavLink>
           </Nav.Link>
 
           {currentUser && (

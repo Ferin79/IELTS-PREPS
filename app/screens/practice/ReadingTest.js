@@ -167,7 +167,7 @@ const ReadingTest = ({ navigation, route }) => {
         band,
         email: firebase.auth().currentUser.email,
         createdAt: firebase.firestore.Timestamp.now(),
-        ReadingTestId: id,
+        readingTestId: id,
         institute_id,
       })
       .then(() => {
