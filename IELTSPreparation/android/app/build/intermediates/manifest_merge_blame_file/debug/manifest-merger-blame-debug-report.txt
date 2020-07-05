@@ -72,11 +72,11 @@
 31-->[:expo-location] /home/ferin/Documents/IELTS-PREP/IELTSPreparation/node_modules/expo-location/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:13:5-77
 31-->[:expo-location] /home/ferin/Documents/IELTS-PREP/IELTSPreparation/node_modules/expo-location/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:13:22-74
 32    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
-32-->[io.nlopez.smartlocation:library:3.2.11] /home/ferin/.gradle/caches/transforms-2/files-2.1/6d20ea03e6fc2b747616b48d738d8f61/jetified-library-3.2.11/AndroidManifest.xml:15:5-98
-32-->[io.nlopez.smartlocation:library:3.2.11] /home/ferin/.gradle/caches/transforms-2/files-2.1/6d20ea03e6fc2b747616b48d738d8f61/jetified-library-3.2.11/AndroidManifest.xml:15:22-95
+32-->[io.nlopez.smartlocation:library:3.2.11] /home/ferin/.gradle/caches/transforms-2/files-2.1/6c57300638d6a226e6b56849a1c99f74/jetified-library-3.2.11/AndroidManifest.xml:15:5-98
+32-->[io.nlopez.smartlocation:library:3.2.11] /home/ferin/.gradle/caches/transforms-2/files-2.1/6c57300638d6a226e6b56849a1c99f74/jetified-library-3.2.11/AndroidManifest.xml:15:22-95
 33    <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION" />
-33-->[io.nlopez.smartlocation:library:3.2.11] /home/ferin/.gradle/caches/transforms-2/files-2.1/6d20ea03e6fc2b747616b48d738d8f61/jetified-library-3.2.11/AndroidManifest.xml:16:5-94
-33-->[io.nlopez.smartlocation:library:3.2.11] /home/ferin/.gradle/caches/transforms-2/files-2.1/6d20ea03e6fc2b747616b48d738d8f61/jetified-library-3.2.11/AndroidManifest.xml:16:22-91
+33-->[io.nlopez.smartlocation:library:3.2.11] /home/ferin/.gradle/caches/transforms-2/files-2.1/6c57300638d6a226e6b56849a1c99f74/jetified-library-3.2.11/AndroidManifest.xml:16:5-94
+33-->[io.nlopez.smartlocation:library:3.2.11] /home/ferin/.gradle/caches/transforms-2/files-2.1/6c57300638d6a226e6b56849a1c99f74/jetified-library-3.2.11/AndroidManifest.xml:16:22-91
 34
 35    <application
 35-->/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/src/main/AndroidManifest.xml:24:3-34:17
@@ -199,20 +199,20 @@
 97-->[:expo-location] /home/ferin/Documents/IELTS-PREP/IELTSPreparation/node_modules/expo-location/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:18:13-37
 98
 99        <activity
-99-->[com.google.android.gms:play-services-base:16.0.1] /home/ferin/.gradle/caches/transforms-2/files-2.1/3c9be57404136d5095fea3802c27df2c/jetified-play-services-base-16.0.1/AndroidManifest.xml:23:9-26:75
+99-->[com.google.android.gms:play-services-base:16.0.1] /home/ferin/.gradle/caches/transforms-2/files-2.1/1602b40dfba4610fe29c9e42d01e9f0c/jetified-play-services-base-16.0.1/AndroidManifest.xml:23:9-26:75
 100            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-100-->[com.google.android.gms:play-services-base:16.0.1] /home/ferin/.gradle/caches/transforms-2/files-2.1/3c9be57404136d5095fea3802c27df2c/jetified-play-services-base-16.0.1/AndroidManifest.xml:24:13-79
+100-->[com.google.android.gms:play-services-base:16.0.1] /home/ferin/.gradle/caches/transforms-2/files-2.1/1602b40dfba4610fe29c9e42d01e9f0c/jetified-play-services-base-16.0.1/AndroidManifest.xml:24:13-79
 101            android:exported="false"
-101-->[com.google.android.gms:play-services-base:16.0.1] /home/ferin/.gradle/caches/transforms-2/files-2.1/3c9be57404136d5095fea3802c27df2c/jetified-play-services-base-16.0.1/AndroidManifest.xml:25:13-37
+101-->[com.google.android.gms:play-services-base:16.0.1] /home/ferin/.gradle/caches/transforms-2/files-2.1/1602b40dfba4610fe29c9e42d01e9f0c/jetified-play-services-base-16.0.1/AndroidManifest.xml:25:13-37
 102            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-102-->[com.google.android.gms:play-services-base:16.0.1] /home/ferin/.gradle/caches/transforms-2/files-2.1/3c9be57404136d5095fea3802c27df2c/jetified-play-services-base-16.0.1/AndroidManifest.xml:26:13-72
+102-->[com.google.android.gms:play-services-base:16.0.1] /home/ferin/.gradle/caches/transforms-2/files-2.1/1602b40dfba4610fe29c9e42d01e9f0c/jetified-play-services-base-16.0.1/AndroidManifest.xml:26:13-72
 103
 104        <meta-data
-104-->[com.google.android.gms:play-services-basement:16.0.1] /home/ferin/.gradle/caches/transforms-2/files-2.1/c7a26033146e6621e05820fd03c6cfa3/jetified-play-services-basement-16.0.1/AndroidManifest.xml:23:9-25:69
+104-->[com.google.android.gms:play-services-basement:16.0.1] /home/ferin/.gradle/caches/transforms-2/files-2.1/e32634945891f89c38d8bc13b3bbf3f4/jetified-play-services-basement-16.0.1/AndroidManifest.xml:23:9-25:69
 105            android:name="com.google.android.gms.version"
-105-->[com.google.android.gms:play-services-basement:16.0.1] /home/ferin/.gradle/caches/transforms-2/files-2.1/c7a26033146e6621e05820fd03c6cfa3/jetified-play-services-basement-16.0.1/AndroidManifest.xml:24:13-58
+105-->[com.google.android.gms:play-services-basement:16.0.1] /home/ferin/.gradle/caches/transforms-2/files-2.1/e32634945891f89c38d8bc13b3bbf3f4/jetified-play-services-basement-16.0.1/AndroidManifest.xml:24:13-58
 106            android:value="@integer/google_play_services_version" />
-106-->[com.google.android.gms:play-services-basement:16.0.1] /home/ferin/.gradle/caches/transforms-2/files-2.1/c7a26033146e6621e05820fd03c6cfa3/jetified-play-services-basement-16.0.1/AndroidManifest.xml:25:13-66
+106-->[com.google.android.gms:play-services-basement:16.0.1] /home/ferin/.gradle/caches/transforms-2/files-2.1/e32634945891f89c38d8bc13b3bbf3f4/jetified-play-services-basement-16.0.1/AndroidManifest.xml:25:13-66
 107
 108        <service
 108-->[androidx.room:room-runtime:2.1.0] /home/ferin/.gradle/caches/transforms-2/files-2.1/dd7893f26029167e3adbacf60755e755/room-runtime-2.1.0/AndroidManifest.xml:25:9-27:40
@@ -221,23 +221,23 @@
 110            android:exported="false" />
 110-->[androidx.room:room-runtime:2.1.0] /home/ferin/.gradle/caches/transforms-2/files-2.1/dd7893f26029167e3adbacf60755e755/room-runtime-2.1.0/AndroidManifest.xml:27:13-37
 111        <service
-111-->[io.nlopez.smartlocation:library:3.2.11] /home/ferin/.gradle/caches/transforms-2/files-2.1/6d20ea03e6fc2b747616b48d738d8f61/jetified-library-3.2.11/AndroidManifest.xml:19:9-21:40
+111-->[io.nlopez.smartlocation:library:3.2.11] /home/ferin/.gradle/caches/transforms-2/files-2.1/6c57300638d6a226e6b56849a1c99f74/jetified-library-3.2.11/AndroidManifest.xml:19:9-21:40
 112            android:name="io.nlopez.smartlocation.activity.providers.ActivityGooglePlayServicesProvider$ActivityRecognitionService"
-112-->[io.nlopez.smartlocation:library:3.2.11] /home/ferin/.gradle/caches/transforms-2/files-2.1/6d20ea03e6fc2b747616b48d738d8f61/jetified-library-3.2.11/AndroidManifest.xml:20:13-132
+112-->[io.nlopez.smartlocation:library:3.2.11] /home/ferin/.gradle/caches/transforms-2/files-2.1/6c57300638d6a226e6b56849a1c99f74/jetified-library-3.2.11/AndroidManifest.xml:20:13-132
 113            android:exported="false" />
-113-->[io.nlopez.smartlocation:library:3.2.11] /home/ferin/.gradle/caches/transforms-2/files-2.1/6d20ea03e6fc2b747616b48d738d8f61/jetified-library-3.2.11/AndroidManifest.xml:21:13-37
+113-->[io.nlopez.smartlocation:library:3.2.11] /home/ferin/.gradle/caches/transforms-2/files-2.1/6c57300638d6a226e6b56849a1c99f74/jetified-library-3.2.11/AndroidManifest.xml:21:13-37
 114        <service
-114-->[io.nlopez.smartlocation:library:3.2.11] /home/ferin/.gradle/caches/transforms-2/files-2.1/6d20ea03e6fc2b747616b48d738d8f61/jetified-library-3.2.11/AndroidManifest.xml:22:9-24:40
+114-->[io.nlopez.smartlocation:library:3.2.11] /home/ferin/.gradle/caches/transforms-2/files-2.1/6c57300638d6a226e6b56849a1c99f74/jetified-library-3.2.11/AndroidManifest.xml:22:9-24:40
 115            android:name="io.nlopez.smartlocation.geofencing.providers.GeofencingGooglePlayServicesProvider$GeofencingService"
-115-->[io.nlopez.smartlocation:library:3.2.11] /home/ferin/.gradle/caches/transforms-2/files-2.1/6d20ea03e6fc2b747616b48d738d8f61/jetified-library-3.2.11/AndroidManifest.xml:23:13-127
+115-->[io.nlopez.smartlocation:library:3.2.11] /home/ferin/.gradle/caches/transforms-2/files-2.1/6c57300638d6a226e6b56849a1c99f74/jetified-library-3.2.11/AndroidManifest.xml:23:13-127
 116            android:exported="false" />
-116-->[io.nlopez.smartlocation:library:3.2.11] /home/ferin/.gradle/caches/transforms-2/files-2.1/6d20ea03e6fc2b747616b48d738d8f61/jetified-library-3.2.11/AndroidManifest.xml:24:13-37
+116-->[io.nlopez.smartlocation:library:3.2.11] /home/ferin/.gradle/caches/transforms-2/files-2.1/6c57300638d6a226e6b56849a1c99f74/jetified-library-3.2.11/AndroidManifest.xml:24:13-37
 117        <service
-117-->[io.nlopez.smartlocation:library:3.2.11] /home/ferin/.gradle/caches/transforms-2/files-2.1/6d20ea03e6fc2b747616b48d738d8f61/jetified-library-3.2.11/AndroidManifest.xml:25:9-27:40
+117-->[io.nlopez.smartlocation:library:3.2.11] /home/ferin/.gradle/caches/transforms-2/files-2.1/6c57300638d6a226e6b56849a1c99f74/jetified-library-3.2.11/AndroidManifest.xml:25:9-27:40
 118            android:name="io.nlopez.smartlocation.geocoding.providers.AndroidGeocodingProvider$AndroidGeocodingService"
-118-->[io.nlopez.smartlocation:library:3.2.11] /home/ferin/.gradle/caches/transforms-2/files-2.1/6d20ea03e6fc2b747616b48d738d8f61/jetified-library-3.2.11/AndroidManifest.xml:26:13-120
+118-->[io.nlopez.smartlocation:library:3.2.11] /home/ferin/.gradle/caches/transforms-2/files-2.1/6c57300638d6a226e6b56849a1c99f74/jetified-library-3.2.11/AndroidManifest.xml:26:13-120
 119            android:exported="false" />
-119-->[io.nlopez.smartlocation:library:3.2.11] /home/ferin/.gradle/caches/transforms-2/files-2.1/6d20ea03e6fc2b747616b48d738d8f61/jetified-library-3.2.11/AndroidManifest.xml:27:13-37
+119-->[io.nlopez.smartlocation:library:3.2.11] /home/ferin/.gradle/caches/transforms-2/files-2.1/6c57300638d6a226e6b56849a1c99f74/jetified-library-3.2.11/AndroidManifest.xml:27:13-37
 120    </application>
 121
 122</manifest>

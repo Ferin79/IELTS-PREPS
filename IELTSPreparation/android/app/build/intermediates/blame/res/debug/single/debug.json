@@ -1,5 +1,9 @@
 [
     {
+        "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/raw_node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_fonts_zocial.ttf.flat",
+        "source": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/src/main/res/raw/node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_fonts_zocial.ttf"
+    },
+    {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_scrubber_control_to_pressed_mtrl_005.png.flat",
         "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/6e1c3aa384c0bde2d05f603637d0bdf7/appcompat-1.1.0/res/drawable-xhdpi-v4/abc_scrubber_control_to_pressed_mtrl_005.png"
     },
@@ -9,7 +13,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_common_google_signin_btn_text_light_normal_background.9.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/3c9be57404136d5095fea3802c27df2c/jetified-play-services-base-16.0.1/res/drawable-xxhdpi-v4/common_google_signin_btn_text_light_normal_background.9.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1602b40dfba4610fe29c9e42d01e9f0c/jetified-play-services-base-16.0.1/res/drawable-xxhdpi-v4/common_google_signin_btn_text_light_normal_background.9.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/anim_btn_checkbox_to_checked_icon_null_animation.xml.flat",
@@ -17,7 +21,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-ldpi-v4_exo_controls_fullscreen_enter.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-ldpi-v4/exo_controls_fullscreen_enter.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-ldpi-v4/exo_controls_fullscreen_enter.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-ldrtl-xxhdpi-v17_abc_ic_menu_copy_mtrl_am_alpha.png.flat",
@@ -25,7 +29,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable_common_google_signin_btn_icon_dark_normal.xml.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/3c9be57404136d5095fea3802c27df2c/jetified-play-services-base-16.0.1/res/drawable/common_google_signin_btn_icon_dark_normal.xml"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1602b40dfba4610fe29c9e42d01e9f0c/jetified-play-services-base-16.0.1/res/drawable/common_google_signin_btn_icon_dark_normal.xml"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/color_mtrl_error.xml.flat",
@@ -33,7 +37,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_exo_icon_next.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-mdpi-v4/exo_icon_next.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-mdpi-v4/exo_icon_next.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_design_ic_visibility_off.png.flat",
@@ -52,6 +56,10 @@
         "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1873fe9405c2e2a7c5fa3eda6cb1076f/material-1.1.0/res/drawable/mtrl_ic_error.xml"
     },
     {
+        "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/raw_node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_fonts_ionicons.ttf.flat",
+        "source": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/src/main/res/raw/node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_fonts_ionicons.ttf"
+    },
+    {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/layout_mtrl_picker_header_title_text.xml.flat",
         "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1873fe9405c2e2a7c5fa3eda6cb1076f/material-1.1.0/res/layout/mtrl_picker_header_title_text.xml"
     },
@@ -61,7 +69,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_exo_controls_fullscreen_exit.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-xhdpi-v4/exo_controls_fullscreen_exit.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-xhdpi-v4/exo_controls_fullscreen_exit.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_text_select_handle_left_mtrl_light.png.flat",
@@ -76,8 +84,12 @@
         "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1873fe9405c2e2a7c5fa3eda6cb1076f/material-1.1.0/res/layout/design_navigation_item.xml"
     },
     {
+        "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/raw_node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_glyphmaps_zocial.json.flat",
+        "source": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/src/main/res/raw/node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_glyphmaps_zocial.json"
+    },
+    {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable_common_google_signin_btn_icon_disabled.xml.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/3c9be57404136d5095fea3802c27df2c/jetified-play-services-base-16.0.1/res/drawable/common_google_signin_btn_icon_disabled.xml"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1602b40dfba4610fe29c9e42d01e9f0c/jetified-play-services-base-16.0.1/res/drawable/common_google_signin_btn_icon_disabled.xml"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/color_mtrl_navigation_item_icon_tint.xml.flat",
@@ -97,7 +109,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/layout_exo_playback_control_view.xml.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/layout/exo_playback_control_view.xml"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/layout/exo_playback_control_view.xml"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/layout_abc_cascading_menu_item_layout.xml.flat",
@@ -109,19 +121,19 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable_common_google_signin_btn_icon_dark.xml.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/3c9be57404136d5095fea3802c27df2c/jetified-play-services-base-16.0.1/res/drawable/common_google_signin_btn_icon_dark.xml"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1602b40dfba4610fe29c9e42d01e9f0c/jetified-play-services-base-16.0.1/res/drawable/common_google_signin_btn_icon_dark.xml"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/xml_rn_dev_preferences.xml.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/abad3ad4cd384ec805d7947854842e76/jetified-react-native-0.61.5/res/xml/rn_dev_preferences.xml"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/c3b79f08f8fc4697927dae7a15ea5e0e/jetified-react-native-0.61.5/res/xml/rn_dev_preferences.xml"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_exo_controls_repeat_off.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-mdpi-v4/exo_controls_repeat_off.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-mdpi-v4/exo_controls_repeat_off.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_crop_image_menu_flip.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/e95f3cd432afd54560d94fb28dd2484c/jetified-android-image-cropper-2.7.0/res/drawable-hdpi-v4/crop_image_menu_flip.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/60bee4bb483dbb75ab96304f7c942631/jetified-android-image-cropper-2.7.0/res/drawable-hdpi-v4/crop_image_menu_flip.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_notification_bg_low_normal.9.png.flat",
@@ -137,7 +149,11 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_exo_controls_repeat_one.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-hdpi-v4/exo_controls_repeat_one.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-hdpi-v4/exo_controls_repeat_one.png"
+    },
+    {
+        "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/raw_node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_fonts_entypo.ttf.flat",
+        "source": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/src/main/res/raw/node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_fonts_entypo.ttf"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_design_ic_visibility_off.png.flat",
@@ -153,7 +169,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/color_common_google_signin_btn_text_dark.xml.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/3c9be57404136d5095fea3802c27df2c/jetified-play-services-base-16.0.1/res/color/common_google_signin_btn_text_dark.xml"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1602b40dfba4610fe29c9e42d01e9f0c/jetified-play-services-base-16.0.1/res/color/common_google_signin_btn_text_dark.xml"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/color-v23_abc_btn_colored_borderless_text_material.xml.flat",
@@ -161,27 +177,31 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_exo_controls_repeat_off.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-hdpi-v4/exo_controls_repeat_off.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-hdpi-v4/exo_controls_repeat_off.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_exo_controls_repeat_one.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-mdpi-v4/exo_controls_repeat_one.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-mdpi-v4/exo_controls_repeat_one.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/layout_exo_simple_player_view.xml.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/layout/exo_simple_player_view.xml"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/layout/exo_simple_player_view.xml"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_crop_image_menu_rotate_right.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/e95f3cd432afd54560d94fb28dd2484c/jetified-android-image-cropper-2.7.0/res/drawable-xhdpi-v4/crop_image_menu_rotate_right.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/60bee4bb483dbb75ab96304f7c942631/jetified-android-image-cropper-2.7.0/res/drawable-xhdpi-v4/crop_image_menu_rotate_right.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_exo_icon_fastforward.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-xhdpi-v4/exo_icon_fastforward.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-xhdpi-v4/exo_icon_fastforward.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/color_material_on_surface_emphasis_high_type.xml.flat",
         "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1873fe9405c2e2a7c5fa3eda6cb1076f/material-1.1.0/res/color/material_on_surface_emphasis_high_type.xml"
+    },
+    {
+        "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/raw_node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_fonts_fontawesome5_brands.ttf.flat",
+        "source": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/src/main/res/raw/node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_fonts_fontawesome5_brands.ttf"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_btn_radio_to_on_mtrl_015.png.flat",
@@ -221,15 +241,15 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_exo_controls_shuffle.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-xxhdpi-v4/exo_controls_shuffle.png"
-    },
-    {
-        "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_crop_image_menu_rotate_left.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/e95f3cd432afd54560d94fb28dd2484c/jetified-android-image-cropper-2.7.0/res/drawable-hdpi-v4/crop_image_menu_rotate_left.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-xxhdpi-v4/exo_controls_shuffle.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/anim_btn_radio_to_off_mtrl_ring_outer_animation.xml.flat",
         "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/6e1c3aa384c0bde2d05f603637d0bdf7/appcompat-1.1.0/res/anim/btn_radio_to_off_mtrl_ring_outer_animation.xml"
+    },
+    {
+        "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_crop_image_menu_rotate_left.png.flat",
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/60bee4bb483dbb75ab96304f7c942631/jetified-android-image-cropper-2.7.0/res/drawable-hdpi-v4/crop_image_menu_rotate_left.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_list_selector_disabled_holo_light.9.png.flat",
@@ -238,6 +258,10 @@
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/layout_notification_template_lines_media.xml.flat",
         "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/0aa43010333d76a7fa6ea2e3675d61fd/media-1.0.0/res/layout/notification_template_lines_media.xml"
+    },
+    {
+        "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/raw_node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_fonts_foundation.ttf.flat",
+        "source": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/src/main/res/raw/node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_fonts_foundation.ttf"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_text_select_handle_middle_mtrl_light.png.flat",
@@ -265,7 +289,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-anydpi-v21_exo_edit_mode_logo.xml.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-anydpi-v21/exo_edit_mode_logo.xml"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-anydpi-v21/exo_edit_mode_logo.xml"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_scrubber_control_to_pressed_mtrl_000.png.flat",
@@ -277,7 +301,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-anydpi-v21_exo_icon_play.xml.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-anydpi-v21/exo_icon_play.xml"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-anydpi-v21/exo_icon_play.xml"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/color_abc_background_cache_hint_selector_material_light.xml.flat",
@@ -289,7 +313,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_common_google_signin_btn_text_dark_normal_background.9.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/3c9be57404136d5095fea3802c27df2c/jetified-play-services-base-16.0.1/res/drawable-hdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1602b40dfba4610fe29c9e42d01e9f0c/jetified-play-services-base-16.0.1/res/drawable-hdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_text_select_handle_left_mtrl_light.png.flat",
@@ -301,7 +325,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-ldpi-v4_exo_icon_stop.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-ldpi-v4/exo_icon_stop.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-ldpi-v4/exo_icon_stop.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/color_mtrl_extended_fab_ripple_color.xml.flat",
@@ -309,7 +333,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_common_google_signin_btn_text_light_normal_background.9.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/3c9be57404136d5095fea3802c27df2c/jetified-play-services-base-16.0.1/res/drawable-xhdpi-v4/common_google_signin_btn_text_light_normal_background.9.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1602b40dfba4610fe29c9e42d01e9f0c/jetified-play-services-base-16.0.1/res/drawable-xhdpi-v4/common_google_signin_btn_text_light_normal_background.9.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_ic_star_half_black_16dp.png.flat",
@@ -325,7 +349,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_exo_edit_mode_logo.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-hdpi-v4/exo_edit_mode_logo.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-hdpi-v4/exo_edit_mode_logo.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_btn_check_to_on_mtrl_000.png.flat",
@@ -341,7 +365,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_exo_controls_fullscreen_enter.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-xhdpi-v4/exo_controls_fullscreen_enter.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-xhdpi-v4/exo_controls_fullscreen_enter.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/color-v23_abc_btn_colored_text_material.xml.flat",
@@ -357,11 +381,11 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/layout_crop_image_activity.xml.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/e95f3cd432afd54560d94fb28dd2484c/jetified-android-image-cropper-2.7.0/res/layout/crop_image_activity.xml"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/60bee4bb483dbb75ab96304f7c942631/jetified-android-image-cropper-2.7.0/res/layout/crop_image_activity.xml"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-ldpi-v4_exo_icon_pause.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-ldpi-v4/exo_icon_pause.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-ldpi-v4/exo_icon_pause.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_scrubber_primary_mtrl_alpha.9.png.flat",
@@ -389,19 +413,27 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_exo_icon_pause.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-mdpi-v4/exo_icon_pause.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-mdpi-v4/exo_icon_pause.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_exo_icon_play.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-xhdpi-v4/exo_icon_play.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-xhdpi-v4/exo_icon_play.png"
+    },
+    {
+        "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/raw_node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_glyphmaps_fontawesome.json.flat",
+        "source": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/src/main/res/raw/node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_glyphmaps_fontawesome.json"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/animator_design_fab_show_motion_spec.xml.flat",
         "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1873fe9405c2e2a7c5fa3eda6cb1076f/material-1.1.0/res/animator/design_fab_show_motion_spec.xml"
     },
     {
+        "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/raw_node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_fonts_fontawesome5_regular.ttf.flat",
+        "source": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/src/main/res/raw/node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_fonts_fontawesome5_regular.ttf"
+    },
+    {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_common_google_signin_btn_icon_light_normal_background.9.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/3c9be57404136d5095fea3802c27df2c/jetified-play-services-base-16.0.1/res/drawable-hdpi-v4/common_google_signin_btn_icon_light_normal_background.9.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1602b40dfba4610fe29c9e42d01e9f0c/jetified-play-services-base-16.0.1/res/drawable-hdpi-v4/common_google_signin_btn_icon_light_normal_background.9.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/animator_mtrl_fab_show_motion_spec.xml.flat",
@@ -417,7 +449,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_exo_icon_rewind.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-hdpi-v4/exo_icon_rewind.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-hdpi-v4/exo_icon_rewind.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_ic_fullscreen_exit_32dp.png.flat",
@@ -437,7 +469,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-ldpi-v4_exo_controls_repeat_all.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-ldpi-v4/exo_controls_repeat_all.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-ldpi-v4/exo_controls_repeat_all.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_ic_fullscreen_32dp.png.flat",
@@ -445,7 +477,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_crop_image_menu_rotate_right.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/e95f3cd432afd54560d94fb28dd2484c/jetified-android-image-cropper-2.7.0/res/drawable-xxxhdpi-v4/crop_image_menu_rotate_right.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/60bee4bb483dbb75ab96304f7c942631/jetified-android-image-cropper-2.7.0/res/drawable-xxxhdpi-v4/crop_image_menu_rotate_right.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_ab_share_pack_mtrl_alpha.9.png.flat",
@@ -453,7 +485,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-anydpi-v21_exo_icon_previous.xml.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-anydpi-v21/exo_icon_previous.xml"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-anydpi-v21/exo_icon_previous.xml"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-v21_design_password_eye.xml.flat",
@@ -469,7 +501,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_exo_icon_pause.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-hdpi-v4/exo_icon_pause.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-hdpi-v4/exo_icon_pause.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_ic_star_half_black_36dp.png.flat",
@@ -492,6 +524,10 @@
         "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/6e1c3aa384c0bde2d05f603637d0bdf7/appcompat-1.1.0/res/layout-v26/abc_screen_toolbar.xml"
     },
     {
+        "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/raw_node_modules_cssselect_lib_procedure.json.flat",
+        "source": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/src/main/res/raw/node_modules_cssselect_lib_procedure.json"
+    },
+    {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable_abc_cab_background_internal_bg.xml.flat",
         "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/6e1c3aa384c0bde2d05f603637d0bdf7/appcompat-1.1.0/res/drawable/abc_cab_background_internal_bg.xml"
     },
@@ -501,7 +537,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_common_google_signin_btn_icon_light_normal_background.9.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/3c9be57404136d5095fea3802c27df2c/jetified-play-services-base-16.0.1/res/drawable-mdpi-v4/common_google_signin_btn_icon_light_normal_background.9.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1602b40dfba4610fe29c9e42d01e9f0c/jetified-play-services-base-16.0.1/res/drawable-mdpi-v4/common_google_signin_btn_icon_light_normal_background.9.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_notify_panel_notification_icon_bg.png.flat",
@@ -521,7 +557,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_exo_icon_next.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-hdpi-v4/exo_icon_next.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-hdpi-v4/exo_icon_next.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/layout_abc_list_menu_item_layout.xml.flat",
@@ -532,12 +568,16 @@
         "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/6e1c3aa384c0bde2d05f603637d0bdf7/appcompat-1.1.0/res/drawable-xxhdpi-v4/abc_btn_switch_to_on_mtrl_00001.9.png"
     },
     {
+        "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/raw_node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_glyphmaps_simplelineicons.json.flat",
+        "source": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/src/main/res/raw/node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_glyphmaps_simplelineicons.json"
+    },
+    {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/layout_exo_player_view.xml.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/layout/exo_player_view.xml"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/layout/exo_player_view.xml"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_exo_notification_small_icon.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-xhdpi-v4/exo_notification_small_icon.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-xhdpi-v4/exo_notification_small_icon.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_abc_tab_indicator_mtrl_alpha.9.png.flat",
@@ -565,7 +605,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_exo_icon_fastforward.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-mdpi-v4/exo_icon_fastforward.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-mdpi-v4/exo_icon_fastforward.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/anim_abc_tooltip_exit.xml.flat",
@@ -585,7 +625,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_exo_icon_play.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-hdpi-v4/exo_icon_play.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-hdpi-v4/exo_icon_play.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/color_abc_tint_btn_checkable.xml.flat",
@@ -601,7 +641,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_common_google_signin_btn_icon_dark_normal_background.9.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/3c9be57404136d5095fea3802c27df2c/jetified-play-services-base-16.0.1/res/drawable-xxhdpi-v4/common_google_signin_btn_icon_dark_normal_background.9.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1602b40dfba4610fe29c9e42d01e9f0c/jetified-play-services-base-16.0.1/res/drawable-xxhdpi-v4/common_google_signin_btn_icon_dark_normal_background.9.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/layout_text_view_with_line_height_from_appearance.xml.flat",
@@ -621,11 +661,11 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_exo_controls_fullscreen_exit.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-hdpi-v4/exo_controls_fullscreen_exit.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-hdpi-v4/exo_controls_fullscreen_exit.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_exo_icon_stop.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-xxhdpi-v4/exo_icon_stop.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-xxhdpi-v4/exo_icon_stop.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/color_mtrl_tabs_legacy_text_color_selector.xml.flat",
@@ -645,7 +685,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable_common_google_signin_btn_text_light_focused.xml.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/3c9be57404136d5095fea3802c27df2c/jetified-play-services-base-16.0.1/res/drawable/common_google_signin_btn_text_light_focused.xml"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1602b40dfba4610fe29c9e42d01e9f0c/jetified-play-services-base-16.0.1/res/drawable/common_google_signin_btn_text_light_focused.xml"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_ic_menu_cut_mtrl_alpha.png.flat",
@@ -657,7 +697,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_crop_image_menu_flip.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/e95f3cd432afd54560d94fb28dd2484c/jetified-android-image-cropper-2.7.0/res/drawable-xxxhdpi-v4/crop_image_menu_flip.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/60bee4bb483dbb75ab96304f7c942631/jetified-android-image-cropper-2.7.0/res/drawable-xxxhdpi-v4/crop_image_menu_flip.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-ldrtl-xxxhdpi-v17_abc_spinner_mtrl_am_alpha.9.png.flat",
@@ -676,8 +716,12 @@
         "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/6e1c3aa384c0bde2d05f603637d0bdf7/appcompat-1.1.0/res/drawable-xxxhdpi-v4/abc_spinner_mtrl_am_alpha.9.png"
     },
     {
+        "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/raw_node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_glyphmaps_entypo.json.flat",
+        "source": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/src/main/res/raw/node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_glyphmaps_entypo.json"
+    },
+    {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-ldpi-v4_exo_icon_rewind.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-ldpi-v4/exo_icon_rewind.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-ldpi-v4/exo_icon_rewind.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/layout_design_layout_tab_icon.xml.flat",
@@ -709,7 +753,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_exo_controls_fullscreen_enter.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-mdpi-v4/exo_controls_fullscreen_enter.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-mdpi-v4/exo_controls_fullscreen_enter.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_list_divider_mtrl_alpha.9.png.flat",
@@ -729,7 +773,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-ldpi-v4_exo_icon_play.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-ldpi-v4/exo_icon_play.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-ldpi-v4/exo_icon_play.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable_abc_list_selector_background_transition_holo_light.xml.flat",
@@ -776,6 +820,10 @@
         "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1873fe9405c2e2a7c5fa3eda6cb1076f/material-1.1.0/res/layout/test_toolbar_surface.xml"
     },
     {
+        "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/raw_node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_glyphmaps_fontawesome5free.json.flat",
+        "source": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/src/main/res/raw/node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_glyphmaps_fontawesome5free.json"
+    },
+    {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_btn_check_to_on_mtrl_000.png.flat",
         "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/6e1c3aa384c0bde2d05f603637d0bdf7/appcompat-1.1.0/res/drawable-xhdpi-v4/abc_btn_check_to_on_mtrl_000.png"
     },
@@ -817,7 +865,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-ldpi-v4_exo_icon_fastforward.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-ldpi-v4/exo_icon_fastforward.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-ldpi-v4/exo_icon_fastforward.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/layout_mtrl_picker_actions.xml.flat",
@@ -857,7 +905,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_exo_icon_pause.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-xxhdpi-v4/exo_icon_pause.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-xxhdpi-v4/exo_icon_pause.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/layout_abc_popup_menu_header_item_layout.xml.flat",
@@ -865,11 +913,11 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_common_full_open_on_phone.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/3c9be57404136d5095fea3802c27df2c/jetified-play-services-base-16.0.1/res/drawable-xhdpi-v4/common_full_open_on_phone.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1602b40dfba4610fe29c9e42d01e9f0c/jetified-play-services-base-16.0.1/res/drawable-xhdpi-v4/common_full_open_on_phone.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/layout_redbox_view.xml.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/abad3ad4cd384ec805d7947854842e76/jetified-react-native-0.61.5/res/layout/redbox_view.xml"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/c3b79f08f8fc4697927dae7a15ea5e0e/jetified-react-native-0.61.5/res/layout/redbox_view.xml"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable_ic_calendar_black_24dp.xml.flat",
@@ -880,8 +928,12 @@
         "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/6e1c3aa384c0bde2d05f603637d0bdf7/appcompat-1.1.0/res/anim/abc_tooltip_enter.xml"
     },
     {
+        "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/raw_node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_fonts_antdesign.ttf.flat",
+        "source": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/src/main/res/raw/node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_fonts_antdesign.ttf"
+    },
+    {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_exo_icon_play.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-mdpi-v4/exo_icon_play.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-mdpi-v4/exo_icon_play.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/anim-v21_design_bottom_sheet_slide_out.xml.flat",
@@ -920,12 +972,16 @@
         "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/6e1c3aa384c0bde2d05f603637d0bdf7/appcompat-1.1.0/res/drawable-xxxhdpi-v4/abc_text_select_handle_right_mtrl_light.png"
     },
     {
+        "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/raw_node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_glyphmaps_evilicons.json.flat",
+        "source": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/src/main/res/raw/node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_glyphmaps_evilicons.json"
+    },
+    {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-v21_design_bottom_navigation_item_background.xml.flat",
         "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1873fe9405c2e2a7c5fa3eda6cb1076f/material-1.1.0/res/drawable-v21/design_bottom_navigation_item_background.xml"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable_common_google_signin_btn_icon_dark_focused.xml.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/3c9be57404136d5095fea3802c27df2c/jetified-play-services-base-16.0.1/res/drawable/common_google_signin_btn_icon_dark_focused.xml"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1602b40dfba4610fe29c9e42d01e9f0c/jetified-play-services-base-16.0.1/res/drawable/common_google_signin_btn_icon_dark_focused.xml"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/layout_test_design_checkbox.xml.flat",
@@ -933,7 +989,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/color_common_google_signin_btn_tint.xml.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/3c9be57404136d5095fea3802c27df2c/jetified-play-services-base-16.0.1/res/color/common_google_signin_btn_tint.xml"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1602b40dfba4610fe29c9e42d01e9f0c/jetified-play-services-base-16.0.1/res/color/common_google_signin_btn_tint.xml"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/anim_abc_slide_in_bottom.xml.flat",
@@ -961,7 +1017,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-ldpi-v4_exo_icon_previous.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-ldpi-v4/exo_icon_previous.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-ldpi-v4/exo_icon_previous.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/layout_abc_alert_dialog_material.xml.flat",
@@ -993,11 +1049,11 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/color_common_google_signin_btn_text_light.xml.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/3c9be57404136d5095fea3802c27df2c/jetified-play-services-base-16.0.1/res/color/common_google_signin_btn_text_light.xml"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1602b40dfba4610fe29c9e42d01e9f0c/jetified-play-services-base-16.0.1/res/color/common_google_signin_btn_text_light.xml"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_exo_controls_shuffle.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-hdpi-v4/exo_controls_shuffle.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-hdpi-v4/exo_controls_shuffle.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable_mtrl_dropdown_arrow.xml.flat",
@@ -1033,7 +1089,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_exo_controls_fullscreen_exit.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-mdpi-v4/exo_controls_fullscreen_exit.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-mdpi-v4/exo_controls_fullscreen_exit.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/color_mtrl_chip_background_color.xml.flat",
@@ -1080,8 +1136,12 @@
         "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1873fe9405c2e2a7c5fa3eda6cb1076f/material-1.1.0/res/layout/mtrl_calendar_day_of_week.xml"
     },
     {
+        "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/raw_node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_glyphmaps_ionicons.json.flat",
+        "source": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/src/main/res/raw/node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_glyphmaps_ionicons.json"
+    },
+    {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_exo_icon_previous.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-hdpi-v4/exo_icon_previous.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-hdpi-v4/exo_icon_previous.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_scrubber_control_to_pressed_mtrl_000.png.flat",
@@ -1097,7 +1157,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_crop_image_menu_flip.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/e95f3cd432afd54560d94fb28dd2484c/jetified-android-image-cropper-2.7.0/res/drawable-xhdpi-v4/crop_image_menu_flip.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/60bee4bb483dbb75ab96304f7c942631/jetified-android-image-cropper-2.7.0/res/drawable-xhdpi-v4/crop_image_menu_flip.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/color_material_on_primary_disabled.xml.flat",
@@ -1157,19 +1217,19 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_exo_icon_previous.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-xxhdpi-v4/exo_icon_previous.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-xxhdpi-v4/exo_icon_previous.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-anydpi-v21_exo_icon_rewind.xml.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-anydpi-v21/exo_icon_rewind.xml"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-anydpi-v21/exo_icon_rewind.xml"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_googleg_standard_color_18.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/3c9be57404136d5095fea3802c27df2c/jetified-play-services-base-16.0.1/res/drawable-hdpi-v4/googleg_standard_color_18.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1602b40dfba4610fe29c9e42d01e9f0c/jetified-play-services-base-16.0.1/res/drawable-hdpi-v4/googleg_standard_color_18.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable_common_google_signin_btn_icon_light.xml.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/3c9be57404136d5095fea3802c27df2c/jetified-play-services-base-16.0.1/res/drawable/common_google_signin_btn_icon_light.xml"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1602b40dfba4610fe29c9e42d01e9f0c/jetified-play-services-base-16.0.1/res/drawable/common_google_signin_btn_icon_light.xml"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-ldrtl-mdpi-v17_abc_ic_menu_cut_mtrl_alpha.png.flat",
@@ -1209,7 +1269,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/anim_catalyst_slide_down.xml.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/abad3ad4cd384ec805d7947854842e76/jetified-react-native-0.61.5/res/anim/catalyst_slide_down.xml"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/c3b79f08f8fc4697927dae7a15ea5e0e/jetified-react-native-0.61.5/res/anim/catalyst_slide_down.xml"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_textfield_activated_mtrl_alpha.9.png.flat",
@@ -1229,7 +1289,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_common_google_signin_btn_text_dark_normal_background.9.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/3c9be57404136d5095fea3802c27df2c/jetified-play-services-base-16.0.1/res/drawable-xhdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1602b40dfba4610fe29c9e42d01e9f0c/jetified-play-services-base-16.0.1/res/drawable-xhdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/color_abc_btn_colored_text_material.xml.flat",
@@ -1245,11 +1305,11 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_exo_icon_fastforward.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-hdpi-v4/exo_icon_fastforward.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-hdpi-v4/exo_icon_fastforward.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_exo_notification_small_icon.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-xxhdpi-v4/exo_notification_small_icon.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-xxhdpi-v4/exo_notification_small_icon.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/color_mtrl_navigation_item_background_color.xml.flat",
@@ -1260,8 +1320,12 @@
         "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/6e1c3aa384c0bde2d05f603637d0bdf7/appcompat-1.1.0/res/drawable-xxhdpi-v4/abc_textfield_activated_mtrl_alpha.9.png"
     },
     {
+        "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/raw_node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_fonts_fontawesome.ttf.flat",
+        "source": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/src/main/res/raw/node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_fonts_fontawesome.ttf"
+    },
+    {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_exo_controls_fullscreen_exit.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-xxhdpi-v4/exo_controls_fullscreen_exit.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-xxhdpi-v4/exo_controls_fullscreen_exit.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/color-v23_abc_tint_switch_track.xml.flat",
@@ -1269,7 +1333,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_exo_controls_fullscreen_enter.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-hdpi-v4/exo_controls_fullscreen_enter.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-hdpi-v4/exo_controls_fullscreen_enter.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_notification_bg_low_pressed.9.png.flat",
@@ -1297,11 +1361,15 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-anydpi-v21_exo_controls_repeat_all.xml.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-anydpi-v21/exo_controls_repeat_all.xml"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-anydpi-v21/exo_controls_repeat_all.xml"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_design_ic_visibility.png.flat",
         "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1873fe9405c2e2a7c5fa3eda6cb1076f/material-1.1.0/res/drawable-xxxhdpi-v4/design_ic_visibility.png"
+    },
+    {
+        "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/raw_node_modules_entities_lib_maps_xml.json.flat",
+        "source": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/src/main/res/raw/node_modules_entities_lib_maps_xml.json"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/color_switch_thumb_material_dark.xml.flat",
@@ -1325,7 +1393,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable_common_google_signin_btn_icon_light_focused.xml.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/3c9be57404136d5095fea3802c27df2c/jetified-play-services-base-16.0.1/res/drawable/common_google_signin_btn_icon_light_focused.xml"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1602b40dfba4610fe29c9e42d01e9f0c/jetified-play-services-base-16.0.1/res/drawable/common_google_signin_btn_icon_light_focused.xml"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/layout_design_navigation_item_separator.xml.flat",
@@ -1337,7 +1405,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-anydpi-v21_exo_controls_shuffle.xml.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-anydpi-v21/exo_controls_shuffle.xml"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-anydpi-v21/exo_controls_shuffle.xml"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/layout_notification_media_action.xml.flat",
@@ -1365,7 +1433,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable_common_google_signin_btn_icon_light_normal.xml.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/3c9be57404136d5095fea3802c27df2c/jetified-play-services-base-16.0.1/res/drawable/common_google_signin_btn_icon_light_normal.xml"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1602b40dfba4610fe29c9e42d01e9f0c/jetified-play-services-base-16.0.1/res/drawable/common_google_signin_btn_icon_light_normal.xml"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_btn_check_to_on_mtrl_000.png.flat",
@@ -1377,7 +1445,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_exo_edit_mode_logo.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-xxhdpi-v4/exo_edit_mode_logo.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-xxhdpi-v4/exo_edit_mode_logo.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable_abc_seekbar_tick_mark_material.xml.flat",
@@ -1389,7 +1457,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_exo_notification_small_icon.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-mdpi-v4/exo_notification_small_icon.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-mdpi-v4/exo_notification_small_icon.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/layout-v26_mtrl_calendar_month.xml.flat",
@@ -1401,11 +1469,11 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_exo_edit_mode_logo.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-mdpi-v4/exo_edit_mode_logo.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-mdpi-v4/exo_edit_mode_logo.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_common_google_signin_btn_text_dark_normal_background.9.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/3c9be57404136d5095fea3802c27df2c/jetified-play-services-base-16.0.1/res/drawable-xxhdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1602b40dfba4610fe29c9e42d01e9f0c/jetified-play-services-base-16.0.1/res/drawable-xxhdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/layout_support_simple_spinner_dropdown_item.xml.flat",
@@ -1417,11 +1485,11 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_common_google_signin_btn_icon_dark_normal_background.9.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/3c9be57404136d5095fea3802c27df2c/jetified-play-services-base-16.0.1/res/drawable-mdpi-v4/common_google_signin_btn_icon_dark_normal_background.9.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1602b40dfba4610fe29c9e42d01e9f0c/jetified-play-services-base-16.0.1/res/drawable-mdpi-v4/common_google_signin_btn_icon_dark_normal_background.9.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_exo_icon_previous.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-mdpi-v4/exo_icon_previous.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-mdpi-v4/exo_icon_previous.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable_ic_mtrl_chip_checked_circle.xml.flat",
@@ -1437,7 +1505,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/layout_redbox_item_frame.xml.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/abad3ad4cd384ec805d7947854842e76/jetified-react-native-0.61.5/res/layout/redbox_item_frame.xml"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/c3b79f08f8fc4697927dae7a15ea5e0e/jetified-react-native-0.61.5/res/layout/redbox_item_frame.xml"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_abc_ic_star_half_black_36dp.png.flat",
@@ -1457,7 +1525,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_exo_icon_rewind.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-mdpi-v4/exo_icon_rewind.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-mdpi-v4/exo_icon_rewind.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_abc_ic_star_black_48dp.png.flat",
@@ -1493,7 +1561,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_exo_notification_small_icon.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-xxxhdpi-v4/exo_notification_small_icon.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-xxxhdpi-v4/exo_notification_small_icon.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/color_mtrl_indicator_text_color.xml.flat",
@@ -1514,6 +1582,10 @@
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/animator_mtrl_btn_state_list_anim.xml.flat",
         "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1873fe9405c2e2a7c5fa3eda6cb1076f/material-1.1.0/res/animator/mtrl_btn_state_list_anim.xml"
+    },
+    {
+        "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/raw_node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_fonts_fontawesome5_solid.ttf.flat",
+        "source": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/src/main/res/raw/node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_fonts_fontawesome5_solid.ttf"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_scrubber_primary_mtrl_alpha.9.png.flat",
@@ -1557,7 +1629,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/layout_dev_loading_view.xml.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/abad3ad4cd384ec805d7947854842e76/jetified-react-native-0.61.5/res/layout/dev_loading_view.xml"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/c3b79f08f8fc4697927dae7a15ea5e0e/jetified-react-native-0.61.5/res/layout/dev_loading_view.xml"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-ldrtl-hdpi-v17_abc_ic_menu_copy_mtrl_am_alpha.png.flat",
@@ -1625,7 +1697,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_crop_image_menu_rotate_left.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/e95f3cd432afd54560d94fb28dd2484c/jetified-android-image-cropper-2.7.0/res/drawable-xhdpi-v4/crop_image_menu_rotate_left.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/60bee4bb483dbb75ab96304f7c942631/jetified-android-image-cropper-2.7.0/res/drawable-xhdpi-v4/crop_image_menu_rotate_left.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_ic_menu_copy_mtrl_am_alpha.png.flat",
@@ -1657,7 +1729,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_exo_controls_repeat_all.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-xxhdpi-v4/exo_controls_repeat_all.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-xxhdpi-v4/exo_controls_repeat_all.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable_mtrl_ic_arrow_drop_up.xml.flat",
@@ -1673,11 +1745,15 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_common_google_signin_btn_text_dark_normal_background.9.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/3c9be57404136d5095fea3802c27df2c/jetified-play-services-base-16.0.1/res/drawable-mdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1602b40dfba4610fe29c9e42d01e9f0c/jetified-play-services-base-16.0.1/res/drawable-mdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/color_mtrl_text_btn_text_color_selector.xml.flat",
         "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1873fe9405c2e2a7c5fa3eda6cb1076f/material-1.1.0/res/color/mtrl_text_btn_text_color_selector.xml"
+    },
+    {
+        "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/raw_node_modules_domserializer_foreignnames.json.flat",
+        "source": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/src/main/res/raw/node_modules_domserializer_foreignnames.json"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_spinner_mtrl_am_alpha.9.png.flat",
@@ -1693,7 +1769,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-anydpi-v21_exo_controls_repeat_off.xml.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-anydpi-v21/exo_controls_repeat_off.xml"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-anydpi-v21/exo_controls_repeat_off.xml"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/anim_abc_fade_out.xml.flat",
@@ -1709,7 +1785,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_googleg_disabled_color_18.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/3c9be57404136d5095fea3802c27df2c/jetified-play-services-base-16.0.1/res/drawable-hdpi-v4/googleg_disabled_color_18.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1602b40dfba4610fe29c9e42d01e9f0c/jetified-play-services-base-16.0.1/res/drawable-hdpi-v4/googleg_disabled_color_18.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/color_mtrl_btn_text_btn_bg_color_selector.xml.flat",
@@ -1717,7 +1793,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_googleg_standard_color_18.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/3c9be57404136d5095fea3802c27df2c/jetified-play-services-base-16.0.1/res/drawable-xxhdpi-v4/googleg_standard_color_18.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1602b40dfba4610fe29c9e42d01e9f0c/jetified-play-services-base-16.0.1/res/drawable-xxhdpi-v4/googleg_standard_color_18.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable_abc_btn_check_material_anim.xml.flat",
@@ -1753,7 +1829,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_googleg_disabled_color_18.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/3c9be57404136d5095fea3802c27df2c/jetified-play-services-base-16.0.1/res/drawable-mdpi-v4/googleg_disabled_color_18.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1602b40dfba4610fe29c9e42d01e9f0c/jetified-play-services-base-16.0.1/res/drawable-mdpi-v4/googleg_disabled_color_18.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_ic_menu_copy_mtrl_am_alpha.png.flat",
@@ -1769,7 +1845,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_common_google_signin_btn_icon_light_normal_background.9.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/3c9be57404136d5095fea3802c27df2c/jetified-play-services-base-16.0.1/res/drawable-xxhdpi-v4/common_google_signin_btn_icon_light_normal_background.9.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1602b40dfba4610fe29c9e42d01e9f0c/jetified-play-services-base-16.0.1/res/drawable-xxhdpi-v4/common_google_signin_btn_icon_light_normal_background.9.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_text_select_handle_right_mtrl_dark.png.flat",
@@ -1785,7 +1861,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_common_full_open_on_phone.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/3c9be57404136d5095fea3802c27df2c/jetified-play-services-base-16.0.1/res/drawable-hdpi-v4/common_full_open_on_phone.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1602b40dfba4610fe29c9e42d01e9f0c/jetified-play-services-base-16.0.1/res/drawable-hdpi-v4/common_full_open_on_phone.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable_btn_checkbox_checked_to_unchecked_mtrl_animation.xml.flat",
@@ -1833,7 +1909,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_exo_controls_repeat_all.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-xhdpi-v4/exo_controls_repeat_all.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-xhdpi-v4/exo_controls_repeat_all.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/layout_mtrl_calendar_year.xml.flat",
@@ -1841,7 +1917,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable_common_google_signin_btn_text_dark_normal.xml.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/3c9be57404136d5095fea3802c27df2c/jetified-play-services-base-16.0.1/res/drawable/common_google_signin_btn_text_dark_normal.xml"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1602b40dfba4610fe29c9e42d01e9f0c/jetified-play-services-base-16.0.1/res/drawable/common_google_signin_btn_text_dark_normal.xml"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/interpolator-v21_mtrl_linear_out_slow_in.xml.flat",
@@ -1865,7 +1941,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-ldpi-v4_exo_controls_shuffle.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-ldpi-v4/exo_controls_shuffle.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-ldpi-v4/exo_controls_shuffle.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_scrubber_control_to_pressed_mtrl_000.png.flat",
@@ -1881,7 +1957,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-anydpi-v21_exo_icon_fastforward.xml.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-anydpi-v21/exo_icon_fastforward.xml"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-anydpi-v21/exo_icon_fastforward.xml"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_ic_commit_search_api_mtrl_alpha.png.flat",
@@ -1905,7 +1981,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable_common_google_signin_btn_text_dark_focused.xml.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/3c9be57404136d5095fea3802c27df2c/jetified-play-services-base-16.0.1/res/drawable/common_google_signin_btn_text_dark_focused.xml"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1602b40dfba4610fe29c9e42d01e9f0c/jetified-play-services-base-16.0.1/res/drawable/common_google_signin_btn_text_dark_focused.xml"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/interpolator_btn_checkbox_checked_mtrl_animation_interpolator_0.xml.flat",
@@ -1933,7 +2009,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/layout_fps_view.xml.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/abad3ad4cd384ec805d7947854842e76/jetified-react-native-0.61.5/res/layout/fps_view.xml"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/c3b79f08f8fc4697927dae7a15ea5e0e/jetified-react-native-0.61.5/res/layout/fps_view.xml"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/xml_standalone_badge.xml.flat",
@@ -2021,7 +2097,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_googleg_disabled_color_18.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/3c9be57404136d5095fea3802c27df2c/jetified-play-services-base-16.0.1/res/drawable-xxhdpi-v4/googleg_disabled_color_18.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1602b40dfba4610fe29c9e42d01e9f0c/jetified-play-services-base-16.0.1/res/drawable-xxhdpi-v4/googleg_disabled_color_18.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable_abc_ic_ab_back_material.xml.flat",
@@ -2033,11 +2109,11 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/menu_crop_image_menu.xml.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/e95f3cd432afd54560d94fb28dd2484c/jetified-android-image-cropper-2.7.0/res/menu/crop_image_menu.xml"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/60bee4bb483dbb75ab96304f7c942631/jetified-android-image-cropper-2.7.0/res/menu/crop_image_menu.xml"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_crop_image_menu_rotate_right.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/e95f3cd432afd54560d94fb28dd2484c/jetified-android-image-cropper-2.7.0/res/drawable-xxhdpi-v4/crop_image_menu_rotate_right.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/60bee4bb483dbb75ab96304f7c942631/jetified-android-image-cropper-2.7.0/res/drawable-xxhdpi-v4/crop_image_menu_rotate_right.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_abc_scrubber_control_to_pressed_mtrl_005.png.flat",
@@ -2045,11 +2121,11 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_exo_notification_small_icon.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-hdpi-v4/exo_notification_small_icon.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-hdpi-v4/exo_notification_small_icon.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-anydpi-v21_exo_controls_fullscreen_exit.xml.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-anydpi-v21/exo_controls_fullscreen_exit.xml"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-anydpi-v21/exo_controls_fullscreen_exit.xml"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/layout-sw600dp-v13_design_layout_snackbar.xml.flat",
@@ -2069,7 +2145,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-anydpi-v21_exo_controls_fullscreen_enter.xml.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-anydpi-v21/exo_controls_fullscreen_enter.xml"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-anydpi-v21/exo_controls_fullscreen_enter.xml"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/animator_mtrl_fab_transformation_sheet_expand_spec.xml.flat",
@@ -2116,12 +2192,20 @@
         "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/6e1c3aa384c0bde2d05f603637d0bdf7/appcompat-1.1.0/res/drawable-xhdpi-v4/abc_ab_share_pack_mtrl_alpha.9.png"
     },
     {
+        "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/raw_node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_fonts_materialcommunityicons.ttf.flat",
+        "source": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/src/main/res/raw/node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_fonts_materialcommunityicons.ttf"
+    },
+    {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_ic_star_half_black_16dp.png.flat",
         "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/6e1c3aa384c0bde2d05f603637d0bdf7/appcompat-1.1.0/res/drawable-xxhdpi-v4/abc_ic_star_half_black_16dp.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_exo_icon_stop.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-xhdpi-v4/exo_icon_stop.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-xhdpi-v4/exo_icon_stop.png"
+    },
+    {
+        "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/raw_node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_glyphmaps_feather.json.flat",
+        "source": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/src/main/res/raw/node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_glyphmaps_feather.json"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/layout_select_dialog_item_material.xml.flat",
@@ -2130,6 +2214,10 @@
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_ic_commit_search_api_mtrl_alpha.png.flat",
         "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/6e1c3aa384c0bde2d05f603637d0bdf7/appcompat-1.1.0/res/drawable-xxhdpi-v4/abc_ic_commit_search_api_mtrl_alpha.png"
+    },
+    {
+        "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/raw_node_modules_csstree_dist_defaultsyntax.json.flat",
+        "source": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/src/main/res/raw/node_modules_csstree_dist_defaultsyntax.json"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/anim_btn_checkbox_to_checked_box_outer_merged_animation.xml.flat",
@@ -2145,7 +2233,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable_redbox_top_border_background.xml.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/abad3ad4cd384ec805d7947854842e76/jetified-react-native-0.61.5/res/drawable/redbox_top_border_background.xml"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/c3b79f08f8fc4697927dae7a15ea5e0e/jetified-react-native-0.61.5/res/drawable/redbox_top_border_background.xml"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/layout_mtrl_alert_dialog.xml.flat",
@@ -2153,11 +2241,11 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_exo_edit_mode_logo.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-xxxhdpi-v4/exo_edit_mode_logo.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-xxxhdpi-v4/exo_edit_mode_logo.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_common_google_signin_btn_text_light_normal_background.9.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/3c9be57404136d5095fea3802c27df2c/jetified-play-services-base-16.0.1/res/drawable-mdpi-v4/common_google_signin_btn_text_light_normal_background.9.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1602b40dfba4610fe29c9e42d01e9f0c/jetified-play-services-base-16.0.1/res/drawable-mdpi-v4/common_google_signin_btn_text_light_normal_background.9.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable_abc_ic_menu_overflow_material.xml.flat",
@@ -2165,7 +2253,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-ldpi-v4_exo_icon_next.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-ldpi-v4/exo_icon_next.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-ldpi-v4/exo_icon_next.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/anim-v21_design_bottom_sheet_slide_in.xml.flat",
@@ -2185,19 +2273,19 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/layout_exo_track_selection_dialog.xml.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/layout/exo_track_selection_dialog.xml"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/layout/exo_track_selection_dialog.xml"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/layout_crop_image_view.xml.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/e95f3cd432afd54560d94fb28dd2484c/jetified-android-image-cropper-2.7.0/res/layout/crop_image_view.xml"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/60bee4bb483dbb75ab96304f7c942631/jetified-android-image-cropper-2.7.0/res/layout/crop_image_view.xml"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/layout_exo_player_control_view.xml.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/layout/exo_player_control_view.xml"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/layout/exo_player_control_view.xml"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-anydpi-v21_exo_controls_repeat_one.xml.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-anydpi-v21/exo_controls_repeat_one.xml"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-anydpi-v21/exo_controls_repeat_one.xml"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable_tooltip_frame_light.xml.flat",
@@ -2221,7 +2309,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_exo_controls_repeat_all.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-mdpi-v4/exo_controls_repeat_all.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-mdpi-v4/exo_controls_repeat_all.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_ic_star_half_black_36dp.png.flat",
@@ -2245,11 +2333,19 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_exo_icon_play.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-xxhdpi-v4/exo_icon_play.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-xxhdpi-v4/exo_icon_play.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/color_abc_tint_switch_track.xml.flat",
         "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/6e1c3aa384c0bde2d05f603637d0bdf7/appcompat-1.1.0/res/color/abc_tint_switch_track.xml"
+    },
+    {
+        "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/raw_node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_glyphmaps_foundation.json.flat",
+        "source": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/src/main/res/raw/node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_glyphmaps_foundation.json"
+    },
+    {
+        "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/raw_node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_fonts_fontisto.ttf.flat",
+        "source": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/src/main/res/raw/node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_fonts_fontisto.ttf"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable_abc_switch_thumb_material.xml.flat",
@@ -2280,12 +2376,16 @@
         "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/6e1c3aa384c0bde2d05f603637d0bdf7/appcompat-1.1.0/res/drawable-hdpi-v4/abc_cab_background_top_mtrl_alpha.9.png"
     },
     {
+        "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/raw_node_modules_entities_lib_maps_decode.json.flat",
+        "source": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/src/main/res/raw/node_modules_entities_lib_maps_decode.json"
+    },
+    {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_exo_icon_rewind.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-xxhdpi-v4/exo_icon_rewind.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-xxhdpi-v4/exo_icon_rewind.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_exo_icon_stop.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-hdpi-v4/exo_icon_stop.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-hdpi-v4/exo_icon_stop.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/layout_browser_actions_context_menu_row.xml.flat",
@@ -2301,7 +2401,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_exo_icon_fastforward.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-xxhdpi-v4/exo_icon_fastforward.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-xxhdpi-v4/exo_icon_fastforward.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/color_mtrl_outlined_icon_tint.xml.flat",
@@ -2309,11 +2409,11 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/anim_catalyst_push_up_in.xml.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/abad3ad4cd384ec805d7947854842e76/jetified-react-native-0.61.5/res/anim/catalyst_push_up_in.xml"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/c3b79f08f8fc4697927dae7a15ea5e0e/jetified-react-native-0.61.5/res/anim/catalyst_push_up_in.xml"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_exo_icon_next.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-xxhdpi-v4/exo_icon_next.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-xxhdpi-v4/exo_icon_next.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/layout_abc_action_mode_close_item_material.xml.flat",
@@ -2329,7 +2429,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_googleg_standard_color_18.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/3c9be57404136d5095fea3802c27df2c/jetified-play-services-base-16.0.1/res/drawable-xhdpi-v4/googleg_standard_color_18.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1602b40dfba4610fe29c9e42d01e9f0c/jetified-play-services-base-16.0.1/res/drawable-xhdpi-v4/googleg_standard_color_18.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/anim-v21_fragment_fast_out_extra_slow_in.xml.flat",
@@ -2353,7 +2453,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_exo_controls_repeat_one.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-xhdpi-v4/exo_controls_repeat_one.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-xhdpi-v4/exo_controls_repeat_one.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/animator-v21_design_appbar_state_list_animator.xml.flat",
@@ -2369,11 +2469,11 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_crop_image_menu_rotate_left.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/e95f3cd432afd54560d94fb28dd2484c/jetified-android-image-cropper-2.7.0/res/drawable-xxxhdpi-v4/crop_image_menu_rotate_left.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/60bee4bb483dbb75ab96304f7c942631/jetified-android-image-cropper-2.7.0/res/drawable-xxxhdpi-v4/crop_image_menu_rotate_left.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable_common_google_signin_btn_text_dark.xml.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/3c9be57404136d5095fea3802c27df2c/jetified-play-services-base-16.0.1/res/drawable/common_google_signin_btn_text_dark.xml"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1602b40dfba4610fe29c9e42d01e9f0c/jetified-play-services-base-16.0.1/res/drawable/common_google_signin_btn_text_dark.xml"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/color-v23_abc_tint_btn_checkable.xml.flat",
@@ -2405,15 +2505,19 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-ldpi-v4_exo_controls_fullscreen_exit.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-ldpi-v4/exo_controls_fullscreen_exit.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-ldpi-v4/exo_controls_fullscreen_exit.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/animator_mtrl_btn_unelevated_state_list_anim.xml.flat",
         "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1873fe9405c2e2a7c5fa3eda6cb1076f/material-1.1.0/res/animator/mtrl_btn_unelevated_state_list_anim.xml"
     },
     {
+        "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/raw_node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_glyphmaps_fontawesome5free_meta.json.flat",
+        "source": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/src/main/res/raw/node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_glyphmaps_fontawesome5free_meta.json"
+    },
+    {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_crop_image_menu_flip.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/e95f3cd432afd54560d94fb28dd2484c/jetified-android-image-cropper-2.7.0/res/drawable-xxhdpi-v4/crop_image_menu_flip.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/60bee4bb483dbb75ab96304f7c942631/jetified-android-image-cropper-2.7.0/res/drawable-xxhdpi-v4/crop_image_menu_flip.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-v21_abc_action_bar_item_background_material.xml.flat",
@@ -2457,7 +2561,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_exo_controls_fullscreen_enter.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-xxhdpi-v4/exo_controls_fullscreen_enter.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-xxhdpi-v4/exo_controls_fullscreen_enter.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_notify_panel_notification_icon_bg.png.flat",
@@ -2469,7 +2573,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/anim_catalyst_fade_in.xml.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/abad3ad4cd384ec805d7947854842e76/jetified-react-native-0.61.5/res/anim/catalyst_fade_in.xml"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/c3b79f08f8fc4697927dae7a15ea5e0e/jetified-react-native-0.61.5/res/anim/catalyst_fade_in.xml"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-v21_abc_btn_colored_material.xml.flat",
@@ -2537,7 +2641,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_exo_controls_repeat_one.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-xxhdpi-v4/exo_controls_repeat_one.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-xxhdpi-v4/exo_controls_repeat_one.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_ic_star_black_16dp.png.flat",
@@ -2549,7 +2653,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_exo_icon_pause.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-xhdpi-v4/exo_icon_pause.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-xhdpi-v4/exo_icon_pause.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_abc_ic_star_half_black_48dp.png.flat",
@@ -2561,7 +2665,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_common_google_signin_btn_icon_dark_normal_background.9.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/3c9be57404136d5095fea3802c27df2c/jetified-play-services-base-16.0.1/res/drawable-xhdpi-v4/common_google_signin_btn_icon_dark_normal_background.9.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1602b40dfba4610fe29c9e42d01e9f0c/jetified-play-services-base-16.0.1/res/drawable-xhdpi-v4/common_google_signin_btn_icon_dark_normal_background.9.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/layout_abc_action_bar_title_item.xml.flat",
@@ -2577,7 +2681,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable_common_google_signin_btn_text_disabled.xml.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/3c9be57404136d5095fea3802c27df2c/jetified-play-services-base-16.0.1/res/drawable/common_google_signin_btn_text_disabled.xml"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1602b40dfba4610fe29c9e42d01e9f0c/jetified-play-services-base-16.0.1/res/drawable/common_google_signin_btn_text_disabled.xml"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_ic_star_black_16dp.png.flat",
@@ -2593,11 +2697,11 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/anim_catalyst_fade_out.xml.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/abad3ad4cd384ec805d7947854842e76/jetified-react-native-0.61.5/res/anim/catalyst_fade_out.xml"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/c3b79f08f8fc4697927dae7a15ea5e0e/jetified-react-native-0.61.5/res/anim/catalyst_fade_out.xml"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_googleg_disabled_color_18.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/3c9be57404136d5095fea3802c27df2c/jetified-play-services-base-16.0.1/res/drawable-xhdpi-v4/googleg_disabled_color_18.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1602b40dfba4610fe29c9e42d01e9f0c/jetified-play-services-base-16.0.1/res/drawable-xhdpi-v4/googleg_disabled_color_18.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable_abc_btn_check_material.xml.flat",
@@ -2633,15 +2737,19 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-anydpi-v21_exo_icon_next.xml.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-anydpi-v21/exo_icon_next.xml"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-anydpi-v21/exo_icon_next.xml"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_exo_controls_shuffle.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-xhdpi-v4/exo_controls_shuffle.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-xhdpi-v4/exo_controls_shuffle.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-anydpi-v21_exo_icon_pause.xml.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-anydpi-v21/exo_icon_pause.xml"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-anydpi-v21/exo_icon_pause.xml"
+    },
+    {
+        "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/raw_node_modules_entities_lib_maps_legacy.json.flat",
+        "source": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/src/main/res/raw/node_modules_entities_lib_maps_legacy.json"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_ic_menu_paste_mtrl_am_alpha.png.flat",
@@ -2652,16 +2760,20 @@
         "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/6e1c3aa384c0bde2d05f603637d0bdf7/appcompat-1.1.0/res/drawable-xxxhdpi-v4/abc_btn_check_to_on_mtrl_000.png"
     },
     {
+        "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/raw_node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_fonts_simplelineicons.ttf.flat",
+        "source": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/src/main/res/raw/node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_fonts_simplelineicons.ttf"
+    },
+    {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/layout_mtrl_picker_header_fullscreen.xml.flat",
         "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1873fe9405c2e2a7c5fa3eda6cb1076f/material-1.1.0/res/layout/mtrl_picker_header_fullscreen.xml"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_exo_edit_mode_logo.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-xhdpi-v4/exo_edit_mode_logo.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-xhdpi-v4/exo_edit_mode_logo.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_exo_icon_previous.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-xhdpi-v4/exo_icon_previous.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-xhdpi-v4/exo_icon_previous.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable_abc_ic_arrow_drop_right_black_24dp.xml.flat",
@@ -2689,15 +2801,19 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable_common_google_signin_btn_text_light_normal.xml.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/3c9be57404136d5095fea3802c27df2c/jetified-play-services-base-16.0.1/res/drawable/common_google_signin_btn_text_light_normal.xml"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1602b40dfba4610fe29c9e42d01e9f0c/jetified-play-services-base-16.0.1/res/drawable/common_google_signin_btn_text_light_normal.xml"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/anim_catalyst_push_up_out.xml.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/abad3ad4cd384ec805d7947854842e76/jetified-react-native-0.61.5/res/anim/catalyst_push_up_out.xml"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/c3b79f08f8fc4697927dae7a15ea5e0e/jetified-react-native-0.61.5/res/anim/catalyst_push_up_out.xml"
+    },
+    {
+        "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/raw_node_modules_characterentitieslegacy_index.json.flat",
+        "source": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/src/main/res/raw/node_modules_characterentitieslegacy_index.json"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-ldpi-v4_exo_notification_small_icon.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-ldpi-v4/exo_notification_small_icon.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-ldpi-v4/exo_notification_small_icon.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_ic_fullscreen_32dp.png.flat",
@@ -2722,6 +2838,10 @@
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/interpolator_btn_checkbox_unchecked_mtrl_animation_interpolator_1.xml.flat",
         "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/6e1c3aa384c0bde2d05f603637d0bdf7/appcompat-1.1.0/res/interpolator/btn_checkbox_unchecked_mtrl_animation_interpolator_1.xml"
+    },
+    {
+        "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/raw_node_modules_entities_lib_maps_entities.json.flat",
+        "source": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/src/main/res/raw/node_modules_entities_lib_maps_entities.json"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/layout_design_navigation_menu_item.xml.flat",
@@ -2761,7 +2881,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_exo_icon_next.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-xhdpi-v4/exo_icon_next.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-xhdpi-v4/exo_icon_next.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/anim_abc_slide_out_bottom.xml.flat",
@@ -2773,7 +2893,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_exo_controls_repeat_off.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-xhdpi-v4/exo_controls_repeat_off.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-xhdpi-v4/exo_controls_repeat_off.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_btn_radio_to_on_mtrl_015.png.flat",
@@ -2797,7 +2917,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-ldpi-v4_exo_controls_repeat_one.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-ldpi-v4/exo_controls_repeat_one.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-ldpi-v4/exo_controls_repeat_one.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/color_mtrl_btn_text_btn_ripple_color.xml.flat",
@@ -2812,6 +2932,14 @@
         "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/6e1c3aa384c0bde2d05f603637d0bdf7/appcompat-1.1.0/res/drawable-xxhdpi-v4/abc_scrubber_track_mtrl_alpha.9.png"
     },
     {
+        "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/raw_node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_fonts_feather.ttf.flat",
+        "source": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/src/main/res/raw/node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_fonts_feather.ttf"
+    },
+    {
+        "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/raw_node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_glyphmaps_fontisto.json.flat",
+        "source": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/src/main/res/raw/node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_glyphmaps_fontisto.json"
+    },
+    {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_list_pressed_holo_dark.9.png.flat",
         "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/6e1c3aa384c0bde2d05f603637d0bdf7/appcompat-1.1.0/res/drawable-mdpi-v4/abc_list_pressed_holo_dark.9.png"
     },
@@ -2820,8 +2948,12 @@
         "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/6e1c3aa384c0bde2d05f603637d0bdf7/appcompat-1.1.0/res/drawable-hdpi-v4/abc_switch_track_mtrl_alpha.9.png"
     },
     {
+        "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/raw_node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_fonts_octicons.ttf.flat",
+        "source": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/src/main/res/raw/node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_fonts_octicons.ttf"
+    },
+    {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_exo_controls_shuffle.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-mdpi-v4/exo_controls_shuffle.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-mdpi-v4/exo_controls_shuffle.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable_notification_bg_low.xml.flat",
@@ -2834,6 +2966,10 @@
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_popup_background_mtrl_mult.9.png.flat",
         "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/6e1c3aa384c0bde2d05f603637d0bdf7/appcompat-1.1.0/res/drawable-xhdpi-v4/abc_popup_background_mtrl_mult.9.png"
+    },
+    {
+        "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/raw_node_modules_characterentitieshtml4_index.json.flat",
+        "source": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/src/main/res/raw/node_modules_characterentitieshtml4_index.json"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_ic_menu_paste_mtrl_am_alpha.png.flat",
@@ -2849,11 +2985,11 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_exo_icon_rewind.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-xhdpi-v4/exo_icon_rewind.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-xhdpi-v4/exo_icon_rewind.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_crop_image_menu_rotate_right.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/e95f3cd432afd54560d94fb28dd2484c/jetified-android-image-cropper-2.7.0/res/drawable-hdpi-v4/crop_image_menu_rotate_right.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/60bee4bb483dbb75ab96304f7c942631/jetified-android-image-cropper-2.7.0/res/drawable-hdpi-v4/crop_image_menu_rotate_right.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_list_selector_disabled_holo_light.9.png.flat",
@@ -2880,6 +3016,10 @@
         "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/7dfdda3e9b1f3eac70960d59b5d8c75a/core-1.1.0/res/drawable-hdpi-v4/notification_bg_normal_pressed.9.png"
     },
     {
+        "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/raw_node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_glyphmaps_octicons.json.flat",
+        "source": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/src/main/res/raw/node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_glyphmaps_octicons.json"
+    },
+    {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/color_material_on_background_emphasis_medium.xml.flat",
         "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1873fe9405c2e2a7c5fa3eda6cb1076f/material-1.1.0/res/color/material_on_background_emphasis_medium.xml"
     },
@@ -2897,7 +3037,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-ldpi-v4_exo_edit_mode_logo.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-ldpi-v4/exo_edit_mode_logo.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-ldpi-v4/exo_edit_mode_logo.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable_abc_ratingbar_indicator_material.xml.flat",
@@ -2929,7 +3069,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable_common_google_signin_btn_text_light.xml.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/3c9be57404136d5095fea3802c27df2c/jetified-play-services-base-16.0.1/res/drawable/common_google_signin_btn_text_light.xml"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1602b40dfba4610fe29c9e42d01e9f0c/jetified-play-services-base-16.0.1/res/drawable/common_google_signin_btn_text_light.xml"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable_mtrl_popupmenu_background_dark.xml.flat",
@@ -2952,6 +3092,10 @@
         "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1873fe9405c2e2a7c5fa3eda6cb1076f/material-1.1.0/res/drawable/mtrl_tabs_default_indicator.xml"
     },
     {
+        "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/raw_node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_glyphmaps_materialicons.json.flat",
+        "source": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/src/main/res/raw/node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_glyphmaps_materialicons.json"
+    },
+    {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/color_mtrl_tabs_icon_color_selector_colored.xml.flat",
         "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1873fe9405c2e2a7c5fa3eda6cb1076f/material-1.1.0/res/color/mtrl_tabs_icon_color_selector_colored.xml"
     },
@@ -2965,7 +3109,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_crop_image_menu_rotate_left.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/e95f3cd432afd54560d94fb28dd2484c/jetified-android-image-cropper-2.7.0/res/drawable-xxhdpi-v4/crop_image_menu_rotate_left.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/60bee4bb483dbb75ab96304f7c942631/jetified-android-image-cropper-2.7.0/res/drawable-xxhdpi-v4/crop_image_menu_rotate_left.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_btn_check_to_on_mtrl_015.png.flat",
@@ -2998,6 +3142,10 @@
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/anim_abc_grow_fade_in_from_bottom.xml.flat",
         "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/6e1c3aa384c0bde2d05f603637d0bdf7/appcompat-1.1.0/res/anim/abc_grow_fade_in_from_bottom.xml"
+    },
+    {
+        "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/raw_node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_fonts_materialicons.ttf.flat",
+        "source": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/src/main/res/raw/node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_fonts_materialicons.ttf"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-v21_avd_show_password.xml.flat",
@@ -3037,11 +3185,11 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-anydpi-v21_exo_icon_stop.xml.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-anydpi-v21/exo_icon_stop.xml"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-anydpi-v21/exo_icon_stop.xml"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_exo_controls_repeat_all.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-hdpi-v4/exo_controls_repeat_all.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-hdpi-v4/exo_controls_repeat_all.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_abc_ic_star_black_16dp.png.flat",
@@ -3053,11 +3201,11 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_common_google_signin_btn_text_light_normal_background.9.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/3c9be57404136d5095fea3802c27df2c/jetified-play-services-base-16.0.1/res/drawable-hdpi-v4/common_google_signin_btn_text_light_normal_background.9.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1602b40dfba4610fe29c9e42d01e9f0c/jetified-play-services-base-16.0.1/res/drawable-hdpi-v4/common_google_signin_btn_text_light_normal_background.9.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_googleg_standard_color_18.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/3c9be57404136d5095fea3802c27df2c/jetified-play-services-base-16.0.1/res/drawable-mdpi-v4/googleg_standard_color_18.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1602b40dfba4610fe29c9e42d01e9f0c/jetified-play-services-base-16.0.1/res/drawable-mdpi-v4/googleg_standard_color_18.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/color_mtrl_btn_stroke_color_selector.xml.flat",
@@ -3073,11 +3221,15 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_exo_controls_repeat_off.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-xxhdpi-v4/exo_controls_repeat_off.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-xxhdpi-v4/exo_controls_repeat_off.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-ldrtl-mdpi-v17_abc_ic_menu_copy_mtrl_am_alpha.png.flat",
         "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/6e1c3aa384c0bde2d05f603637d0bdf7/appcompat-1.1.0/res/drawable-ldrtl-mdpi-v17/abc_ic_menu_copy_mtrl_am_alpha.png"
+    },
+    {
+        "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/raw_node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_glyphmaps_materialcommunityicons.json.flat",
+        "source": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/src/main/res/raw/node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_glyphmaps_materialcommunityicons.json"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-v21_avd_hide_password.xml.flat",
@@ -3117,7 +3269,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/layout_redbox_item_title.xml.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/abad3ad4cd384ec805d7947854842e76/jetified-react-native-0.61.5/res/layout/redbox_item_title.xml"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/c3b79f08f8fc4697927dae7a15ea5e0e/jetified-react-native-0.61.5/res/layout/redbox_item_title.xml"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/color_mtrl_fab_ripple_color.xml.flat",
@@ -3125,11 +3277,11 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_common_google_signin_btn_icon_dark_normal_background.9.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/3c9be57404136d5095fea3802c27df2c/jetified-play-services-base-16.0.1/res/drawable-hdpi-v4/common_google_signin_btn_icon_dark_normal_background.9.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1602b40dfba4610fe29c9e42d01e9f0c/jetified-play-services-base-16.0.1/res/drawable-hdpi-v4/common_google_signin_btn_icon_dark_normal_background.9.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/layout_exo_list_divider.xml.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/layout/exo_list_divider.xml"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/layout/exo_list_divider.xml"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_ic_star_half_black_48dp.png.flat",
@@ -3148,12 +3300,16 @@
         "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1873fe9405c2e2a7c5fa3eda6cb1076f/material-1.1.0/res/layout/mtrl_alert_select_dialog_multichoice.xml"
     },
     {
+        "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/raw_node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_glyphmaps_antdesign.json.flat",
+        "source": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/src/main/res/raw/node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_glyphmaps_antdesign.json"
+    },
+    {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-v23_mtrl_popupmenu_background_dark.xml.flat",
         "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1873fe9405c2e2a7c5fa3eda6cb1076f/material-1.1.0/res/drawable-v23/mtrl_popupmenu_background_dark.xml"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-ldpi-v4_exo_controls_repeat_off.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-ldpi-v4/exo_controls_repeat_off.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-ldpi-v4/exo_controls_repeat_off.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/mipmap-xhdpi_ic_launcher_round.png.flat",
@@ -3169,7 +3325,15 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_exo_icon_stop.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/drawable-mdpi-v4/exo_icon_stop.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/drawable-mdpi-v4/exo_icon_stop.png"
+    },
+    {
+        "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/raw_node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_fonts_evilicons.ttf.flat",
+        "source": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/src/main/res/raw/node_modules_expo_vectoricons_build_vendor_reactnativevectoricons_fonts_evilicons.ttf"
+    },
+    {
+        "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/raw_node_modules_stringifyentities_dangerous.json.flat",
+        "source": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/src/main/res/raw/node_modules_stringifyentities_dangerous.json"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/layout_design_bottom_navigation_item.xml.flat",
@@ -3181,7 +3345,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_common_google_signin_btn_icon_light_normal_background.9.png.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/3c9be57404136d5095fea3802c27df2c/jetified-play-services-base-16.0.1/res/drawable-xhdpi-v4/common_google_signin_btn_icon_light_normal_background.9.png"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1602b40dfba4610fe29c9e42d01e9f0c/jetified-play-services-base-16.0.1/res/drawable-xhdpi-v4/common_google_signin_btn_icon_light_normal_background.9.png"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_ic_star_black_36dp.png.flat",
@@ -3193,7 +3357,7 @@
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/anim_catalyst_slide_up.xml.flat",
-        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/abad3ad4cd384ec805d7947854842e76/jetified-react-native-0.61.5/res/anim/catalyst_slide_up.xml"
+        "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/c3b79f08f8fc4697927dae7a15ea5e0e/jetified-react-native-0.61.5/res/anim/catalyst_slide_up.xml"
     },
     {
         "merged": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/res/merged/debug/anim_abc_slide_in_top.xml.flat",

@@ -4,41 +4,7 @@
             "outputFile": "/home/ferin/Documents/IELTS-PREP/IELTSPreparation/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-pl/values-pl.xml",
             "map": [
                 {
-                    "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/e95f3cd432afd54560d94fb28dd2484c/jetified-android-image-cropper-2.7.0/res/values-pl/values-pl.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10",
-                        "startColumns": "4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,173,220,278,333,409,483,552,615",
-                        "endColumns": "117,46,57,54,75,73,68,62,74",
-                        "endOffsets": "168,215,273,328,404,478,547,610,685"
-                    },
-                    "to": {
-                        "startLines": "47,48,49,50,51,52,53,54,87",
-                        "startColumns": "4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "5558,5676,5723,5781,5836,5912,5986,6055,8338",
-                        "endColumns": "117,46,57,54,75,73,68,62,74",
-                        "endOffsets": "5671,5718,5776,5831,5907,5981,6050,6113,8408"
-                    }
-                },
-                {
-                    "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/c7a26033146e6621e05820fd03c6cfa3/jetified-play-services-basement-16.0.1/res/values-pl/values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "247",
-                        "endColumns": "198",
-                        "endOffsets": "445"
-                    },
-                    "to": {
-                        "startLines": "37",
-                        "startColumns": "4",
-                        "startOffsets": "3965",
-                        "endColumns": "198",
-                        "endOffsets": "4159"
-                    }
-                },
-                {
-                    "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/a35edd3e5b2b7e23fcfd425a45813a80/jetified-exoplayer-ui-2.9.2/res/values-pl/values-pl.xml",
+                    "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/10b7f5f81a47101e919bce407cdf25ac/jetified-exoplayer-ui-2.9.2/res/values-pl/values-pl.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -55,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/3c9be57404136d5095fea3802c27df2c/jetified-play-services-base-16.0.1/res/values-pl/values.xml",
+                    "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/1602b40dfba4610fe29c9e42d01e9f0c/jetified-play-services-base-16.0.1/res/values-pl/values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
@@ -69,6 +35,40 @@
                         "startOffsets": "2817,2923,3123,3247,3359,3569,3696,3837,4164,4394,4505,4711,4841,5059,5250,5349,5445",
                         "endColumns": "105,199,123,111,209,126,140,127,229,110,205,129,217,190,98,95,112",
                         "endOffsets": "2918,3118,3242,3354,3564,3691,3832,3960,4389,4500,4706,4836,5054,5245,5344,5440,5553"
+                    }
+                },
+                {
+                    "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/e32634945891f89c38d8bc13b3bbf3f4/jetified-play-services-basement-16.0.1/res/values-pl/values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "247",
+                        "endColumns": "198",
+                        "endOffsets": "445"
+                    },
+                    "to": {
+                        "startLines": "37",
+                        "startColumns": "4",
+                        "startOffsets": "3965",
+                        "endColumns": "198",
+                        "endOffsets": "4159"
+                    }
+                },
+                {
+                    "source": "/home/ferin/.gradle/caches/transforms-2/files-2.1/60bee4bb483dbb75ab96304f7c942631/jetified-android-image-cropper-2.7.0/res/values-pl/values-pl.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10",
+                        "startColumns": "4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,173,220,278,333,409,483,552,615",
+                        "endColumns": "117,46,57,54,75,73,68,62,74",
+                        "endOffsets": "168,215,273,328,404,478,547,610,685"
+                    },
+                    "to": {
+                        "startLines": "47,48,49,50,51,52,53,54,87",
+                        "startColumns": "4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "5558,5676,5723,5781,5836,5912,5986,6055,8338",
+                        "endColumns": "117,46,57,54,75,73,68,62,74",
+                        "endOffsets": "5671,5718,5776,5831,5907,5981,6050,6113,8408"
                     }
                 },
                 {

@@ -243,63 +243,63 @@ public final class R {
     public static final class string {
         private string() {}
 
-        public static final int exo_controls_fastforward_description = 0x7f0f005f;
-        public static final int exo_controls_fullscreen_description = 0x7f0f0060;
-        public static final int exo_controls_next_description = 0x7f0f0061;
-        public static final int exo_controls_pause_description = 0x7f0f0062;
-        public static final int exo_controls_play_description = 0x7f0f0063;
-        public static final int exo_controls_previous_description = 0x7f0f0064;
-        public static final int exo_controls_repeat_all_description = 0x7f0f0065;
-        public static final int exo_controls_repeat_off_description = 0x7f0f0066;
-        public static final int exo_controls_repeat_one_description = 0x7f0f0067;
-        public static final int exo_controls_rewind_description = 0x7f0f0068;
-        public static final int exo_controls_shuffle_description = 0x7f0f0069;
-        public static final int exo_controls_stop_description = 0x7f0f006a;
-        public static final int exo_download_completed = 0x7f0f006b;
-        public static final int exo_download_description = 0x7f0f006c;
-        public static final int exo_download_downloading = 0x7f0f006d;
-        public static final int exo_download_failed = 0x7f0f006e;
-        public static final int exo_download_notification_channel_name = 0x7f0f006f;
-        public static final int exo_download_removing = 0x7f0f0070;
-        public static final int exo_item_list = 0x7f0f0071;
-        public static final int exo_track_bitrate = 0x7f0f0072;
-        public static final int exo_track_mono = 0x7f0f0073;
-        public static final int exo_track_resolution = 0x7f0f0074;
-        public static final int exo_track_selection_auto = 0x7f0f0075;
-        public static final int exo_track_selection_none = 0x7f0f0076;
-        public static final int exo_track_selection_title_audio = 0x7f0f0077;
-        public static final int exo_track_selection_title_text = 0x7f0f0078;
-        public static final int exo_track_selection_title_video = 0x7f0f0079;
-        public static final int exo_track_stereo = 0x7f0f007a;
-        public static final int exo_track_surround = 0x7f0f007b;
-        public static final int exo_track_surround_5_point_1 = 0x7f0f007c;
-        public static final int exo_track_surround_7_point_1 = 0x7f0f007d;
-        public static final int exo_track_unknown = 0x7f0f007e;
-        public static final int status_bar_notification_info_overflow = 0x7f0f00c0;
+        public static final int exo_controls_fastforward_description = 0x7f10005f;
+        public static final int exo_controls_fullscreen_description = 0x7f100060;
+        public static final int exo_controls_next_description = 0x7f100061;
+        public static final int exo_controls_pause_description = 0x7f100062;
+        public static final int exo_controls_play_description = 0x7f100063;
+        public static final int exo_controls_previous_description = 0x7f100064;
+        public static final int exo_controls_repeat_all_description = 0x7f100065;
+        public static final int exo_controls_repeat_off_description = 0x7f100066;
+        public static final int exo_controls_repeat_one_description = 0x7f100067;
+        public static final int exo_controls_rewind_description = 0x7f100068;
+        public static final int exo_controls_shuffle_description = 0x7f100069;
+        public static final int exo_controls_stop_description = 0x7f10006a;
+        public static final int exo_download_completed = 0x7f10006b;
+        public static final int exo_download_description = 0x7f10006c;
+        public static final int exo_download_downloading = 0x7f10006d;
+        public static final int exo_download_failed = 0x7f10006e;
+        public static final int exo_download_notification_channel_name = 0x7f10006f;
+        public static final int exo_download_removing = 0x7f100070;
+        public static final int exo_item_list = 0x7f100071;
+        public static final int exo_track_bitrate = 0x7f100072;
+        public static final int exo_track_mono = 0x7f100073;
+        public static final int exo_track_resolution = 0x7f100074;
+        public static final int exo_track_selection_auto = 0x7f100075;
+        public static final int exo_track_selection_none = 0x7f100076;
+        public static final int exo_track_selection_title_audio = 0x7f100077;
+        public static final int exo_track_selection_title_text = 0x7f100078;
+        public static final int exo_track_selection_title_video = 0x7f100079;
+        public static final int exo_track_stereo = 0x7f10007a;
+        public static final int exo_track_surround = 0x7f10007b;
+        public static final int exo_track_surround_5_point_1 = 0x7f10007c;
+        public static final int exo_track_surround_7_point_1 = 0x7f10007d;
+        public static final int exo_track_unknown = 0x7f10007e;
+        public static final int status_bar_notification_info_overflow = 0x7f1000c0;
     }
     public static final class style {
         private style() {}
 
-        public static final int ExoMediaButton = 0x7f1000e4;
-        public static final int ExoMediaButton_FastForward = 0x7f1000e5;
-        public static final int ExoMediaButton_Next = 0x7f1000e6;
-        public static final int ExoMediaButton_Pause = 0x7f1000e7;
-        public static final int ExoMediaButton_Play = 0x7f1000e8;
-        public static final int ExoMediaButton_Previous = 0x7f1000e9;
-        public static final int ExoMediaButton_Rewind = 0x7f1000ea;
-        public static final int ExoMediaButton_Shuffle = 0x7f1000eb;
-        public static final int TextAppearance_Compat_Notification = 0x7f100168;
-        public static final int TextAppearance_Compat_Notification_Info = 0x7f100169;
-        public static final int TextAppearance_Compat_Notification_Info_Media = 0x7f10016a;
-        public static final int TextAppearance_Compat_Notification_Line2 = 0x7f10016b;
-        public static final int TextAppearance_Compat_Notification_Line2_Media = 0x7f10016c;
-        public static final int TextAppearance_Compat_Notification_Media = 0x7f10016d;
-        public static final int TextAppearance_Compat_Notification_Time = 0x7f10016e;
-        public static final int TextAppearance_Compat_Notification_Time_Media = 0x7f10016f;
-        public static final int TextAppearance_Compat_Notification_Title = 0x7f100170;
-        public static final int TextAppearance_Compat_Notification_Title_Media = 0x7f100171;
-        public static final int Widget_Compat_NotificationActionContainer = 0x7f100257;
-        public static final int Widget_Compat_NotificationActionText = 0x7f100258;
+        public static final int ExoMediaButton = 0x7f1100e4;
+        public static final int ExoMediaButton_FastForward = 0x7f1100e5;
+        public static final int ExoMediaButton_Next = 0x7f1100e6;
+        public static final int ExoMediaButton_Pause = 0x7f1100e7;
+        public static final int ExoMediaButton_Play = 0x7f1100e8;
+        public static final int ExoMediaButton_Previous = 0x7f1100e9;
+        public static final int ExoMediaButton_Rewind = 0x7f1100ea;
+        public static final int ExoMediaButton_Shuffle = 0x7f1100eb;
+        public static final int TextAppearance_Compat_Notification = 0x7f110168;
+        public static final int TextAppearance_Compat_Notification_Info = 0x7f110169;
+        public static final int TextAppearance_Compat_Notification_Info_Media = 0x7f11016a;
+        public static final int TextAppearance_Compat_Notification_Line2 = 0x7f11016b;
+        public static final int TextAppearance_Compat_Notification_Line2_Media = 0x7f11016c;
+        public static final int TextAppearance_Compat_Notification_Media = 0x7f11016d;
+        public static final int TextAppearance_Compat_Notification_Time = 0x7f11016e;
+        public static final int TextAppearance_Compat_Notification_Time_Media = 0x7f11016f;
+        public static final int TextAppearance_Compat_Notification_Title = 0x7f110170;
+        public static final int TextAppearance_Compat_Notification_Title_Media = 0x7f110171;
+        public static final int Widget_Compat_NotificationActionContainer = 0x7f110257;
+        public static final int Widget_Compat_NotificationActionText = 0x7f110258;
     }
     public static final class styleable {
         private styleable() {}
