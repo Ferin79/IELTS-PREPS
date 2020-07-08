@@ -14,8 +14,11 @@ import "react-toastify/dist/ReactToastify.css";
 import CKEditor from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import ProgressBar from "react-bootstrap/ProgressBar";
+import { useHistory } from "react-router-dom";
 
 const Writing = () => {
+  const history = useHistory();
+
   const { isLoading, setIsLoading, role, institution } = useContext(Context);
 
   const [name, setName] = useState("");
@@ -31,9 +34,12 @@ const Writing = () => {
   const [percentage, setPercentage] = useState(0);
 
   // Modal
+  // eslint-disable-next-line
   const [modalShow, setModalShow] = useState(false);
   const [detailsModalData, setDetailsModalData] = useState({ data: [] });
   const [studentListInModel, setStudentListInModel] = useState([]);
+
+  // eslint-disable-next-line
   const MyVerticallyCenteredModal = (props) => {
     return (
       <Modal
@@ -67,6 +73,7 @@ const Writing = () => {
     );
   };
 
+  // eslint-disable-next-line
   const showTestData = (id) => {
     firebase
       .firestore()
@@ -258,7 +265,6 @@ const Writing = () => {
                 <th>Topic</th>
                 <th>Added By</th>
                 <th>Action</th>
-                <th>Details</th>
               </tr>
             </thead>
             <tbody>
@@ -271,28 +277,27 @@ const Writing = () => {
                       <td>{item.name}</td>
                       <td>{item.question}</td>
                       <td>{item.addedBy}</td>
-                      <td>
+                      <td className="d-flex flex-row justify-content-center align-items-center">
                         <Button
                           variant="danger"
                           onClick={() => deleteWritingModule(item.id)}
                         >
                           <i className="fa fa-trash"></i>
                         </Button>
-                      </td>
-                      <td>
                         <Button
+                          className="ml-2"
                           variant="primary"
                           onClick={() => {
-                            showTestData(item.id);
+                            history.push(`/stats/writing/${item.id}`);
                           }}
                         >
                           <i className="fa fa-info"></i>
                         </Button>
-
+                        {/* 
                         <MyVerticallyCenteredModal
                           show={modalShow}
                           onHide={() => setModalShow(false)}
-                        />
+                        /> */}
                       </td>
                     </tr>
                   );

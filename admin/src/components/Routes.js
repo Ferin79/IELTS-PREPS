@@ -14,6 +14,7 @@ import UserVideo from "../video/userVideo";
 import Profile from "../pages/profile";
 import CheckWriting from "../views/checkWriting";
 import StudentStats from "../views/studentStats";
+import ModuleStats from "../views/moduleStats";
 
 const Routes = () => {
   const { currentUser } = useContext(AuthContext);
@@ -31,6 +32,7 @@ const Routes = () => {
         <Route path="/profile" component={Profile} />
         <Route path="/check-writing" component={CheckWriting} />
         <Route path="/students/:email" component={StudentStats} />
+        <Route path="/stats/:module/:id" component={ModuleStats} />
         <Redirect to="/" />
       </Switch>
     );

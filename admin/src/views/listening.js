@@ -15,8 +15,11 @@ import LoadingScreen from "../components/LoadingScreen";
 import { ToastContainer, toast } from "react-toastify";
 import Dropdown from "react-bootstrap/Dropdown";
 import "react-toastify/dist/ReactToastify.css";
+import { useHistory } from "react-router-dom";
 
 const Listening = () => {
+  const history = useHistory();
+
   const [type, setType] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
   const [selectedPDF, setSelectedPDF] = useState(null);
@@ -35,10 +38,13 @@ const Listening = () => {
   const { isLoading, setIsLoading, role, institution } = useContext(Context);
 
   // Modal
+  // eslint-disable-next-line
   const [modalShow, setModalShow] = useState(false);
   const [detailsModalData, setDetailsModalData] = useState({ data: [] });
   const [loadingModalData, setLoadingModalData] = useState(false);
   const [studentListInModel, setStudentListInModel] = useState([]);
+
+  // eslint-disable-next-line
   const MyVerticallyCenteredModal = (props) => {
     return (
       <Modal
@@ -84,6 +90,7 @@ const Listening = () => {
     );
   };
 
+  // eslint-disable-next-line
   const showTestData = (id) => {
     setLoadingModalData(true);
     firebase
@@ -358,7 +365,6 @@ const Listening = () => {
                 <th>Answers</th>
                 <th>Added By</th>
                 <th>Action</th>
-                <th>Details</th>
               </tr>
             </thead>
             <tbody>
@@ -397,29 +403,27 @@ const Listening = () => {
                         </Dropdown>
                       </td>
                       <td>{item.addedBy}</td>
-                      <td>
+                      <td className="d-flex flex-row justify-content-center align-items-center">
                         <Button
                           variant="danger"
                           onClick={() => deleteListeningModule(item)}
                         >
                           <i className="fa fa-trash"></i>
                         </Button>
-                      </td>
-
-                      <td>
                         <Button
                           variant="primary"
+                          className="ml-2"
                           onClick={() => {
-                            showTestData(item.id);
+                            history.push(`/stats/listening/${item.id}`);
                           }}
                         >
                           <i className="fa fa-info"></i>
                         </Button>
 
-                        <MyVerticallyCenteredModal
+                        {/* <MyVerticallyCenteredModal
                           show={modalShow}
                           onHide={() => setModalShow(false)}
-                        />
+                        /> */}
                       </td>
                     </tr>
                   );

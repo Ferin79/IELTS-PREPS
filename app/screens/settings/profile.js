@@ -136,73 +136,75 @@ const Profile = ({ navigation }) => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <ScrollView style={{ flex: 1, height: SCREEN_HEIGHT }}>
-        <ImageBackground
-          source={{
-            uri: userData.photoUrl,
-          }}
-          style={{ width: SCREEN_WIDTH, height: SCREEN_HEIGHT * 0.4 }}
-        >
+        <View style={{ flex: 1, height: SCREEN_HEIGHT }}>
+          <ImageBackground
+            source={{
+              uri: userData.photoUrl,
+            }}
+            style={{ width: SCREEN_WIDTH, height: SCREEN_HEIGHT * 0.4 }}
+          >
+            <View
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "space-between",
+                alignItems: "flex-start",
+                margin: 20,
+              }}
+            >
+              <FontAwesome
+                name="close"
+                size={30}
+                color="#fff"
+                onPress={() => navigation.goBack()}
+              />
+              <MaterialIcons
+                name="edit"
+                size={30}
+                color="#fff"
+                onPress={pickImage}
+              />
+            </View>
+          </ImageBackground>
           <View
             style={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "space-between",
-              alignItems: "flex-start",
-              margin: 20,
+              height: SCREEN_HEIGHT * 2,
+              width: SCREEN_WIDTH * 0.9,
+              backgroundColor: "#fff",
+              position: "absolute",
+              left: (SCREEN_WIDTH - SCREEN_WIDTH * 0.9) / 2,
+              top: SCREEN_HEIGHT * 0.3,
             }}
           >
-            <FontAwesome
-              name="close"
-              size={30}
-              color="#fff"
-              onPress={() => navigation.goBack()}
+            <TextInput
+              label="First Name"
+              value={firstname}
+              mode="flat"
+              onChangeText={(text) => setFirstname(text)}
+              style={{ margin: 20, backgroundColor: "#fff" }}
             />
-            <MaterialIcons
-              name="edit"
-              size={30}
-              color="#fff"
-              onPress={pickImage}
+
+            <TextInput
+              label="Last Name"
+              value={lastname}
+              mode="flat"
+              onChangeText={(text) => setLastname(text)}
+              style={{ margin: 20, backgroundColor: "#fff" }}
             />
+
+            <Button
+              style={{
+                marginHorizontal: 50,
+                marginVertical: 20,
+                backgroundColor: "#0af",
+                padding: 10,
+              }}
+              mode="contained"
+              onPress={() => handleNameChange()}
+            >
+              Update
+            </Button>
           </View>
-        </ImageBackground>
-        <View
-          style={{
-            height: SCREEN_HEIGHT * 2,
-            width: SCREEN_WIDTH * 0.9,
-            backgroundColor: "#fff",
-            position: "absolute",
-            left: (SCREEN_WIDTH - SCREEN_WIDTH * 0.9) / 2,
-            top: SCREEN_HEIGHT * 0.3,
-          }}
-        >
-          <TextInput
-            label="First Name"
-            value={firstname}
-            mode="flat"
-            onChangeText={(text) => setFirstname(text)}
-            style={{ margin: 20, backgroundColor: "#fff" }}
-          />
-
-          <TextInput
-            label="Last Name"
-            value={lastname}
-            mode="flat"
-            onChangeText={(text) => setLastname(text)}
-            style={{ margin: 20, backgroundColor: "#fff" }}
-          />
-
-          <Button
-            style={{
-              marginHorizontal: 50,
-              marginVertical: 20,
-              backgroundColor: "#0af",
-              padding: 10,
-            }}
-            mode="contained"
-            onPress={() => handleNameChange()}
-          >
-            Update
-          </Button>
         </View>
       </ScrollView>
     </SafeAreaView>

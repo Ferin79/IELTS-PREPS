@@ -16,8 +16,11 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import CKEditor from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import { useHistory } from "react-router-dom";
 
 const Reading = () => {
+  const history = useHistory();
+
   const { isLoading, setIsLoading, role, institution } = useContext(Context);
 
   const [section1, setSection1] = useState("");
@@ -32,10 +35,13 @@ const Reading = () => {
   const [readingData, setReadingData] = useState([]);
 
   // Modal
-  const [modalShow, setModalShow] = useState(false);    
-  const [detailsModalData, setDetailsModalData] = useState({data:[]});
+  // eslint-disable-next-line
+  const [modalShow, setModalShow] = useState(false);
+  const [detailsModalData, setDetailsModalData] = useState({ data: [] });
   const [loadingModalData, setLoadingModalData] = useState(false);
   const [studentListInModel, setStudentListInModel] = useState([]);
+
+  // eslint-disable-next-line
   const MyVerticallyCenteredModal = (props) => {
     return (
       <Modal
@@ -49,68 +55,77 @@ const Reading = () => {
             Test Statistics
           </Modal.Title>
         </Modal.Header>
-        <Modal.Body>          
-            <Row>
-              <h5>Average score :&nbsp; {detailsModalData.averageBand}</h5>
-            </Row>
-            <Row>
-              <h5>Average Correct Score :&nbsp; {detailsModalData.averageCorrectScore}</h5>
-            </Row>
-            <Row>
-              <h5>Average Not Attempted :&nbsp; {detailsModalData.averageNotAttempted}</h5>
-            </Row>
-            <Row>List of students who attempted this test</Row>          
-            {
-              studentListInModel.map((student) => {
-                return(
-                 <li>{student.email} : {student.band} </li> 
-                  )
-              })
-            }          
+        <Modal.Body>
+          <Row>
+            <h5>Average score :&nbsp; {detailsModalData.averageBand}</h5>
+          </Row>
+          <Row>
+            <h5>
+              Average Correct Score :&nbsp;{" "}
+              {detailsModalData.averageCorrectScore}
+            </h5>
+          </Row>
+          <Row>
+            <h5>
+              Average Not Attempted :&nbsp;{" "}
+              {detailsModalData.averageNotAttempted}
+            </h5>
+          </Row>
+          <Row>List of students who attempted this test</Row>
+          {studentListInModel.map((student) => {
+            return (
+              <li>
+                {student.email} : {student.band}{" "}
+              </li>
+            );
+          })}
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={props.onHide}>Close</Button>
         </Modal.Footer>
       </Modal>
     );
-  }
+  };
 
+  // eslint-disable-next-line
   const showTestData = (id) => {
     setLoadingModalData(true);
-      firebase.firestore().collection("readingUser").where("ReadingTestId", "==",id).get()
-        .then((docs) => {
-          let data = [];
-          let totalBand = 0;
-          let totalCorrectAnswers = 0;
-          let totalNotAttempted = 0;
-          docs.forEach(doc => {                    
-              data.push(doc.data());
-              totalBand += doc.data().band;
-              totalCorrectAnswers += doc.data().correctScore;
-              totalNotAttempted += doc.data().notattemptScore;            
-          });
-          const stats = {
-            data,
-            averageBand:totalBand/data.length,
-            averageCorrectScore: totalCorrectAnswers/data.length,
-            averageNotAttempted: totalNotAttempted/data.length,
-          }
-          console.log(data);
-          setDetailsModalData(stats);
-          setStudentListInModel(data)
-          setLoadingModalData(false)
-          setModalShow(true);
+    firebase
+      .firestore()
+      .collection("readingUser")
+      .where("ReadingTestId", "==", id)
+      .get()
+      .then((docs) => {
+        let data = [];
+        let totalBand = 0;
+        let totalCorrectAnswers = 0;
+        let totalNotAttempted = 0;
+        docs.forEach((doc) => {
+          data.push(doc.data());
+          totalBand += doc.data().band;
+          totalCorrectAnswers += doc.data().correctScore;
+          totalNotAttempted += doc.data().notattemptScore;
         });
-  }
-
-
+        const stats = {
+          data,
+          averageBand: totalBand / data.length,
+          averageCorrectScore: totalCorrectAnswers / data.length,
+          averageNotAttempted: totalNotAttempted / data.length,
+        };
+        console.log(data);
+        setDetailsModalData(stats);
+        setStudentListInModel(data);
+        setLoadingModalData(false);
+        setModalShow(true);
+      });
+  };
 
   const fetchReadingData = useCallback(() => {
     setIsLoading(true);
     firebase
       .firestore()
       .collection("reading")
-      .where("institute_id", "==", institution)      
+      .where("institute_id", "==", institution)
       .orderBy("createdAt", "desc")
       .get()
       .then((docs) => {
@@ -128,26 +143,25 @@ const Reading = () => {
       });
   }, [setIsLoading, institution]);
 
-
   // Validation
   const emptyAnswers = () => {
     for (var i = 0; i < 40; i++) {
-        if (answersData[i].value.trim() === ""){
-          return true;
-        }
+      if (answersData[i].value.trim() === "") {
+        return true;
+      }
     }
     return false;
-  }
+  };
 
   const handleAddModule = (event) => {
     event.preventDefault();
-    if (emptyAnswers()){
+    if (emptyAnswers()) {
       toast.error("Please Enter All Answers");
       console.log("Empty Answer");
       return;
     }
     console.log(answersData);
-    
+
     if (role === "admin" || role === "staff") {
       setIsLoading(true);
       firebase
@@ -211,8 +225,8 @@ const Reading = () => {
 
   if (isLoading) {
     return <LoadingScreen text="Loading Reading Data" />;
-  }else if (loadingModalData) {
-    return <LoadingScreen text="Loading Test Data..." />
+  } else if (loadingModalData) {
+    return <LoadingScreen text="Loading Test Data..." />;
   }
 
   if (role === "student") {
@@ -237,7 +251,6 @@ const Reading = () => {
                 <th>Answers</th>
                 <th>Added By</th>
                 <th>Action</th>
-                <th>Details</th>
               </tr>
             </thead>
             <tbody>
@@ -274,23 +287,27 @@ const Reading = () => {
                         </Dropdown>
                       </td>
                       <td>{item.addedBy}</td>
-                      <td>
+                      <td className="d-flex flex-row justify-content-center align-items-center">
                         <Button
                           variant="danger"
                           onClick={() => deleteReadingModule(item.id)}
                         >
                           <i className="fa fa-trash"></i>
                         </Button>
-                      </td>
-                      <td>
-                      <Button variant="primary" onClick={() => {showTestData(item.id); }}>
-                      <i className="fa fa-info"></i>
-                      </Button>
+                        <Button
+                          className="ml-2"
+                          variant="primary"
+                          onClick={() => {
+                            history.push(`/stats/reading/${item.id}`);
+                          }}
+                        >
+                          <i className="fa fa-info"></i>
+                        </Button>
 
-                      <MyVerticallyCenteredModal
-                        show={modalShow}
-                        onHide={() => setModalShow(false)}
-                      />
+                        {/* <MyVerticallyCenteredModal
+                          show={modalShow}
+                          onHide={() => setModalShow(false)}
+                        /> */}
                       </td>
                     </tr>
                   );

@@ -10,7 +10,6 @@ import Card from "react-bootstrap/Card";
 import Spinner from "react-bootstrap/Spinner";
 import Accordion from "react-bootstrap/Accordion";
 import Button from "react-bootstrap/Button";
-import Table from "react-bootstrap/Table";
 import { Line } from "react-chartjs-2";
 
 const StudentStats = ({ match }) => {
@@ -54,8 +53,6 @@ const StudentStats = ({ match }) => {
             date: [...date],
             data: [...data],
           });
-          console.log(date);
-          console.log(data);
           setAvgBand(
             Math.round(parseInt(totalRecievedBands) / parseInt(docs.size))
           );
@@ -182,43 +179,6 @@ const StudentStats = ({ match }) => {
                               <h6>Incorrect Answer: {data.incorrectScore}</h6>
                               <h6>Not Attempted: {data.notattemptScore}</h6>
                               <h3>Bands: {data.band}</h3>
-                              <div>
-                                <Table
-                                  striped
-                                  bordered
-                                  hover
-                                  responsive
-                                  variant="dark"
-                                >
-                                  <thead>
-                                    <tr>
-                                      <th>#</th>
-                                      <th>First Name</th>
-                                      <th>Last Name</th>
-                                      <th>Username</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    <tr>
-                                      <td>1</td>
-                                      <td>Mark</td>
-                                      <td>Otto</td>
-                                      <td>@mdo</td>
-                                    </tr>
-                                    <tr>
-                                      <td>2</td>
-                                      <td>Jacob</td>
-                                      <td>Thornton</td>
-                                      <td>@fat</td>
-                                    </tr>
-                                    <tr>
-                                      <td>3</td>
-                                      <td colSpan="2">Larry the Bird</td>
-                                      <td>@twitter</td>
-                                    </tr>
-                                  </tbody>
-                                </Table>
-                              </div>
                             </Card.Body>
                           </Accordion.Collapse>
                         </Card>
