@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import io from "socket.io-client";
 import Peer from "simple-peer";
 
-function UserVideo() {
+function AdminVideo() {
   const [stream, setStream] = useState(null);
   const [yourID, setYourID] = useState("");
   const [users, setUsers] = useState({});
@@ -132,9 +132,21 @@ function UserVideo() {
         {UserVideo}
         {PartnerVideo}
       </div>
+      <div>
+        {Object.keys(users).map((key) => {
+          if (key === yourID) {
+            return null;
+          }
+          return (
+            <button key={key} onClick={() => callPeer(key)}>
+              Call {key}
+            </button>
+          );
+        })}
+      </div>
       {incomingCall}
     </div>
   );
 }
 
-export default UserVideo;
+export default AdminVideo;

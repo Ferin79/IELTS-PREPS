@@ -16,31 +16,30 @@ const Header = () => {
         <Nav className="mx-auto">
           {currentUser ? (
             <>
-              <Nav.Link>
-                <NavLink to="/" className="changeNavColor">
-                  Dashboard
-                </NavLink>
+              <Nav.Link as={NavLink} to="/" className="changeNavColor">
+                Dashboard
               </Nav.Link>
             </>
           ) : (
             <>
-              <Nav.Link>
-                <NavLink to="/login" className="changeNavColor">
-                  Login
-                </NavLink>
+              <Nav.Link as={NavLink} to="/login" className="changeNavColor">
+                Login
+              </Nav.Link>
+              <Nav.Link
+                as={NavLink}
+                to="/video/user"
+                className="changeNavColor"
+              >
+                Speaking
               </Nav.Link>
             </>
           )}
-          <Nav.Link>
-            <NavLink to="/contact" className="changeNavColor">
-              Contact Us
-            </NavLink>
+          <Nav.Link as={NavLink} to="/contact" className="changeNavColor">
+            Contact Us
           </Nav.Link>
 
-          <Nav.Link>
-            <NavLink to="/privacy" className="changeNavColor">
-              Privacy Policy
-            </NavLink>
+          <Nav.Link as={NavLink} to="/privacy" className="changeNavColor">
+            Privacy Policy
           </Nav.Link>
 
           {currentUser && (

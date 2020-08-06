@@ -26,7 +26,10 @@
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
-    "react-toastify": "^6.0.5"
+    "react-toastify": "^6.0.5",
+    "simple-peer": "^9.7.2",
+    "socket.io-client": "^2.3.0",
+    "uuid": "^8.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
