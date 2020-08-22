@@ -16,23 +16,23 @@ IELTS PREPS allows students to register under any institute and practice all fou
 The System is developed in hierarchical levels and this levels are:
 
 <pre>
-<img src="./assets/code.png">Administrator
+<img src="https://raw.githubusercontent.com/Ferin79/IELTS-PREP/master/assets/code.png">Administrator
 │     Ferin Patel
 │     Jash Jariwala
 │
-└───<img src="./assets/institution.png"> Institute
+└───<img src="https://raw.githubusercontent.com/Ferin79/IELTS-PREP/master/assets/institution.png"> Institute
     │     Universal Education
     │     ...
     │
-    └───<img src="./assets/administrator.png"> Admin
+    └───<img src="https://raw.githubusercontent.com/Ferin79/IELTS-PREP/master/assets/administrator.png"> Admin
         │     Rohan Sir
         │     ...
         |
-        └───<img src="./assets/staff.png"> Staff
+        └───<img src="https://raw.githubusercontent.com/Ferin79/IELTS-PREP/master/assets/staff.png"> Staff
             │     Staff Members
             │     ...
             |
-            └─── <img src="./assets/student.png">Students
+            └─── <img src="https://raw.githubusercontent.com/Ferin79/IELTS-PREP/master/assets/student.png">Students
 </pre>
 
 #### Administrator
@@ -64,7 +64,7 @@ The IELTS has four major modules:
 - Writing
 - Speaking
 
-<img src="./assets/module.gif" height="500" width="275" alt="Module Screen">
+<img src="https://raw.githubusercontent.com/Ferin79/IELTS-PREP/master/assets/module.gif" height="500" width="275" alt="Module Screen">
 
 #### Listening
 
@@ -75,13 +75,13 @@ The test can be of two type in this system.
 - PDF & Audio
 - Video Only
 
-<img src="./assets/listening.PNG" height="500" width="275" alt="Listening Screen">
+<img src="https://raw.githubusercontent.com/Ferin79/IELTS-PREP/master/assets/listening.PNG" height="500" width="275" alt="Listening Screen">
 
 #### Reading
 
 The Reading section consists of 40 questions, designed to test a wide range of reading skills. These include reading for gist, reading for main ideas, reading for detail, skimming, understanding logical argument and recognising writers' opinions, attitudes and purpose.
 
-<img src="./assets/reading.PNG" height="500" width="275" alt="Reading Screen">
+<img src="https://raw.githubusercontent.com/Ferin79/IELTS-PREP/master/assets/reading.PNG" height="500" width="275" alt="Reading Screen">
 
 #### Writing
 
@@ -91,7 +91,7 @@ Topics are of general interest to, and suitable for, test takers entering underg
 
 - Task 2 - you will be asked to write an essay in response to a point of view, argument or problem. Responses to both tasks must be in a formal style.
 
-<img src="./assets/writing.PNG" height="500" width="275" alt="Writing Screen">
+<img src="https://raw.githubusercontent.com/Ferin79/IELTS-PREP/master/assets/writing.PNG" height="500" width="275" alt="Writing Screen">
 
 #### Speaking
 
@@ -109,7 +109,7 @@ The speaking section assesses your use of spoken English.
 
 Whenever students appears for practice exam, student scores are recorded for further analaysis and monitoring. Students can view chart progress in the mobile app and other stats records. Student can view stats for each module.
 
-<img src="./assets/stats.PNG" height="500" width="275" alt="Statistics Screen">
+<img src="https://raw.githubusercontent.com/Ferin79/IELTS-PREP/master/assets/stats.PNG" height="500" width="275" alt="Statistics Screen">
 
 ---
 
@@ -117,7 +117,7 @@ Whenever students appears for practice exam, student scores are recorded for fur
 
 Firebase is Google's mobile platform that helps you quickly develop high-quality apps and grow your business.
 
-<img src="./assets/firebase.png" alt="Firebase ">
+<img src="https://raw.githubusercontent.com/Ferin79/IELTS-PREP/master/assets/firebase.png" alt="Firebase ">
 
 #### Maintenance Costing
 
