@@ -64,7 +64,7 @@ The IELTS has four major modules:
 - Writing
 - Speaking
 
-<img src="./assets/module.gif" height="500" width="250" alt="Module Screen">
+<img src="./assets/module.gif" height="500" width="275" alt="Module Screen">
 
 #### Listening
 
@@ -75,13 +75,13 @@ The test can be of two type in this system.
 - PDF & Audio
 - Video Only
 
-<img src="./assets/listening.PNG" height="500" width="250" alt="Listening Screen">
+<img src="./assets/listening.PNG" height="500" width="275" alt="Listening Screen">
 
 #### Reading
 
 The Reading section consists of 40 questions, designed to test a wide range of reading skills. These include reading for gist, reading for main ideas, reading for detail, skimming, understanding logical argument and recognising writers' opinions, attitudes and purpose.
 
-<img src="./assets/reading.PNG" height="500" width="250" alt="Reading Screen">
+<img src="./assets/reading.PNG" height="500" width="275" alt="Reading Screen">
 
 #### Writing
 
@@ -91,7 +91,7 @@ Topics are of general interest to, and suitable for, test takers entering underg
 
 - Task 2 - you will be asked to write an essay in response to a point of view, argument or problem. Responses to both tasks must be in a formal style.
 
-<img src="./assets/writing.PNG" height="500" width="250" alt="Writing Screen">
+<img src="./assets/writing.PNG" height="500" width="275" alt="Writing Screen">
 
 #### Speaking
 
@@ -107,4 +107,6 @@ The speaking section assesses your use of spoken English.
 
 Whenever students appears for practice exam, student scores are recorded for further analaysis and monitoring. Students can view chart progress in the mobile app and other stats records. Student can view stats for each module.
 
-<img src="./assets/stats.PNG" height="500" width="250" alt="Statistics Screen">
+<img src="./assets/stats.PNG" height="500" width="275" alt="Statistics Screen">
+
+### Firebase
