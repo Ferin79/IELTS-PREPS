@@ -41,27 +41,22 @@ const SignIn = ({ navigation }) => {
         .get()
         .then(async (doc) => {
           if (doc.exists) {
-            if (doc.data().isStudent) {
-              await AsyncStorage.setItem(
-                "@institute_id",
-                doc.data().institute_id
-              );
-              setInstitute_id(doc.data().institute_id);
-              firebase
-                .auth()
-                .signInWithEmailAndPassword(email, password)
-                .then(() => {
-                  setIsLoading(false);
-                })
-                .catch((error) => {
-                  setIsLoading(false);
-                  console.log(error);
-                  setErrorText(error.message);
-                });
-            } else {
-              setIsLoading(false);
-              setErrorText("Admin and Staff are not allowed to login here");
-            }
+            await AsyncStorage.setItem(
+              "@institute_id",
+              doc.data().institute_id
+            );
+            setInstitute_id(doc.data().institute_id);
+            firebase
+              .auth()
+              .signInWithEmailAndPassword(email, password)
+              .then(() => {
+                setIsLoading(false);
+              })
+              .catch((error) => {
+                setIsLoading(false);
+                console.log(error);
+                setErrorText(error.message);
+              });
           } else {
             setIsLoading(false);
             setErrorText("User Account Not found");
