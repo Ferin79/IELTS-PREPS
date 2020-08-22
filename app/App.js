@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { SafeAreaView, StatusBar, AsyncStorage } from "react-native";
+import { SafeAreaView, StatusBar, AsyncStorage, Alert } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
+import * as Updates from "expo-updates";
 import AuthStackScreen from "./routes/AuthStack";
 import firebase from "./data/firebase";
 import BottomScreen from "./routes/MaterialBottom";
@@ -12,6 +13,30 @@ let institute_id = "";
 export default function App() {
   const [isLogin, setIsLogin] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+
+  const checkForUpdate = async () => {
+    try {
+      const update = await Updates.checkForUpdateAsync();
+      if (update.isAvailable) {
+        await Updates.fetchUpdateAsync();
+        Alert.alert(
+          "Update Available",
+          "Your App will be updated. Application will restart automatically after update.",
+          [
+            {
+              text: "OK",
+              onPress: async () => {
+                console.log("Update Started");
+                await Updates.reloadAsync();
+              },
+            },
+          ]
+        );
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged(async (user) => {
@@ -28,6 +53,7 @@ export default function App() {
         setIsLogin(false);
       }
     });
+    checkForUpdate();
   }, []);
 
   if (isLoading) {

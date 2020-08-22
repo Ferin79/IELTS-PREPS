@@ -18,6 +18,9 @@ import { Context } from "../../data/context";
 
 let playbackObject = new Audio.Sound();
 let IS_MOUNTED = false;
+Audio.setAudioModeAsync({
+  staysActiveInBackground: true,
+});
 
 const ListeningTest = ({ navigation, route }) => {
   const examData = route.params.data;
@@ -356,7 +359,7 @@ const ListeningTest = ({ navigation, route }) => {
                 display: "flex",
                 flex: 1,
                 justifyContent: "space-evenly",
-                alignItems: "center",
+                alignItems: "flex-start",
               }}
             >
               <Text style={{ fontSize: 16 }}>
@@ -369,6 +372,12 @@ const ListeningTest = ({ navigation, route }) => {
               <Text style={{ fontSize: 16 }}>
                 3. You can fill the answers after your listening test is over.
                 Then Submit your exam to see score.
+              </Text>
+              <Text style={{ fontSize: 16, fontWeight: "bold" }}>
+                4. Type all answers in Capital letters only.
+              </Text>
+              <Text style={{ fontSize: 16, fontWeight: "bold" }}>
+                5. Always use headphones/earphones.
               </Text>
             </View>
           </View>
@@ -391,10 +400,11 @@ const ListeningTest = ({ navigation, route }) => {
                   >
                     <TextInput
                       type="outlined"
+                      autoCapitalize="characters"
                       label={item.index + ". Enter Answer"}
                       onChangeText={(text) => {
                         const data = userAnswer;
-                        data[index].value = text;
+                        data[index].value = text.toUpperCase();
                         setUserAnswer([...data]);
                       }}
                     />
