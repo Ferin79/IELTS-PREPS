@@ -22,17 +22,35 @@ The System is developed in hierarchical levels and this levels are:
 │
 └───<img src="./assets/institution.png"> Institute
     │     Universal Education
-    │   ...
+    │     ...
     │
     └───<img src="./assets/administrator.png"> Admin
-        │   Rohan Sir
-        │   ...
+        │     Rohan Sir
+        │     ...
         |
         └───<img src="./assets/staff.png"> Staff
-            │  Staff Members
-            │   ...
+            │     Staff Members
+            │     ...
             |
             └─── <img src="./assets/student.png">Students
-                ...
-
 </pre>
+
+#### Administrator
+
+The administrator is super admin to the system. He has all rights and permissions to access the system. He is the only one who can manage the institution and its admin.
+
+#### Institution
+
+An educational institution is a place where people of different ages gain an education, including IELTS. They provide a large variety of learning environments and learning spaces. Every student must be enroll under any institution in order to use the system.
+
+#### Admin
+
+Admin is someone who is the leader of an entire community within a institution. He or she is responsible for managing the major administrative tasks and supervising all students and staffs. Admin account can only be created by Administrator (super admin). Admin has rights to manage staff accounts and students accounts. Admin can monitor students statistics and progress of individual students.
+
+#### Staff
+
+Staff has permissions to handle students and monitor progress of students. Management of IELTS modules can be done by staff. Staff can conduct one-to-one video call with student for Speaking module.
+
+#### Student
+
+End users and most important participants of the system are students. Students can give Listening, Reading, Writing and Speaking test on the system. This various tests are added by particular institution admin & staffs under which they are enroll.
