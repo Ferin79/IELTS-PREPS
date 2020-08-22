@@ -109,4 +109,34 @@ Whenever students appears for practice exam, student scores are recorded for fur
 
 <img src="./assets/stats.PNG" height="500" width="275" alt="Statistics Screen">
 
-### Firebase
+### Why Firebase ?
+
+Firebase is Google's mobile platform that helps you quickly develop high-quality apps and grow your business.
+
+<img src="./assets/firebase.png" alt="Firebase ">
+
+#### Costing
+
+- ###### Cloud Firestore
+
+  - Free Tier
+    - 1 GB Storage
+    - 600,000 writes
+    - 1,500,000 reads
+    - 600,000 deletes
+  - Charges
+    - ###### 50 GB for \$9
+
+- ###### Cloud Storage
+
+  - Free Tier
+    - 5 GB Storage
+    - 30 GB Transferred
+    - 2,100,000 Operations (uploads & downloads)
+  - Charges
+    - ###### 20 GB for \$0.4
+
+- ###### Cloud Functions
+
+  - Free Tier
+    - 2,000,000 invocations
