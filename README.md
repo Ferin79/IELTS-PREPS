@@ -54,3 +54,57 @@ Staff has permissions to handle students and monitor progress of students. Manag
 #### Student
 
 End users and most important participants of the system are students. Students can give Listening, Reading, Writing and Speaking test on the system. This various tests are added by particular institution admin & staffs under which they are enroll.
+
+## Module
+
+The IELTS has four major modules:
+
+- Listening
+- Reading
+- Writing
+- Speaking
+
+<img src="./assets/module.gif" alt="Module Screen">
+
+#### Listening
+
+You will listen to recordings of native English speakers and then write your answers to a series of questions.
+
+The test can be of two type in this system.
+
+- PDF & Audio
+- Video Only
+
+<img src="./assets/listening.PNG" alt="Listening Screen">
+
+#### Reading
+
+The Reading section consists of 40 questions, designed to test a wide range of reading skills. These include reading for gist, reading for main ideas, reading for detail, skimming, understanding logical argument and recognising writers' opinions, attitudes and purpose.
+
+<img src="./assets/reading.PNG" alt="Reading Screen">
+
+#### Writing
+
+Topics are of general interest to, and suitable for, test takers entering undergraduate and postgraduate studies or seeking professional registration. There are two tasks:
+
+- Task 1 - you will be presented with a graph, table, chart or diagram and asked to describe, summarise or explain the information in your own words. You may be asked to describe and explain data, describe the stages of a process, how something works or describe an object or event.
+
+- Task 2 - you will be asked to write an essay in response to a point of view, argument or problem. Responses to both tasks must be in a formal style.
+
+<img src="./assets/writing.PNG" alt="Writing Screen">
+
+#### Speaking
+
+The speaking section assesses your use of spoken English.
+
+- Part 1 - the examiner will ask you general questions about yourself and a range of familiar topics, such as home, family, work, studies and interests. This part lasts between four and five minutes.
+
+- Part 2 - you will be given a card which asks you to talk about a particular topic. You will have one minute to prepare before speaking for up to two minutes. The examiner will then ask one or two questions on the same topic.
+
+- Part 3 - you will be asked further questions about the topic in Part 2. These will give you the opportunity to discuss more abstract ideas and issues. This part of the test lasts between four and five minutes.
+
+### Statistics
+
+Whenever students appears for practice exam, student scores are recorded for further analaysis and monitoring. Students can view chart progress in the mobile app and other stats records. Student can view stats for each module.
+
+<img src="./assets/stats.PNG" alt="Statistics Screen">
