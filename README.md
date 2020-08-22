@@ -103,11 +103,15 @@ The speaking section assesses your use of spoken English.
 
 - Part 3 - you will be asked further questions about the topic in Part 2. These will give you the opportunity to discuss more abstract ideas and issues. This part of the test lasts between four and five minutes.
 
+---
+
 ### Statistics
 
 Whenever students appears for practice exam, student scores are recorded for further analaysis and monitoring. Students can view chart progress in the mobile app and other stats records. Student can view stats for each module.
 
 <img src="./assets/stats.PNG" height="500" width="275" alt="Statistics Screen">
+
+---
 
 ### Why Firebase ?
 
@@ -115,7 +119,7 @@ Firebase is Google's mobile platform that helps you quickly develop high-quality
 
 <img src="./assets/firebase.png" alt="Firebase ">
 
-#### Costing
+#### Maintenance Costing
 
 - ###### Cloud Firestore
 
