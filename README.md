@@ -9,6 +9,10 @@ You’ll be assessed on the following elements:
 - Writing
 - Speaking
 
+## Why this App ???
+
+The IELTS exam is accepted by immigration authorities and continues to play an important role in using language assessment as a mean to control migration numbers. Currently there is no unified platform to practice all four modules of IELTS at one place. No assistance and progress monitoring is provided by existing apps. This App allows students to practice all modules of IELTS from home within single app.
+
 ## THE APPLICATION
 
 IELTS PREPS allows students to register under any institute and practice all four elements of IELTS exams. The application offers wide range of practice tests for each module of IELTS.
