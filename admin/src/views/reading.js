@@ -637,10 +637,14 @@ const Reading = () => {
                                 <Form.Control
                                   type="text"
                                   required
+                                  style={{ textTransform: "uppercase" }}
+                                  autoCapitalize={true}
                                   placeholder="Enter Answer"
                                   onChange={(event) => {
                                     const data = answersData;
-                                    data[item.id].value = event.target.value;
+                                    data[
+                                      item.id
+                                    ].value = event.target.value.toUpperCase();
                                     setAnswersData([...data]);
                                   }}
                                 />
