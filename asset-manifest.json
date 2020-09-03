@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/IELTS-PREPS/static/css/main.0bfc69e6.chunk.css",
-    "main.js": "/IELTS-PREPS/static/js/main.bb8c5758.chunk.js",
-    "main.js.map": "/IELTS-PREPS/static/js/main.bb8c5758.chunk.js.map",
-    "runtime-main.js": "/IELTS-PREPS/static/js/runtime-main.6b101641.js",
-    "runtime-main.js.map": "/IELTS-PREPS/static/js/runtime-main.6b101641.js.map",
-    "static/css/2.e7c4c567.chunk.css": "/IELTS-PREPS/static/css/2.e7c4c567.chunk.css",
-    "static/js/2.0a1e6d01.chunk.js": "/IELTS-PREPS/static/js/2.0a1e6d01.chunk.js",
-    "static/js/2.0a1e6d01.chunk.js.map": "/IELTS-PREPS/static/js/2.0a1e6d01.chunk.js.map",
-    "index.html": "/IELTS-PREPS/index.html",
-    "precache-manifest.6460375bc3bfdba9273b6fe756bcc613.js": "/IELTS-PREPS/precache-manifest.6460375bc3bfdba9273b6fe756bcc613.js",
-    "service-worker.js": "/IELTS-PREPS/service-worker.js",
-    "static/css/2.e7c4c567.chunk.css.map": "/IELTS-PREPS/static/css/2.e7c4c567.chunk.css.map",
-    "static/css/main.0bfc69e6.chunk.css.map": "/IELTS-PREPS/static/css/main.0bfc69e6.chunk.css.map",
-    "static/js/2.0a1e6d01.chunk.js.LICENSE.txt": "/IELTS-PREPS/static/js/2.0a1e6d01.chunk.js.LICENSE.txt",
-    "static/media/world .png": "/IELTS-PREPS/static/media/world .76e66448.png"
+    "main.css": "/IELTS-PREPS/video/static/css/main.ddb48e99.chunk.css",
+    "main.js": "/IELTS-PREPS/video/static/js/main.437a594d.chunk.js",
+    "main.js.map": "/IELTS-PREPS/video/static/js/main.437a594d.chunk.js.map",
+    "runtime-main.js": "/IELTS-PREPS/video/static/js/runtime-main.5b2d2116.js",
+    "runtime-main.js.map": "/IELTS-PREPS/video/static/js/runtime-main.5b2d2116.js.map",
+    "static/css/2.16b48f27.chunk.css": "/IELTS-PREPS/video/static/css/2.16b48f27.chunk.css",
+    "static/js/2.e35d2aba.chunk.js": "/IELTS-PREPS/video/static/js/2.e35d2aba.chunk.js",
+    "static/js/2.e35d2aba.chunk.js.map": "/IELTS-PREPS/video/static/js/2.e35d2aba.chunk.js.map",
+    "index.html": "/IELTS-PREPS/video/index.html",
+    "precache-manifest.6a99ab4572a10bc1f6149bebdc23f276.js": "/IELTS-PREPS/video/precache-manifest.6a99ab4572a10bc1f6149bebdc23f276.js",
+    "service-worker.js": "/IELTS-PREPS/video/service-worker.js",
+    "static/css/2.16b48f27.chunk.css.map": "/IELTS-PREPS/video/static/css/2.16b48f27.chunk.css.map",
+    "static/css/main.ddb48e99.chunk.css.map": "/IELTS-PREPS/video/static/css/main.ddb48e99.chunk.css.map",
+    "static/js/2.e35d2aba.chunk.js.LICENSE.txt": "/IELTS-PREPS/video/static/js/2.e35d2aba.chunk.js.LICENSE.txt",
+    "static/media/skype_remix_2.mp3": "/IELTS-PREPS/video/static/media/skype_remix_2.5ab01274.mp3"
   },
   "entrypoints": [
-    "static/js/runtime-main.6b101641.js",
-    "static/css/2.e7c4c567.chunk.css",
-    "static/js/2.0a1e6d01.chunk.js",
-    "static/css/main.0bfc69e6.chunk.css",
-    "static/js/main.bb8c5758.chunk.js"
+    "static/js/runtime-main.5b2d2116.js",
+    "static/css/2.16b48f27.chunk.css",
+    "static/js/2.e35d2aba.chunk.js",
+    "static/css/main.ddb48e99.chunk.css",
+    "static/js/main.437a594d.chunk.js"
   ]
 }
