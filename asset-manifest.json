@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/IELTS-PREPS/static/css/main.0bfc69e6.chunk.css",
+    "main.js": "/IELTS-PREPS/static/js/main.bb8c5758.chunk.js",
+    "main.js.map": "/IELTS-PREPS/static/js/main.bb8c5758.chunk.js.map",
+    "runtime-main.js": "/IELTS-PREPS/static/js/runtime-main.6b101641.js",
+    "runtime-main.js.map": "/IELTS-PREPS/static/js/runtime-main.6b101641.js.map",
+    "static/css/2.e7c4c567.chunk.css": "/IELTS-PREPS/static/css/2.e7c4c567.chunk.css",
+    "static/js/2.0a1e6d01.chunk.js": "/IELTS-PREPS/static/js/2.0a1e6d01.chunk.js",
+    "static/js/2.0a1e6d01.chunk.js.map": "/IELTS-PREPS/static/js/2.0a1e6d01.chunk.js.map",
+    "index.html": "/IELTS-PREPS/index.html",
+    "precache-manifest.6460375bc3bfdba9273b6fe756bcc613.js": "/IELTS-PREPS/precache-manifest.6460375bc3bfdba9273b6fe756bcc613.js",
+    "service-worker.js": "/IELTS-PREPS/service-worker.js",
+    "static/css/2.e7c4c567.chunk.css.map": "/IELTS-PREPS/static/css/2.e7c4c567.chunk.css.map",
+    "static/css/main.0bfc69e6.chunk.css.map": "/IELTS-PREPS/static/css/main.0bfc69e6.chunk.css.map",
+    "static/js/2.0a1e6d01.chunk.js.LICENSE.txt": "/IELTS-PREPS/static/js/2.0a1e6d01.chunk.js.LICENSE.txt",
+    "static/media/world .png": "/IELTS-PREPS/static/media/world .76e66448.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.6b101641.js",
+    "static/css/2.e7c4c567.chunk.css",
+    "static/js/2.0a1e6d01.chunk.js",
+    "static/css/main.0bfc69e6.chunk.css",
+    "static/js/main.bb8c5758.chunk.js"
+  ]
+}
