@@ -1,26 +1,26 @@
 {
   "files": {
     "main.css": "/IELTS-PREPS/static/css/main.0bfc69e6.chunk.css",
-    "main.js": "/IELTS-PREPS/static/js/main.ca95e657.chunk.js",
-    "main.js.map": "/IELTS-PREPS/static/js/main.ca95e657.chunk.js.map",
+    "main.js": "/IELTS-PREPS/static/js/main.6af40426.chunk.js",
+    "main.js.map": "/IELTS-PREPS/static/js/main.6af40426.chunk.js.map",
     "runtime-main.js": "/IELTS-PREPS/static/js/runtime-main.6b101641.js",
     "runtime-main.js.map": "/IELTS-PREPS/static/js/runtime-main.6b101641.js.map",
     "static/css/2.e7c4c567.chunk.css": "/IELTS-PREPS/static/css/2.e7c4c567.chunk.css",
-    "static/js/2.129a127b.chunk.js": "/IELTS-PREPS/static/js/2.129a127b.chunk.js",
-    "static/js/2.129a127b.chunk.js.map": "/IELTS-PREPS/static/js/2.129a127b.chunk.js.map",
+    "static/js/2.880e641d.chunk.js": "/IELTS-PREPS/static/js/2.880e641d.chunk.js",
+    "static/js/2.880e641d.chunk.js.map": "/IELTS-PREPS/static/js/2.880e641d.chunk.js.map",
     "index.html": "/IELTS-PREPS/index.html",
-    "precache-manifest.1e1bf3126b7027ed15cf81b148790dda.js": "/IELTS-PREPS/precache-manifest.1e1bf3126b7027ed15cf81b148790dda.js",
+    "precache-manifest.5b2d85464709fd353606d8aa07a75b1e.js": "/IELTS-PREPS/precache-manifest.5b2d85464709fd353606d8aa07a75b1e.js",
     "service-worker.js": "/IELTS-PREPS/service-worker.js",
     "static/css/2.e7c4c567.chunk.css.map": "/IELTS-PREPS/static/css/2.e7c4c567.chunk.css.map",
     "static/css/main.0bfc69e6.chunk.css.map": "/IELTS-PREPS/static/css/main.0bfc69e6.chunk.css.map",
-    "static/js/2.129a127b.chunk.js.LICENSE.txt": "/IELTS-PREPS/static/js/2.129a127b.chunk.js.LICENSE.txt",
+    "static/js/2.880e641d.chunk.js.LICENSE.txt": "/IELTS-PREPS/static/js/2.880e641d.chunk.js.LICENSE.txt",
     "static/media/world .png": "/IELTS-PREPS/static/media/world .76e66448.png"
   },
   "entrypoints": [
     "static/js/runtime-main.6b101641.js",
     "static/css/2.e7c4c567.chunk.css",
-    "static/js/2.129a127b.chunk.js",
+    "static/js/2.880e641d.chunk.js",
     "static/css/main.0bfc69e6.chunk.css",
-    "static/js/main.ca95e657.chunk.js"
+    "static/js/main.6af40426.chunk.js"
   ]
 }
