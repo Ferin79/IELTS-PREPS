@@ -26,8 +26,6 @@ const Student = () => {
 
   const handleStudentAdd = async (event) => {
     event.preventDefault();
-    setIsFormLoading(true);
-
     if (role.length === 0) {
       alert("Please Re-Login to add Staff");
       return;
@@ -51,6 +49,7 @@ const Student = () => {
       toast.error("Password Did not match");
       return;
     } else {
+      setIsFormLoading(true);
       const response = await fetch(
         "https://us-central1-ielts-preps.cloudfunctions.net/api/register",
         {

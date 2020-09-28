@@ -158,6 +158,17 @@ const Dashboard = () => {
           <Image src={require("../images/check.png")} rounded />
           <h5>Check Writing Section</h5>
         </Col>
+        {role === "admin" && (
+          <Col
+            onClick={() => history.push("/timetable")}
+            id="check"
+            lg={true}
+            className="d-flex flex-column justify-content-center align-items-center addHoverCursor"
+          >
+            <Image src={require("../images/planner.png")} rounded />
+            <h5>Edit Time Table</h5>
+          </Col>
+        )}
       </Row>
       <Modal
         show={show}

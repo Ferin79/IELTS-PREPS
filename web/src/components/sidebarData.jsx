@@ -1,5 +1,10 @@
 import React, { useContext } from "react";
-import { AiFillHome, AiOutlineLogout, AiFillLock } from "react-icons/ai";
+import {
+  AiFillHome,
+  AiOutlineLogout,
+  AiFillLock,
+  AiOutlineSchedule,
+} from "react-icons/ai";
 import { FaUsers } from "react-icons/fa";
 import { BsFillPersonLinesFill } from "react-icons/bs";
 import { AuthContext } from "../data/auth";
@@ -29,6 +34,12 @@ const SiderbarData = () => {
           title: "Manage Students",
           path: "/student",
           icon: <BsFillPersonLinesFill />,
+          cName: "nav-text",
+        },
+        {
+          title: "Manage Timetable",
+          path: "/timetable",
+          icon: <AiOutlineSchedule />,
           cName: "nav-text",
         },
         {
