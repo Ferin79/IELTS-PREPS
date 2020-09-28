@@ -8,6 +8,7 @@ import Home from "./pages/home";
 import Dashboard from "./pages/dashboard";
 import Staff from "./pages/staff";
 import Student from "./pages/student";
+import Timetable from "./pages/timetable";
 
 const Routes = () => {
   const { currentUser } = useContext(AuthContext);
@@ -20,6 +21,7 @@ const Routes = () => {
           <Route path="/" exact component={Dashboard} />
           <Route path="/staff" exact component={Staff} />
           <Route path="/student" exact component={Student} />
+          <Route path="/timetable" exact component={Timetable} />
           <Route
             path="/logout"
             exact

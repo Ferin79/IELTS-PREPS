@@ -23,7 +23,7 @@ const Staff = () => {
 
   const handleStaffAdd = async (event) => {
     event.preventDefault();
-    setIsFormLoading(true);
+
     if (role.length === 0) {
       toast.error("Please Re-Login to add Staff");
       return;
@@ -47,6 +47,7 @@ const Staff = () => {
       toast.error("Password Did not match");
       return;
     } else {
+      setIsFormLoading(true);
       const response = await fetch(
         "https://us-central1-ielts-preps.cloudfunctions.net/api/register",
         {
@@ -220,6 +221,7 @@ const Staff = () => {
                   <Form.Control
                     type="text"
                     placeholder="Enter First Name"
+                    value={firstname}
                     onChange={(event) => setFirstname(event.target.value)}
                   />
                 </Form.Group>
@@ -228,6 +230,7 @@ const Staff = () => {
                   <Form.Control
                     type="text"
                     placeholder="Enter Last Name"
+                    value={lastname}
                     onChange={(event) => setLastname(event.target.value)}
                   />
                 </Form.Group>
@@ -237,6 +240,7 @@ const Staff = () => {
                 <Form.Control
                   type="Email"
                   placeholder="Enter Email"
+                  value={email}
                   onChange={(event) => setEmail(event.target.value)}
                 />
               </Form.Group>
@@ -246,6 +250,7 @@ const Staff = () => {
                   <Form.Control
                     type="password"
                     placeholder="Enter Password"
+                    value={password}
                     onChange={(event) => setPassword(event.target.value)}
                   />
                 </Form.Group>
@@ -254,6 +259,7 @@ const Staff = () => {
                   <Form.Control
                     type="password"
                     placeholder="Confirm Password"
+                    value={repeatPassword}
                     onChange={(event) => setRepeatPassword(event.target.value)}
                   />
                 </Form.Group>
