@@ -10,7 +10,7 @@ import Loader from 'react-loader-spinner'
 import { Context } from "../../data/context";
 import { AuthContext } from "../../data/auth";
 
-const incommingCallAudio = new Audio('./skype_remix_2.mp3')
+const incommingCallAudio = new Audio(require('../../images/skype_remix_2.mp3'))
 incommingCallAudio.loop = true
 
 const LoadingTailSpin = () => {
@@ -36,6 +36,7 @@ function VideoCall() {
 
   const [yourID, setYourID] = useState("");
   const [users, setUsers] = useState({});
+  const [roles, setRoles] = useState({});
   const [isAdminOrStaff, setIsAdminOrStaff] = useState(false);
   const [stream, setStream] = useState();
   const [receivingCall, setReceivingCall] = useState(false);
@@ -81,10 +82,11 @@ function VideoCall() {
       console.log(currentUser.email, role);
       socket.current.emit("initializeUser", { uniqueName: currentUser.email, role })
     })
-    socket.current.on("allUsers", (users) => {
-      console.log(users);
+    socket.current.on("allUsers", (data) => {
+      console.log(data);
 
-      setUsers(users);
+      setUsers(data.users);
+      setRoles(data.role);
     });
 
     socket.current.on("receiveSignal", (data) => {
@@ -109,15 +111,6 @@ function VideoCall() {
       }
     });
 
-    return () => {
-      if (stream) {
-        stream.getTracks().forEach(function (track) {
-          if (track.readyState === "live") {
-            track.stop();
-          }
-        });
-      }
-    };
   }, []);
 
   useEffect(() => {
@@ -128,6 +121,12 @@ function VideoCall() {
       }
     });
   }, [users]);
+
+  useEffect(() => {
+    const setUserRoleCondition = role === "student" ? false : true
+    setIsAdminOrStaff(setUserRoleCondition)
+  }, [])
+
 
   function callPeer(id) {
     setCallButtonDisability(true);
@@ -393,24 +392,6 @@ function VideoCall() {
     }, milisec);
   };
 
-  function changeName(event) {
-    event.preventDefault();
-    const name = event.target.name.value;
-    let alreadyTaken = false;
-    Object.keys(users).forEach((key) => {
-      if (key !== yourID) {
-        if (name === users[key]) {
-          alreadyTaken = true;
-        }
-      }
-    });
-    if (alreadyTaken) {
-      toast.error("name already taken!");
-      return;
-    } else {
-      socket.current.emit("changeName", { name });
-    }
-  }
 
   let UserVideo;
   let CallUserList;
@@ -540,7 +521,7 @@ function VideoCall() {
         </Row>
         <Row>
           <Col>
-            <h4>You: {users[yourID]}</h4>
+            <h4>You: {currentUser.email} <h6 style={{ color: "green" }}>{yourID && "Online"}</h6></h4>
             <Row style={{ color: "green", fontWeight: "bold" }}>{professorOnline}
             </Row>
           </Col>

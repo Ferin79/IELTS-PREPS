@@ -19,17 +19,27 @@ io.on('connection', socket => {
 
     socket.on("initializeUser", (data) => {
 
+        Object.keys(users).map(key => {
+            if (users[key] === data.uniqueName) {
+                console.log("deleted same - " + users[socket.id]);
+                delete users[socket.id];
+                delete role[socket.id];
+                io.sockets.emit("allUsers", users);
+            }
+        })
+
         users[socket.id] = data.uniqueName;
         role[socket.id] = data.role;
 
-        console.log(role[socket.id] ," - ", users[socket.id]);
+        console.log(role[socket.id], " - ", users[socket.id]);
 
-        io.sockets.emit("allUsers", users);
+        io.sockets.emit("allUsers", { users, role });
 
 
         socket.on('disconnect', () => {
             console.log("deleted - " + users[socket.id]);
             delete users[socket.id];
+            delete role[socket.id];
             io.sockets.emit("allUsers", users);
         })
 

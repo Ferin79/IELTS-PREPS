@@ -61,7 +61,7 @@ const Routes = () => {
               firebase.auth().signOut();
             }}
           />
-          <Redirect to="/" />
+          <Redirect to="/student/speaking" />
         </Switch>
       );
     }
