@@ -18,7 +18,7 @@ const LoadingTailSpin = () => {
     <Loader
       type="TailSpin"
       color="#00BFFF"
-      // timeout={3000}
+    // timeout={3000}
     />
   );
 };
@@ -66,8 +66,7 @@ function VideoCall() {
     // socket.current = io.connect("https://ielts-video-chat.herokuapp.com/");
     // socket.current = io.connect("");
     navigator.mediaDevices
-      .getUserMedia({ video: { facingMode: cameraMode }, audio: true })
-      .then((stream) => {
+      .getUserMedia({ video: { facingMode: cameraMode }, audio: true }).then((stream) => {
         setStream(stream);
         if (userVideo.current) {
           userVideo.current.srcObject = stream;
@@ -149,11 +148,7 @@ function VideoCall() {
 
     console.log("Call user");
     peer.current.on("signal", (data) => {
-      socket.current.emit("callerSignal", {
-        userToCall: id,
-        signalData: data,
-        from: yourID,
-      });
+      socket.current.emit("callerSignal", { userToCall: id, signalData: data, from: yourID, });
     });
     socket.current.emit("callUser", { userToCall: id, from: yourID });
 
@@ -417,19 +412,6 @@ function VideoCall() {
     }
   }
 
-  const changeNameInput = (
-    <Form onSubmit={changeName}>
-      <Form.Group controlId="name">
-        <Form.Label>Change Display name</Form.Label>
-
-        <Form.Control type="text" placeholder="Enter name" />
-      </Form.Group>
-      <Button variant="primary" type="submit" size="sm">
-        <small>Change Name</small>
-      </Button>
-    </Form>
-  );
-
   let UserVideo;
   let CallUserList;
   let callFaculty;
@@ -444,20 +426,10 @@ function VideoCall() {
         }
         return (
           <>
-            <Button
-              variant="primary"
-              onClick={() => callPeer(key)}
-              disabled={callButtonDisability}
-              style={{ margin: 5 }}
-            >
+            <Button variant="primary" onClick={() => callPeer(key)} disabled={callButtonDisability} style={{ margin: 5 }}>
               Call {users[key]}
             </Button>
-            <Button
-              variant="success"
-              onClick={() => giveCallPermission(key)}
-              disabled={callButtonDisability}
-              style={{ margin: 5 }}
-            >
+            <Button variant="success" onClick={() => giveCallPermission(key)} disabled={callButtonDisability} style={{ margin: 5 }}>
               give Permission to {users[key]}
             </Button>
           </>
@@ -465,12 +437,7 @@ function VideoCall() {
       });
     } else if (callingPermission) {
       callFaculty = (
-        <Button
-          variant="primary"
-          onClick={() => callPeer(callingPermission)}
-          disabled={callButtonDisability}
-          style={{ margin: 5 }}
-        >
+        <Button variant="primary" onClick={() => callPeer(callingPermission)} disabled={callButtonDisability} style={{ margin: 5 }}>
           Call {users[callingPermission]}
         </Button>
       );
@@ -486,9 +453,7 @@ function VideoCall() {
     );
     endCallButton = (
       <div className="endCallButton">
-        <Button variant="danger" onClick={() => endCall()}>
-          End Call
-        </Button>
+        <Button variant="danger" onClick={() => endCall()}>End Call</Button>
       </div>
     );
   }
@@ -497,43 +462,15 @@ function VideoCall() {
   const videobutton = videoStatus ? "success" : "danger";
   const audiobutton = audioStatus ? "success" : "danger";
   const screenSharebutton = screenShareStatus ? "success" : "danger";
-  const videoIcon = videoStatus ? (
-    <CameraVideo size={20} />
-  ) : (
-    <CameraVideoOff size={20} />
-  );
+  const videoIcon = videoStatus ? <CameraVideo size={20} /> : <CameraVideoOff size={20} />;
   const audioIcon = audioStatus ? <Mic size={20} /> : <MicMute size={20} />;
   const screenShareIcon = <ArrowBarUp size={20} />;
   const mediaButtonDisable = !callAccepted;
   ToggleMediaButtons = (
     <Row className="justify-content-md-center">
-      <Button
-        variant={videobutton}
-        onClick={toggleVideo}
-        style={{ margin: 5 }}
-        disabled={mediaButtonDisable}
-      >
-        {" "}
-        {videoIcon}{" "}
-      </Button>
-      <Button
-        variant={audiobutton}
-        onClick={toggleAudio}
-        style={{ margin: 5 }}
-        disabled={mediaButtonDisable}
-      >
-        {" "}
-        {audioIcon}{" "}
-      </Button>
-      <Button
-        variant={screenSharebutton}
-        onClick={toggleScreenShare}
-        style={{ margin: 5 }}
-        disabled={mediaButtonDisable}
-      >
-        {" "}
-        {screenShareIcon}{" "}
-      </Button>
+      <Button variant={videobutton} onClick={toggleVideo} style={{ margin: 5 }} disabled={mediaButtonDisable}>{videoIcon}</Button>
+      <Button variant={audiobutton} onClick={toggleAudio} style={{ margin: 5 }} disabled={mediaButtonDisable}>{audioIcon}</Button>
+      <Button variant={screenSharebutton} onClick={toggleScreenShare} style={{ margin: 5 }} disabled={mediaButtonDisable}>{screenShareIcon}</Button>
       {/* {videoStatus &&
         <Button onClick={toggleCamera} style={{ margin: 5 }} disabled={mediaButtonDisable}> <ArrowRepeat /> </Button>
       } */}
@@ -557,10 +494,7 @@ function VideoCall() {
 
     incommintCall = (
       <div className="incommingCall">
-        <Card
-          className="text-center"
-          style={{ background: "black", color: "white" }}
-        >
+        <Card className="text-center" style={{ background: "black", color: "white" }}>
           <Card.Header>
             <h2>{caller} is calling you</h2>
           </Card.Header>
@@ -568,16 +502,8 @@ function VideoCall() {
             <Card.Title></Card.Title>
             <Container>
               <Row>
-                <Col>
-                  <Button size="lg" variant="danger" onClick={() => {}}>
-                    Reject
-                  </Button>
-                </Col>
-                <Col>
-                  <Button size="lg" variant="success" onClick={acceptCall}>
-                    Accept
-                  </Button>
-                </Col>
+                <Col><Button size="lg" variant="danger" onClick={() => { }}>Reject</Button></Col>
+                <Col><Button size="lg" variant="success" onClick={acceptCall}>Accept</Button></Col>
               </Row>
             </Container>
           </Card.Body>
@@ -615,9 +541,7 @@ function VideoCall() {
         <Row>
           <Col>
             <h4>You: {users[yourID]}</h4>
-            {changeNameInput}
-            <Row style={{ color: "green", fontWeight: "bold" }}>
-              {professorOnline}
+            <Row style={{ color: "green", fontWeight: "bold" }}>{professorOnline}
             </Row>
           </Col>
         </Row>
