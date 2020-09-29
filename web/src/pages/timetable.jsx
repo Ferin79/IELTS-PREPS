@@ -8,19 +8,25 @@ import Table from "react-bootstrap/Table";
 import { ToastContainer, toast } from "react-toastify";
 import firebase from "../data/firebase";
 import { Context } from "../data/context";
-import Card from "react-bootstrap/Card";
-import Accordion from "react-bootstrap/Accordion";
+import Modal from "react-bootstrap/Modal";
 
 const Timetable = () => {
   const { institution } = useContext(Context);
 
-  const [startTime, setStartTime] = useState(null);
-  const [endTime, setEndTime] = useState(null);
+  const [startTime, setStartTime] = useState("");
+  const [endTime, setEndTime] = useState("");
   const [interval, setInterval] = useState(20);
   const [timeSlotes, setTimeSlotes] = useState([]);
   const [facultyData, setFacultyData] = useState([]);
+  const [studentData, setStudentData] = useState([]);
   const [facultyRow, setFacultyRow] = useState([]);
   const [selectedFacultyId, setSelectedFacultyId] = useState(0);
+  const [modalShow, setModalShow] = useState(false);
+  const [selectedSlotTime, setSelectedSlotTime] = useState(null);
+  const [
+    selectedFacultyIdForStudentAdd,
+    setSelectedFacultyIdForStudentAdd,
+  ] = useState(null);
 
   function parseTime(s) {
     var c = s.split(":");
@@ -50,11 +56,34 @@ const Timetable = () => {
   }
 
   const handleAddTimeSlot = () => {
-    if (startTime === null) {
+    if (
+      window.confirm(
+        "By Creating New Time Slots, previous timetable would be deleted. Are you sure ?"
+      )
+    ) {
+      firebase
+        .firestore()
+        .collection("timetable")
+        .get()
+        .then((snapshot) => {
+          snapshot.forEach((doc) => {
+            doc.ref.delete();
+          });
+          setFacultyData([]);
+          setFacultyRow([]);
+        })
+        .catch((error) => {
+          console.log(error);
+          toast.error(error.message);
+        });
+    } else {
+      return;
+    }
+    if (startTime === "") {
       toast.error("Select Start Time");
       return;
     }
-    if (endTime === null) {
+    if (endTime === "") {
       toast.error("Select End Time");
       return;
     }
@@ -68,10 +97,26 @@ const Timetable = () => {
     var times_ara = calculate_time_slot(start_time, end_time, interval);
 
     setTimeSlotes(times_ara);
-    toast("Time Slot Created");
+
+    firebase
+      .firestore()
+      .doc("/timeslotes/1")
+      .set({ ...times_ara })
+      .then(() => {
+        toast("Time Slot Created");
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error(error.message);
+      });
   };
 
   const handleAddFaculty = () => {
+    if (!timeSlotes.length) {
+      toast.error("Create Time Slot First");
+      return;
+    }
+
     if (selectedFacultyId === "0" || selectedFacultyId === 0) {
       toast.error("Select Faculty");
       return;
@@ -83,10 +128,119 @@ const Timetable = () => {
     setFacultyData([...selectData]);
 
     const data2 = facultyRow;
+
+    data.timeSlotes = [];
+
+    timeSlotes.forEach((item, index) => {
+      data.timeSlotes.push({
+        id: index,
+        startTime: item,
+        student: null,
+      });
+    });
     data2.push(data);
     setFacultyRow([...data2]);
 
     setSelectedFacultyId(0);
+  };
+
+  const handleTimeTableSave = () => {
+    console.log(facultyRow);
+
+    facultyRow.forEach((item) => {
+      firebase
+        .firestore()
+        .doc(`/timetable/${item.userId}`)
+        .set({ ...item })
+        .catch((error) => {
+          console.log(error);
+          toast.error(error.message);
+        });
+    });
+    toast("Timetable Saved");
+  };
+
+  const assignStudentToFaculty = (studentUserId) => {
+    const selectedStudentData = studentData.find(
+      (item) => item.userId === studentUserId
+    );
+
+    const facultyDataRow = facultyRow;
+
+    if (selectedFacultyIdForStudentAdd != null) {
+      if (selectedSlotTime != null) {
+        facultyDataRow.forEach((item) => {
+          if (item.userId === selectedFacultyIdForStudentAdd) {
+            item.timeSlotes.forEach((item2) => {
+              if (item2.startTime === selectedSlotTime) {
+                item2.student = selectedStudentData;
+              }
+            });
+          }
+        });
+
+        setSelectedSlotTime(null);
+      }
+
+      setFacultyRow([...facultyDataRow]);
+      setSelectedFacultyIdForStudentAdd(null);
+      setModalShow(false);
+    }
+  };
+
+  const StudentModal = (props) => {
+    return (
+      <Modal
+        {...props}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+            Select Student
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Table striped bordered hover>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {studentData.length
+                ? studentData.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>{item.firstname}</td>
+                        <td>{item.lastname}</td>
+                        <td>{item.email}</td>
+                        <td>
+                          <Button
+                            variant="primary"
+                            onClick={() => assignStudentToFaculty(item.userId)}
+                          >
+                            Add
+                          </Button>
+                        </td>
+                      </tr>
+                    );
+                  })
+                : ""}
+            </tbody>
+          </Table>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button onClick={props.onHide}>Close</Button>
+        </Modal.Footer>
+      </Modal>
+    );
   };
 
   useEffect(() => {
@@ -94,7 +248,44 @@ const Timetable = () => {
       .firestore()
       .collection("users")
       .where("institute_id", "==", institution)
-      .where("isStaff", "==", true)
+      .where("isAdmin", "==", false)
+      .get()
+      .then((snapshot) => {
+        const data = [];
+        const data2 = [];
+        snapshot.forEach((doc) => {
+          if (doc.data().isStaff) {
+            data.push(doc.data());
+          } else if (doc.data().isStudent) {
+            data2.push(doc.data());
+          }
+        });
+
+        setStudentData([...data2]);
+        setFacultyData([...data]);
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error(error.message);
+      });
+
+    firebase
+      .firestore()
+      .doc("/timeslotes/1")
+      .get()
+      .then((doc) => {
+        const data = doc.data();
+        const pushData = Object.values(data);
+        setTimeSlotes([...pushData]);
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.warn("No Time Slot Found");
+      });
+
+    firebase
+      .firestore()
+      .collection("timetable")
       .get()
       .then((snapshot) => {
         const data = [];
@@ -102,14 +293,31 @@ const Timetable = () => {
           data.push(doc.data());
         });
 
-        console.log(data);
-        setFacultyData([...data]);
+        setFacultyRow([...data]);
       })
       .catch((error) => {
         console.log(error);
         toast.error(error.message);
       });
   }, [institution]);
+
+  useEffect(() => {
+    var onlyInA = facultyData.filter(comparer(facultyRow));
+    var onlyInB = facultyRow.filter(comparer(facultyData));
+
+    const result = onlyInA.concat(onlyInB);
+    setFacultyData([...result]);
+
+    function comparer(otherArray) {
+      return function (current) {
+        return (
+          otherArray.filter(function (other) {
+            return other.userId === current.userId;
+          }).length === 0
+        );
+      };
+    }
+  }, [facultyRow]);
 
   return (
     <Container>
@@ -181,55 +389,71 @@ const Timetable = () => {
         </Col>
       </Row>
 
-      <Row className="m-5">
+      <Row>
         <Col lg={true} xs={12} md={8}>
-          {facultyRow.length ? (
-            facultyRow.map((item, index) => {
-              return (
-                <Accordion>
-                  <Card key={index}>
-                    <Card.Header>
-                      <Accordion.Toggle
-                        as={Button}
-                        variant="link"
-                        eventKey={`${index}`}
-                      >
-                        {item.firstname} {item.lastname}
-                      </Accordion.Toggle>
-                    </Card.Header>
-                    <Accordion.Collapse eventKey={`${index}`}>
-                      <Card.Body>
-                        <Table striped bordered hover>
-                          <thead>
-                            <tr>
-                              <th>#</th>
-                              <th>Time Slot</th>
-                              <th>Student Name</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {timeSlotes.length &&
-                              timeSlotes.map((item, index) => {
-                                return (
-                                  <tr key={index}>
-                                    <td>{index + 1}</td>
-                                    <td>{item}</td>
-                                    <td></td>
-                                  </tr>
-                                );
-                              })}
-                          </tbody>
-                        </Table>
-                      </Card.Body>
-                    </Accordion.Collapse>
-                  </Card>
-                </Accordion>
-              );
-            })
-          ) : (
-            <p>No Time Table to Show</p>
-          )}
+          <Table striped bordered hover responsive>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Time Slot</th>
+                {facultyRow.length
+                  ? facultyRow.map((item, index) => {
+                      return (
+                        <th key={index}>
+                          {item.firstname} {item.lastname}
+                        </th>
+                      );
+                    })
+                  : ""}
+              </tr>
+            </thead>
+            <tbody>
+              {timeSlotes.length
+                ? timeSlotes.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>{item}</td>
+                        {facultyRow.length
+                          ? facultyRow.map((faculty, index2) => {
+                              return (
+                                <td
+                                  key={index2}
+                                  onClick={() => {
+                                    console.log(
+                                      faculty.firstname +
+                                        " " +
+                                        faculty.lastname +
+                                        " " +
+                                        item
+                                    );
+                                    setSelectedFacultyIdForStudentAdd(
+                                      faculty.userId
+                                    );
+                                    setSelectedSlotTime(item);
+                                    setModalShow(true);
+                                  }}
+                                >
+                                  {faculty.timeSlotes[index].student
+                                    ? faculty.timeSlotes[index].student.email
+                                    : ""}
+                                </td>
+                              );
+                            })
+                          : ""}
+                      </tr>
+                    );
+                  })
+                : ""}
+            </tbody>
+          </Table>
+
+          <Button variant="primary" onClick={handleTimeTableSave}>
+            Save Changes
+          </Button>
         </Col>
+
+        <StudentModal show={modalShow} onHide={() => setModalShow(false)} />
       </Row>
       <ToastContainer />
     </Container>

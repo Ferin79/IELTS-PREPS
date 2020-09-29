@@ -39,6 +39,7 @@ const Routes = () => {
         <Switch>
           <Route path="/" exact component={Dashboard} />
           <Route path="/student" exact component={Student} />
+          <Route path="/speaking" exact component={VideoCall} />
           <Route
             path="/logout"
             exact
@@ -52,6 +53,7 @@ const Routes = () => {
     } else if (role === "student") {
       return (
         <Switch>
+          <Route path="/student/speaking" exact component={VideoCall} />
           <Route
             path="/logout"
             exact
