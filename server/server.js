@@ -8,20 +8,27 @@ const socket = require("socket.io");
 const io = socket(server);
 
 const users = {};
+const role = {};
 let count = 0;
 
 app.use(express.static('client/build'))
 
 io.on('connection', socket => {
 
-    if (!users[socket.id]) {
-        users[socket.id] = (++count).toString();
-        console.log(users[socket.id]);
-        socket.emit("yourID", socket.id);
+    socket.emit("yourID", socket.id);
+
+    socket.on("initializeUser", (data) => {
+
+        users[socket.id] = data.uniqueName;
+        role[socket.id] = data.role;
+
+        console.log(role[socket.id] ," - ", users[socket.id]);
+
         io.sockets.emit("allUsers", users);
 
+
         socket.on('disconnect', () => {
-            console.log(users[socket.id] + " - deleted");
+            console.log("deleted - " + users[socket.id]);
             delete users[socket.id];
             io.sockets.emit("allUsers", users);
         })
@@ -88,8 +95,7 @@ io.on('connection', socket => {
             socket.emit("audioStatusChange", audioStream)
         })
 
-
-    }
+    })
 
 });
 

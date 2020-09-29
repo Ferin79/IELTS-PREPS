@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useContext } from 'react';
 import './styles.css';
 import io from "socket.io-client";
 import Peer from "simple-peer";
@@ -7,6 +7,8 @@ import { Button, Col, Form, Container, Card } from 'react-bootstrap';
 import { ToastContainer, toast } from 'react-toastify';
 import { CameraVideo, CameraVideoOff, MicMute, Mic, ArrowBarUp } from 'react-bootstrap-icons';
 import Loader from 'react-loader-spinner'
+import { Context } from "../../data/context";
+import { AuthContext } from "../../data/auth";
 
 const incommingCallAudio = new Audio('./skype_remix_2.mp3')
 incommingCallAudio.loop = true
@@ -28,8 +30,13 @@ const Row = styled.div`
 
 function VideoCall() {
   const peer = useRef(null)
+
+  const { role, institution } = useContext(Context);
+  const { currentUser } = useContext(AuthContext);
+
   const [yourID, setYourID] = useState("");
   const [users, setUsers] = useState({});
+  const [isAdminOrStaff, setIsAdminOrStaff] = useState(false);
   const [stream, setStream] = useState();
   const [receivingCall, setReceivingCall] = useState(false);
   const [caller, setCaller] = useState("");
@@ -69,6 +76,8 @@ function VideoCall() {
 
     socket.current.on("yourID", (id) => {
       setYourID(id);
+      console.log(currentUser.email, role);
+      socket.current.emit("initializeUser", { uniqueName: currentUser.email, role })
     })
     socket.current.on("allUsers", (users) => {
       console.log(users);
@@ -421,7 +430,7 @@ function VideoCall() {
     UserVideo = (
       <video className="userVideo" playsInline muted ref={userVideo} autoPlay />
     );
-    if (users[yourID] === "professor") {
+    if (isAdminOrStaff) {
       CallUserList = Object.keys(users).map(key => {
         if (key === yourID) {
           return null;
@@ -475,15 +484,15 @@ function VideoCall() {
 
 
   let professorOnline;
-  if (users[yourID] !== "professor") {
-    Object.keys(users).forEach(key => {
-      if (key !== yourID) {
-        if (users[key] === "professor") {
-          professorOnline = "Professor online";
-        }
-      }
-    })
-  }
+  // if (!isAdminOrStaff) {
+  //   Object.keys(users).forEach(key => {
+  //     if (key !== yourID) {
+  //       if (users[key] === isAdminOrStaff) {
+  //         professorOnline = "Professor online";
+  //       }
+  //     }
+  //   })
+  // }
 
   let incommintCall;
   if (receivingCall && users[remoteUserId] && callerSignal) {
