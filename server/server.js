@@ -21,17 +21,17 @@ io.on('connection', socket => {
 
         Object.keys(users).map(key => {
             if (users[key] === data.uniqueName) {
-                console.log("deleted same - " + users[socket.id]);
-                delete users[socket.id];
-                delete role[socket.id];
-                io.sockets.emit("allUsers", users);
+                console.log("deleted same - " + users[key]);
+                delete users[key];
+                delete role[key];
+                io.sockets.emit("allUsers", { users, role });
             }
         })
 
         users[socket.id] = data.uniqueName;
         role[socket.id] = data.role;
 
-        console.log(role[socket.id], " - ", users[socket.id]);
+        console.log(users);
 
         io.sockets.emit("allUsers", { users, role });
 
@@ -40,7 +40,7 @@ io.on('connection', socket => {
             console.log("deleted - " + users[socket.id]);
             delete users[socket.id];
             delete role[socket.id];
-            io.sockets.emit("allUsers", users);
+            io.sockets.emit("allUsers", { users, role });
         })
 
         socket.on("giveCallPermission", (data) => {
@@ -74,26 +74,7 @@ io.on('connection', socket => {
             console.log(users[socket.id] + " ended call with " + users[data.id]);
             io.to(data.id).emit("callEnded");
             // socket.emit("callEnded");            
-        })
-
-
-        socket.on("changeName", (data) => {
-            let alreadyTaken = false;
-            Object.keys(users).map(key => {
-                if (key !== socket.id) {
-                    if (data.name === users[key]) {
-                        alreadyTaken = true;
-                    }
-                }
-            })
-            if (alreadyTaken) {
-                socket.emit("changeNameStatus", { status: false });
-            } else {
-                users[socket.id] = data.name;
-                io.sockets.emit("allUsers", users);
-                socket.emit("changeNameStatus", { status: true });
-            }
-        })
+        })        
 
         socket.on("videostream", (videoStream) => {
             console.log(videoStream)

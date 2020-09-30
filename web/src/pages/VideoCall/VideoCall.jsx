@@ -83,9 +83,9 @@ function VideoCall() {
       socket.current.emit("initializeUser", { uniqueName: currentUser.email, role })
     })
     socket.current.on("allUsers", (data) => {
-      console.log(data);
-
+      
       setUsers(data.users);
+      console.log("Update" + data.users);
       setRoles(data.role);
     });
 
@@ -110,6 +110,11 @@ function VideoCall() {
         toast.error("name already taken!");
       }
     });
+
+    return(() => {
+      console.log("disconnect socket");
+      socket.current.disconnect();
+    })
 
   }, []);
 
