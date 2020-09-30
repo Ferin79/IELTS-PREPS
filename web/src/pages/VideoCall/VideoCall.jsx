@@ -1,24 +1,30 @@
-import React, { useEffect, useState, useRef, useContext } from 'react';
-import './styles.css';
+import React, { useEffect, useState, useRef, useContext } from "react";
+import "./styles.css";
 import io from "socket.io-client";
 import Peer from "simple-peer";
 import styled from "styled-components";
-import { Button, Col, Form, Container, Card } from 'react-bootstrap';
-import { ToastContainer, toast } from 'react-toastify';
-import { CameraVideo, CameraVideoOff, MicMute, Mic, ArrowBarUp } from 'react-bootstrap-icons';
-import Loader from 'react-loader-spinner'
+import { Button, Col, Form, Container, Card } from "react-bootstrap";
+import { ToastContainer, toast } from "react-toastify";
+import {
+  CameraVideo,
+  CameraVideoOff,
+  MicMute,
+  Mic,
+  ArrowBarUp,
+} from "react-bootstrap-icons";
+import Loader from "react-loader-spinner";
 import { Context } from "../../data/context";
 import { AuthContext } from "../../data/auth";
 
-const incommingCallAudio = new Audio(require('../../images/skype_remix_2.mp3'))
-incommingCallAudio.loop = true
+const incommingCallAudio = new Audio(require("../../images/skype_remix_2.mp3"));
+incommingCallAudio.loop = true;
 
 const LoadingTailSpin = () => {
   return (
     <Loader
       type="TailSpin"
       color="#00BFFF"
-    // timeout={3000}
+      // timeout={3000}
     />
   );
 };
@@ -29,7 +35,7 @@ const Row = styled.div`
 `;
 
 function VideoCall() {
-  const peer = useRef(null)
+  const peer = useRef(null);
 
   const { role, institution } = useContext(Context);
   const { currentUser } = useContext(AuthContext);
@@ -61,13 +67,14 @@ function VideoCall() {
 
   useEffect(() => {
     // 1. connect to server
-    socket.current = io.connect("http://localhost:8001/");
+    //socket.current = io.connect("http://localhost:8001/");
     // socket.current = io.connect("http://192.168.29.67:8000/");
     // socket.current = io.connect("http://192.168.1.105:8000/");
-    // socket.current = io.connect("https://ielts-video-chat.herokuapp.com/");
+    socket.current = io.connect("https://ielts-video-chat.herokuapp.com/");
     // socket.current = io.connect("");
     navigator.mediaDevices
-      .getUserMedia({ video: { facingMode: cameraMode }, audio: true }).then((stream) => {
+      .getUserMedia({ video: { facingMode: cameraMode }, audio: true })
+      .then((stream) => {
         setStream(stream);
         if (userVideo.current) {
           userVideo.current.srcObject = stream;
@@ -80,10 +87,12 @@ function VideoCall() {
     socket.current.on("yourID", (id) => {
       setYourID(id);
       console.log(currentUser.email, role);
-      socket.current.emit("initializeUser", { uniqueName: currentUser.email, role })
-    })
+      socket.current.emit("initializeUser", {
+        uniqueName: currentUser.email,
+        role,
+      });
+    });
     socket.current.on("allUsers", (data) => {
-      
       setUsers(data.users);
       console.log("Update" + data.users);
       setRoles(data.role);
@@ -111,11 +120,10 @@ function VideoCall() {
       }
     });
 
-    return(() => {
+    return () => {
       console.log("disconnect socket");
       socket.current.disconnect();
-    })
-
+    };
   }, []);
 
   useEffect(() => {
@@ -128,10 +136,9 @@ function VideoCall() {
   }, [users]);
 
   useEffect(() => {
-    const setUserRoleCondition = role === "student" ? false : true
-    setIsAdminOrStaff(setUserRoleCondition)
-  }, [])
-
+    const setUserRoleCondition = role === "student" ? false : true;
+    setIsAdminOrStaff(setUserRoleCondition);
+  }, []);
 
   function callPeer(id) {
     setCallButtonDisability(true);
@@ -152,7 +159,11 @@ function VideoCall() {
 
     console.log("Call user");
     peer.current.on("signal", (data) => {
-      socket.current.emit("callerSignal", { userToCall: id, signalData: data, from: yourID, });
+      socket.current.emit("callerSignal", {
+        userToCall: id,
+        signalData: data,
+        from: yourID,
+      });
     });
     socket.current.emit("callUser", { userToCall: id, from: yourID });
 
@@ -397,7 +408,6 @@ function VideoCall() {
     }, milisec);
   };
 
-
   let UserVideo;
   let CallUserList;
   let callFaculty;
@@ -406,16 +416,26 @@ function VideoCall() {
       <video className="userVideo" playsInline muted ref={userVideo} autoPlay />
     );
     if (isAdminOrStaff) {
-      CallUserList = Object.keys(users).map(key => {
+      CallUserList = Object.keys(users).map((key) => {
         if (key === yourID) {
           return null;
         }
         return (
           <>
-            <Button variant="primary" onClick={() => callPeer(key)} disabled={callButtonDisability} style={{ margin: 5 }}>
+            <Button
+              variant="primary"
+              onClick={() => callPeer(key)}
+              disabled={callButtonDisability}
+              style={{ margin: 5 }}
+            >
               Call {users[key]}
             </Button>
-            <Button variant="success" onClick={() => giveCallPermission(key)} disabled={callButtonDisability} style={{ margin: 5 }}>
+            <Button
+              variant="success"
+              onClick={() => giveCallPermission(key)}
+              disabled={callButtonDisability}
+              style={{ margin: 5 }}
+            >
               give Permission to {users[key]}
             </Button>
           </>
@@ -423,7 +443,12 @@ function VideoCall() {
       });
     } else if (callingPermission) {
       callFaculty = (
-        <Button variant="primary" onClick={() => callPeer(callingPermission)} disabled={callButtonDisability} style={{ margin: 5 }}>
+        <Button
+          variant="primary"
+          onClick={() => callPeer(callingPermission)}
+          disabled={callButtonDisability}
+          style={{ margin: 5 }}
+        >
           Call {users[callingPermission]}
         </Button>
       );
@@ -439,7 +464,9 @@ function VideoCall() {
     );
     endCallButton = (
       <div className="endCallButton">
-        <Button variant="danger" onClick={() => endCall()}>End Call</Button>
+        <Button variant="danger" onClick={() => endCall()}>
+          End Call
+        </Button>
       </div>
     );
   }
@@ -448,15 +475,40 @@ function VideoCall() {
   const videobutton = videoStatus ? "success" : "danger";
   const audiobutton = audioStatus ? "success" : "danger";
   const screenSharebutton = screenShareStatus ? "success" : "danger";
-  const videoIcon = videoStatus ? <CameraVideo size={20} /> : <CameraVideoOff size={20} />;
+  const videoIcon = videoStatus ? (
+    <CameraVideo size={20} />
+  ) : (
+    <CameraVideoOff size={20} />
+  );
   const audioIcon = audioStatus ? <Mic size={20} /> : <MicMute size={20} />;
   const screenShareIcon = <ArrowBarUp size={20} />;
   const mediaButtonDisable = !callAccepted;
   ToggleMediaButtons = (
     <Row className="justify-content-md-center">
-      <Button variant={videobutton} onClick={toggleVideo} style={{ margin: 5 }} disabled={mediaButtonDisable}>{videoIcon}</Button>
-      <Button variant={audiobutton} onClick={toggleAudio} style={{ margin: 5 }} disabled={mediaButtonDisable}>{audioIcon}</Button>
-      <Button variant={screenSharebutton} onClick={toggleScreenShare} style={{ margin: 5 }} disabled={mediaButtonDisable}>{screenShareIcon}</Button>
+      <Button
+        variant={videobutton}
+        onClick={toggleVideo}
+        style={{ margin: 5 }}
+        disabled={mediaButtonDisable}
+      >
+        {videoIcon}
+      </Button>
+      <Button
+        variant={audiobutton}
+        onClick={toggleAudio}
+        style={{ margin: 5 }}
+        disabled={mediaButtonDisable}
+      >
+        {audioIcon}
+      </Button>
+      <Button
+        variant={screenSharebutton}
+        onClick={toggleScreenShare}
+        style={{ margin: 5 }}
+        disabled={mediaButtonDisable}
+      >
+        {screenShareIcon}
+      </Button>
       {/* {videoStatus &&
         <Button onClick={toggleCamera} style={{ margin: 5 }} disabled={mediaButtonDisable}> <ArrowRepeat /> </Button>
       } */}
@@ -480,7 +532,10 @@ function VideoCall() {
 
     incommintCall = (
       <div className="incommingCall">
-        <Card className="text-center" style={{ background: "black", color: "white" }}>
+        <Card
+          className="text-center"
+          style={{ background: "black", color: "white" }}
+        >
           <Card.Header>
             <h2>{caller} is calling you</h2>
           </Card.Header>
@@ -488,8 +543,16 @@ function VideoCall() {
             <Card.Title></Card.Title>
             <Container>
               <Row>
-                <Col><Button size="lg" variant="danger" onClick={() => { }}>Reject</Button></Col>
-                <Col><Button size="lg" variant="success" onClick={acceptCall}>Accept</Button></Col>
+                <Col>
+                  <Button size="lg" variant="danger" onClick={() => {}}>
+                    Reject
+                  </Button>
+                </Col>
+                <Col>
+                  <Button size="lg" variant="success" onClick={acceptCall}>
+                    Accept
+                  </Button>
+                </Col>
               </Row>
             </Container>
           </Card.Body>
@@ -526,8 +589,12 @@ function VideoCall() {
         </Row>
         <Row>
           <Col>
-            <h4>You: {currentUser.email} <h6 style={{ color: "green" }}>{yourID && "Online"}</h6></h4>
-            <Row style={{ color: "green", fontWeight: "bold" }}>{professorOnline}
+            <h4>
+              You: {currentUser.email}{" "}
+              <h6 style={{ color: "green" }}>{yourID && "Online"}</h6>
+            </h4>
+            <Row style={{ color: "green", fontWeight: "bold" }}>
+              {professorOnline}
             </Row>
           </Col>
         </Row>
