@@ -10,11 +10,15 @@ import Staff from "./pages/staff";
 import Student from "./pages/student";
 import VideoCall from "./pages/VideoCall/VideoCall";
 import Timetable from "./pages/timetable";
+import LoadingScreen from "./pages/loading";
 
 const Routes = () => {
   const { currentUser } = useContext(AuthContext);
-  const { role } = useContext(Context);
-  console.log(role);
+  const { role, isLoading } = useContext(Context);
+
+  if (isLoading) {
+    return <LoadingScreen />;
+  }
   if (currentUser) {
     if (role === "admin") {
       return (

@@ -84,6 +84,12 @@ const SiderbarData = () => {
         path: "/login",
         icon: <AiFillLock />,
         cName: "nav-text",
+      },
+      {
+        title: "Logout",
+        path: "/logout",
+        icon: <AiOutlineLogout />,
+        cName: "nav-text",
       }
     );
   }

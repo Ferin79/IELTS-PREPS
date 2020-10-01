@@ -1,17 +1,22 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useCallback } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Table from "react-bootstrap/Table";
+import Modal from "react-bootstrap/Modal";
+import Spinner from "react-bootstrap/Spinner";
 import { ToastContainer, toast } from "react-toastify";
+import { MdDeleteForever } from "react-icons/md";
+import { useHistory } from "react-router-dom";
 import firebase from "../data/firebase";
 import { Context } from "../data/context";
-import Modal from "react-bootstrap/Modal";
 
 const Timetable = () => {
   const { institution } = useContext(Context);
+
+  const history = useHistory();
 
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
@@ -27,6 +32,7 @@ const Timetable = () => {
     selectedFacultyIdForStudentAdd,
     setSelectedFacultyIdForStudentAdd,
   ] = useState(null);
+  const [isTimeSlotLoading, setIsTimeSlotLoading] = useState(false);
 
   function parseTime(s) {
     var c = s.split(":");
@@ -96,14 +102,18 @@ const Timetable = () => {
     var end_time = parseTime(endTime);
     var times_ara = calculate_time_slot(start_time, end_time, interval);
 
-    setTimeSlotes(times_ara);
-
     firebase
       .firestore()
       .doc("/timeslotes/1")
       .set({ ...times_ara })
       .then(() => {
         toast("Time Slot Created");
+        setTimeSlotes(times_ara);
+        toast.warn("The Page will be refresh in 5 sec");
+
+        setTimeout(function () {
+          history.go(0);
+        }, 6000);
       })
       .catch((error) => {
         console.log(error);
@@ -114,6 +124,15 @@ const Timetable = () => {
   const handleAddFaculty = () => {
     if (!timeSlotes.length) {
       toast.error("Create Time Slot First");
+      return;
+    }
+
+    const hasData = facultyRow.find(
+      (item) => item.userId === selectedFacultyId
+    );
+
+    if (hasData) {
+      toast.error("Faculty Already Added to Timetable");
       return;
     }
 
@@ -145,8 +164,6 @@ const Timetable = () => {
   };
 
   const handleTimeTableSave = () => {
-    console.log(facultyRow);
-
     facultyRow.forEach((item) => {
       firebase
         .firestore()
@@ -243,7 +260,7 @@ const Timetable = () => {
     );
   };
 
-  useEffect(() => {
+  const fetchUser = useCallback(() => {
     firebase
       .firestore()
       .collection("users")
@@ -268,21 +285,10 @@ const Timetable = () => {
         console.log(error);
         toast.error(error.message);
       });
+  }, [institution]);
 
-    firebase
-      .firestore()
-      .doc("/timeslotes/1")
-      .get()
-      .then((doc) => {
-        const data = doc.data();
-        const pushData = Object.values(data);
-        setTimeSlotes([...pushData]);
-      })
-      .catch((error) => {
-        console.log(error);
-        toast.warn("No Time Slot Found");
-      });
-
+  const fetchTimeSlotTable = useCallback(() => {
+    setIsTimeSlotLoading(true);
     firebase
       .firestore()
       .collection("timetable")
@@ -299,164 +305,230 @@ const Timetable = () => {
         console.log(error);
         toast.error(error.message);
       });
-  }, [institution]);
+
+    firebase
+      .firestore()
+      .doc("/timeslotes/1")
+      .get()
+      .then((doc) => {
+        const data = doc.data();
+        const pushData = Object.values(data);
+        setTimeSlotes([...pushData]);
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.warn("No Time Slot Found");
+      })
+      .finally(() => {
+        setIsTimeSlotLoading(false);
+      });
+  }, []);
+
+  const handleDeleteFaculty = (facultyId) => {
+    setIsTimeSlotLoading(true);
+    firebase
+      .firestore()
+      .doc(`/timetable/${facultyId}`)
+      .delete()
+      .then(() => {
+        const data = facultyRow.filter((item) => item.userId !== facultyId);
+        setFacultyRow([...data]);
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error(error.message);
+      })
+      .finally(() => {
+        setIsTimeSlotLoading(false);
+      });
+  };
+
+  const deleteStudentFromSlot = (facultyRowIndex, timeSlotIndex) => {
+    console.log(facultyRowIndex);
+    console.log(timeSlotIndex);
+
+    const data = facultyRow;
+
+    data[facultyRowIndex].timeSlotes[timeSlotIndex].student = null;
+
+    setFacultyRow([...data]);
+  };
 
   useEffect(() => {
-    var onlyInA = facultyData.filter(comparer(facultyRow));
-    var onlyInB = facultyRow.filter(comparer(facultyData));
-
-    const result = onlyInA.concat(onlyInB);
-    setFacultyData([...result]);
-
-    function comparer(otherArray) {
-      return function (current) {
-        return (
-          otherArray.filter(function (other) {
-            return other.userId === current.userId;
-          }).length === 0
-        );
-      };
-    }
-  }, [facultyRow]);
+    fetchUser();
+    fetchTimeSlotTable();
+  }, [fetchTimeSlotTable, fetchUser]);
 
   return (
-    <Container>
-      <Row className="m-5">
-        <Col lg={true} xs={12} md={8} className="border-right">
-          <Form.Group>
-            <Form.Label>Start Time</Form.Label>
-            <Form.Control
-              type="time"
-              required
-              value={startTime}
-              onChange={(event) => setStartTime(event.target.value)}
-            />
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>End Time</Form.Label>
-            <Form.Control
-              type="time"
-              required
-              value={endTime}
-              onChange={(event) => setEndTime(event.target.value)}
-            />
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>Interval (in Minutes)</Form.Label>
-            <Form.Control
-              type="number"
-              min="1"
-              max="60"
-              required
-              value={interval}
-              onChange={(event) => setInterval(event.target.value)}
-            />
-          </Form.Group>
-          <Button type="submit" variant="primary" onClick={handleAddTimeSlot}>
-            Add Time Slots
-          </Button>
-        </Col>
+    <>
+      <Container>
+        <Row className="m-5">
+          <Col lg={true} xs={12} md={8} className="border-right">
+            <Form.Group>
+              <Form.Label>Start Time</Form.Label>
+              <Form.Control
+                type="time"
+                required
+                value={startTime}
+                onChange={(event) => setStartTime(event.target.value)}
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>End Time</Form.Label>
+              <Form.Control
+                type="time"
+                required
+                value={endTime}
+                onChange={(event) => setEndTime(event.target.value)}
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Interval (in Minutes)</Form.Label>
+              <Form.Control
+                type="number"
+                min="1"
+                max="60"
+                required
+                value={interval}
+                onChange={(event) => setInterval(event.target.value)}
+              />
+            </Form.Group>
+            <Button type="submit" variant="primary" onClick={handleAddTimeSlot}>
+              Add Time Slots
+            </Button>
+          </Col>
 
-        <Col lg={true} xs={12} md={8}>
-          <Form.Group controlId="exampleForm.ControlSelect1">
-            <Form.Label>Add Faculty</Form.Label>
-            <Form.Control
-              as="select"
-              value={selectedFacultyId}
-              onChange={(event) => setSelectedFacultyId(event.target.value)}
-            >
-              <option value="0" selected disabled>
-                Select Faculty
-              </option>
-              {facultyData.length ? (
-                facultyData.map((item, index) => {
-                  return (
-                    <option key={index} value={item.userId}>
-                      {item.firstname} {item.lastname}
-                    </option>
-                  );
-                })
-              ) : (
-                <option selected disabled>
-                  Loading
+          <Col lg={true} xs={12} md={8}>
+            <Form.Group controlId="exampleForm.ControlSelect1">
+              <Form.Label>Add Faculty</Form.Label>
+              <Form.Control
+                as="select"
+                value={selectedFacultyId}
+                onChange={(event) => setSelectedFacultyId(event.target.value)}
+              >
+                <option value="0" selected disabled>
+                  Select Faculty
                 </option>
-              )}
-            </Form.Control>
-          </Form.Group>
-          <Button type="submit" variant="primary" onClick={handleAddFaculty}>
-            Add Faculty
-          </Button>
-        </Col>
-      </Row>
-
-      <Row>
-        <Col lg={true} xs={12} md={8}>
-          <Table striped bordered hover responsive>
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Time Slot</th>
-                {facultyRow.length
-                  ? facultyRow.map((item, index) => {
-                      return (
-                        <th key={index}>
-                          {item.firstname} {item.lastname}
-                        </th>
-                      );
-                    })
-                  : ""}
-              </tr>
-            </thead>
-            <tbody>
-              {timeSlotes.length
-                ? timeSlotes.map((item, index) => {
+                {facultyData.length ? (
+                  facultyData.map((item, index) => {
                     return (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>{item}</td>
-                        {facultyRow.length
-                          ? facultyRow.map((faculty, index2) => {
-                              return (
-                                <td
-                                  key={index2}
-                                  onClick={() => {
-                                    console.log(
-                                      faculty.firstname +
-                                        " " +
-                                        faculty.lastname +
-                                        " " +
-                                        item
-                                    );
-                                    setSelectedFacultyIdForStudentAdd(
-                                      faculty.userId
-                                    );
-                                    setSelectedSlotTime(item);
-                                    setModalShow(true);
-                                  }}
-                                >
-                                  {faculty.timeSlotes[index].student
-                                    ? faculty.timeSlotes[index].student.email
-                                    : ""}
-                                </td>
-                              );
-                            })
-                          : ""}
-                      </tr>
+                      <option key={index} value={item.userId}>
+                        {item.firstname} {item.lastname}
+                      </option>
                     );
                   })
-                : ""}
-            </tbody>
-          </Table>
+                ) : (
+                  <option selected disabled>
+                    Loading
+                  </option>
+                )}
+              </Form.Control>
+            </Form.Group>
+            <Button type="submit" variant="primary" onClick={handleAddFaculty}>
+              Add Faculty
+            </Button>
+          </Col>
+        </Row>
+      </Container>
 
-          <Button variant="primary" onClick={handleTimeTableSave}>
-            Save Changes
-          </Button>
-        </Col>
+      <Container fluid>
+        <Row className="mb-5 d-flex justify-content-center align-items-center">
+          {isTimeSlotLoading ? (
+            <Spinner animation="border" variant="primary" />
+          ) : (
+            <Col lg={true} xs={12} md={8}>
+              <Table striped bordered hover responsive>
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Time Slot</th>
+                    {facultyRow.length > 0
+                      ? facultyRow.map((item, index) => {
+                          return (
+                            <th key={index}>
+                              <h6>
+                                {item.firstname} {item.lastname}
+                              </h6>
+                              <Button
+                                onClick={() => handleDeleteFaculty(item.userId)}
+                                variant="outline-danger"
+                              >
+                                Delete
+                              </Button>
+                            </th>
+                          );
+                        })
+                      : ""}
+                  </tr>
+                </thead>
+                <tbody>
+                  {timeSlotes.length > 0
+                    ? timeSlotes.map((item, index) => {
+                        return (
+                          <tr key={index}>
+                            <td>{index + 1}</td>
+                            <td>{item}</td>
+                            {facultyRow.length > 0
+                              ? facultyRow.map((faculty, index2) => {
+                                  return (
+                                    <td
+                                      key={index2}
+                                      onClick={() => {
+                                        setSelectedFacultyIdForStudentAdd(
+                                          faculty.userId
+                                        );
+                                        setSelectedSlotTime(item);
+                                        setModalShow(true);
+                                      }}
+                                    >
+                                      {faculty.timeSlotes[index].student ? (
+                                        <>
+                                          <p>
+                                            {
+                                              faculty.timeSlotes[index].student
+                                                .firstname
+                                            }{" "}
+                                            {
+                                              faculty.timeSlotes[index].student
+                                                .lastname
+                                            }
+                                          </p>
+                                          <MdDeleteForever
+                                            size={25}
+                                            color="red"
+                                            onClick={() => {
+                                              setModalShow(false);
+                                              deleteStudentFromSlot(
+                                                index2,
+                                                index
+                                              );
+                                            }}
+                                          />
+                                        </>
+                                      ) : (
+                                        ""
+                                      )}
+                                    </td>
+                                  );
+                                })
+                              : ""}
+                          </tr>
+                        );
+                      })
+                    : ""}
+                </tbody>
+              </Table>
+              <Button variant="primary" onClick={handleTimeTableSave}>
+                Save Changes
+              </Button>
+            </Col>
+          )}
+        </Row>
+      </Container>
 
-        <StudentModal show={modalShow} onHide={() => setModalShow(false)} />
-      </Row>
+      <StudentModal show={modalShow} onHide={() => setModalShow(false)} />
       <ToastContainer />
-    </Container>
+    </>
   );
 };
 
