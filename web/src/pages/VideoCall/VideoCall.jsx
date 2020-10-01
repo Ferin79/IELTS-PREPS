@@ -13,12 +13,14 @@ import { AuthContext } from "../../data/auth";
 const incommingCallAudio = new Audio(require('../../images/skype_remix_2.mp3'))
 incommingCallAudio.loop = true
 
+let globalStream = null;
+
 const LoadingTailSpin = () => {
   return (
     <Loader
       type="TailSpin"
       color="#00BFFF"
-    // timeout={3000}
+      // timeout={3000}
     />
   );
 };
@@ -57,20 +59,19 @@ function VideoCall() {
   const [videoStatus, setVideoStatus] = useState(true);
   const [audioStatus, setAudioStatus] = useState(true);
   const [screenShareStatus, setScreenShareStatus] = useState(false);
-  const [cameraMode, setCameraMode] = useState("user");
+  // const [cameraMode, setCameraMode] = useState("user");
+  const cameraMode = "user";
 
   useEffect(() => {
     // 1. connect to server
-    socket.current = io.connect("http://localhost:8001/");
-    // socket.current = io.connect("http://192.168.29.67:8000/");
-    // socket.current = io.connect("http://192.168.1.105:8000/");
-    // socket.current = io.connect("https://ielts-video-chat.herokuapp.com/");
+    socket.current = io.connect("http://localhost:8000/");
     // socket.current = io.connect("");
     navigator.mediaDevices
       .getUserMedia({ video: { facingMode: cameraMode }, audio: true }).then((stream) => {
         setStream(stream);
         if (userVideo.current) {
           userVideo.current.srcObject = stream;
+          globalStream = stream
         }
       })
       .catch((reason) => {
@@ -83,7 +84,7 @@ function VideoCall() {
       socket.current.emit("initializeUser", { uniqueName: currentUser.email, role })
     })
     socket.current.on("allUsers", (data) => {
-      
+
       setUsers(data.users);
       console.log("Update" + data.users);
       setRoles(data.role);
@@ -95,7 +96,7 @@ function VideoCall() {
     });
 
     socket.current.on("receiveCall", (data) => {
-      console.log("Reciving");
+      console.log("Receiving");
       setReceivingCall(true);
       setCallButtonDisability(true);
       setCaller(data.from.name);
@@ -103,17 +104,13 @@ function VideoCall() {
       // setCallerSignal(data.signal);
     });
 
-    socket.current.on("changeNameStatus", (response) => {
-      if (response.status) {
-        // toast.success("Name changed!");
-      } else {
-        toast.error("name already taken!");
-      }
-    });
-
-    return(() => {
+    return (() => {
       console.log("disconnect socket");
       socket.current.disconnect();
+      const videoTrack = globalStream.getVideoTracks()[0];
+      const audioTrack = globalStream.getAudioTracks()[0];
+      if (videoTrack.readyState === "live") { videoTrack.stop(); }
+      if (audioTrack.readyState === "live") { audioTrack.stop(); }
     })
 
   }, []);
@@ -177,9 +174,6 @@ function VideoCall() {
 
     peer.current.on("error", (error) => {
       console.log(error);
-      if (error !== "Call ended") {
-        alert("Connection error or client closed webpage!");
-      }
       setRemoteUserId("");
       setCallAccepted(false);
       setCallButtonDisability(false);
@@ -187,10 +181,13 @@ function VideoCall() {
       socket.current.removeListener("callAccepted");
       socket.current.removeListener("videoStatusChange");
       socket.current.removeListener("audioStatusChange");
+      if (error !== "Call ended") {
+        alert("Connection error or client closed webpage!");
+      }
     });
 
     socket.current.on("callEnded", () => {
-      // peer.current.destroy("Call ended");
+      peer.current.destroy("Call ended");
       setRemoteUserId("");
       setCallAccepted(false);
       setCallButtonDisability(false);
@@ -258,7 +255,7 @@ function VideoCall() {
     });
 
     socket.current.on("callEnded", () => {
-      // peer.current.destroy("Call ended");
+      peer.current.destroy("Call ended");
       setCallAccepted(false);
       setCaller("");
       setRemoteUserId("");
@@ -271,8 +268,8 @@ function VideoCall() {
   }
 
   function endCall(key) {
-    socket.current.emit("endCall", { id: remoteUserId });
     peer.current.destroy("Call ended");
+    socket.current.emit("endCall", { id: remoteUserId });
   }
 
   function giveCallPermission(id) {
@@ -411,14 +408,15 @@ function VideoCall() {
           return null;
         }
         return (
-          <>
+          <div style={{color: "white"}}>
+          {users[key]} :
             <Button variant="primary" onClick={() => callPeer(key)} disabled={callButtonDisability} style={{ margin: 5 }}>
-              Call {users[key]}
+              Call 
             </Button>
             <Button variant="success" onClick={() => giveCallPermission(key)} disabled={callButtonDisability} style={{ margin: 5 }}>
-              give Permission to {users[key]}
+              give Permission
             </Button>
-          </>
+          </div>
         );
       });
     } else if (callingPermission) {
@@ -520,13 +518,13 @@ function VideoCall() {
       {endCallButton}
 
       {/* DEFAULT POSITIONED components  */}
-      <Container style={{ color: "black" }} fluid>
+      <Container style={{ color: "white" }} fluid>
         <Row>
           {CallUserList} {callFaculty}
         </Row>
         <Row>
           <Col>
-            <h4>You: {currentUser.email} <h6 style={{ color: "green" }}>{yourID && "Online"}</h6></h4>
+            <h4>You: {currentUser.email}</h4> <h6 style={{ color: "green" }}>{yourID && "Online"}</h6>
             <Row style={{ color: "green", fontWeight: "bold" }}>{professorOnline}
             </Row>
           </Col>
