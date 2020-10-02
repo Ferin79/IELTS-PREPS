@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.dc6d635c.chunk.css",
+    "main.js": "/static/js/main.e5a1eb55.chunk.js",
+    "main.js.map": "/static/js/main.e5a1eb55.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.d7883c2b.js",
+    "runtime-main.js.map": "/static/js/runtime-main.d7883c2b.js.map",
+    "static/css/2.6b5d40a7.chunk.css": "/static/css/2.6b5d40a7.chunk.css",
+    "static/js/2.617c8883.chunk.js": "/static/js/2.617c8883.chunk.js",
+    "static/js/2.617c8883.chunk.js.map": "/static/js/2.617c8883.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.d14046a442448dcaf2ef2f6ab9e93c9b.js": "/precache-manifest.d14046a442448dcaf2ef2f6ab9e93c9b.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.6b5d40a7.chunk.css.map": "/static/css/2.6b5d40a7.chunk.css.map",
+    "static/css/main.dc6d635c.chunk.css.map": "/static/css/main.dc6d635c.chunk.css.map",
+    "static/js/2.617c8883.chunk.js.LICENSE.txt": "/static/js/2.617c8883.chunk.js.LICENSE.txt",
+    "static/media/skype_remix_2.mp3": "/static/media/skype_remix_2.5ab01274.mp3"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d7883c2b.js",
+    "static/css/2.6b5d40a7.chunk.css",
+    "static/js/2.617c8883.chunk.js",
+    "static/css/main.dc6d635c.chunk.css",
+    "static/js/main.e5a1eb55.chunk.js"
+  ]
+}
