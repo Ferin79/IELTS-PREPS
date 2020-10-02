@@ -17,9 +17,9 @@ body {
     width: 100%;
     height: 100%;
     z-index: -1;
-    transform: rotateY(180deg);
-    -webkit-transform: rotateY(180deg); /* Safari and Chrome */
-    -moz-transform: rotateY(180deg); /* Firefox */
+    /* transform: rotateY(180deg);
+    /* -webkit-transform: rotateY(180deg); /* Safari and Chrome */
+    /* -moz-transform: rotateY(180deg); /* Firefox */
   }
   
   .userElementsLoadingBox {
@@ -50,9 +50,9 @@ body {
     width: 100%;
     height: 80%;
     z-index: 1;
-    transform: rotateY(180deg); 
-    -webkit-transform: rotateY(180deg); /* Safari and Chrome */
-    -moz-transform: rotateY(180deg); /* Firefox */
+    /*transform: rotateY(180deg); 
+    /*-webkit-transform: rotateY(180deg); /* Safari and Chrome */
+    /*-moz-transform: rotateY(180deg); /* Firefox */
   }
   
   .mediaButtons {  
