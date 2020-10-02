@@ -1,9 +1,8 @@
 import React, { useEffect, useState, useRef, useContext } from "react";
-import "./styles.css";
+import "./styles_OldUi.css";
 import io from "socket.io-client";
 import Peer from "simple-peer";
-import styled from "styled-components";
-import { Button, Col, Form, Container, Card } from "react-bootstrap";
+import { Button, Col, Row, Container, Card } from "react-bootstrap";
 import { ToastContainer, toast } from "react-toastify";
 import { CameraVideo, CameraVideoOff, MicMute, Mic, ArrowBarUp } from "react-bootstrap-icons";
 import Loader from "react-loader-spinner";
@@ -24,11 +23,6 @@ const LoadingTailSpin = () => {
      />
   );
 };
-
-const Row = styled.div`
-  display: flex;
-  width: 100%;
-`;
 
 function VideoCall() {
   const peer = useRef(null);
@@ -482,17 +476,6 @@ function VideoCall() {
     </Row>
   );
 
-  let professorOnline;
-  // if (!isAdminOrStaff) {
-  //   Object.keys(users).forEach(key => {
-  //     if (key !== yourID) {
-  //       if (users[key] === isAdminOrStaff) {
-  //         professorOnline = "Professor online";
-  //       }
-  //     }
-  //   })
-  // }
-
   let incommintCall;
   if (receivingCall && users[remoteUserId] && callerSignal) {
     incommingCallAudio.play();
@@ -507,7 +490,7 @@ function VideoCall() {
             <Card.Title></Card.Title>
             <Container>
               <Row>
-                <Col><Button size="lg" variant="danger" onClick={() => {}}>Reject</Button></Col>
+                {/* <Col><Button size="lg" variant="danger" onClick={() => {}}>Reject</Button></Col> */}
                 <Col><Button size="lg" variant="success" onClick={acceptCall}>Accept</Button></Col>
               </Row>
             </Container>
@@ -523,6 +506,7 @@ function VideoCall() {
 
   return (
     <>
+    <div className="videoContainer"></div>
       {/* ABSOLUTE POSITIONED components  */}
       {incommintCall}       
       {PartnerVideo}
@@ -530,7 +514,7 @@ function VideoCall() {
         {UserVideo} {ToggleMediaButtons}
       </div>
       <div className="userElementsLoadingBox" hidden={!userMediaLoading}>
-        <div className="userElementsLoading"><LoadingTailSpin /></div>
+        <div className="userElementsLoadingSpinner"><LoadingTailSpin /></div>
       </div>
       {endCallButton}
       {/* DEFAULT POSITIONED components  */}
@@ -541,7 +525,6 @@ function VideoCall() {
         <Row>
           <Col>
             <h4>You: {currentUser.email}</h4> <h6 style={{ color: "green" }}>{yourID && "Online"}</h6>
-            <Row style={{ color: "green", fontWeight: "bold" }}> {professorOnline} </Row>
           </Col>
         </Row>
         <ToastContainer autoClose={2000} />
