@@ -9,7 +9,7 @@ import { Context } from "../../data/context";
 import { AuthContext } from "../../data/auth";
 import PopMessageBox from "../../components/popMessageBox";
 import Spinner from "react-bootstrap/Spinner";
-import { RiCameraLine, RiCameraOffLine, RiMicFill, RiMicOffFill } from "react-icons/ri";
+import { RiCameraLine, RiCameraOffLine, RiMicFill, RiMicOffFill, RiVideoChatFill } from "react-icons/ri";
 import { MdScreenShare } from "react-icons/md";
 import { FcEndCall } from "react-icons/fc";
 
@@ -466,12 +466,7 @@ function VideoCall() {
     <div className="videoToggle-wrapper">
       {videoStatus ? (
         <div className="btn-toggle-styler">
-          <RiCameraLine
-            onClick={toggleVideo}
-            size={30}
-            color={videoStatus ? "green" : "red"}
-            disabled={mediaButtonDisable}
-          />
+          <RiVideoChatFill onClick={toggleVideo} size={30} color={videoStatus ? "green" : "red"} disabled={mediaButtonDisable} />
         </div>
       ) : (
         <div className="btn-toggle-styler">

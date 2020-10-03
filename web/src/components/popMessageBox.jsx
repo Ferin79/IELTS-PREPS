@@ -4,7 +4,7 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import "../css/popMessageBox.scss";
 
-const PopMessageBox = ({ messages }) => {
+const PopMessageBox = ({  }) => {
   const messages = [
     {
       id: 1,

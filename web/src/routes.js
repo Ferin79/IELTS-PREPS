@@ -8,7 +8,7 @@ import Home from "./pages/home";
 import Dashboard from "./pages/dashboard";
 import Staff from "./pages/staff";
 import Student from "./pages/student";
-import VideoCall from "./pages/VideoCall/VideoCall-NewUi-OldLogic";
+import VideoCall from "./pages/VideoCall/VideoCall-NewUi-NewLogic";
 import Timetable from "./pages/timetable";
 import LoadingScreen from "./pages/loading";
 
