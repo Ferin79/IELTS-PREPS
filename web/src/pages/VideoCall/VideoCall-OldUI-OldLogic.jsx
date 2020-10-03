@@ -59,7 +59,8 @@ function VideoCall() {
   useEffect(() => {
     // 1. connect to server
     // socket.current = io.connect("http://localhost:8000/");
-    socket.current = io.connect("");
+    socket.current = io.connect("https://ielts-video-call.herokuapp.com/");
+    // socket.current = io.connect("");
     navigator.mediaDevices.getUserMedia({ video: { facingMode: cameraMode }, audio: true }).then((stream) => {
       setStream(stream);
       if (userVideo.current) {
@@ -129,7 +130,7 @@ function VideoCall() {
       initiator: true,
       trickle: false,
       stream: stream,
-      // reconnectTimer: true,
+      reconnectTimer: true,
       config: {
         iceServers: [
           { urls: "stun:stun.l.google.com:19302" },
@@ -164,8 +165,9 @@ function VideoCall() {
       setRemoteUserId(id);
       peer.current.signal(signal);
       setCallButtonDisability(true);
-      console.log("accepted");
       setCallingPermission(false);
+      console.log("accepted");
+      toast.info("signal receiving")
     });
 
     peer.current.on("error", (error) => {
@@ -210,7 +212,7 @@ function VideoCall() {
       initiator: false,
       trickle: false,
       stream: stream,
-      // reconnectTimer: true,
+      reconnectTimer: true,
       config: {
         iceServers: [
           { urls: "stun:stun.l.google.com:19302" },
