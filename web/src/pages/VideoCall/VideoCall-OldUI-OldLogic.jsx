@@ -19,8 +19,8 @@ const LoadingTailSpin = () => {
     <Loader
       type="TailSpin"
       color="#00BFFF"
-      // timeout={3000}
-     />
+    // timeout={3000}
+    />
   );
 };
 
@@ -61,12 +61,12 @@ function VideoCall() {
     // socket.current = io.connect("http://localhost:8000/");
     socket.current = io.connect("");
     navigator.mediaDevices.getUserMedia({ video: { facingMode: cameraMode }, audio: true }).then((stream) => {
-        setStream(stream);
-        if (userVideo.current) {
-          userVideo.current.srcObject = stream;
-          globalStream = stream
-        }
-      })
+      setStream(stream);
+      if (userVideo.current) {
+        userVideo.current.srcObject = stream;
+        globalStream = stream
+      }
+    })
       .catch((reason) => {
         toast.error("Provide Permission");
       });
@@ -74,7 +74,7 @@ function VideoCall() {
     socket.current.on("yourID", (id) => {
       setYourID(id);
       console.log(currentUser.email, role);
-      socket.current.emit("initializeUser", {uniqueName: currentUser.email,role,});
+      socket.current.emit("initializeUser", { uniqueName: currentUser.email, role, });
     });
     socket.current.on("allUsers", (data) => {
       setUsers(data.users);
@@ -85,6 +85,7 @@ function VideoCall() {
     socket.current.on("receiveSignal", (data) => {
       console.log("Reciving signal");
       setCallerSignal(data.signal);
+      toast.info("signal")
     });
 
     socket.current.on("receiveCall", (data) => {
@@ -262,9 +263,9 @@ function VideoCall() {
     });
   }
 
-  function endCall(key) {
-    peer.current.destroy("Call ended");
+  function endCall() {
     socket.current.emit("endCall", { id: remoteUserId });
+    peer.current.destroy("Call ended");
   }
 
   function giveCallPermission(id) {
@@ -283,14 +284,14 @@ function VideoCall() {
 
       if (oldTrack.readyState === "ended") {
         navigator.mediaDevices.getUserMedia({ video: { facingMode: cameraMode } }).then((newStream) => {
-            const newTrack = newStream.getVideoTracks()[0];
-            stream.removeTrack(oldTrack);
-            stream.addTrack(newTrack);
-            setVideoStatus(true);
-            if (callAccepted) {
-              peer.current.replaceTrack(oldTrack, newTrack, stream);
-            }
-          });
+          const newTrack = newStream.getVideoTracks()[0];
+          stream.removeTrack(oldTrack);
+          stream.addTrack(newTrack);
+          setVideoStatus(true);
+          if (callAccepted) {
+            peer.current.replaceTrack(oldTrack, newTrack, stream);
+          }
+        });
       } else if (oldTrack.readyState === "live") {
         oldTrack.stop();
         setVideoStatus(false);
@@ -314,17 +315,17 @@ function VideoCall() {
 
       if (oldScreenTrack.readyState === "ended") {
         navigator.mediaDevices.getDisplayMedia({ video: true, audio: true }).then((newStream) => {
-            const newTrack = newStream.getVideoTracks()[0];
-            stream.removeTrack(oldScreenTrack);
-            stream.addTrack(newTrack);
-            setScreenShareStatus(true);
-            if (callAccepted) {
-              peer.current.replaceTrack(oldScreenTrack, newTrack, stream);
-            }
-            stream.getVideoTracks()[0].addEventListener("ended", () => {
-              setScreenShareStatus(false);
-            });
+          const newTrack = newStream.getVideoTracks()[0];
+          stream.removeTrack(oldScreenTrack);
+          stream.addTrack(newTrack);
+          setScreenShareStatus(true);
+          if (callAccepted) {
+            peer.current.replaceTrack(oldScreenTrack, newTrack, stream);
+          }
+          stream.getVideoTracks()[0].addEventListener("ended", () => {
+            setScreenShareStatus(false);
           });
+        });
       } else if (oldScreenTrack.readyState === "live") {
         oldScreenTrack.stop();
         setScreenShareStatus(false);
@@ -398,42 +399,16 @@ function VideoCall() {
           return null;
         }
         return (
-          <div style={{color: "white"}}>
-          {users[key]} :
-            <Button variant="primary" onClick={() => callPeer(key)} disabled={callButtonDisability} style={{ margin: 5 }}>
-              Call 
-            </Button>
-            <Button variant="success" onClick={() => giveCallPermission(key)} disabled={callButtonDisability} style={{ margin: 5 }}>
-              give Permission
-            </Button>
-          </div>
-        );
-      });
-    } else if (callingPermission) {
-      callFaculty = (
-        <Button variant="primary" onClick={() => callPeer(callingPermission)} disabled={callButtonDisability} style={{ margin: 5 }}> Call {users[callingPermission]} </Button>
-      );
-    }
-  }
-  if (stream) {
-    UserVideo = (
-      <video className="userVideo" playsInline muted ref={userVideo} autoPlay />
-    );
-    if (isAdminOrStaff) {
-      CallUserList = Object.keys(users).map((key) => {
-        if (key === yourID) {
-          return null;
-        }
-        return (
-          <div style={{color: "white"}}>
-          {users[key]} :
-            <Button variant="primary" onClick={() => callPeer(key)} disabled={callButtonDisability} style={{ margin: 5 }}>
-              Call 
-            </Button>
-            <Button variant="success" onClick={() => giveCallPermission(key)} disabled={callButtonDisability} style={{ margin: 5 }}>
-              give Permission
-            </Button>
-          </div>
+          <Card className='border border-secondary bg-transparent'>
+            <Col style={{ color: "white", border: '3px' }}>
+              <Row>{users[key]} :</Row>
+              <Row>
+                <Button variant="primary" onClick={() => callPeer(key)} disabled={callButtonDisability} style={{ margin: 5 }}>Call </Button>
+                <Button variant="success" onClick={() => giveCallPermission(key)} disabled={callButtonDisability} style={{ margin: 5 }}>give Permission</Button>
+              </Row>
+            </Col>
+          </Card>
+
         );
       });
     } else if (callingPermission) {
@@ -506,9 +481,9 @@ function VideoCall() {
 
   return (
     <>
-    <div className="videoContainer"></div>
+      <div className="videoContainer"></div>
       {/* ABSOLUTE POSITIONED components  */}
-      {incommintCall}       
+      {incommintCall}
       {PartnerVideo}
       <div className="userElements">
         {UserVideo} {ToggleMediaButtons}
