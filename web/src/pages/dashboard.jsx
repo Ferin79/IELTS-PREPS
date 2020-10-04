@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -64,6 +64,26 @@ const Dashboard = () => {
       .catch((error) => console.log(error));
   };
 
+  useEffect(() => {
+    const messaging = firebase.messaging();
+    messaging
+      .getToken()
+      .then((token) => {
+        firebase
+          .firestore()
+          .doc(`/usersNotificationToken/${firebase.auth().currentUser.email}`)
+          .set({
+            email: firebase.auth().currentUser.email,
+            institute_id: institution,
+            browserToken: token,
+            appToken: "",
+          });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [institution]);
+
   return (
     <Container>
       <Row className="m-5"></Row>
@@ -71,12 +91,22 @@ const Dashboard = () => {
         {role === "admin" && (
           <Col
             onClick={() => history.push("/staff")}
-            id="manageStaff"
             lg={true}
             className="d-flex flex-column justify-content-center align-items-center addHoverCursor"
           >
             <Image src={require("../images/staff.png")} rounded />
             <h5>Manage Staff</h5>
+          </Col>
+        )}
+
+        {role === "staff" && (
+          <Col
+            onClick={() => history.push("/staff/timetable")}
+            lg={true}
+            className="d-flex flex-column justify-content-center align-items-center addHoverCursor"
+          >
+            <Image src={require("../images/planner.png")} rounded />
+            <h5>Timetable</h5>
           </Col>
         )}
 

@@ -11,6 +11,7 @@ import Student from "./pages/student";
 import VideoCall from "./pages/VideoCall/VideoCall-NewUi-NewLogic";
 import Timetable from "./pages/timetable";
 import LoadingScreen from "./pages/loading";
+import StaffTimeTable from "./pages/staffTT";
 
 const Routes = () => {
   const { currentUser } = useContext(AuthContext);
@@ -44,6 +45,7 @@ const Routes = () => {
           <Route path="/" exact component={Dashboard} />
           <Route path="/student" exact component={Student} />
           <Route path="/speaking" exact component={VideoCall} />
+          <Route path="/staff/timetable" exact component={StaffTimeTable} />
           <Route
             path="/logout"
             exact

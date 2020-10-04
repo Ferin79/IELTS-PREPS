@@ -387,7 +387,7 @@ function VideoCall() {
           return null;
         }
         return (
-          <div style={{ color: "white" }}>
+          <div style={{ color: "white", margin: "10px 0" }}>
             {users[key]} :
             <Button
               variant="primary"
@@ -424,18 +424,20 @@ function VideoCall() {
 
   return (
     <>
-      <Container fluid>
+      <Container fluid className="speak-conatiner-wrapper">
+        <IncomingCall
+          receivingCall={receivingCall}
+          users={users}
+          callerSignal={callerSignal}
+          remoteUserId={remoteUserId}
+          incommingCallAudio={incommingCallAudio}
+          caller={caller}
+          acceptCall={acceptCall}
+        />
+
         <Row>
-          <Col>
-            <IncomingCall
-              receivingCall={receivingCall}
-              users={users}
-              callerSignal={callerSignal}
-              remoteUserId={remoteUserId}
-              incommingCallAudio={incommingCallAudio}
-              caller={caller}
-              acceptCall={acceptCall}
-            />
+          <Col className="RenderCallBtn-wrapper">
+            <RenderCallButtons />
           </Col>
         </Row>
 
@@ -488,12 +490,6 @@ function VideoCall() {
           ) : (
             ""
           )}
-        </Row>
-
-        <Row>
-          <Col>
-            <RenderCallButtons />
-          </Col>
         </Row>
 
         <ToastContainer autoClose={2000} />
