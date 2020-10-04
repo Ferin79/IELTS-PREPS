@@ -3,117 +3,32 @@ import Accordion from "react-bootstrap/Accordion";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import "../css/popMessageBox.scss";
+import { Col, Form, Row } from "react-bootstrap";
+import { IoIosSend } from "react-icons/io";
+import { MdExpandMore } from "react-icons/md";
 
-const PopMessageBox = ({  }) => {
-  const messages = [
-    {
-      id: 1,
-      from: "me",
-      to: "Jash Jariwala",
-      text: "Hi, How Are You ?",
-    },
-    {
-      id: 2,
-      from: "me",
-      to: "Jash Jariwala",
-      text:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, quas.",
-    },
-    {
-      id: 3,
-      from: "Jash Jariwala",
-      to: "me",
-      text:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, aperiam iure atque exercitationem ab ducimus.",
-    },
-    {
-      id: 4,
-      from: "Jash Jariwala",
-      to: "me",
-      text: "Lorem ipsum dolor sit amet consectetur adipisicing.",
-    },
-    {
-      id: 5,
-      from: "me",
-      to: "Jash Jariwala",
-      text: "Hi, How Are You ?",
-    },
-    {
-      id: 6,
-      from: "me",
-      to: "Jash Jariwala",
-      text: "Hi, How Are You ?",
-    },
-    {
-      id: 7,
-      from: "me",
-      to: "Jash Jariwala",
-      text: "Hi, How Are You ?",
-    },
-    {
-      id: 8,
-      from: "me",
-      to: "Jash Jariwala",
-      text: "Hi, How Are You ?",
-    },
-    {
-      id: 9,
-      from: "me",
-      to: "Jash Jariwala",
-      text: "Hi, How Are You ?",
-    },
-    {
-      id: 10,
-      from: "me",
-      to: "Jash Jariwala",
-      text: "Hi, How Are You ?",
-    },
-    {
-      id: 11,
-      from: "me",
-      to: "Jash Jariwala",
-      text: "Hi, How Are You ?",
-    },
-    {
-      id: 12,
-      from: "me",
-      to: "Jash Jariwala",
-      text: "Hi, How Are You ?",
-    },
-    {
-      id: 10,
-      from: "me",
-      to: "Jash Jariwala",
-      text: "Hi, How Are You ?",
-    },
-    {
-      id: 13,
-      from: "me",
-      to: "Jash Jariwala",
-      text: "Hi, How Are You ?",
-    },
-    {
-      id: 14,
-      from: "me",
-      to: "Jash Jariwala",
-      text: "Hi, How Are You ?",
-    },
-    {
-      id: 15,
-      from: "me",
-      to: "Jash Jariwala",
-      text: "Hi, How Are You ?",
-    },
-  ];
+const PopMessageBox = ({ sendMessage }) => {
+  const messages = [];
 
   return (
     <div className="PopMessageBox-wrapper">
       <Accordion>
-        <Card>
+        <Card bg='dark'>
           <Card.Header>
-            <Accordion.Toggle as={Button} variant="link" eventKey="0">
-              Message
-            </Accordion.Toggle>
+            <Form onSubmit={sendMessage}>
+              <Form.Group as={Row}>
+                <Col sm="9">
+                  <Form.Control type="text" placeholder="messsage..." />
+                </Col>
+                <Col sm="3">
+                  <Button variant="primary" type="submit"><IoIosSend /></Button>
+                  <Accordion.Toggle as={Button} variant="link" eventKey="0">
+                    <MdExpandMore />
+                  </Accordion.Toggle>
+                </Col>
+              </Form.Group>
+            </Form>
+
           </Card.Header>
           <Accordion.Collapse eventKey="0">
             <Card.Body>
@@ -132,18 +47,19 @@ const PopMessageBox = ({  }) => {
                         {item.from === "me" ? (
                           <span></span>
                         ) : (
-                          <p style={{ color: "black" }}>From: {item.from}</p>
-                        )}
+                            <p style={{ color: "black" }}>From: {item.from}</p>
+                          )}
 
                         <h6 style={{ color: "black" }}>{item.text}</h6>
                       </div>
                     );
                   })
                 ) : (
-                  <span>No Messages. Start Chatting ...</span>
-                )}
+                    <span>No Messages. Start Chatting ...</span>
+                  )}
               </div>
-              <div className="send-message-wrapper"></div>
+              <div className="send-message-wrapper">
+              </div>
             </Card.Body>
           </Accordion.Collapse>
         </Card>

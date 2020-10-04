@@ -56,6 +56,9 @@
   height: 250px;
   width: 250px;
   object-fit: cover;
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg); /* Safari and Chrome */
+  -moz-transform: rotateY(180deg); /* Firefox */
 }
 .videoToggle-wrapper {
   width: 100%;

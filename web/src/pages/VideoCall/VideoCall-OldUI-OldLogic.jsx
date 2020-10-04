@@ -8,6 +8,7 @@ import { CameraVideo, CameraVideoOff, MicMute, Mic, ArrowBarUp } from "react-boo
 import Loader from "react-loader-spinner";
 import { Context } from "../../data/context";
 import { AuthContext } from "../../data/auth";
+import MessageContainer from "../../components/popMessageBox";
 
 const incommingCallAudio = new Audio(require("../../images/skype_remix_2.mp3"));
 incommingCallAudio.loop = true;
@@ -59,8 +60,8 @@ function VideoCall() {
   useEffect(() => {
     // 1. connect to server
     // socket.current = io.connect("http://localhost:8000/");
-    socket.current = io.connect("https://ielts-video-call.herokuapp.com/");
-    // socket.current = io.connect("");
+    // socket.current = io.connect("https://ielts-video-call.herokuapp.com/");
+    socket.current = io.connect("");
     navigator.mediaDevices.getUserMedia({ video: { facingMode: cameraMode }, audio: true }).then((stream) => {
       setStream(stream);
       if (userVideo.current) {
@@ -498,6 +499,7 @@ function VideoCall() {
       <Container style={{ color: "white" }} fluid>
         <Row>
           {CallUserList} {callFaculty}
+          <Col sm={4}> <MessageContainer /> </Col>
         </Row>
         <Row>
           <Col>
