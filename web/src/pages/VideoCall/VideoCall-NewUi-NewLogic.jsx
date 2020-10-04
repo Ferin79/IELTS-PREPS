@@ -13,6 +13,7 @@ import PartnerVideo from "../../components/partnerVideo";
 import UserVideo from "../../components/userVideo";
 import VideoToggle from "../../components/videoToggle";
 import PopMessageBox from "../../components/popMessageBox";
+import SubmitSpeakingReport from "../../components/SubmitSpeakingReport";
 import "./styles.css";
 
 const incommingCallAudio = new Audio(require("../../images/skype_remix_2.mp3"));
@@ -23,7 +24,7 @@ let globalStream = null;
 function VideoCall() {
   const peer = useRef(null);
 
-  const { role, institution } = useContext(Context);
+  const { role } = useContext(Context);
   const { currentUser } = useContext(AuthContext);
 
   const [yourID, setYourID] = useState("");
@@ -369,40 +370,12 @@ function VideoCall() {
     }
   }
 
-  // function toggleCamera() {
-  //   startUserMediaLoadingTimeout(1700);
-  //   const newCameraMode = cameraMode === 'user' ? 'environment' : 'user';
-  //   const oldTrack = stream.getVideoTracks()[0];
-  //   oldTrack.stop()
-  //   navigator.mediaDevices.getUserMedia({ video: { facingMode: cameraMode } }).then(newStream => {
-  //     const newTrack = newStream.getVideoTracks()[0]
-  //     stream.removeTrack(oldTrack)
-  //     stream.addTrack(newTrack)
-  //     setVideoStatus(true);
-  //     if (callAccepted) {
-  //       peer.current.replaceTrack(oldTrack, newTrack, stream);
-  //     }
-  //   })
-  //   setCameraMode(newCameraMode)
-  // }
-
   const startUserMediaLoadingTimeout = (milisec) => {
     setUserMediaLoading(true);
     setTimeout(() => {
       setUserMediaLoading(false);
     }, milisec);
   };
-
-  let professorOnline;
-  // if (!isAdminOrStaff) {
-  //   Object.keys(users).forEach(key => {
-  //     if (key !== yourID) {
-  //       if (users[key] === isAdminOrStaff) {
-  //         professorOnline = "Professor online";
-  //       }
-  //     }
-  //   })
-  // }
 
   const RenderCallButtons = () => {
     if (callAccepted) {
@@ -498,9 +471,23 @@ function VideoCall() {
             />
           </div>
 
-          <div className="sidebar-message-section">
-            <PopMessageBox />
-          </div>
+          {callAccepted ? (
+            <div className="sidebar-message-section">
+              <PopMessageBox
+                MessageArray={[
+                  {
+                    from: "JASH JARIWALA",
+                    to: "me",
+                    text: "Hi",
+                  },
+                ]}
+              />
+              <br />
+              {role !== "student" ? <SubmitSpeakingReport /> : <span></span>}
+            </div>
+          ) : (
+            ""
+          )}
         </Row>
 
         <Row>

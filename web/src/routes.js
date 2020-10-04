@@ -9,6 +9,7 @@ import Dashboard from "./pages/dashboard";
 import Staff from "./pages/staff";
 import Student from "./pages/student";
 import VideoCall from "./pages/VideoCall/VideoCall-OldUI-OldLogic";
+import VideoCall2 from "./pages/VideoCall/VideoCall-NewUi-NewLogic";
 import Timetable from "./pages/timetable";
 import LoadingScreen from "./pages/loading";
 
@@ -26,7 +27,7 @@ const Routes = () => {
           <Route path="/" exact component={Dashboard} />
           <Route path="/staff" exact component={Staff} />
           <Route path="/student" exact component={Student} />
-          <Route path="/speaking" exact component={VideoCall} />
+          <Route path="/speaking" exact component={VideoCall2} />
           <Route path="/timetable" exact component={Timetable} />
           <Route
             path="/logout"
