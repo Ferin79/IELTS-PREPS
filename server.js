@@ -86,6 +86,11 @@ io.on('connection', socket => {
             socket.emit("audioStatusChange", audioStream)
         })
 
+        socket.on("sendMessage", (data) => {
+            console.log(users[data.from] + " sent message to " + users[data.to]);
+            io.to(data.to).emit("receiveMessage", {from: data.from, message: data.message})
+        })
+
     })
 
 });

@@ -2,13 +2,13 @@ import React, { useEffect, useState, useRef, useContext } from "react";
 import "./styles_OldUi.css";
 import io from "socket.io-client";
 import Peer from "simple-peer";
-import { Button, Col, Row, Container, Card } from "react-bootstrap";
+import { Button, Col, Row, Container, Card, Dropdown } from "react-bootstrap";
 import { ToastContainer, toast } from "react-toastify";
 import { CameraVideo, CameraVideoOff, MicMute, Mic, ArrowBarUp } from "react-bootstrap-icons";
 import Loader from "react-loader-spinner";
 import { Context } from "../../data/context";
 import { AuthContext } from "../../data/auth";
-import MessageContainer from "../../components/popMessageBox";
+import MessageModal from "./MessageModal";
 
 const incommingCallAudio = new Audio(require("../../images/skype_remix_2.mp3"));
 incommingCallAudio.loop = true;
@@ -57,11 +57,16 @@ function VideoCall() {
   // const [cameraMode, setCameraMode] = useState("user");
   const cameraMode = "user";
 
+  const [messageModalShow, setMessageModalShow] = useState(false);
+  const [messages, setMessages] = useState([]);
+  const modalData = useRef(null);
+
+
   useEffect(() => {
     // 1. connect to server
-    // socket.current = io.connect("http://localhost:8000/");
+    socket.current = io.connect("http://localhost:8000/");
     // socket.current = io.connect("https://ielts-video-call.herokuapp.com/");
-    socket.current = io.connect("");
+    // socket.current = io.connect("");
     navigator.mediaDevices.getUserMedia({ video: { facingMode: cameraMode }, audio: true }).then((stream) => {
       setStream(stream);
       if (userVideo.current) {
@@ -120,6 +125,15 @@ function VideoCall() {
   }, [users]);
 
   useEffect(() => {
+    socket.current.on("receiveMessage", (data) => {
+      if (!isAdminOrStaff && callingPermission === data.from) {
+        console.log("Receiving message"); return;
+      }
+      handleReceiveMessage(data.from, data.message);
+    })
+  }, [callingPermission])
+
+  useEffect(() => {
     const setUserRoleCondition = role === "student" ? false : true;
     setIsAdminOrStaff(setUserRoleCondition);
   }, []);
@@ -166,7 +180,6 @@ function VideoCall() {
       setRemoteUserId(id);
       peer.current.signal(signal);
       setCallButtonDisability(true);
-      setCallingPermission(false);
       console.log("accepted");
       toast.info("signal receiving")
     });
@@ -176,6 +189,7 @@ function VideoCall() {
       setRemoteUserId("");
       setCallAccepted(false);
       setCallButtonDisability(false);
+      setCallingPermission(false);
 
       socket.current.removeListener("callAccepted");
       socket.current.removeListener("videoStatusChange");
@@ -190,6 +204,7 @@ function VideoCall() {
       setRemoteUserId("");
       setCallAccepted(false);
       setCallButtonDisability(false);
+      setCallingPermission(false);
 
       socket.current.removeListener("callAccepted");
       socket.current.removeListener("videoStatusChange");
@@ -382,6 +397,22 @@ function VideoCall() {
   //   setCameraMode(newCameraMode)
   // }
 
+  const handleSendMessage = (e, toUserId) => {
+    const textMessage = e.target.value;
+    if (textMessage === "") {
+      toast.error("Message Cannot be empty");
+      return;
+    }
+    setMessages(oldMessage => [...oldMessage, { from: yourID, to: toUserId, text: textMessage }]);
+    socket.current.emit("sendMessage", { from: yourID, to: modalData.current, message: textMessage });
+    e.target.value = ""
+  };
+
+  const handleReceiveMessage = (from, message) => {
+    // setMessages([...messages, { from, to: yourID, text: message }]);
+    setMessages(oldMessage => [...oldMessage, { from, to: yourID, text: message }])
+  };
+
   const startUserMediaLoadingTimeout = (milisec) => {
     setUserMediaLoading(true);
     setTimeout(() => {
@@ -402,21 +433,27 @@ function VideoCall() {
           return null;
         }
         return (
-          <Card className='border border-secondary bg-transparent'>
-            <Col style={{ color: "white", border: '3px' }}>
-              <Row>{users[key]} :</Row>
-              <Row>
-                <Button variant="primary" onClick={() => callPeer(key)} disabled={callButtonDisability} style={{ margin: 5 }}>Call </Button>
-                <Button variant="success" onClick={() => giveCallPermission(key)} disabled={callButtonDisability} style={{ margin: 5 }}>give Permission</Button>
-              </Row>
-            </Col>
-          </Card>
-
+          <Dropdown>
+            <Dropdown.Toggle variant="info" >{users[key]}</Dropdown.Toggle>
+            <Dropdown.Menu>
+              <Dropdown.Item onSelect={() => callPeer(key)} disabled={callButtonDisability} >Call</Dropdown.Item>
+              <Dropdown.Item onSelect={() => giveCallPermission(key)} disabled={callButtonDisability} >Give Permission</Dropdown.Item>
+              <Dropdown.Item onSelect={() => { modalData.current = key; setMessageModalShow(true) }}> Message </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
         );
       });
-    } else if (callingPermission) {
+    } else if (users[callingPermission]) {
       callFaculty = (
-        <Button variant="primary" onClick={() => callPeer(callingPermission)} disabled={callButtonDisability} style={{ margin: 5 }}> Call {users[callingPermission]} </Button>
+        <Card className='border border-secondary bg-transparent'>
+          <Col style={{ color: "white", border: '3px' }}>
+            <Row>{users[callingPermission]} :</Row>
+            <Row>
+              <Button variant="primary" onClick={() => callPeer(callingPermission)} disabled={callButtonDisability} style={{ margin: 5 }}> Call </Button>
+              <Button variant="success" onClick={() => { modalData.current = callingPermission; setMessageModalShow(true) }} disabled={callButtonDisability} style={{ margin: 5 }}>Message</Button>
+            </Row>
+          </Col>
+        </Card>
       );
     }
   }
@@ -484,7 +521,6 @@ function VideoCall() {
 
   return (
     <>
-      <div className="videoContainer"></div>
       {/* ABSOLUTE POSITIONED components  */}
       {incommintCall}
       {PartnerVideo}
@@ -499,7 +535,6 @@ function VideoCall() {
       <Container style={{ color: "white" }} fluid>
         <Row>
           {CallUserList} {callFaculty}
-          <Col sm={4}> <MessageContainer /> </Col>
         </Row>
         <Row>
           <Col>
@@ -507,6 +542,13 @@ function VideoCall() {
           </Col>
         </Row>
         <ToastContainer autoClose={2000} />
+        <MessageModal
+          show={messageModalShow}
+          onHide={() => setMessageModalShow(false)}
+          modalData={modalData.current}
+          messages={messages}
+          handleSendMessage={handleSendMessage}
+        />
       </Container>
     </>
   );

@@ -7,23 +7,7 @@ import { IoIosSend } from "react-icons/io";
 import { toast } from "react-toastify";
 import "../css/popMessageBox.scss";
 
-const PopMessageBox = ({ MessageArray }) => {
-  const [textMessage, setTextMessage] = useState("");
-
-  const handleSendMessage = () => {
-    if (textMessage.trim() === "") {
-      toast.error("Message Cannot be empty");
-      return;
-    }
-
-    MessageArray.push({
-      from: "me",
-      to: "JASH JARIWALA",
-      text: textMessage,
-    });
-
-    setTextMessage("");
-  };
+const PopMessageBox = ({ messages, handleSendMessage, remoteUser }) => {  
 
   return (
     <div className="PopMessageBox-wrapper">
@@ -37,8 +21,8 @@ const PopMessageBox = ({ MessageArray }) => {
           <Accordion.Collapse eventKey="0">
             <Card.Body>
               <div className="read-message-wrapper">
-                {MessageArray.length ? (
-                  MessageArray.map((item) => {
+                {messages.length ? (
+                  messages.map((item) => {
                     return (
                       <div className="message-item" id={item.id}>
                         {item.from === "me" ? (
@@ -54,7 +38,7 @@ const PopMessageBox = ({ MessageArray }) => {
 
                         <h6
                           className={
-                            item.from === "me" ? "float-right-item" : ""
+                            item.from !== remoteUser ? "float-right-item" : ""
                           }
                           style={{ color: "black" }}
                         >
@@ -71,12 +55,10 @@ const PopMessageBox = ({ MessageArray }) => {
                 <Form.Group controlId="formBasicEmail" className="form-message">
                   <Form.Control
                     type="text"
-                    placeholder="Type Message..."
-                    value={textMessage}
-                    onChange={(event) => setTextMessage(event.target.value)}
+                    placeholder="Type Message..."                                       
                     onKeyPress={(e) => {
                       if (e.which === 13) {
-                        handleSendMessage();
+                        handleSendMessage(e, remoteUser);                        
                       }
                     }}
                   />
