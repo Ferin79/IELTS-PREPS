@@ -1,3 +1,10 @@
+.speak-conatiner-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
 .incoming-call-section {
   height: 100vh;
   width: 100%;
@@ -11,6 +18,7 @@
   justify-content: center;
   align-items: center;
 }
+
 .incoming-call-wrapper h3,
 .incoming-call-wrapper h6 {
   margin: 20px;
@@ -22,6 +30,7 @@
   margin: 25px;
 }
 .row-second-section {
+  height: 75vh;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -45,7 +54,7 @@
 .partnervideo-wrapper video {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
 }
 .userVideo-Wrapper {
   position: absolute;

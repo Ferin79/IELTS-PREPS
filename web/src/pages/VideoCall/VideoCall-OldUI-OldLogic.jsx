@@ -127,8 +127,9 @@ function VideoCall() {
   useEffect(() => {
     socket.current.on("receiveMessage", (data) => {
       if (!isAdminOrStaff && callingPermission === data.from) {
-        console.log("Receiving message"); return;
+        return;
       }
+      console.log("Receiving message"); 
       handleReceiveMessage(data.from, data.message);
     })
   }, [callingPermission])
@@ -409,8 +410,9 @@ function VideoCall() {
   };
 
   const handleReceiveMessage = (from, message) => {
-    // setMessages([...messages, { from, to: yourID, text: message }]);
     setMessages(oldMessage => [...oldMessage, { from, to: yourID, text: message }])
+    //open message modal
+    modalData.current = from; setMessageModalShow(true)
   };
 
   const startUserMediaLoadingTimeout = (milisec) => {

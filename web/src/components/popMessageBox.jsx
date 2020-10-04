@@ -11,7 +11,7 @@ const PopMessageBox = ({ messages, handleSendMessage, remoteUser }) => {
 
   return (
     <div className="PopMessageBox-wrapper">
-      <Accordion>
+      <Accordion defaultActiveKey="0">
         <Card>
           <Card.Header>
             <Accordion.Toggle as={Button} variant="link" eventKey="0">
