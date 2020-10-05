@@ -9,9 +9,25 @@ import Loader from "react-loader-spinner";
 import { Context } from "../../data/context";
 import { AuthContext } from "../../data/auth";
 import MessageModal from "./MessageModal";
+import { TiMessages } from "react-icons/ti";
+import { MdCall } from "react-icons/md";
 
 const incommingCallAudio = new Audio(require("../../images/skype_remix_2.mp3"));
 incommingCallAudio.loop = true;
+
+const normalVideoConstraints = {
+  facingMode: "user", 
+  frameRate: { min: 5, ideal: 10, max: 15},
+  width: { min: 1024, ideal: 1280, max: 1920 },
+  height: { min: 576, ideal: 720, max: 1080 }
+}
+
+const lowInternetSpeedVideoConstraints = {
+  facingMode: "user", 
+  frameRate: { min: 5, ideal: 10, max: 15},
+  width: { min: 100, ideal: 100, max: 100 },
+  height: { min: 100, ideal: 100, max: 100 }
+}
 
 let globalStream = null;
 
@@ -54,8 +70,7 @@ function VideoCall() {
   const [videoStatus, setVideoStatus] = useState(true);
   const [audioStatus, setAudioStatus] = useState(true);
   const [screenShareStatus, setScreenShareStatus] = useState(false);
-  // const [cameraMode, setCameraMode] = useState("user");
-  const cameraMode = "user";
+  const videoCallConstraints = useRef(normalVideoConstraints)
 
   const [messageModalShow, setMessageModalShow] = useState(false);
   const [messages, setMessages] = useState([]);
@@ -67,7 +82,7 @@ function VideoCall() {
     // socket.current = io.connect("http://localhost:8000/");
     socket.current = io.connect("https://ielts-video-call.herokuapp.com/");
     // socket.current = io.connect("");
-    navigator.mediaDevices.getUserMedia({ video: { facingMode: cameraMode }, audio: true }).then((stream) => {
+    navigator.mediaDevices.getUserMedia({ video: videoCallConstraints.current, audio: true }).then((stream) => {
       setStream(stream);
       if (userVideo.current) {
         userVideo.current.srcObject = stream;
@@ -92,7 +107,7 @@ function VideoCall() {
     socket.current.on("receiveSignal", (data) => {
       console.log("Reciving signal");
       setCallerSignal(data.signal);
-      toast.info("signal")
+      toast.info("connecting")
     });
 
     socket.current.on("receiveCall", (data) => {
@@ -125,19 +140,20 @@ function VideoCall() {
   }, [users]);
 
   useEffect(() => {
+    const setUserRoleCondition = role === "student" ? false : true;
+    setIsAdminOrStaff(setUserRoleCondition);
+  }, []);
+
+  useEffect(() => {
     socket.current.on("receiveMessage", (data) => {
-      if (!isAdminOrStaff && callingPermission === data.from) {
-        return;
+      if (!isAdminOrStaff && callingPermission !== data.from) {
+        setCallingPermission(data.from);
       }
       console.log("Receiving message"); 
       handleReceiveMessage(data.from, data.message);
     })
   }, [callingPermission])
 
-  useEffect(() => {
-    const setUserRoleCondition = role === "student" ? false : true;
-    setIsAdminOrStaff(setUserRoleCondition);
-  }, []);
 
   function callPeer(id) {
     setCallButtonDisability(true);
@@ -182,7 +198,7 @@ function VideoCall() {
       peer.current.signal(signal);
       setCallButtonDisability(true);
       console.log("accepted");
-      toast.info("signal receiving")
+      toast.info("connecting")
     });
 
     peer.current.on("error", (error) => {
@@ -240,7 +256,7 @@ function VideoCall() {
     });
 
     peer.current.on("signal", (data) => {
-      console.log("call accept signal");
+      toast.info("connecting")
       socket.current.emit("acceptCall", { signal: data, to: remoteUserId });
     });
 
@@ -302,7 +318,7 @@ function VideoCall() {
       const oldTrack = stream.getVideoTracks()[0];
 
       if (oldTrack.readyState === "ended") {
-        navigator.mediaDevices.getUserMedia({ video: { facingMode: cameraMode } }).then((newStream) => {
+        navigator.mediaDevices.getUserMedia({ video: videoCallConstraints.current }).then((newStream) => {
           const newTrack = newStream.getVideoTracks()[0];
           stream.removeTrack(oldTrack);
           stream.addTrack(newTrack);
@@ -386,7 +402,7 @@ function VideoCall() {
   //   const newCameraMode = cameraMode === 'user' ? 'environment' : 'user';
   //   const oldTrack = stream.getVideoTracks()[0];
   //   oldTrack.stop()
-  //   navigator.mediaDevices.getUserMedia({ video: { facingMode: cameraMode } }).then(newStream => {
+  //   navigator.mediaDevices.getUserMedia({ video: videoCallConstraints.current }).then(newStream => {
   //     const newTrack = newStream.getVideoTracks()[0]
   //     stream.removeTrack(oldTrack)
   //     stream.addTrack(newTrack)
@@ -451,8 +467,8 @@ function VideoCall() {
           <Col style={{ color: "white", border: '3px' }}>
             <Row>{users[callingPermission]} :</Row>
             <Row>
-              <Button variant="primary" onClick={() => callPeer(callingPermission)} disabled={callButtonDisability} style={{ margin: 5 }}> Call </Button>
-              <Button variant="success" onClick={() => { modalData.current = callingPermission; setMessageModalShow(true) }} disabled={callButtonDisability} style={{ margin: 5 }}>Message</Button>
+              <Button variant="primary" onClick={() => callPeer(callingPermission)} disabled={callButtonDisability} style={{ margin: 5 }}> <MdCall /> </Button>
+              <Button variant="success" onClick={() => { modalData.current = callingPermission; setMessageModalShow(true) }} style={{ margin: 5 }}><TiMessages /></Button>
             </Row>
           </Col>
         </Card>
@@ -492,6 +508,19 @@ function VideoCall() {
       } */}
     </Row>
   );
+
+  let lowInternetSpeedButton = (
+    <Button onClick={(event) => {
+      event.target.style.display = "none";
+      videoCallConstraints.current = lowInternetSpeedVideoConstraints;
+      if (videoStatus) { 
+        toggleVideo(); 
+        setTimeout(() => {
+          toggleVideo();
+        }, 1000);
+      }
+    }}>Low Internet Speed?</Button>
+  )
 
   let incommintCall;
   if (receivingCall && users[remoteUserId] && callerSignal) {
@@ -539,9 +568,7 @@ function VideoCall() {
           {CallUserList} {callFaculty}
         </Row>
         <Row>
-          <Col>
-            <h4>You: {currentUser.email}</h4> <h6 style={{ color: "green" }}>{yourID && "Online"}</h6>
-          </Col>
+          <Col><h4>You: {currentUser.email}</h4> <h6 style={{ color: "green" }}>{yourID && "Online"}</h6> {lowInternetSpeedButton}</Col>
         </Row>
         <ToastContainer autoClose={2000} />
         <MessageModal
