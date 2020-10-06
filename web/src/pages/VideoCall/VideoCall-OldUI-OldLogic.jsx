@@ -9,8 +9,7 @@ import Loader from "react-loader-spinner";
 import { Context } from "../../data/context";
 import { AuthContext } from "../../data/auth";
 import MessageModal from "./MessageModal";
-import { TiMessages } from "react-icons/ti";
-import { MdCall } from "react-icons/md";
+import SubmitSpeakingReport from "../../components/SubmitSpeakingReport";
 
 const incommingCallAudio = new Audio(require("../../images/skype_remix_2.mp3"));
 incommingCallAudio.loop = true;
@@ -166,8 +165,8 @@ function VideoCall() {
       config: {
         iceServers: [
           { urls: "stun:stun.l.google.com:19302" },
-          { url: "stun:stun1.l.google.com:19302" },
           { urls: "stun:global.stun.twilio.com:3478?transport=udp" },
+          { urls:  "stun:stun1.l.google.com:19302" },
         ],
       },
     });
@@ -249,8 +248,8 @@ function VideoCall() {
       config: {
         iceServers: [
           { urls: "stun:stun.l.google.com:19302" },
-          { url: "stun:stun1.l.google.com:19302" },
           { urls: "stun:global.stun.twilio.com:3478?transport=udp" },
+          { urls: "stun:stun1.l.google.com:19302" },
         ],
       },
     });
@@ -467,8 +466,8 @@ function VideoCall() {
           <Col style={{ color: "white", border: '3px' }}>
             <Row>{users[callingPermission]} :</Row>
             <Row>
-              <Button variant="primary" onClick={() => callPeer(callingPermission)} disabled={callButtonDisability} style={{ margin: 5 }}> <MdCall /> </Button>
-              <Button variant="success" onClick={() => { modalData.current = callingPermission; setMessageModalShow(true) }} style={{ margin: 5 }}><TiMessages /></Button>
+              <Button variant="primary" onClick={() => callPeer(callingPermission)} disabled={callButtonDisability} style={{ margin: 5 }}> Call </Button>
+              <Button variant="success" onClick={() => { modalData.current = callingPermission; setMessageModalShow(true) }} style={{ margin: 5 }}> Message </Button>
             </Row>
           </Col>
         </Card>
@@ -478,7 +477,7 @@ function VideoCall() {
 
   let PartnerVideo;
   let endCallButton;
-
+  let SpeakingReport;
   if (callAccepted) {
     PartnerVideo = (
       <video className="partnerVideo" playsInline ref={partnerVideo} autoPlay />
@@ -488,6 +487,7 @@ function VideoCall() {
         <Button variant="danger" onClick={() => endCall()}>End Call</Button>
       </div>
     );
+    SpeakingReport = <SubmitSpeakingReport />
   }
 
   let ToggleMediaButtons;
