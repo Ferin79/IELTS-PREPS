@@ -65,23 +65,27 @@ const Dashboard = () => {
   };
 
   useEffect(() => {
-    const messaging = firebase.messaging();
-    messaging
-      .getToken()
-      .then((token) => {
-        firebase
-          .firestore()
-          .doc(`/usersNotificationToken/${firebase.auth().currentUser.email}`)
-          .set({
-            email: firebase.auth().currentUser.email,
-            institute_id: institution,
-            browserToken: token,
-            appToken: "",
-          });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    try {
+      const messaging = firebase.messaging();
+      messaging
+        .getToken()
+        .then((token) => {
+          firebase
+            .firestore()
+            .doc(`/usersNotificationToken/${firebase.auth().currentUser.email}`)
+            .set({
+              email: firebase.auth().currentUser.email,
+              institute_id: institution,
+              browserToken: token,
+              appToken: "",
+            });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } catch (error) {
+      console.log(error);
+    }
   }, [institution]);
 
   return (
