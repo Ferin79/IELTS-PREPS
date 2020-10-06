@@ -11,7 +11,7 @@ const users = {};
 const role = {};
 let count = 0;
 
-app.use(express.static('web/build'))
+app.use(express.static('./web/build'))
 
 io.on('connection', socket => {
 
