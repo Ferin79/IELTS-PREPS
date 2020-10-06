@@ -6,20 +6,20 @@
     "runtime-main.js": "/IELTS/static/js/runtime-main.e275631c.js",
     "runtime-main.js.map": "/IELTS/static/js/runtime-main.e275631c.js.map",
     "static/css/2.6b5d40a7.chunk.css": "/IELTS/static/css/2.6b5d40a7.chunk.css",
-    "static/js/2.4cf04ea2.chunk.js": "/IELTS/static/js/2.4cf04ea2.chunk.js",
-    "static/js/2.4cf04ea2.chunk.js.map": "/IELTS/static/js/2.4cf04ea2.chunk.js.map",
+    "static/js/2.f4103f29.chunk.js": "/IELTS/static/js/2.f4103f29.chunk.js",
+    "static/js/2.f4103f29.chunk.js.map": "/IELTS/static/js/2.f4103f29.chunk.js.map",
     "index.html": "/IELTS/index.html",
-    "precache-manifest.83ae48bd5a91e7c4ae4bed36aea2d9c1.js": "/IELTS/precache-manifest.83ae48bd5a91e7c4ae4bed36aea2d9c1.js",
+    "precache-manifest.da658e5b3ba6025c9cf2c9b3b5769ae0.js": "/IELTS/precache-manifest.da658e5b3ba6025c9cf2c9b3b5769ae0.js",
     "service-worker.js": "/IELTS/service-worker.js",
     "static/css/2.6b5d40a7.chunk.css.map": "/IELTS/static/css/2.6b5d40a7.chunk.css.map",
     "static/css/main.b7487bce.chunk.css.map": "/IELTS/static/css/main.b7487bce.chunk.css.map",
-    "static/js/2.4cf04ea2.chunk.js.LICENSE.txt": "/IELTS/static/js/2.4cf04ea2.chunk.js.LICENSE.txt",
+    "static/js/2.f4103f29.chunk.js.LICENSE.txt": "/IELTS/static/js/2.f4103f29.chunk.js.LICENSE.txt",
     "static/media/skype_remix_2.mp3": "/IELTS/static/media/skype_remix_2.5ab01274.mp3"
   },
   "entrypoints": [
     "static/js/runtime-main.e275631c.js",
     "static/css/2.6b5d40a7.chunk.css",
-    "static/js/2.4cf04ea2.chunk.js",
+    "static/js/2.f4103f29.chunk.js",
     "static/css/main.b7487bce.chunk.css",
     "static/js/main.6e010a29.chunk.js"
   ]
