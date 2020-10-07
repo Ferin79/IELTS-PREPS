@@ -113,11 +113,11 @@ function VideoCall() {
       setRoles(data.role);
     });
 
-    socket.current.on("receiveSignal", (data) => {
-      console.log("Reciving signal");
-      setCallerSignal(data.signal);
-      toast.info("connecting");
-    });
+    // socket.current.on("receiveSignal", (data) => {
+    //   console.log("Reciving signal");
+    //   setCallerSignal(data.signal);
+    //   toast.info("connecting")
+    // });
 
     socket.current.on("receiveCall", (data) => {
       console.log("Receiving");
@@ -125,7 +125,7 @@ function VideoCall() {
       setCallButtonDisability(true);
       setCaller(data.from.name);
       setRemoteUserId(data.from.id);
-      // setCallerSignal(data.signal);
+      setCallerSignal(data.signal);
     });
 
     return () => {
@@ -185,13 +185,13 @@ function VideoCall() {
 
     console.log("Call user");
     peer.current.on("signal", (data) => {
-      socket.current.emit("callerSignal", {
+      socket.current.emit("callUser", {
         userToCall: id,
         signalData: data,
         from: yourID,
       });
     });
-    socket.current.emit("callUser", { userToCall: id, from: yourID });
+    // socket.current.emit("callUser", { userToCall: id, from: yourID });
 
     peer.current.on("stream", (stream) => {
       if (partnerVideo.current) {
