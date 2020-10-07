@@ -12,6 +12,7 @@ import VideoCall from "./pages/VideoCall/VideoCall-OldUI-OldLogic";
 import Timetable from "./pages/timetable";
 import LoadingScreen from "./pages/loading";
 import StaffTimeTable from "./pages/staffTT";
+import Messages from "./pages/messages";
 
 const Routes = () => {
   const { currentUser } = useContext(AuthContext);
@@ -29,6 +30,7 @@ const Routes = () => {
           <Route path="/student" exact component={Student} />
           <Route path="/speaking" exact component={VideoCall} />
           <Route path="/timetable" exact component={Timetable} />
+          <Route path="/message" exact component={Messages} />
           <Route
             path="/logout"
             exact
@@ -46,6 +48,8 @@ const Routes = () => {
           <Route path="/student" exact component={Student} />
           <Route path="/speaking" exact component={VideoCall} />
           <Route path="/staff/timetable" exact component={StaffTimeTable} />
+          <Route path="/message" exact component={Messages} />
+
           <Route
             path="/logout"
             exact
@@ -60,6 +64,7 @@ const Routes = () => {
       return (
         <Switch>
           <Route path="/student/speaking" exact component={VideoCall} />
+          <Route path="/message" exact component={Messages} />
           <Route
             path="/logout"
             exact
