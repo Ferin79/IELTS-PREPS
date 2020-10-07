@@ -176,9 +176,9 @@ function VideoCall() {
       reconnectTimer: true,
       config: {
         iceServers: [
-          { url: "stun:stun.l.google.com:19302" },
-          { url: "stun:global.stun.twilio.com:3478?transport=udp" },
-          { url: "stun:stun1.l.google.com:19302" },
+          { urls: "stun:stun.l.google.com:19302" },
+          { urls: "stun:global.stun.twilio.com:3478?transport=udp" },
+          { urls: "stun:stun1.l.google.com:19302" },
         ],
       },
     });
@@ -259,9 +259,9 @@ function VideoCall() {
       reconnectTimer: true,
       config: {
         iceServers: [
-          { url: "stun:stun.l.google.com:19302" },
-          { url: "stun:global.stun.twilio.com:3478?transport=udp" },
-          { url: "stun:stun1.l.google.com:19302" },
+          { urls: "stun:stun.l.google.com:19302" },
+          { urls: "stun:global.stun.twilio.com:3478?transport=udp" },
+          { urls: "stun:stun1.l.google.com:19302" },
         ],
       },
     });

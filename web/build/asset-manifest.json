@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/IELTS/static/css/main.b7487bce.chunk.css",
-    "main.js": "/IELTS/static/js/main.93dc6a36.chunk.js",
-    "main.js.map": "/IELTS/static/js/main.93dc6a36.chunk.js.map",
+    "main.js": "/IELTS/static/js/main.97b6cd62.chunk.js",
+    "main.js.map": "/IELTS/static/js/main.97b6cd62.chunk.js.map",
     "runtime-main.js": "/IELTS/static/js/runtime-main.e275631c.js",
     "runtime-main.js.map": "/IELTS/static/js/runtime-main.e275631c.js.map",
     "static/css/2.6b5d40a7.chunk.css": "/IELTS/static/css/2.6b5d40a7.chunk.css",
     "static/js/2.371cd73a.chunk.js": "/IELTS/static/js/2.371cd73a.chunk.js",
     "static/js/2.371cd73a.chunk.js.map": "/IELTS/static/js/2.371cd73a.chunk.js.map",
     "index.html": "/IELTS/index.html",
-    "precache-manifest.a44bfb30d3b613d60edcec458338bf6e.js": "/IELTS/precache-manifest.a44bfb30d3b613d60edcec458338bf6e.js",
+    "precache-manifest.5928e8273494933eec11aa2b541ca352.js": "/IELTS/precache-manifest.5928e8273494933eec11aa2b541ca352.js",
     "service-worker.js": "/IELTS/service-worker.js",
     "static/css/2.6b5d40a7.chunk.css.map": "/IELTS/static/css/2.6b5d40a7.chunk.css.map",
     "static/css/main.b7487bce.chunk.css.map": "/IELTS/static/css/main.b7487bce.chunk.css.map",
@@ -21,6 +21,6 @@
     "static/css/2.6b5d40a7.chunk.css",
     "static/js/2.371cd73a.chunk.js",
     "static/css/main.b7487bce.chunk.css",
-    "static/js/main.93dc6a36.chunk.js"
+    "static/js/main.97b6cd62.chunk.js"
   ]
 }
