@@ -6,6 +6,7 @@
   align-items: center;
   border: 1px solid black !important;
   padding: 5px;
+  margin: 50px 0;
 }
 .sidebar-chat-user-list {
   width: 35% !important;
@@ -109,4 +110,28 @@
 }
 .message-parent-text-float-right {
   text-align: right;
+}
+
+@media only screen and (max-width: 1024px) {
+  .sidebar-chat-user-list {
+    width: 100% !important;
+    height: auto;
+    overflow-y: scroll;
+  }
+  .main-chat-wrapper {
+    width: 100% !important;
+    height: 75vh;
+    overflow-y: scroll;
+  }
+  .chat-wrapper {
+    height: auto;
+    margin: auto;
+    flex-direction: column;
+  }
+  .message-item p {
+    font-size: 12px;
+  }
+  .message-item h5 {
+    font-size: 18px;
+  }
 }

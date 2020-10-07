@@ -6,7 +6,6 @@ import React, {
   createRef,
 } from "react";
 import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
@@ -276,7 +275,7 @@ const Messages = () => {
 
   return (
     <Container>
-      <Row className="chat-wrapper m-5">
+      <div className="chat-wrapper">
         <div className="sidebar-chat-user-list">
           <div className="user-info">
             <h6>{firebase.auth().currentUser.email}</h6>
@@ -368,7 +367,7 @@ const Messages = () => {
             <span>Select User to Show Message</span>
           )}
         </div>
-      </Row>
+      </div>
       <ToastContainer />
       <UserModal show={modalShow} />
     </Container>
