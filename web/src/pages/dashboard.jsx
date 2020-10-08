@@ -125,6 +125,15 @@ const Dashboard = () => {
         </Col>
 
         <Col
+          onClick={() => history.push("/message")}
+          lg={true}
+          className="d-flex flex-column justify-content-center align-items-center addHoverCursor"
+        >
+          <Image src={require("../images/message.png")} rounded />
+          <h5>Chat</h5>
+        </Col>
+
+        <Col
           onClick={() => history.push("/profile")}
           lg={true}
           className="d-flex flex-column justify-content-center align-items-center addHoverCursor"
