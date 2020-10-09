@@ -107,16 +107,12 @@ function VideoCall() {
     //   console.log("Reciving signal");
     //   setCallerSignal(data.signal);
     //   toast.info("connecting")
-    // });
+    // });    
 
-    socket.current.on("receiveCall", (data) => {
-      console.log("Receiving");
-      setReceivingCall(true);
-      setCallButtonDisability(true);
-      setCaller(data.from.name);
-      setRemoteUserId(data.from.id);
-      setCallerSignal(data.signal);
-    });
+    socket.current.on("cantCall", (data) => {
+      console.log("Cant call");
+      toast.error("Already On a Call !");
+    })
 
     return (() => {
       console.log("disconnect socket");
@@ -128,6 +124,23 @@ function VideoCall() {
     })
 
   }, []);
+
+  useEffect(() => {
+    socket.current.removeListener("receiveCall");
+    socket.current.on("receiveCall", (data) => {
+      if (callAccepted) {
+        console.log("Already on call");
+        socket.current.emit("alreadyOnCall", { to: data.from.id })
+      } else {
+        console.log("Receiving");
+        setReceivingCall(true);
+        setCallButtonDisability(true);
+        setCaller(data.from.name);
+        setRemoteUserId(data.from.id);
+        setCallerSignal(data.signal);
+      }
+    });
+  }, [callAccepted])
 
   useEffect(() => {
     socket.current.on("callPermissionGranted", (data) => {

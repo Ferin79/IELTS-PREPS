@@ -91,6 +91,11 @@ io.on('connection', socket => {
             io.to(data.to).emit("receiveMessage", {from: data.from, message: data.message})
         })
 
+        socket.on("alreadyOnCall", (data) => { 
+            console.log(data.to+" is already on a call !");
+            io.to(data.to).emit("cantCall", "Can't call "+users[socket.id])
+         })
+
     })
 
 });
