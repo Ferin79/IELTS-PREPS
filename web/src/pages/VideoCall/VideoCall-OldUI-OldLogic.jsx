@@ -78,9 +78,9 @@ function VideoCall() {
 
   useEffect(() => {
     // 1. connect to server
-    socket.current = io.connect("http://localhost:8000/");
+    // socket.current = io.connect("http://localhost:8000/");
     // socket.current = io.connect("https://ielts-video-call.herokuapp.com/");
-    // socket.current = io.connect("");
+    socket.current = io.connect("");
     navigator.mediaDevices.getUserMedia({ video: videoCallConstraints.current, audio: true }).then((stream) => {
       setStream(stream);
       if (userVideo.current) {
