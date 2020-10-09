@@ -11,6 +11,7 @@ import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
 import ListGroup from "react-bootstrap/ListGroup";
 import Form from "react-bootstrap/Form";
+import Badge from "react-bootstrap/Badge";
 import { ToastContainer, toast } from "react-toastify";
 import { MdAddCircleOutline } from "react-icons/md";
 import { IoMdSend } from "react-icons/io";
@@ -20,6 +21,8 @@ import "../css/message.scss";
 
 const Messages = () => {
   const mesRef = createRef();
+
+  let unsubscribe;
 
   const { institution } = useContext(Context);
 
@@ -47,14 +50,13 @@ const Messages = () => {
             setCurrentUser(doc.data());
           }
         });
-        console.log(data);
         setNewUsers([...data]);
       })
       .catch((error) => {
         console.log(error);
         toast.error(error.message);
       });
-  }, []);
+  }, [institution]);
 
   const handleStartNewChat = (clickUser) => {
     let threadID;
@@ -163,21 +165,45 @@ const Messages = () => {
   };
 
   const fetchOldUser = useCallback(() => {
-    firebase
+    unsubscribe = firebase
       .firestore()
       .collection("conversations")
       .where("users", "array-contains", firebase.auth().currentUser.uid)
-      .get()
-      .then((snapshot) => {
-        const data = [];
-        snapshot.forEach((doc) => {
-          var item = doc.data();
+      .onSnapshot((snapshot) => {
+        const data = messageUsers;
 
-          if (item.user1.userId !== firebase.auth().currentUser.uid) {
-            data.push({ ...doc.data(), displayUser: item.user1 });
-          }
-          if (item.user2.userId !== firebase.auth().currentUser.uid) {
-            data.push({ ...doc.data(), displayUser: item.user2 });
+        const changes = snapshot.docChanges();
+
+        changes.forEach((change) => {
+          let chnageDocData = change.doc.data();
+
+          if (change.type === "modified") {
+            if (chnageDocData.threadID !== selectedThreadId) {
+              data.forEach((item) => {
+                if (item.threadID === chnageDocData.threadID) {
+                  item.notificationCount = item.notificationCount + 1;
+                }
+              });
+            }
+          } else {
+            if (
+              chnageDocData.user1.userId !== firebase.auth().currentUser.uid
+            ) {
+              data.push({
+                ...chnageDocData,
+                displayUser: chnageDocData.user1,
+                notificationCount: 0,
+              });
+            }
+            if (
+              chnageDocData.user2.userId !== firebase.auth().currentUser.uid
+            ) {
+              data.push({
+                ...chnageDocData,
+                displayUser: chnageDocData.user2,
+                notificationCount: 0,
+              });
+            }
           }
         });
 
@@ -256,6 +282,10 @@ const Messages = () => {
   useEffect(() => {
     fetchNewUserForChat();
     fetchOldUser();
+
+    return () => {
+      unsubscribe();
+    };
   }, [fetchOldUser, fetchNewUserForChat]);
 
   useEffect(() => {
@@ -296,6 +326,13 @@ const Messages = () => {
                           : false
                       }
                       onClick={() => {
+                        const data = messageUsers;
+                        data.forEach((item2) => {
+                          if (item2.threadID === item.threadID) {
+                            item2.notificationCount = 0;
+                          }
+                        });
+                        setMessageUsers([...data]);
                         setSelectedUserForChat(item.displayUser.userId);
                         setMessages([...item.messages]);
                         setSelectedThreadId(item.threadID);
@@ -314,6 +351,16 @@ const Messages = () => {
                         </h4>
                         <p>{item.displayUser.email}</p>
                       </div>
+
+                      {item.notificationCount > 0 ? (
+                        <>
+                          <Badge pill variant="primary">
+                            {item.notificationCount}
+                          </Badge>
+                        </>
+                      ) : (
+                        <span></span>
+                      )}
                     </ListGroup.Item>
                   );
                 })

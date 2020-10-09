@@ -15,15 +15,15 @@ const incommingCallAudio = new Audio(require("../../images/skype_remix_2.mp3"));
 incommingCallAudio.loop = true;
 
 const normalVideoConstraints = {
-  facingMode: "user", 
-  frameRate: { min: 5, ideal: 10, max: 15},
+  facingMode: "user",
+  frameRate: { min: 5, ideal: 10, max: 15 },
   width: { min: 1024, ideal: 1280, max: 1920 },
   height: { min: 576, ideal: 720, max: 1080 }
 }
 
 const lowInternetSpeedVideoConstraints = {
-  facingMode: "user", 
-  frameRate: { min: 5, ideal: 10, max: 15},
+  facingMode: "user",
+  frameRate: { min: 5, ideal: 10, max: 15 },
   width: { min: 100, ideal: 100, max: 100 },
   height: { min: 100, ideal: 100, max: 100 }
 }
@@ -148,7 +148,7 @@ function VideoCall() {
       if (!isAdminOrStaff && callingPermission !== data.from) {
         setCallingPermission(data.from);
       }
-      console.log("Receiving message"); 
+      console.log("Receiving message");
       handleReceiveMessage(data.from, data.message);
     })
   }, [callingPermission])
@@ -165,8 +165,9 @@ function VideoCall() {
       config: {
         iceServers: [
           { urls: "stun:stun.l.google.com:19302" },
-          { urls: "stun:global.stun.twilio.com:3478?transport=udp" },
-          { urls:  "stun:stun1.l.google.com:19302" },
+          { urls: 'turn:numb.viagenie.ca', credential: 'muazkh', username: 'webrtc@live.com' }
+          // { urls: "stun:global.stun.twilio.com:3478?transport=udp" },
+          // { urls:  "stun:stun1.l.google.com:19302" },
         ],
       },
     });
@@ -244,8 +245,9 @@ function VideoCall() {
       config: {
         iceServers: [
           { urls: "stun:stun.l.google.com:19302" },
-          { urls: "stun:global.stun.twilio.com:3478?transport=udp" },
-          { urls: "stun:stun1.l.google.com:19302" },
+          { urls: 'turn:numb.viagenie.ca', credential: 'muazkh', username: 'webrtc@live.com' }
+          // { urls: "stun:global.stun.twilio.com:3478?transport=udp" },
+          // { urls: "stun:stun1.l.google.com:19302" },
         ],
       },
     });
@@ -509,8 +511,8 @@ function VideoCall() {
     <Button onClick={(event) => {
       event.target.style.display = "none";
       videoCallConstraints.current = lowInternetSpeedVideoConstraints;
-      if (videoStatus) { 
-        toggleVideo(); 
+      if (videoStatus) {
+        toggleVideo();
         setTimeout(() => {
           toggleVideo();
         }, 1000);
