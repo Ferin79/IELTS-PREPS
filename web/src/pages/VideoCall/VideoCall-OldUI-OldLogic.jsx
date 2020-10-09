@@ -111,7 +111,8 @@ function VideoCall() {
 
     socket.current.on("cantCall", (data) => {
       console.log("Cant call");
-      toast.error("Already On a Call !");
+      toast.error(data);
+      setCallButtonDisability(false);
     })
 
     return (() => {
@@ -178,9 +179,9 @@ function VideoCall() {
       config: {
         iceServers: [
           { urls: "stun:stun.l.google.com:19302" },
-          { urls: 'turn:numb.viagenie.ca', credential: 'muazkh', username: 'webrtc@live.com' }
-          // { urls: "stun:global.stun.twilio.com:3478?transport=udp" },
-          // { urls:  "stun:stun1.l.google.com:19302" },
+          { urls: 'turn:numb.viagenie.ca', credential: 'muazkh', username: 'webrtc@live.com' },
+          { urls: "stun:global.stun.twilio.com:3478?transport=udp" },
+          { urls:  "stun:stun1.l.google.com:19302" },
         ],
       },
     });
@@ -258,9 +259,9 @@ function VideoCall() {
       config: {
         iceServers: [
           { urls: "stun:stun.l.google.com:19302" },
-          { urls: 'turn:numb.viagenie.ca', credential: 'muazkh', username: 'webrtc@live.com' }
-          // { urls: "stun:global.stun.twilio.com:3478?transport=udp" },
-          // { urls: "stun:stun1.l.google.com:19302" },
+          { urls: 'turn:numb.viagenie.ca', credential: 'muazkh', username: 'webrtc@live.com' },
+          { urls: "stun:global.stun.twilio.com:3478?transport=udp" },
+          { urls: "stun:stun1.l.google.com:19302" },
         ],
       },
     });
