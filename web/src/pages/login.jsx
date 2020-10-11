@@ -11,13 +11,14 @@ import firebase from "../data/firebase";
 import { Context } from "../data/context";
 
 const Login = () => {
-  const { setInstitution, setRole } = useContext(Context);
+  const { setInstitution, setRole, isLoading, setIsLoading } = useContext(
+    Context
+  );
 
   const history = useHistory();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
 
   const handleLogin = () => {
     if (email.trim() === "") {
