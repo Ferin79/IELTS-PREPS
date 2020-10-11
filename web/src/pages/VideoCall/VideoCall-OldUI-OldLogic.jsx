@@ -52,6 +52,7 @@ function VideoCall() {
   const [isAdminOrStaff, setIsAdminOrStaff] = useState(false);
   const [stream, setStream] = useState();
   const [receivingCall, setReceivingCall] = useState(false);
+  const [calling, setCalling] = useState();
   const [caller, setCaller] = useState("");
   const [callerSignal, setCallerSignal] = useState();
   const [callAccepted, setCallAccepted] = useState(false);
@@ -59,7 +60,7 @@ function VideoCall() {
 
   const [callingPermission, setCallingPermission] = useState(false);
 
-  const [callButtonDisability, setCallButtonDisability] = useState(false);
+  // const [callButtonDisability, setCallButtonDisability] = useState(false);
   const [remoteUserId, setRemoteUserId] = useState("");
 
   const userVideo = useRef();
@@ -103,16 +104,10 @@ function VideoCall() {
       setRoles(data.role);
     });
 
-    // socket.current.on("receiveSignal", (data) => {
-    //   console.log("Reciving signal");
-    //   setCallerSignal(data.signal);
-    //   toast.info("connecting")
-    // });    
-
     socket.current.on("cantCall", (data) => {
       console.log("Cant call");
       toast.error(data);
-      setCallButtonDisability(false);
+      // setCallButtonDisability(false);
     })
 
     return (() => {
@@ -122,20 +117,26 @@ function VideoCall() {
       const audioTrack = globalStream.getAudioTracks()[0];
       if (videoTrack.readyState === "live") { videoTrack.stop(); }
       if (audioTrack.readyState === "live") { audioTrack.stop(); }
+      incommingCallAudio.pause();
     })
 
   }, []);
 
   useEffect(() => {
     socket.current.removeListener("receiveCall");
+    // socket.current.on("receiveSignal", (data) => {
+    //   console.log("Reciving signal");
+    //   setCallerSignal(data.signal);
+    //   toast.info("connecting")
+    // });    
+
     socket.current.on("receiveCall", (data) => {
       if (callAccepted) {
         console.log("Already on call");
         socket.current.emit("alreadyOnCall", { to: data.from.id })
       } else {
         console.log("Receiving");
-        setReceivingCall(true);
-        setCallButtonDisability(true);
+        setReceivingCall(true);      
         setCaller(data.from.name);
         setRemoteUserId(data.from.id);
         setCallerSignal(data.signal);
@@ -145,11 +146,15 @@ function VideoCall() {
 
   useEffect(() => {
     socket.current.on("callPermissionGranted", (data) => {
-      if (users[data.from]) {
+      if (!callAccepted && users[data.from]) {
         console.log("Permission Granted from " + users[data.from]);
         setCallingPermission(data.from);
-      }
+      }      
     });
+    if (callAccepted && !users[remoteUserId]) {
+      setCallAccepted(false);
+      peer.current.destroy("Call ended");
+    }
   }, [users]);
 
   useEffect(() => {
@@ -169,7 +174,8 @@ function VideoCall() {
 
 
   function callPeer(id) {
-    setCallButtonDisability(true);
+    // setCallButtonDisability(true);
+    setCalling(id);
 
     peer.current = new Peer({
       initiator: true,
@@ -181,7 +187,7 @@ function VideoCall() {
           { urls: "stun:stun.l.google.com:19302" },
           { urls: 'turn:numb.viagenie.ca', credential: 'muazkh', username: 'webrtc@live.com' },
           { urls: "stun:global.stun.twilio.com:3478?transport=udp" },
-          { urls:  "stun:stun1.l.google.com:19302" },
+          { urls: "stun:stun1.l.google.com:19302" },
         ],
       },
     });
@@ -206,7 +212,8 @@ function VideoCall() {
       setCallAccepted(true);
       setRemoteUserId(id);
       peer.current.signal(signal);
-      setCallButtonDisability(true);
+      // setCallButtonDisability(true);
+      setCalling();
       console.log("accepted");
       toast.info("connecting")
     });
@@ -215,7 +222,7 @@ function VideoCall() {
       console.log(error);
       setRemoteUserId("");
       setCallAccepted(false);
-      setCallButtonDisability(false);
+      // setCallButtonDisability(false);
       setCallingPermission(false);
 
       socket.current.removeListener("callAccepted");
@@ -230,7 +237,7 @@ function VideoCall() {
       peer.current.destroy("Call ended");
       setRemoteUserId("");
       setCallAccepted(false);
-      setCallButtonDisability(false);
+      // setCallButtonDisability(false);
       setCallingPermission(false);
 
       socket.current.removeListener("callAccepted");
@@ -248,7 +255,7 @@ function VideoCall() {
     incommingCallAudio.currentTime = 0;
     setCallAccepted(true);
     setReceivingCall(false);
-    setCallButtonDisability(true);
+    // setCallButtonDisability(true);
     // setCaller(false);
 
     peer.current = new Peer({
@@ -287,7 +294,7 @@ function VideoCall() {
       setCaller("");
       setRemoteUserId("");
       setCallerSignal();
-      setCallButtonDisability(false);
+      // setCallButtonDisability(false);
 
       socket.current.removeListener("videoStatusChange");
       socket.current.removeListener("audioStatusChange");
@@ -302,7 +309,7 @@ function VideoCall() {
       setCaller("");
       setRemoteUserId("");
       setCallerSignal();
-      setCallButtonDisability(false);
+      // setCallButtonDisability(false);
 
       socket.current.removeListener("videoStatusChange");
       socket.current.removeListener("audioStatusChange");
@@ -465,8 +472,8 @@ function VideoCall() {
           <Dropdown>
             <Dropdown.Toggle variant="info" >{users[key]}</Dropdown.Toggle>
             <Dropdown.Menu>
-              <Dropdown.Item onSelect={() => callPeer(key)} disabled={callButtonDisability} >Call</Dropdown.Item>
-              <Dropdown.Item onSelect={() => giveCallPermission(key)} disabled={callButtonDisability} >Give Permission</Dropdown.Item>
+              <Dropdown.Item onSelect={() => callPeer(key)} disabled={callAccepted} >Call</Dropdown.Item>
+              <Dropdown.Item onSelect={() => giveCallPermission(key)} disabled={callAccepted} >Give Permission</Dropdown.Item>
               <Dropdown.Item onSelect={() => { modalData.current = key; setMessageModalShow(true) }}> Message </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
@@ -478,7 +485,7 @@ function VideoCall() {
           <Col style={{ color: "white", border: '3px' }}>
             <Row>{users[callingPermission]} :</Row>
             <Row>
-              <Button variant="primary" onClick={() => callPeer(callingPermission)} disabled={callButtonDisability} style={{ margin: 5 }}> Call </Button>
+              <Button variant="primary" onClick={() => callPeer(callingPermission)} disabled={callAccepted} style={{ margin: 5 }}> Call </Button>
               <Button variant="success" onClick={() => { modalData.current = callingPermission; setMessageModalShow(true) }} style={{ margin: 5 }}> Message </Button>
             </Row>
           </Col>
@@ -562,10 +569,24 @@ function VideoCall() {
     incommingCallAudio.currentTime = 0;
   }
 
+  let callingUser;
+  if (users[calling]) {
+    callingUser = (
+      <div className="incommingCall">
+        <Card className="text-center" style={{ background: "black", color: "white" }}>
+          <Card.Header>
+            <h2>Calling {users[calling]}</h2>
+          </Card.Header>                    
+        </Card>
+      </div>
+    )
+  }
+
   return (
     <>
       {/* ABSOLUTE POSITIONED components  */}
       {incommintCall}
+      {callingUser}
       {PartnerVideo}
       <div className="userElements">
         {UserVideo} {ToggleMediaButtons}
