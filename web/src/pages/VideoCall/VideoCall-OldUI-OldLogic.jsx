@@ -433,7 +433,8 @@ function VideoCall() {
   // }
 
   const handleSendMessage = (e, toUserId) => {
-    const textMessage = e.target.value;
+    e.preventDefault();   
+    const textMessage = e.target.messageText.value;
     if (textMessage === "") {
       toast.error("Message Cannot be empty");
       return;

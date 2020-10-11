@@ -9,12 +9,16 @@ export const AuthProvider = ({ children }) => {
   const { setInstitution, setRole, setIsLoading } = useContext(Context);
 
   useEffect(() => {
+    let unsubscribe = () => {};
+
     setIsLoading(true);
+
     const userData = JSON.parse(localStorage.getItem("userInfo"));
+
     if (userData && userData.role && userData.institute_id) {
       setInstitution(userData.institute_id);
       setRole(userData.role);
-      firebase.auth().onAuthStateChanged((user) => {
+      unsubscribe = firebase.auth().onAuthStateChanged((user) => {
         if (user) {
           setCurrentUser(user);
           setIsLoading(false);
@@ -27,6 +31,8 @@ export const AuthProvider = ({ children }) => {
       firebase.auth().signOut();
       setIsLoading(false);
     }
+
+    return () => unsubscribe();
   }, [setInstitution, setRole, setIsLoading]);
 
   return (
