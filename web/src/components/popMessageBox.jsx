@@ -1,14 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import Accordion from "react-bootstrap/Accordion";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { IoIosSend } from "react-icons/io";
-import { toast } from "react-toastify";
 import "../css/popMessageBox.scss";
 
-const PopMessageBox = ({ messages, handleSendMessage, remoteUser }) => {  
-
+const PopMessageBox = ({ messages, handleSendMessage, remoteUser }) => {
   return (
     <div className="PopMessageBox-wrapper">
       <Accordion defaultActiveKey="0">
@@ -55,10 +53,10 @@ const PopMessageBox = ({ messages, handleSendMessage, remoteUser }) => {
                 <Form.Group controlId="formBasicEmail" className="form-message">
                   <Form.Control
                     type="text"
-                    placeholder="Type Message..."                                       
+                    placeholder="Type Message..."
                     onKeyPress={(e) => {
                       if (e.which === 13) {
-                        handleSendMessage(e, remoteUser);                        
+                        handleSendMessage(e, remoteUser);
                       }
                     }}
                   />

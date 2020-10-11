@@ -22,8 +22,6 @@ import "../css/message.scss";
 const Messages = () => {
   const mesRef = createRef();
 
-  let unsubscribe;
-
   const { institution } = useContext(Context);
 
   const [modalShow, setModalShow] = useState(false);
@@ -165,7 +163,7 @@ const Messages = () => {
   };
 
   const fetchOldUser = useCallback(() => {
-    unsubscribe = firebase
+    const unsubscribe = firebase
       .firestore()
       .collection("conversations")
       .where("users", "array-contains", firebase.auth().currentUser.uid)
@@ -209,6 +207,9 @@ const Messages = () => {
 
         setMessageUsers([...data]);
       });
+
+    return unsubscribe;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function letterValue(str) {
@@ -281,7 +282,7 @@ const Messages = () => {
 
   useEffect(() => {
     fetchNewUserForChat();
-    fetchOldUser();
+    const unsubscribe = fetchOldUser();
 
     return () => {
       unsubscribe();
