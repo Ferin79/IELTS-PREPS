@@ -11,7 +11,7 @@ const users = {};
 const role = {};
 let count = 0;
 
-app.use(express.static('web/build'))
+app.use(express.static('./build'))
 
 io.on('connection', socket => {
 
@@ -90,6 +90,11 @@ io.on('connection', socket => {
             console.log(users[data.from] + " sent message to " + users[data.to]);
             io.to(data.to).emit("receiveMessage", {from: data.from, message: data.message})
         })
+
+        socket.on("alreadyOnCall", (data) => { 
+            console.log(data.to+" is already on a call !");
+            io.to(data.to).emit("cantCall", "Can't call "+users[socket.id])
+         })
 
     })
 

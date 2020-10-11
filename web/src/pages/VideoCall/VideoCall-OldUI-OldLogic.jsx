@@ -15,15 +15,15 @@ const incommingCallAudio = new Audio(require("../../images/skype_remix_2.mp3"));
 incommingCallAudio.loop = true;
 
 const normalVideoConstraints = {
-  facingMode: "user", 
-  frameRate: { min: 5, ideal: 10, max: 15},
+  facingMode: "user",
+  frameRate: { min: 5, ideal: 10, max: 15 },
   width: { min: 1024, ideal: 1280, max: 1920 },
   height: { min: 576, ideal: 720, max: 1080 }
 }
 
 const lowInternetSpeedVideoConstraints = {
-  facingMode: "user", 
-  frameRate: { min: 5, ideal: 10, max: 15},
+  facingMode: "user",
+  frameRate: { min: 5, ideal: 10, max: 15 },
   width: { min: 100, ideal: 100, max: 100 },
   height: { min: 100, ideal: 100, max: 100 }
 }
@@ -79,8 +79,8 @@ function VideoCall() {
   useEffect(() => {
     // 1. connect to server
     // socket.current = io.connect("http://localhost:8000/");
-    socket.current = io.connect("https://ielts-video-call.herokuapp.com/");
-    // socket.current = io.connect("");
+    // socket.current = io.connect("https://ielts-video-call.herokuapp.com/");
+    socket.current = io.connect("");
     navigator.mediaDevices.getUserMedia({ video: videoCallConstraints.current, audio: true }).then((stream) => {
       setStream(stream);
       if (userVideo.current) {
@@ -107,16 +107,13 @@ function VideoCall() {
     //   console.log("Reciving signal");
     //   setCallerSignal(data.signal);
     //   toast.info("connecting")
-    // });
+    // });    
 
-    socket.current.on("receiveCall", (data) => {
-      console.log("Receiving");
-      setReceivingCall(true);
-      setCallButtonDisability(true);
-      setCaller(data.from.name);
-      setRemoteUserId(data.from.id);
-      setCallerSignal(data.signal);
-    });
+    socket.current.on("cantCall", (data) => {
+      console.log("Cant call");
+      toast.error(data);
+      setCallButtonDisability(false);
+    })
 
     return (() => {
       console.log("disconnect socket");
@@ -128,6 +125,23 @@ function VideoCall() {
     })
 
   }, []);
+
+  useEffect(() => {
+    socket.current.removeListener("receiveCall");
+    socket.current.on("receiveCall", (data) => {
+      if (callAccepted) {
+        console.log("Already on call");
+        socket.current.emit("alreadyOnCall", { to: data.from.id })
+      } else {
+        console.log("Receiving");
+        setReceivingCall(true);
+        setCallButtonDisability(true);
+        setCaller(data.from.name);
+        setRemoteUserId(data.from.id);
+        setCallerSignal(data.signal);
+      }
+    });
+  }, [callAccepted])
 
   useEffect(() => {
     socket.current.on("callPermissionGranted", (data) => {
@@ -148,7 +162,7 @@ function VideoCall() {
       if (!isAdminOrStaff && callingPermission !== data.from) {
         setCallingPermission(data.from);
       }
-      console.log("Receiving message"); 
+      console.log("Receiving message");
       handleReceiveMessage(data.from, data.message);
     })
   }, [callingPermission])
@@ -165,6 +179,7 @@ function VideoCall() {
       config: {
         iceServers: [
           { urls: "stun:stun.l.google.com:19302" },
+          { urls: 'turn:numb.viagenie.ca', credential: 'muazkh', username: 'webrtc@live.com' },
           { urls: "stun:global.stun.twilio.com:3478?transport=udp" },
           { urls:  "stun:stun1.l.google.com:19302" },
         ],
@@ -244,6 +259,7 @@ function VideoCall() {
       config: {
         iceServers: [
           { urls: "stun:stun.l.google.com:19302" },
+          { urls: 'turn:numb.viagenie.ca', credential: 'muazkh', username: 'webrtc@live.com' },
           { urls: "stun:global.stun.twilio.com:3478?transport=udp" },
           { urls: "stun:stun1.l.google.com:19302" },
         ],
@@ -509,8 +525,8 @@ function VideoCall() {
     <Button onClick={(event) => {
       event.target.style.display = "none";
       videoCallConstraints.current = lowInternetSpeedVideoConstraints;
-      if (videoStatus) { 
-        toggleVideo(); 
+      if (videoStatus) {
+        toggleVideo();
         setTimeout(() => {
           toggleVideo();
         }, 1000);
