@@ -441,7 +441,7 @@ function VideoCall() {
     }
     setMessages(oldMessage => [...oldMessage, { from: yourID, to: toUserId, text: textMessage }]);
     socket.current.emit("sendMessage", { from: yourID, to: modalData.current, message: textMessage });
-    e.target.value = ""
+    e.target.messageText.value = ""
   };
 
   const handleReceiveMessage = (from, message) => {
