@@ -1,6 +1,7 @@
 {
   "name": "ielts",
   "version": "0.1.0",
+  "homepage": "https://ferin79.github.io/IELTS/",
   "proxy": "http://localhost:8000",
   "private": true,
   "dependencies": {
@@ -29,8 +30,6 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "prebuild": "rm -r ../build",
-    "postbuild": "mv build ../",
     "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
