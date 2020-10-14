@@ -450,6 +450,14 @@ function VideoCall() {
     modalData.current = from; setMessageModalShow(true)
   };
 
+  const handleSpeakingReportSubmit = (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const bands = e.target.bands.value;
+    const note = e.target.note.value;
+    console.log(email, bands, note);
+  }
+
   const startUserMediaLoadingTimeout = (milisec) => {
     setUserMediaLoading(true);
     setTimeout(() => {
@@ -497,7 +505,6 @@ function VideoCall() {
 
   let PartnerVideo;
   let endCallButton;
-  let SpeakingReport;
   if (callAccepted) {
     PartnerVideo = (
       <video className="partnerVideo" playsInline ref={partnerVideo} autoPlay />
@@ -507,7 +514,10 @@ function VideoCall() {
         <Button variant="danger" onClick={() => endCall()}>End Call</Button>
       </div>
     );
-    SpeakingReport = <SubmitSpeakingReport />
+  }  
+  let SpeakingReport;
+  if (callAccepted && isAdminOrStaff) {
+    SpeakingReport = <SubmitSpeakingReport email={users[remoteUserId]} handleSpeakingReportSubmit={handleSpeakingReportSubmit} />
   }
 
   let ToggleMediaButtons;
@@ -529,18 +539,18 @@ function VideoCall() {
     </Row>
   );
 
-  let lowInternetSpeedButton = (
-    <Button onClick={(event) => {
-      event.target.style.display = "none";
-      videoCallConstraints.current = lowInternetSpeedVideoConstraints;
-      if (videoStatus) {
-        toggleVideo();
-        setTimeout(() => {
-          toggleVideo();
-        }, 1000);
-      }
-    }}>Low Internet Speed?</Button>
-  )
+  // let lowInternetSpeedButton = (
+  //   <Button onClick={(event) => {
+  //     event.target.style.display = "none";
+  //     videoCallConstraints.current = lowInternetSpeedVideoConstraints;
+  //     if (videoStatus) {
+  //       toggleVideo();
+  //       setTimeout(() => {
+  //         toggleVideo();
+  //       }, 1000);
+  //     }
+  //   }}>Low Internet Speed?</Button>
+  // )
 
   let incommintCall;
   if (receivingCall && users[remoteUserId] && callerSignal) {
@@ -597,13 +607,14 @@ function VideoCall() {
       </div>
       {endCallButton}
       {/* DEFAULT POSITIONED components  */}
-      <Container style={{ color: "white" }} fluid>
+      <Container style={{ color: "black" }} fluid>
         <Row>
           {CallUserList} {callFaculty}
         </Row>
         <Row>
-          <Col><h4>You: {currentUser.email}</h4> <h6 style={{ color: "green" }}>{yourID && "Online"}</h6> {lowInternetSpeedButton}</Col>
+          <Col><h4>You: {currentUser.email}</h4> <h6 style={{ color: "green" }}>{yourID && "Online"}</h6></Col>          
         </Row>
+        <Row>{SpeakingReport}</Row>
         <ToastContainer autoClose={2000} />
         <MessageModal
           show={messageModalShow}
