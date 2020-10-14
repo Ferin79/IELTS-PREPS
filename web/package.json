@@ -1,7 +1,6 @@
 {
   "name": "ielts",
-  "version": "0.1.0",
-  "homepage": "https://ferin79.github.io/IELTS/",
+  "version": "0.1.0",  
   "proxy": "http://localhost:8000",
   "private": true,
   "dependencies": {
