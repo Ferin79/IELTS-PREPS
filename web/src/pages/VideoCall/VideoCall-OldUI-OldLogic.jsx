@@ -10,6 +10,7 @@ import { Context } from "../../data/context";
 import { AuthContext } from "../../data/auth";
 import MessageModal from "./MessageModal";
 import SubmitSpeakingReport from "../../components/SubmitSpeakingReport";
+import firebase from "../../data/firebase";
 
 const incommingCallAudio = new Audio(require("../../images/skype_remix_2.mp3"));
 incommingCallAudio.loop = true;
@@ -452,10 +453,20 @@ function VideoCall() {
 
   const handleSpeakingReportSubmit = (e) => {
     e.preventDefault();
+    toast.info("Please wait...")
     const email = e.target.email.value;
     const bands = e.target.bands.value;
     const note = e.target.note.value;
-    console.log(email, bands, note);
+    console.log(email, bands, note, currentUser.email);    
+    const reportData = {
+      student: email,
+      faculty: currentUser.email,
+      bands,note,
+      createdAt: firebase.firestore.Timestamp.now(),
+    }
+    firebase.firestore().collection("speakingTest").add(reportData).then(() => {
+      toast.success("Submitted!")
+    })
   }
 
   const startUserMediaLoadingTimeout = (milisec) => {
