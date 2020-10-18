@@ -192,21 +192,21 @@ const Student = () => {
                           <td>{item.email}</td>
                           <td>
                             <Button
-                              variant="danger"
-                              onClick={() =>
-                                handleStaffDelete(item.email, item.userId)
-                              }
-                            >
-                              <i className="fa fa-trash"></i>
-                            </Button>
-                            <Button
-                              className="ml-3"
+                              className="mr-3"
                               variant="info"
                               onClick={() =>
                                 history.push(`/students/${item.email}`)
                               }
                             >
                               <i className="fa fa-info"></i>
+                            </Button>
+                            <Button
+                              variant="danger"
+                              onClick={() =>
+                                handleStaffDelete(item.email, item.userId)
+                              }
+                            >
+                              <i className="fa fa-trash"></i>
                             </Button>
                           </td>
                         </tr>

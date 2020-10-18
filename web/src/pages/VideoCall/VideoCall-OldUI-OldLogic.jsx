@@ -4,7 +4,13 @@ import io from "socket.io-client";
 import Peer from "simple-peer";
 import { Button, Col, Row, Container, Card, Dropdown } from "react-bootstrap";
 import { ToastContainer, toast } from "react-toastify";
-import { CameraVideo, CameraVideoOff, MicMute, Mic, ArrowBarUp } from "react-bootstrap-icons";
+import {
+  CameraVideo,
+  CameraVideoOff,
+  MicMute,
+  Mic,
+  ArrowBarUp,
+} from "react-bootstrap-icons";
 import Loader from "react-loader-spinner";
 import { Context } from "../../data/context";
 import { AuthContext } from "../../data/auth";
@@ -19,15 +25,15 @@ const normalVideoConstraints = {
   facingMode: "user",
   frameRate: { min: 5, ideal: 10, max: 15 },
   width: { min: 1024, ideal: 1280, max: 1920 },
-  height: { min: 576, ideal: 720, max: 1080 }
-}
+  height: { min: 576, ideal: 720, max: 1080 },
+};
 
 const lowInternetSpeedVideoConstraints = {
   facingMode: "user",
   frameRate: { min: 5, ideal: 10, max: 15 },
   width: { min: 100, ideal: 100, max: 100 },
-  height: { min: 100, ideal: 100, max: 100 }
-}
+  height: { min: 100, ideal: 100, max: 100 },
+};
 
 let globalStream = null;
 
@@ -36,7 +42,7 @@ const LoadingTailSpin = () => {
     <Loader
       type="TailSpin"
       color="#00BFFF"
-    // timeout={3000}
+      // timeout={3000}
     />
   );
 };
@@ -71,25 +77,26 @@ function VideoCall() {
   const [videoStatus, setVideoStatus] = useState(true);
   const [audioStatus, setAudioStatus] = useState(true);
   const [screenShareStatus, setScreenShareStatus] = useState(false);
-  const videoCallConstraints = useRef(normalVideoConstraints)
+  const videoCallConstraints = useRef(normalVideoConstraints);
 
   const [messageModalShow, setMessageModalShow] = useState(false);
   const [messages, setMessages] = useState([]);
   const modalData = useRef(null);
-
 
   useEffect(() => {
     // 1. connect to server
     // socket.current = io.connect("http://localhost:8000/");
     // socket.current = io.connect("https://ielts-video-call.herokuapp.com/");
     socket.current = io.connect("");
-    navigator.mediaDevices.getUserMedia({ video: videoCallConstraints.current, audio: true }).then((stream) => {
-      setStream(stream);
-      if (userVideo.current) {
-        userVideo.current.srcObject = stream;
-        globalStream = stream
-      }
-    })
+    navigator.mediaDevices
+      .getUserMedia({ video: videoCallConstraints.current, audio: true })
+      .then((stream) => {
+        setStream(stream);
+        if (userVideo.current) {
+          userVideo.current.srcObject = stream;
+          globalStream = stream;
+        }
+      })
       .catch((reason) => {
         toast.error("Provide Permission");
       });
@@ -97,7 +104,10 @@ function VideoCall() {
     socket.current.on("yourID", (id) => {
       setYourID(id);
       console.log(currentUser.email, role);
-      socket.current.emit("initializeUser", { uniqueName: currentUser.email, role, });
+      socket.current.emit("initializeUser", {
+        uniqueName: currentUser.email,
+        role,
+      });
     });
     socket.current.on("allUsers", (data) => {
       setUsers(data.users);
@@ -109,18 +119,21 @@ function VideoCall() {
       console.log("Cant call");
       toast.error(data);
       // setCallButtonDisability(false);
-    })
+    });
 
-    return (() => {
+    return () => {
       console.log("disconnect socket");
       socket.current.disconnect();
       const videoTrack = globalStream.getVideoTracks()[0];
       const audioTrack = globalStream.getAudioTracks()[0];
-      if (videoTrack.readyState === "live") { videoTrack.stop(); }
-      if (audioTrack.readyState === "live") { audioTrack.stop(); }
+      if (videoTrack.readyState === "live") {
+        videoTrack.stop();
+      }
+      if (audioTrack.readyState === "live") {
+        audioTrack.stop();
+      }
       incommingCallAudio.pause();
-    })
-
+    };
   }, []);
 
   useEffect(() => {
@@ -129,28 +142,28 @@ function VideoCall() {
     //   console.log("Reciving signal");
     //   setCallerSignal(data.signal);
     //   toast.info("connecting")
-    // });    
+    // });
 
     socket.current.on("receiveCall", (data) => {
       if (callAccepted) {
         console.log("Already on call");
-        socket.current.emit("alreadyOnCall", { to: data.from.id })
+        socket.current.emit("alreadyOnCall", { to: data.from.id });
       } else {
         console.log("Receiving");
-        setReceivingCall(true);      
+        setReceivingCall(true);
         setCaller(data.from.name);
         setRemoteUserId(data.from.id);
         setCallerSignal(data.signal);
       }
     });
-  }, [callAccepted])
+  }, [callAccepted]);
 
   useEffect(() => {
     socket.current.on("callPermissionGranted", (data) => {
       if (!callAccepted && users[data.from]) {
         console.log("Permission Granted from " + users[data.from]);
         setCallingPermission(data.from);
-      }      
+      }
     });
     if (callAccepted && !users[remoteUserId]) {
       setCallAccepted(false);
@@ -170,9 +183,8 @@ function VideoCall() {
       }
       console.log("Receiving message");
       handleReceiveMessage(data.from, data.message);
-    })
-  }, [callingPermission])
-
+    });
+  }, [callingPermission]);
 
   function callPeer(id) {
     // setCallButtonDisability(true);
@@ -186,7 +198,11 @@ function VideoCall() {
       config: {
         iceServers: [
           { urls: "stun:stun.l.google.com:19302" },
-          { urls: 'turn:numb.viagenie.ca', credential: 'muazkh', username: 'webrtc@live.com' },
+          {
+            urls: "turn:numb.viagenie.ca",
+            credential: "muazkh",
+            username: "webrtc@live.com",
+          },
           { urls: "stun:global.stun.twilio.com:3478?transport=udp" },
           { urls: "stun:stun1.l.google.com:19302" },
         ],
@@ -195,7 +211,11 @@ function VideoCall() {
 
     console.log("Call user");
     peer.current.on("signal", (data) => {
-      socket.current.emit("callUser", { userToCall: id, signalData: data, from: yourID, });
+      socket.current.emit("callUser", {
+        userToCall: id,
+        signalData: data,
+        from: yourID,
+      });
     });
     // socket.current.emit("callUser", { userToCall: id, from: yourID });
 
@@ -216,7 +236,7 @@ function VideoCall() {
       // setCallButtonDisability(true);
       setCalling();
       console.log("accepted");
-      toast.info("connecting")
+      toast.info("connecting");
     });
 
     peer.current.on("error", (error) => {
@@ -267,7 +287,11 @@ function VideoCall() {
       config: {
         iceServers: [
           { urls: "stun:stun.l.google.com:19302" },
-          { urls: 'turn:numb.viagenie.ca', credential: 'muazkh', username: 'webrtc@live.com' },
+          {
+            urls: "turn:numb.viagenie.ca",
+            credential: "muazkh",
+            username: "webrtc@live.com",
+          },
           { urls: "stun:global.stun.twilio.com:3478?transport=udp" },
           { urls: "stun:stun1.l.google.com:19302" },
         ],
@@ -275,7 +299,7 @@ function VideoCall() {
     });
 
     peer.current.on("signal", (data) => {
-      toast.info("connecting")
+      toast.info("connecting");
       socket.current.emit("acceptCall", { signal: data, to: remoteUserId });
     });
 
@@ -337,15 +361,17 @@ function VideoCall() {
       const oldTrack = stream.getVideoTracks()[0];
 
       if (oldTrack.readyState === "ended") {
-        navigator.mediaDevices.getUserMedia({ video: videoCallConstraints.current }).then((newStream) => {
-          const newTrack = newStream.getVideoTracks()[0];
-          stream.removeTrack(oldTrack);
-          stream.addTrack(newTrack);
-          setVideoStatus(true);
-          if (callAccepted) {
-            peer.current.replaceTrack(oldTrack, newTrack, stream);
-          }
-        });
+        navigator.mediaDevices
+          .getUserMedia({ video: videoCallConstraints.current })
+          .then((newStream) => {
+            const newTrack = newStream.getVideoTracks()[0];
+            stream.removeTrack(oldTrack);
+            stream.addTrack(newTrack);
+            setVideoStatus(true);
+            if (callAccepted) {
+              peer.current.replaceTrack(oldTrack, newTrack, stream);
+            }
+          });
       } else if (oldTrack.readyState === "live") {
         oldTrack.stop();
         setVideoStatus(false);
@@ -368,18 +394,20 @@ function VideoCall() {
       const oldScreenTrack = stream.getVideoTracks()[0];
 
       if (oldScreenTrack.readyState === "ended") {
-        navigator.mediaDevices.getDisplayMedia({ video: true, audio: true }).then((newStream) => {
-          const newTrack = newStream.getVideoTracks()[0];
-          stream.removeTrack(oldScreenTrack);
-          stream.addTrack(newTrack);
-          setScreenShareStatus(true);
-          if (callAccepted) {
-            peer.current.replaceTrack(oldScreenTrack, newTrack, stream);
-          }
-          stream.getVideoTracks()[0].addEventListener("ended", () => {
-            setScreenShareStatus(false);
+        navigator.mediaDevices
+          .getDisplayMedia({ video: true, audio: true })
+          .then((newStream) => {
+            const newTrack = newStream.getVideoTracks()[0];
+            stream.removeTrack(oldScreenTrack);
+            stream.addTrack(newTrack);
+            setScreenShareStatus(true);
+            if (callAccepted) {
+              peer.current.replaceTrack(oldScreenTrack, newTrack, stream);
+            }
+            stream.getVideoTracks()[0].addEventListener("ended", () => {
+              setScreenShareStatus(false);
+            });
           });
-        });
       } else if (oldScreenTrack.readyState === "live") {
         oldScreenTrack.stop();
         setScreenShareStatus(false);
@@ -434,40 +462,56 @@ function VideoCall() {
   // }
 
   const handleSendMessage = (e, toUserId) => {
-    e.preventDefault();   
+    e.preventDefault();
     const textMessage = e.target.messageText.value;
     if (textMessage === "") {
       toast.error("Message Cannot be empty");
       return;
     }
-    setMessages(oldMessage => [...oldMessage, { from: yourID, to: toUserId, text: textMessage }]);
-    socket.current.emit("sendMessage", { from: yourID, to: modalData.current, message: textMessage });
-    e.target.messageText.value = ""
+    setMessages((oldMessage) => [
+      ...oldMessage,
+      { from: yourID, to: toUserId, text: textMessage },
+    ]);
+    socket.current.emit("sendMessage", {
+      from: yourID,
+      to: modalData.current,
+      message: textMessage,
+    });
+    e.target.messageText.value = "";
   };
 
   const handleReceiveMessage = (from, message) => {
-    setMessages(oldMessage => [...oldMessage, { from, to: yourID, text: message }])
+    setMessages((oldMessage) => [
+      ...oldMessage,
+      { from, to: yourID, text: message },
+    ]);
     //open message modal
-    modalData.current = from; setMessageModalShow(true)
+    modalData.current = from;
+    setMessageModalShow(true);
   };
 
   const handleSpeakingReportSubmit = (e) => {
     e.preventDefault();
-    toast.info("Please wait...")
+    toast.info("Please wait...");
     const email = e.target.email.value;
     const bands = e.target.bands.value;
     const note = e.target.note.value;
-    console.log(email, bands, note, currentUser.email);    
+    console.log(email, bands, note, currentUser.email);
     const reportData = {
       student: email,
       faculty: currentUser.email,
-      bands,note,
+      bands,
+      note,
       createdAt: firebase.firestore.Timestamp.now(),
-    }
-    firebase.firestore().collection("speakingTest").add(reportData).then(() => {
-      toast.success("Submitted!")
-    })
-  }
+    };
+    firebase
+      .firestore()
+      .collection("speakingTest")
+      .add(reportData)
+      .then(() => {
+        toast("Submitted!");
+      });
+  };
 
   const startUserMediaLoadingTimeout = (milisec) => {
     setUserMediaLoading(true);
@@ -490,23 +534,59 @@ function VideoCall() {
         }
         return (
           <Dropdown>
-            <Dropdown.Toggle variant="info" >{users[key]}</Dropdown.Toggle>
+            <Dropdown.Toggle variant="info">{users[key]}</Dropdown.Toggle>
             <Dropdown.Menu>
-              <Dropdown.Item onSelect={() => callPeer(key)} disabled={callAccepted} >Call</Dropdown.Item>
-              <Dropdown.Item onSelect={() => giveCallPermission(key)} disabled={callAccepted} >Give Permission</Dropdown.Item>
-              <Dropdown.Item onSelect={() => { modalData.current = key; setMessageModalShow(true) }}> Message </Dropdown.Item>
+              <Dropdown.Item
+                onSelect={() => callPeer(key)}
+                disabled={callAccepted}
+              >
+                Call
+              </Dropdown.Item>
+              <Dropdown.Item
+                onSelect={() => giveCallPermission(key)}
+                disabled={callAccepted}
+              >
+                Give Permission
+              </Dropdown.Item>
+              <Dropdown.Item
+                onSelect={() => {
+                  modalData.current = key;
+                  setMessageModalShow(true);
+                }}
+              >
+                {" "}
+                Message{" "}
+              </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
         );
       });
     } else if (users[callingPermission]) {
       callFaculty = (
-        <Card className='border border-secondary bg-transparent'>
-          <Col style={{ color: "white", border: '3px' }}>
+        <Card className="border border-secondary bg-transparent">
+          <Col style={{ color: "white", border: "3px" }}>
             <Row>{users[callingPermission]} :</Row>
             <Row>
-              <Button variant="primary" onClick={() => callPeer(callingPermission)} disabled={callAccepted} style={{ margin: 5 }}> Call </Button>
-              <Button variant="success" onClick={() => { modalData.current = callingPermission; setMessageModalShow(true) }} style={{ margin: 5 }}> Message </Button>
+              <Button
+                variant="primary"
+                onClick={() => callPeer(callingPermission)}
+                disabled={callAccepted}
+                style={{ margin: 5 }}
+              >
+                {" "}
+                Call{" "}
+              </Button>
+              <Button
+                variant="success"
+                onClick={() => {
+                  modalData.current = callingPermission;
+                  setMessageModalShow(true);
+                }}
+                style={{ margin: 5 }}
+              >
+                {" "}
+                Message{" "}
+              </Button>
             </Row>
           </Col>
         </Card>
@@ -522,28 +602,63 @@ function VideoCall() {
     );
     endCallButton = (
       <div className="endCallButton">
-        <Button variant="danger" onClick={() => endCall()}>End Call</Button>
+        <Button variant="danger" onClick={() => endCall()}>
+          End Call
+        </Button>
       </div>
     );
-  }  
+  }
   let SpeakingReport;
   if (callAccepted && isAdminOrStaff) {
-    SpeakingReport = <SubmitSpeakingReport email={users[remoteUserId]} handleSpeakingReportSubmit={handleSpeakingReportSubmit} />
+    SpeakingReport = (
+      <SubmitSpeakingReport
+        email={users[remoteUserId]}
+        handleSpeakingReportSubmit={handleSpeakingReportSubmit}
+      />
+    );
   }
 
   let ToggleMediaButtons;
   const videobutton = videoStatus ? "success" : "danger";
   const audiobutton = audioStatus ? "success" : "danger";
   const screenSharebutton = screenShareStatus ? "success" : "danger";
-  const videoIcon = videoStatus ? (<CameraVideo size={20} />) : (<CameraVideoOff size={20} />);
+  const videoIcon = videoStatus ? (
+    <CameraVideo size={20} />
+  ) : (
+    <CameraVideoOff size={20} />
+  );
   const audioIcon = audioStatus ? <Mic size={20} /> : <MicMute size={20} />;
   const screenShareIcon = <ArrowBarUp size={20} />;
   const mediaButtonDisable = !callAccepted;
   ToggleMediaButtons = (
     <Row className="justify-content-md-center">
-      <Button variant={videobutton} onClick={toggleVideo} style={{ margin: 5 }} disabled={mediaButtonDisable}> {videoIcon} </Button>
-      <Button variant={audiobutton} onClick={toggleAudio} style={{ margin: 5 }} disabled={mediaButtonDisable}> {audioIcon} </Button>
-      <Button variant={screenSharebutton} onClick={toggleScreenShare} style={{ margin: 5 }} disabled={mediaButtonDisable}> {screenShareIcon} </Button>
+      <Button
+        variant={videobutton}
+        onClick={toggleVideo}
+        style={{ margin: 5 }}
+        disabled={mediaButtonDisable}
+      >
+        {" "}
+        {videoIcon}{" "}
+      </Button>
+      <Button
+        variant={audiobutton}
+        onClick={toggleAudio}
+        style={{ margin: 5 }}
+        disabled={mediaButtonDisable}
+      >
+        {" "}
+        {audioIcon}{" "}
+      </Button>
+      <Button
+        variant={screenSharebutton}
+        onClick={toggleScreenShare}
+        style={{ margin: 5 }}
+        disabled={mediaButtonDisable}
+      >
+        {" "}
+        {screenShareIcon}{" "}
+      </Button>
       {/* {videoStatus &&
         <Button onClick={toggleCamera} style={{ margin: 5 }} disabled={mediaButtonDisable}> <ArrowRepeat /> </Button>
       } */}
@@ -569,7 +684,10 @@ function VideoCall() {
 
     incommintCall = (
       <div className="incommingCall">
-        <Card className="text-center" style={{ background: "black", color: "white" }}>
+        <Card
+          className="text-center"
+          style={{ background: "black", color: "white" }}
+        >
           <Card.Header>
             <h2>{caller} is calling you</h2>
           </Card.Header>
@@ -578,7 +696,11 @@ function VideoCall() {
             <Container>
               <Row>
                 {/* <Col><Button size="lg" variant="danger" onClick={() => {}}>Reject</Button></Col> */}
-                <Col><Button size="lg" variant="success" onClick={acceptCall}>Accept</Button></Col>
+                <Col>
+                  <Button size="lg" variant="success" onClick={acceptCall}>
+                    Accept
+                  </Button>
+                </Col>
               </Row>
             </Container>
           </Card.Body>
@@ -595,13 +717,16 @@ function VideoCall() {
   if (users[calling]) {
     callingUser = (
       <div className="incommingCall">
-        <Card className="text-center" style={{ background: "black", color: "white" }}>
+        <Card
+          className="text-center"
+          style={{ background: "black", color: "white" }}
+        >
           <Card.Header>
             <h2>Calling {users[calling]}</h2>
-          </Card.Header>                    
+          </Card.Header>
         </Card>
       </div>
-    )
+    );
   }
 
   return (
@@ -614,7 +739,9 @@ function VideoCall() {
         {UserVideo} {ToggleMediaButtons}
       </div>
       <div className="userElementsLoadingBox" hidden={!userMediaLoading}>
-        <div className="userElementsLoadingSpinner"><LoadingTailSpin /></div>
+        <div className="userElementsLoadingSpinner">
+          <LoadingTailSpin />
+        </div>
       </div>
       {endCallButton}
       {/* DEFAULT POSITIONED components  */}
@@ -623,7 +750,10 @@ function VideoCall() {
           {CallUserList} {callFaculty}
         </Row>
         <Row>
-          <Col><h4>You: {currentUser.email}</h4> <h6 style={{ color: "green" }}>{yourID && "Online"}</h6></Col>          
+          <Col>
+            <h4>You: {currentUser.email}</h4>{" "}
+            <h6 style={{ color: "green" }}>{yourID && "Online"}</h6>
+          </Col>
         </Row>
         <Row>{SpeakingReport}</Row>
         <ToastContainer autoClose={2000} />

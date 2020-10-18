@@ -4,6 +4,7 @@ import { FiMenu } from "react-icons/fi";
 import { AiOutlineClose } from "react-icons/ai";
 import { IconContext } from "react-icons";
 import sidebarDataFunction from "./sidebarData";
+import firebase from "../data/firebase";
 
 const Header = () => {
   const [sidebar, setSidebar] = useState(false);
@@ -18,9 +19,13 @@ const Header = () => {
         }}
       >
         <div className="navbar">
-          <Link to="#" className="menu-bars">
-            <FiMenu onClick={() => setSidebar(true)} />
-          </Link>
+          <FiMenu
+            className="menu-bars"
+            onClick={() => {
+              document.querySelector(".nav-menu").classList.add("active");
+              setSidebar(true);
+            }}
+          />
           <Link to="/" className="menu-bars">
             <h5>IELTS PREPS</h5>
           </Link>
@@ -29,9 +34,23 @@ const Header = () => {
         <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
           <ul className="nav-menu-items">
             <li className="navbar-toggle">
-              <Link to="#" className="menu-bars">
-                <AiOutlineClose onClick={() => setSidebar(false)} />
-              </Link>
+              <AiOutlineClose
+                className="menu-bars"
+                onClick={() => {
+                  document
+                    .querySelector(".nav-menu")
+                    .classList.remove("active");
+                  setSidebar(false);
+                }}
+              />
+            </li>
+            <li className="user-name-info">
+              <p>Welcome,</p>
+              <h5>
+                {firebase.auth().currentUser
+                  ? firebase.auth().currentUser.email
+                  : "Guest"}
+              </h5>
             </li>
             {sidebarData.map((item, index) => {
               return (
