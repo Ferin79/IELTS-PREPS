@@ -2,13 +2,14 @@
   background-color: #060b26;
   height: 80px;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
 }
 .menu-bars {
   margin-left: 2rem;
   font-size: 2rem;
   background: none;
+  cursor: pointer;
 }
 .menu-bars h5 {
   text-decoration: none;
@@ -16,7 +17,7 @@
 }
 .nav-menu {
   background-color: #060b26;
-  width: 250px;
+  width: 300px;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -68,4 +69,15 @@
 
 span {
   margin-left: 16px;
+}
+.user-name-info {
+  margin-top: 20px;
+  padding: 15px;
+  border-bottom: 1px solid white;
+}
+.user-name-info p {
+  color: white;
+}
+.user-name-info h5 {
+  color: white;
 }

@@ -341,7 +341,7 @@ const Messages = () => {
                     >
                       <Image
                         className="chatter-user-icon"
-                        src="https://firebasestorage.googleapis.com/v0/b/ielts-preps.appspot.com/o/profile%2Fxn5T7XqglOe2RWyCPlCulHIKZBa2?alt=media&token=acd1ea12-e7dc-4140-9991-b7147f2cf9c5"
+                        src={`https://firebasestorage.googleapis.com/v0/b/ielts-preps.appspot.com/o/profile%2F${item.displayUser.userId}?alt=media&token=07a0d241-5ab9-445a-ad84-da7f68fe59ee`}
                         roundedCircle
                       />
 

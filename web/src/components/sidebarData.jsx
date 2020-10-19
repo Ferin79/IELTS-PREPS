@@ -5,8 +5,8 @@ import {
   AiFillLock,
   AiOutlineSchedule,
 } from "react-icons/ai";
-import { FaUsers } from "react-icons/fa";
-import { BsFillPersonLinesFill } from "react-icons/bs";
+import { FaUsers, FaTeamspeak } from "react-icons/fa";
+import { BsFillPersonLinesFill, BsFillChatFill } from "react-icons/bs";
 import { AuthContext } from "../data/auth";
 import { Context } from "../data/context";
 
@@ -37,6 +37,18 @@ const SiderbarData = () => {
           cName: "nav-text",
         },
         {
+          title: "Chat",
+          path: "/message",
+          icon: <BsFillChatFill />,
+          cName: "nav-text",
+        },
+        {
+          title: "Conduct Speaking",
+          path: "/speaking",
+          icon: <FaTeamspeak />,
+          cName: "nav-text",
+        },
+        {
           title: "Manage Timetable",
           path: "/timetable",
           icon: <AiOutlineSchedule />,
@@ -64,6 +76,51 @@ const SiderbarData = () => {
           cName: "nav-text",
         },
         {
+          title: "Chat",
+          path: "/message",
+          icon: <BsFillChatFill />,
+          cName: "nav-text",
+        },
+        {
+          title: "Conduct Speaking",
+          path: "/speaking",
+          icon: <FaTeamspeak />,
+          cName: "nav-text",
+        },
+        {
+          title: "View Timetable",
+          path: "/staff/timetable",
+          icon: <AiOutlineSchedule />,
+          cName: "nav-text",
+        },
+        {
+          title: "Logout",
+          path: "/logout",
+          icon: <AiOutlineLogout />,
+          cName: "nav-text",
+        }
+      );
+    } else if (role === "student") {
+      routes.push(
+        {
+          title: "Home",
+          path: "/",
+          icon: <AiFillHome />,
+          cName: "nav-text",
+        },
+        {
+          title: "Chat",
+          path: "/message",
+          icon: <BsFillChatFill />,
+          cName: "nav-text",
+        },
+        {
+          title: "Speaking",
+          path: "/student/speaking",
+          icon: <FaTeamspeak />,
+          cName: "nav-text",
+        },
+        {
           title: "Logout",
           path: "/logout",
           icon: <AiOutlineLogout />,
@@ -72,20 +129,12 @@ const SiderbarData = () => {
       );
     }
   } else {
-    routes.push(
-      {
-        title: "Home",
-        path: "/",
-        icon: <AiFillHome />,
-        cName: "nav-text",
-      },
-      {
-        title: "Login",
-        path: "/login",
-        icon: <AiFillLock />,
-        cName: "nav-text",
-      }
-    );
+    routes.push({
+      title: "Login",
+      path: "/login",
+      icon: <AiFillLock />,
+      cName: "nav-text",
+    });
   }
   return routes;
 };
