@@ -72,7 +72,6 @@ const Student = () => {
         }
       );
       const responseData = await response.json();
-      console.log(responseData);
       if (responseData.success) {
         fetchStudent();
         setFirstname("");
@@ -102,13 +101,11 @@ const Student = () => {
       .get()
       .then((docs) => {
         const studentData = [];
-        const staffData = [];
         docs.forEach((doc) => {
           if (doc.data().isStudent) {
             studentData.push(doc.data());
           }
         });
-        console.log(studentData, staffData);
         setStudentDataList([...studentData]);
         setIsTableLoading(false);
       })

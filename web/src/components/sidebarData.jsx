@@ -100,6 +100,33 @@ const SiderbarData = () => {
           cName: "nav-text",
         }
       );
+    } else if (role === "student") {
+      routes.push(
+        {
+          title: "Home",
+          path: "/",
+          icon: <AiFillHome />,
+          cName: "nav-text",
+        },
+        {
+          title: "Chat",
+          path: "/message",
+          icon: <BsFillChatFill />,
+          cName: "nav-text",
+        },
+        {
+          title: "Speaking",
+          path: "/student/speaking",
+          icon: <FaTeamspeak />,
+          cName: "nav-text",
+        },
+        {
+          title: "Logout",
+          path: "/logout",
+          icon: <AiOutlineLogout />,
+          cName: "nav-text",
+        }
+      );
     }
   } else {
     routes.push({

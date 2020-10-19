@@ -14,6 +14,8 @@ import StaffTimeTable from "./pages/staffTT";
 import Messages from "./pages/messages";
 import selectModule from "./components/selectModule";
 import SpeakingReportAdmin from "./components/speakingReportAdmin";
+import StudentHomePage from "./pages/StudentHomePage";
+import Profile from "./pages/profile";
 
 const Routes = () => {
   const { currentUser } = useContext(AuthContext);
@@ -33,6 +35,7 @@ const Routes = () => {
           <Route path="/timetable" exact component={Timetable} />
           <Route path="/message" exact component={Messages} />
           <Route path="/students/:email" exact component={selectModule} />
+          <Route path="/profile" exact component={Profile} />
           <Route
             path="/students/:email/speaking"
             exact
@@ -62,6 +65,7 @@ const Routes = () => {
             exact
             component={SpeakingReportAdmin}
           />
+          <Route path="/profile" exact component={Profile} />
           <Route
             path="/logout"
             exact
@@ -75,8 +79,10 @@ const Routes = () => {
     } else if (role === "student") {
       return (
         <Switch>
+          <Route path="/" exact component={StudentHomePage} />
           <Route path="/student/speaking" exact component={VideoCall} />
           <Route path="/message" exact component={Messages} />
+          <Route path="/profile" exact component={Profile} />
           <Route
             path="/logout"
             exact
@@ -84,7 +90,7 @@ const Routes = () => {
               firebase.auth().signOut();
             }}
           />
-          <Redirect to="/student/speaking" />
+          <Redirect to="/" />
         </Switch>
       );
     }

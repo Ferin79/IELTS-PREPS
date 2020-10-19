@@ -70,7 +70,6 @@ const Staff = () => {
         }
       );
       const responseData = await response.json();
-      console.log(responseData);
       if (responseData.success) {
         fetchStaff();
         setFirstname("");
@@ -86,7 +85,6 @@ const Staff = () => {
     }
     setIsFormLoading(false);
   };
-
   const fetchStaff = useCallback(() => {
     if (role !== "admin") {
       return;
@@ -103,7 +101,6 @@ const Staff = () => {
         docs.forEach((doc) => {
           staffData.push(doc.data());
         });
-        console.log(staffData);
         setStaffDataList([...staffData]);
         setIsTableLoading(false);
       })
@@ -134,7 +131,6 @@ const Staff = () => {
       }
     );
     const responseData = await response.json();
-    console.log(responseData);
     if (responseData.success) {
       let dataFilter = staffDataList;
       dataFilter = dataFilter.filter((item) => {

@@ -55,7 +55,7 @@ const StaffTimeTable = () => {
               </tr>
             </thead>
             <tbody>
-              {timeslotes.length ? (
+              {timeslotes.length && timetable.length ? (
                 timeslotes.map((item, index) => {
                   return (
                     <tr key={index + 1}>
