@@ -16,6 +16,7 @@ import selectModule from "./components/selectModule";
 import SpeakingReportAdmin from "./components/speakingReportAdmin";
 import StudentHomePage from "./pages/StudentHomePage";
 import Profile from "./pages/profile";
+import EditStaff from "./pages/editStaff";
 
 const Routes = () => {
   const { currentUser } = useContext(AuthContext);
@@ -36,6 +37,7 @@ const Routes = () => {
           <Route path="/message" exact component={Messages} />
           <Route path="/students/:email" exact component={selectModule} />
           <Route path="/profile" exact component={Profile} />
+          <Route path="/edit/staff/:email" exact component={EditStaff} />
           <Route
             path="/students/:email/speaking"
             exact

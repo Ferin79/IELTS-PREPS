@@ -64,13 +64,13 @@ const Header = () => {
                 {notifications.length ? (
                   notifications.map((item, index) => {
                     return (
-                      <>
-                        <Dropdown.Item key={index}>
+                      <div key={index}>
+                        <Dropdown.Item>
                           <h6>{item.title}</h6>
                           <p>{item.body}</p>
                         </Dropdown.Item>
                         <Dropdown.Divider />
-                      </>
+                      </div>
                     );
                   })
                 ) : (

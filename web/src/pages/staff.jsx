@@ -8,9 +8,12 @@ import Table from "react-bootstrap/Table";
 import Spinner from "react-bootstrap/Spinner";
 import { Context } from "../data/context";
 import { ToastContainer, toast } from "react-toastify";
+import { useHistory } from "react-router-dom";
 import firebase from "../data/firebase";
 
 const Staff = () => {
+  const history = useHistory();
+
   const { institution, role } = useContext(Context);
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
@@ -182,6 +185,15 @@ const Staff = () => {
                           <td>{item.lastname}</td>
                           <td>{item.email}</td>
                           <td>
+                            <Button
+                              className="mr-3"
+                              variant="info"
+                              onClick={() =>
+                                history.push(`/edit/staff/${item.email}`)
+                              }
+                            >
+                              <i className="fa fa-info"></i>
+                            </Button>
                             <Button
                               variant="danger"
                               onClick={() =>

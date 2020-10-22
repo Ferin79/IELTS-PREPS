@@ -209,9 +209,10 @@ const Timetable = () => {
     return (
       <Modal
         {...props}
-        size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered
+        scrollable
+        dialogClassName="modal-90w"
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
@@ -219,7 +220,7 @@ const Timetable = () => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Table striped bordered hover>
+          <Table striped bordered hover responsive>
             <thead>
               <tr>
                 <th>#</th>
@@ -470,6 +471,26 @@ const Timetable = () => {
                             <td>{item}</td>
                             {facultyRow.length > 0
                               ? facultyRow.map((faculty, index2) => {
+                                  if (faculty.startTime && faculty.endTime) {
+                                    if (
+                                      !(
+                                        faculty.startTime <= item &&
+                                        item < faculty.endTime
+                                      )
+                                    ) {
+                                      console.log(
+                                        "Comparing " +
+                                          faculty.startTime +
+                                          "<" +
+                                          item +
+                                          "<" +
+                                          faculty.endTime
+                                      );
+                                      return (
+                                        <td className="disable-block-timetable "></td>
+                                      );
+                                    }
+                                  }
                                   return (
                                     <td
                                       key={index2}
@@ -526,8 +547,9 @@ const Timetable = () => {
         </Row>
       </Container>
 
-      <StudentModal show={modalShow} onHide={() => setModalShow(false)} />
       <ToastContainer />
+
+      <StudentModal show={modalShow} onHide={() => setModalShow(false)} />
     </>
   );
 };
