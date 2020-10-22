@@ -438,7 +438,7 @@ const Timetable = () => {
             <Spinner animation="border" variant="primary" />
           ) : (
             <Col lg={true} xs={12} md={8}>
-              <Table striped bordered hover responsive>
+              <Table bordered hover responsive>
                 <thead>
                   <tr>
                     <th>#</th>
@@ -493,6 +493,7 @@ const Timetable = () => {
                                   }
                                   return (
                                     <td
+                                      className={`color-cloumn-${index2}`}
                                       key={index2}
                                       onClick={() => {
                                         setSelectedFacultyIdForStudentAdd(
@@ -538,8 +539,25 @@ const Timetable = () => {
                       })
                     : ""}
                 </tbody>
+                <tfoot>
+                  <tr>
+                    <th>#</th>
+                    <th>Time Slot</th>
+                    {facultyRow.length > 0
+                      ? facultyRow.map((item, index) => {
+                          return (
+                            <th key={index}>
+                              <h6>
+                                {item.firstname} {item.lastname}
+                              </h6>
+                            </th>
+                          );
+                        })
+                      : ""}
+                  </tr>
+                </tfoot>
               </Table>
-              <Button variant="primary" onClick={handleTimeTableSave}>
+              <Button variant="outline-primary" onClick={handleTimeTableSave}>
                 Save Changes
               </Button>
             </Col>

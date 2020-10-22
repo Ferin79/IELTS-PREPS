@@ -17,5 +17,45 @@
   color: white;
 }
 .disable-block-timetable {
-  background: grey !important;
+  background: rgb(128, 128, 128) !important;
+}
+.color-cloumn-0,
+.color-cloumn-6,
+.color-cloumn-12,
+.color-cloumn-18 {
+  background: rgba(185, 230, 245, 0.5) !important;
+}
+.color-cloumn-1,
+.color-cloumn-7,
+.color-cloumn-13,
+.color-cloumn-19 {
+  background: rgba(255, 180, 180, 0.5) !important;
+}
+.color-cloumn-2,
+.color-cloumn-8,
+.color-cloumn-14,
+.color-cloumn-20 {
+  background: rgba(185, 185, 240, 0.5) !important;
+}
+.color-cloumn-3,
+.color-cloumn-9,
+.color-cloumn-15,
+.color-cloumn-21 {
+  background: rgba(243, 230, 153, 0.5) !important;
+}
+.color-cloumn-4,
+.color-cloumn-10,
+.color-cloumn-16,
+.color-cloumn-22 {
+  background: rgba(153, 236, 232, 0.5) !important;
+}
+.color-cloumn-5,
+.color-cloumn-11,
+.color-cloumn-17,
+.color-cloumn-23 {
+  background-color: rgba(240, 200, 110, 0.5) !important;
+}
+
+table tr td {
+  border: 1px solid rgba(0, 0, 0, 0.5) !important;
 }
