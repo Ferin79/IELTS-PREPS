@@ -28,32 +28,17 @@ const VideoToggle = ({
     <div className="videoToggle-wrapper">
       {videoStatus ? (
         <div className="btn-toggle-styler">
-          <RiCameraLine
-            onClick={toggleVideo}
-            size={30}
-            color={videoStatus ? "#000" : "red"}
-            disabled={mediaButtonDisable}
-          />
+          <RiCameraLine onClick={toggleVideo} size={30} color={videoStatus ? "#000" : "red"} disabled={mediaButtonDisable} />
         </div>
       ) : (
         <div className="btn-toggle-styler">
-          <RiCameraOffLine
-            size={30}
-            onClick={toggleVideo}
-            disabled={mediaButtonDisable}
-            color={videoStatus ? "#000" : "red"}
-          />
+          <RiCameraOffLine size={30} onClick={toggleVideo} disabled={mediaButtonDisable} color={videoStatus ? "#000" : "red"} />
         </div>
       )}
 
       {audioStatus ? (
         <div className="btn-toggle-styler">
-          <RiMicFill
-            size={30}
-            color={audioStatus ? "#000" : "red"}
-            onClick={toggleAudio}
-            disabled={mediaButtonDisable}
-          />
+          <RiMicFill size={30} color={audioStatus ? "#000" : "red"} onClick={toggleAudio} disabled={mediaButtonDisable} />
         </div>
       ) : (
         <div className="btn-toggle-styler">

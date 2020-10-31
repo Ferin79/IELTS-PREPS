@@ -209,9 +209,10 @@ const Timetable = () => {
     return (
       <Modal
         {...props}
-        size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered
+        scrollable
+        dialogClassName="modal-90w"
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
@@ -219,7 +220,7 @@ const Timetable = () => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Table striped bordered hover>
+          <Table striped bordered hover responsive>
             <thead>
               <tr>
                 <th>#</th>
@@ -437,7 +438,7 @@ const Timetable = () => {
             <Spinner animation="border" variant="primary" />
           ) : (
             <Col lg={true} xs={12} md={8}>
-              <Table striped bordered hover responsive>
+              <Table bordered hover responsive>
                 <thead>
                   <tr>
                     <th>#</th>
@@ -470,8 +471,29 @@ const Timetable = () => {
                             <td>{item}</td>
                             {facultyRow.length > 0
                               ? facultyRow.map((faculty, index2) => {
+                                  if (faculty.startTime && faculty.endTime) {
+                                    if (
+                                      !(
+                                        faculty.startTime <= item &&
+                                        item < faculty.endTime
+                                      )
+                                    ) {
+                                      console.log(
+                                        "Comparing " +
+                                          faculty.startTime +
+                                          "<" +
+                                          item +
+                                          "<" +
+                                          faculty.endTime
+                                      );
+                                      return (
+                                        <td className="disable-block-timetable "></td>
+                                      );
+                                    }
+                                  }
                                   return (
                                     <td
+                                      className={`color-cloumn-${index2}`}
                                       key={index2}
                                       onClick={() => {
                                         setSelectedFacultyIdForStudentAdd(
@@ -517,8 +539,25 @@ const Timetable = () => {
                       })
                     : ""}
                 </tbody>
+                <tfoot>
+                  <tr>
+                    <th>#</th>
+                    <th>Time Slot</th>
+                    {facultyRow.length > 0
+                      ? facultyRow.map((item, index) => {
+                          return (
+                            <th key={index}>
+                              <h6>
+                                {item.firstname} {item.lastname}
+                              </h6>
+                            </th>
+                          );
+                        })
+                      : ""}
+                  </tr>
+                </tfoot>
               </Table>
-              <Button variant="primary" onClick={handleTimeTableSave}>
+              <Button variant="outline-primary" onClick={handleTimeTableSave}>
                 Save Changes
               </Button>
             </Col>
@@ -526,8 +565,9 @@ const Timetable = () => {
         </Row>
       </Container>
 
-      <StudentModal show={modalShow} onHide={() => setModalShow(false)} />
       <ToastContainer />
+
+      <StudentModal show={modalShow} onHide={() => setModalShow(false)} />
     </>
   );
 };

@@ -5,8 +5,9 @@ import Form from "react-bootstrap/Form";
 import Toast from "react-bootstrap/Toast";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
-import firebase from "../data/firebase";
 import { toast } from "react-toastify";
+import Spinner from "react-bootstrap/Spinner";
+import firebase from "../data/firebase";
 
 let inputRef;
 const Profile = () => {
@@ -82,11 +83,7 @@ const Profile = () => {
   }, []);
 
   if (isLoading) {
-    return (
-      <div>
-        <h1>loading</h1>
-      </div>
-    );
+    return <Spinner animation="border" variant="primary" />;
   }
 
   return (

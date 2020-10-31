@@ -7,7 +7,7 @@ import Login from "./pages/login";
 import Dashboard from "./pages/dashboard";
 import Staff from "./pages/staff";
 import Student from "./pages/student";
-import VideoCall from "./pages/VideoCall/VideoCall-OldUI-OldLogic";
+import VideoCall from "./pages/VideoCall/VideoCall-NewUi-OldLogic";
 import Timetable from "./pages/timetable";
 import LoadingScreen from "./pages/loading";
 import StaffTimeTable from "./pages/staffTT";
@@ -16,6 +16,8 @@ import selectModule from "./components/selectModule";
 import SpeakingReportAdmin from "./components/speakingReportAdmin";
 import StudentHomePage from "./pages/StudentHomePage";
 import Profile from "./pages/profile";
+import EditStaff from "./pages/editStaff";
+
 
 const Routes = () => {
   const { currentUser } = useContext(AuthContext);
@@ -36,6 +38,7 @@ const Routes = () => {
           <Route path="/message" exact component={Messages} />
           <Route path="/students/:email" exact component={selectModule} />
           <Route path="/profile" exact component={Profile} />
+          <Route path="/edit/staff/:email" exact component={EditStaff} />
           <Route
             path="/students/:email/speaking"
             exact

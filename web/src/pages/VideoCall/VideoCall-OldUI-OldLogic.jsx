@@ -543,7 +543,7 @@ function VideoCall() {
     <Row className="justify-content-md-center">
       <Button variant={videobutton} onClick={toggleVideo} style={{ margin: 5 }} disabled={mediaButtonDisable}> {videoIcon} </Button>
       <Button variant={audiobutton} onClick={toggleAudio} style={{ margin: 5 }} disabled={mediaButtonDisable}> {audioIcon} </Button>
-      <Button variant={screenSharebutton} onClick={toggleScreenShare} style={{ margin: 5 }} disabled={mediaButtonDisable}> {screenShareIcon} </Button>
+      <Button variant={screenSharebutton} onClick={toggleScreenShare} style={{ margin: 5 }} disabled={mediaButtonDisable} hidden={!isAdminOrStaff}> {screenShareIcon} </Button>
       {/* {videoStatus &&
         <Button onClick={toggleCamera} style={{ margin: 5 }} disabled={mediaButtonDisable}> <ArrowRepeat /> </Button>
       } */}
@@ -604,6 +604,8 @@ function VideoCall() {
     )
   }
 
+
+
   return (
     <>
       {/* ABSOLUTE POSITIONED components  */}
@@ -625,7 +627,7 @@ function VideoCall() {
         <Row>
           <Col><h4>You: {currentUser.email}</h4> <h6 style={{ color: "green" }}>{yourID && "Online"}</h6></Col>          
         </Row>
-        <Row>{SpeakingReport}</Row>
+        <Row> {SpeakingReport} </Row>  
         <ToastContainer autoClose={2000} />
         <MessageModal
           show={messageModalShow}

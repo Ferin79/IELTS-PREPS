@@ -67,6 +67,13 @@ const Login = () => {
             console.log(user);
             setIsLoading(false);
             history.push("/");
+          })
+          .catch((error) => {
+            console.log(error.message);
+            setIsLoading(false);
+            toast.error(error.message);
+            setInstitution(null);
+            setRole(null);
           });
       })
       .catch((error) => {
