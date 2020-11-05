@@ -4,23 +4,17 @@ import io from "socket.io-client";
 import Peer from "simple-peer";
 import { Button, Col, Row, Container, Card, Dropdown } from "react-bootstrap";
 import { ToastContainer, toast } from "react-toastify";
-import Loader from "react-loader-spinner";
 import { Context } from "../../data/context";
 import { AuthContext } from "../../data/auth";
 import MessageModal from "./MessageModal";
 import SubmitSpeakingReport from "../../components/SubmitSpeakingReport";
 import firebase from "../../data/firebase";
 import Draggable from "react-draggable";
-import {
-  RiCameraLine,
-  RiCameraOffLine,
-  RiMicFill,
-  RiMicOffFill,
-} from "react-icons/ri";
+import { RiCameraLine, RiCameraOffLine, RiMicFill, RiMicOffFill} from "react-icons/ri";
 import { MdScreenShare } from "react-icons/md";
 import { FcEndCall } from "react-icons/fc";
 import Spinner from "react-bootstrap/Spinner";
-
+import Timer from "./Timer";
 
 const incommingCallAudio = new Audio(require("../../images/skype_remix_2.mp3"));
 incommingCallAudio.loop = true;
@@ -40,16 +34,6 @@ const lowInternetSpeedVideoConstraints = {
 }
 
 let globalStream = null;
-
-const LoadingTailSpin = () => {
-  return (
-    <Loader
-      type="TailSpin"
-      color="#00BFFF"
-    // timeout={3000}
-    />
-  );
-};
 
 function VideoCall() {
   const peer = useRef(null);
@@ -81,11 +65,13 @@ function VideoCall() {
   const [videoStatus, setVideoStatus] = useState(true);
   const [audioStatus, setAudioStatus] = useState(true);
   const [screenShareStatus, setScreenShareStatus] = useState(false);
+  const [timer, setTimer] = useState({'minuites': '00', 'seconds': '00'});
+  const [timerStatus, setTimerStatus] = useState(false);
   const videoCallConstraints = useRef(normalVideoConstraints)
 
   const [messageModalShow, setMessageModalShow] = useState(false);
   const [messages, setMessages] = useState([]);
-  const modalData = useRef(null);
+  const modalData = useRef(null);  
 
 
   useEffect(() => {
@@ -217,6 +203,7 @@ function VideoCall() {
 
     peer.current.on("connect", () => {
       toast.info("Connected");
+      setTimerStatus(new Date())
     });
 
     socket.current.on("callAccepted", (signal) => {
@@ -297,6 +284,7 @@ function VideoCall() {
 
     peer.current.on("connect", () => {
       toast.info("Connected");
+      setTimerStatus(new Date());
     });
 
     peer.current.on("error", (error) => {
@@ -530,17 +518,21 @@ function VideoCall() {
 
   let PartnerVideo;
   let endCallButton;
-  if (callAccepted) {
+  let InterviewTime;
+  if (callAccepted) {    
     PartnerVideo = (
       <div className="partnervideo-wrapper"><video className="partnerVideo" playsInline ref={partnerVideo} autoPlay /></div>
     );
     endCallButton = (
       <div className="btn-toggle-styler"><FcEndCall size={30} onClick={() => endCall()} /></div>
     );
+    InterviewTime = <Timer timer={timer} setTimer={setTimer} timerStatus={timerStatus}/>
+  } else {
+    // setTimerStatus(false);
   }
   let SpeakingReport;
   if (callAccepted && isAdminOrStaff) {
-    SpeakingReport = <SubmitSpeakingReport email={users[remoteUserId]} handleSpeakingReportSubmit={handleSpeakingReportSubmit} />
+    SpeakingReport = <SubmitSpeakingReport email={users[remoteUserId]} handleSpeakingReportSubmit={handleSpeakingReportSubmit} timer={timer} />
   }
 
   let ToggleMediaButtonsLoading = userMediaLoading ? <Spinner animation="grow" variant="primary" /> : <span></span>;
@@ -593,21 +585,17 @@ function VideoCall() {
   let callingUser;
   if (users[calling]) {
     callingUser = (
-      <div className="incommingCall">
-        <Card className="text-center" style={{ background: "black", color: "white" }}>
-          <Card.Header>
-            <h2>Calling {users[calling]}</h2>
-          </Card.Header>
-        </Card>
-      </div>
+      <div className="incoming-call-wrapper">
+         <h2>Calling {users[calling]}</h2>        
+      </div>      
     )
   }
+  
 
   return (
     <>
       <Container fluid className="speak-conatiner-wrapper">
-        {incommingCall}
-
+        {incommingCall}{callingUser}
         <Row>
           <Col className="RenderCallBtn-wrapper">
             {CallUserList} {callFaculty}
@@ -617,14 +605,13 @@ function VideoCall() {
         <Row className="row-second-section">
           <div className="all-video-wrapper-section">
             <div className="all-video-wrapper">
-              {PartnerVideo}
-              {UserVideo}
+              {PartnerVideo}{UserVideo}
             </div>
             <div>
-              {ToggleMediaButtonsLoading}
-              {ToggleMediaButtons}
+              {ToggleMediaButtonsLoading}{ToggleMediaButtons}
             </div>
           </div>
+          {InterviewTime}
           {SpeakingReport}
         </Row>
         <MessageModal

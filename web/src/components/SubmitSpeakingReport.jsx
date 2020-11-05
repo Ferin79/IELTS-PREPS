@@ -4,7 +4,7 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-const SubmitSpeakingReport = ({ email, handleSpeakingReportSubmit }) => {
+const SubmitSpeakingReport = ({ email, handleSpeakingReportSubmit, timer }) => {
   const [bands, setBands] = useState(0);
   return (
     <div className="submitspeaking-wrapper">
@@ -47,6 +47,9 @@ const SubmitSpeakingReport = ({ email, handleSpeakingReportSubmit }) => {
                     as="textarea"
                     rows={3}                 
                   />
+                </Form.Group>
+                <Form.Group controlId="note">               
+                  <Form.Label>{timer.minuites}:{timer.seconds}</Form.Label>                  
                 </Form.Group>
 
                 <Button variant="outline-primary" type="submit">

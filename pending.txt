@@ -1,3 +1,8 @@
 limit list of students on video call
 submit marks only once in call
 VC message name
+
+partner video cropped 
+incomming or outgoing call ui
+user list ui
+toggle button ui
