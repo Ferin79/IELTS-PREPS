@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Switch, Redirect, Route } from "react-router-dom";
+import { Switch, Redirect, Route, useLocation } from "react-router-dom";
 import { AuthContext } from "./data/auth";
 import { Context } from "./data/context";
 import firebase from "./data/firebase";
@@ -17,11 +17,18 @@ import SpeakingReportAdmin from "./components/speakingReportAdmin";
 import StudentHomePage from "./pages/StudentHomePage";
 import Profile from "./pages/profile";
 import EditStaff from "./pages/editStaff";
-
+import Recording from "./pages/VideoCall/Recording";
 
 const Routes = () => {
   const { currentUser } = useContext(AuthContext);
   const { role, isLoading } = useContext(Context);
+
+  const locatin = useLocation();
+  console.log(locatin);
+
+  if (locatin.pathname === "/record") {
+    return <Route path="/record" exact component={Recording} />;
+  }
 
   if (isLoading) {
     return <LoadingScreen />;

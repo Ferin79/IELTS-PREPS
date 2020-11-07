@@ -10,11 +10,17 @@ import MessageModal from "./MessageModal";
 import SubmitSpeakingReport from "../../components/SubmitSpeakingReport";
 import firebase from "../../data/firebase";
 import Draggable from "react-draggable";
-import { RiCameraLine, RiCameraOffLine, RiMicFill, RiMicOffFill} from "react-icons/ri";
+import {
+  RiCameraLine,
+  RiCameraOffLine,
+  RiMicFill,
+  RiMicOffFill,
+} from "react-icons/ri";
 import { MdScreenShare } from "react-icons/md";
 import { FcEndCall } from "react-icons/fc";
 import Spinner from "react-bootstrap/Spinner";
 import Timer from "./Timer";
+import { Link } from "react-router-dom";
 
 const incommingCallAudio = new Audio(require("../../images/skype_remix_2.mp3"));
 incommingCallAudio.loop = true;
@@ -23,15 +29,15 @@ const normalVideoConstraints = {
   facingMode: "user",
   frameRate: { min: 5, ideal: 10, max: 15 },
   width: { min: 1024, ideal: 1280, max: 1920 },
-  height: { min: 576, ideal: 720, max: 1080 }
-}
+  height: { min: 576, ideal: 720, max: 1080 },
+};
 
 const lowInternetSpeedVideoConstraints = {
   facingMode: "user",
   frameRate: { min: 5, ideal: 10, max: 15 },
   width: { min: 100, ideal: 100, max: 100 },
-  height: { min: 100, ideal: 100, max: 100 }
-}
+  height: { min: 100, ideal: 100, max: 100 },
+};
 
 let globalStream = null;
 
@@ -65,27 +71,28 @@ function VideoCall() {
   const [videoStatus, setVideoStatus] = useState(true);
   const [audioStatus, setAudioStatus] = useState(true);
   const [screenShareStatus, setScreenShareStatus] = useState(false);
-  const [timer, setTimer] = useState({'minuites': '00', 'seconds': '00'});
+  const [timer, setTimer] = useState({ minuites: "00", seconds: "00" });
   const [timerStatus, setTimerStatus] = useState(false);
-  const videoCallConstraints = useRef(normalVideoConstraints)
+  const videoCallConstraints = useRef(normalVideoConstraints);
 
   const [messageModalShow, setMessageModalShow] = useState(false);
   const [messages, setMessages] = useState([]);
-  const modalData = useRef(null);  
-
+  const modalData = useRef(null);
 
   useEffect(() => {
     // 1. connect to server
     // socket.current = io.connect("http://localhost:8000/");
     // socket.current = io.connect("https://ielts-video-call.herokuapp.com/");
     socket.current = io.connect("");
-    navigator.mediaDevices.getUserMedia({ video: videoCallConstraints.current, audio: true }).then((stream) => {
-      setStream(stream);
-      if (userVideo.current) {
-        userVideo.current.srcObject = stream;
-        globalStream = stream
-      }
-    })
+    navigator.mediaDevices
+      .getUserMedia({ video: videoCallConstraints.current, audio: true })
+      .then((stream) => {
+        setStream(stream);
+        if (userVideo.current) {
+          userVideo.current.srcObject = stream;
+          globalStream = stream;
+        }
+      })
       .catch((reason) => {
         toast.error("Provide Permission");
       });
@@ -93,7 +100,10 @@ function VideoCall() {
     socket.current.on("yourID", (id) => {
       setYourID(id);
       console.log(currentUser.email, role);
-      socket.current.emit("initializeUser", { uniqueName: currentUser.email, role, });
+      socket.current.emit("initializeUser", {
+        uniqueName: currentUser.email,
+        role,
+      });
     });
     socket.current.on("allUsers", (data) => {
       setUsers(data.users);
@@ -105,18 +115,21 @@ function VideoCall() {
       console.log("Cant call");
       toast.error(data);
       // setCallButtonDisability(false);
-    })
+    });
 
-    return (() => {
+    return () => {
       console.log("disconnect socket");
       socket.current.disconnect();
       const videoTrack = globalStream.getVideoTracks()[0];
       const audioTrack = globalStream.getAudioTracks()[0];
-      if (videoTrack.readyState === "live") { videoTrack.stop(); }
-      if (audioTrack.readyState === "live") { audioTrack.stop(); }
+      if (videoTrack.readyState === "live") {
+        videoTrack.stop();
+      }
+      if (audioTrack.readyState === "live") {
+        audioTrack.stop();
+      }
       incommingCallAudio.pause();
-    })
-
+    };
   }, []);
 
   useEffect(() => {
@@ -125,12 +138,12 @@ function VideoCall() {
     //   console.log("Reciving signal");
     //   setCallerSignal(data.signal);
     //   toast.info("connecting")
-    // });    
+    // });
 
     socket.current.on("receiveCall", (data) => {
       if (callAccepted) {
         console.log("Already on call");
-        socket.current.emit("alreadyOnCall", { to: data.from.id })
+        socket.current.emit("alreadyOnCall", { to: data.from.id });
       } else {
         console.log("Receiving");
         setReceivingCall(true);
@@ -139,7 +152,7 @@ function VideoCall() {
         setCallerSignal(data.signal);
       }
     });
-  }, [callAccepted])
+  }, [callAccepted]);
 
   useEffect(() => {
     socket.current.on("callPermissionGranted", (data) => {
@@ -166,9 +179,8 @@ function VideoCall() {
       }
       console.log("Receiving message");
       handleReceiveMessage(data.from, data.message);
-    })
-  }, [callingPermission])
-
+    });
+  }, [callingPermission]);
 
   function callPeer(id) {
     // setCallButtonDisability(true);
@@ -182,7 +194,11 @@ function VideoCall() {
       config: {
         iceServers: [
           { urls: "stun:stun.l.google.com:19302" },
-          { urls: 'turn:numb.viagenie.ca', credential: 'muazkh', username: 'webrtc@live.com' },
+          {
+            urls: "turn:numb.viagenie.ca",
+            credential: "muazkh",
+            username: "webrtc@live.com",
+          },
           { urls: "stun:global.stun.twilio.com:3478?transport=udp" },
           { urls: "stun:stun1.l.google.com:19302" },
         ],
@@ -191,7 +207,11 @@ function VideoCall() {
 
     console.log("Call user");
     peer.current.on("signal", (data) => {
-      socket.current.emit("callUser", { userToCall: id, signalData: data, from: yourID, });
+      socket.current.emit("callUser", {
+        userToCall: id,
+        signalData: data,
+        from: yourID,
+      });
     });
     // socket.current.emit("callUser", { userToCall: id, from: yourID });
 
@@ -203,7 +223,7 @@ function VideoCall() {
 
     peer.current.on("connect", () => {
       toast.info("Connected");
-      setTimerStatus(new Date())
+      setTimerStatus(new Date());
     });
 
     socket.current.on("callAccepted", (signal) => {
@@ -213,7 +233,7 @@ function VideoCall() {
       // setCallButtonDisability(true);
       setCalling();
       console.log("accepted");
-      toast.info("connecting")
+      toast.info("connecting");
     });
 
     peer.current.on("error", (error) => {
@@ -264,7 +284,11 @@ function VideoCall() {
       config: {
         iceServers: [
           { urls: "stun:stun.l.google.com:19302" },
-          { urls: 'turn:numb.viagenie.ca', credential: 'muazkh', username: 'webrtc@live.com' },
+          {
+            urls: "turn:numb.viagenie.ca",
+            credential: "muazkh",
+            username: "webrtc@live.com",
+          },
           { urls: "stun:global.stun.twilio.com:3478?transport=udp" },
           { urls: "stun:stun1.l.google.com:19302" },
         ],
@@ -272,7 +296,7 @@ function VideoCall() {
     });
 
     peer.current.on("signal", (data) => {
-      toast.info("connecting")
+      toast.info("connecting");
       socket.current.emit("acceptCall", { signal: data, to: remoteUserId });
     });
 
@@ -335,15 +359,17 @@ function VideoCall() {
       const oldTrack = stream.getVideoTracks()[0];
 
       if (oldTrack.readyState === "ended") {
-        navigator.mediaDevices.getUserMedia({ video: videoCallConstraints.current }).then((newStream) => {
-          const newTrack = newStream.getVideoTracks()[0];
-          stream.removeTrack(oldTrack);
-          stream.addTrack(newTrack);
-          setVideoStatus(true);
-          if (callAccepted) {
-            peer.current.replaceTrack(oldTrack, newTrack, stream);
-          }
-        });
+        navigator.mediaDevices
+          .getUserMedia({ video: videoCallConstraints.current })
+          .then((newStream) => {
+            const newTrack = newStream.getVideoTracks()[0];
+            stream.removeTrack(oldTrack);
+            stream.addTrack(newTrack);
+            setVideoStatus(true);
+            if (callAccepted) {
+              peer.current.replaceTrack(oldTrack, newTrack, stream);
+            }
+          });
       } else if (oldTrack.readyState === "live") {
         oldTrack.stop();
         setVideoStatus(false);
@@ -366,18 +392,20 @@ function VideoCall() {
       const oldScreenTrack = stream.getVideoTracks()[0];
 
       if (oldScreenTrack.readyState === "ended") {
-        navigator.mediaDevices.getDisplayMedia({ video: true, audio: true }).then((newStream) => {
-          const newTrack = newStream.getVideoTracks()[0];
-          stream.removeTrack(oldScreenTrack);
-          stream.addTrack(newTrack);
-          setScreenShareStatus(true);
-          if (callAccepted) {
-            peer.current.replaceTrack(oldScreenTrack, newTrack, stream);
-          }
-          stream.getVideoTracks()[0].addEventListener("ended", () => {
-            setScreenShareStatus(false);
+        navigator.mediaDevices
+          .getDisplayMedia({ video: true, audio: true })
+          .then((newStream) => {
+            const newTrack = newStream.getVideoTracks()[0];
+            stream.removeTrack(oldScreenTrack);
+            stream.addTrack(newTrack);
+            setScreenShareStatus(true);
+            if (callAccepted) {
+              peer.current.replaceTrack(oldScreenTrack, newTrack, stream);
+            }
+            stream.getVideoTracks()[0].addEventListener("ended", () => {
+              setScreenShareStatus(false);
+            });
           });
-        });
       } else if (oldScreenTrack.readyState === "live") {
         oldScreenTrack.stop();
         setScreenShareStatus(false);
@@ -438,20 +466,31 @@ function VideoCall() {
       toast.error("Message Cannot be empty");
       return;
     }
-    setMessages(oldMessage => [...oldMessage, { from: yourID, to: toUserId, text: textMessage }]);
-    socket.current.emit("sendMessage", { from: yourID, to: modalData.current, message: textMessage });
-    e.target.messageText.value = ""
+    setMessages((oldMessage) => [
+      ...oldMessage,
+      { from: yourID, to: toUserId, text: textMessage },
+    ]);
+    socket.current.emit("sendMessage", {
+      from: yourID,
+      to: modalData.current,
+      message: textMessage,
+    });
+    e.target.messageText.value = "";
   };
 
   const handleReceiveMessage = (from, message) => {
-    setMessages(oldMessage => [...oldMessage, { from, to: yourID, text: message }])
+    setMessages((oldMessage) => [
+      ...oldMessage,
+      { from, to: yourID, text: message },
+    ]);
     //open message modal
-    modalData.current = from; setMessageModalShow(true)
+    modalData.current = from;
+    setMessageModalShow(true);
   };
 
   const handleSpeakingReportSubmit = (e) => {
     e.preventDefault();
-    toast.info("Please wait...")
+    toast.info("Please wait...");
     const email = e.target.email.value;
     const bands = e.target.bands.value;
     const note = e.target.note.value;
@@ -459,13 +498,18 @@ function VideoCall() {
     const reportData = {
       student: email,
       faculty: currentUser.email,
-      bands, note,
+      bands,
+      note,
       createdAt: firebase.firestore.Timestamp.now(),
-    }
-    firebase.firestore().collection("speakingTest").add(reportData).then(() => {
-      toast.success("Submitted!")
-    })
-  }
+    };
+    firebase
+      .firestore()
+      .collection("speakingTest")
+      .add(reportData)
+      .then(() => {
+        toast.success("Submitted!");
+      });
+  };
 
   const startUserMediaLoadingTimeout = (milisec) => {
     setUserMediaLoading(true);
@@ -481,7 +525,13 @@ function VideoCall() {
     UserVideo = (
       <Draggable bounds="parent">
         <div className="userVideo-Wrapper">
-          <video className="userVideo" playsInline muted ref={userVideo} autoPlay />
+          <video
+            className="userVideo"
+            playsInline
+            muted
+            ref={userVideo}
+            autoPlay
+          />
         </div>
       </Draggable>
     );
@@ -492,23 +542,59 @@ function VideoCall() {
         }
         return (
           <Dropdown>
-            <Dropdown.Toggle variant="info" >{users[key]}</Dropdown.Toggle>
+            <Dropdown.Toggle variant="info">{users[key]}</Dropdown.Toggle>
             <Dropdown.Menu>
-              <Dropdown.Item onSelect={() => callPeer(key)} disabled={callAccepted} >Call</Dropdown.Item>
-              <Dropdown.Item onSelect={() => giveCallPermission(key)} disabled={callAccepted} >Give Permission</Dropdown.Item>
-              <Dropdown.Item onSelect={() => { modalData.current = key; setMessageModalShow(true) }}> Message </Dropdown.Item>
+              <Dropdown.Item
+                onSelect={() => callPeer(key)}
+                disabled={callAccepted}
+              >
+                Call
+              </Dropdown.Item>
+              <Dropdown.Item
+                onSelect={() => giveCallPermission(key)}
+                disabled={callAccepted}
+              >
+                Give Permission
+              </Dropdown.Item>
+              <Dropdown.Item
+                onSelect={() => {
+                  modalData.current = key;
+                  setMessageModalShow(true);
+                }}
+              >
+                {" "}
+                Message{" "}
+              </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
         );
       });
     } else if (users[callingPermission]) {
       callFaculty = (
-        <Card className='border border-secondary bg-transparent'>
-          <Col style={{ color: "white", border: '3px' }}>
+        <Card className="border border-secondary bg-transparent">
+          <Col style={{ color: "white", border: "3px" }}>
             <Row>{users[callingPermission]} :</Row>
             <Row>
-              <Button variant="primary" onClick={() => callPeer(callingPermission)} disabled={callAccepted} style={{ margin: 5 }}> Call </Button>
-              <Button variant="success" onClick={() => { modalData.current = callingPermission; setMessageModalShow(true) }} style={{ margin: 5 }}> Message </Button>
+              <Button
+                variant="primary"
+                onClick={() => callPeer(callingPermission)}
+                disabled={callAccepted}
+                style={{ margin: 5 }}
+              >
+                {" "}
+                Call{" "}
+              </Button>
+              <Button
+                variant="success"
+                onClick={() => {
+                  modalData.current = callingPermission;
+                  setMessageModalShow(true);
+                }}
+                style={{ margin: 5 }}
+              >
+                {" "}
+                Message{" "}
+              </Button>
             </Row>
           </Col>
         </Card>
@@ -519,33 +605,72 @@ function VideoCall() {
   let PartnerVideo;
   let endCallButton;
   let InterviewTime;
-  if (callAccepted) {    
+  if (callAccepted) {
     PartnerVideo = (
-      <div className="partnervideo-wrapper"><video className="partnerVideo" playsInline ref={partnerVideo} autoPlay /></div>
+      <div className="partnervideo-wrapper">
+        <video
+          className="partnerVideo"
+          playsInline
+          ref={partnerVideo}
+          autoPlay
+        />
+      </div>
     );
     endCallButton = (
-      <div className="btn-toggle-styler"><FcEndCall size={30} onClick={() => endCall()} /></div>
+      <div className="btn-toggle-styler">
+        <FcEndCall size={30} onClick={() => endCall()} />
+      </div>
     );
-    InterviewTime = <Timer timer={timer} setTimer={setTimer} timerStatus={timerStatus}/>
+    InterviewTime = (
+      <Timer timer={timer} setTimer={setTimer} timerStatus={timerStatus} />
+    );
   } else {
     // setTimerStatus(false);
   }
   let SpeakingReport;
   if (callAccepted && isAdminOrStaff) {
-    SpeakingReport = <SubmitSpeakingReport email={users[remoteUserId]} handleSpeakingReportSubmit={handleSpeakingReportSubmit} timer={timer} />
+    SpeakingReport = (
+      <SubmitSpeakingReport
+        email={users[remoteUserId]}
+        handleSpeakingReportSubmit={handleSpeakingReportSubmit}
+        timer={timer}
+      />
+    );
   }
 
-  let ToggleMediaButtonsLoading = userMediaLoading ? <Spinner animation="grow" variant="primary" /> : <span></span>;
-  
+  let ToggleMediaButtonsLoading = userMediaLoading ? (
+    <Spinner animation="grow" variant="primary" />
+  ) : (
+    <span></span>
+  );
+
   let ToggleMediaButtons;
-  const videobutton = videoStatus ? <RiCameraLine size={30} color="green" /> : <RiCameraOffLine size={30} color="red" />;
-  const audiobutton = audioStatus ? <RiMicFill size={30} color="green" /> : <RiMicOffFill size={30} color="red" />;
-  const screenShareButton = <MdScreenShare size={30} color={screenShareStatus ? "green" : "red"} />;
-  ToggleMediaButtons = !callAccepted ? (<span></span>) : (
+  const videobutton = videoStatus ? (
+    <RiCameraLine size={30} color="green" />
+  ) : (
+    <RiCameraOffLine size={30} color="red" />
+  );
+  const audiobutton = audioStatus ? (
+    <RiMicFill size={30} color="green" />
+  ) : (
+    <RiMicOffFill size={30} color="red" />
+  );
+  const screenShareButton = (
+    <MdScreenShare size={30} color={screenShareStatus ? "green" : "red"} />
+  );
+  ToggleMediaButtons = !callAccepted ? (
+    <span></span>
+  ) : (
     <div className="videoToggle-wrapper">
-      <div className="btn-toggle-styler" onClick={toggleVideo}>{videobutton}</div>
-      <div className="btn-toggle-styler" onClick={toggleAudio}>{audiobutton}</div>
-      <div className="btn-toggle-styler" onClick={toggleScreenShare}>{screenShareButton}</div>
+      <div className="btn-toggle-styler" onClick={toggleVideo}>
+        {videobutton}
+      </div>
+      <div className="btn-toggle-styler" onClick={toggleAudio}>
+        {audiobutton}
+      </div>
+      <div className="btn-toggle-styler" onClick={toggleScreenShare}>
+        {screenShareButton}
+      </div>
       {endCallButton}
     </div>
   );
@@ -573,7 +698,9 @@ function VideoCall() {
         <p>from</p>
         <h3>{caller}</h3>
         <div className="incomming-call-btn">
-          <Button variant="outline-success" onClick={acceptCall}>Accept</Button>
+          <Button variant="outline-success" onClick={acceptCall}>
+            Accept
+          </Button>
         </div>
       </div>
     );
@@ -586,16 +713,16 @@ function VideoCall() {
   if (users[calling]) {
     callingUser = (
       <div className="incoming-call-wrapper">
-         <h2>Calling {users[calling]}</h2>        
-      </div>      
-    )
+        <h2>Calling {users[calling]}</h2>
+      </div>
+    );
   }
-  
 
   return (
     <>
       <Container fluid className="speak-conatiner-wrapper">
-        {incommingCall}{callingUser}
+        {incommingCall}
+        {callingUser}
         <Row>
           <Col className="RenderCallBtn-wrapper">
             {CallUserList} {callFaculty}
@@ -605,14 +732,19 @@ function VideoCall() {
         <Row className="row-second-section">
           <div className="all-video-wrapper-section">
             <div className="all-video-wrapper">
-              {PartnerVideo}{UserVideo}
+              {PartnerVideo}
+              {UserVideo}
             </div>
             <div>
-              {ToggleMediaButtonsLoading}{ToggleMediaButtons}
+              {ToggleMediaButtonsLoading}
+              {ToggleMediaButtons}
             </div>
           </div>
           {InterviewTime}
           {SpeakingReport}
+          <Link to="/record" target="_blank">
+            Record
+          </Link>
         </Row>
         <MessageModal
           show={messageModalShow}
@@ -621,6 +753,7 @@ function VideoCall() {
           messages={messages}
           handleSendMessage={handleSendMessage}
         />
+
         <ToastContainer autoClose={2000} />
       </Container>
       {/* ABSOLUTE POSITIONED components  */}
