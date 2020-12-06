@@ -660,7 +660,7 @@ function VideoCall() {
           </div>
           {InterviewTime}
           {SpeakingReport}
-          <Link to="/record" target="_blank">Record</Link>
+          {/* <Link to="/record" target="_blank">Record</Link> */}
         </Row>
         <MessageModal
           show={messageModalShow}
@@ -669,7 +669,7 @@ function VideoCall() {
           messages={messages}
           handleSendMessage={handleSendMessage}
         />
-        {RecordingButtons}
+        {/* {RecordingButtons} */}
         <ToastContainer autoClose={2000} />
       </Container>
       {/* ABSOLUTE POSITIONED components  */}
