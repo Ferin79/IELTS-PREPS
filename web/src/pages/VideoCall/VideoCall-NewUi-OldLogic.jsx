@@ -10,12 +10,14 @@ import MessageModal from "./MessageModal";
 import SubmitSpeakingReport from "../../components/SubmitSpeakingReport";
 import firebase from "../../data/firebase";
 import Draggable from "react-draggable";
-import { RiCameraLine, RiCameraOffLine, RiMicFill, RiMicOffFill} from "react-icons/ri";
+import { RiCameraLine, RiCameraOffLine, RiMicFill, RiMicOffFill } from "react-icons/ri";
 import { MdScreenShare } from "react-icons/md";
 import { FcEndCall } from "react-icons/fc";
 import Spinner from "react-bootstrap/Spinner";
 import Timer from "./Timer";
 import { Link } from "react-router-dom";
+import MultiStreamsMixer from 'multistreamsmixer';
+
 
 const incommingCallAudio = new Audio(require("../../images/skype_remix_2.mp3"));
 incommingCallAudio.loop = true;
@@ -66,13 +68,18 @@ function VideoCall() {
   const [videoStatus, setVideoStatus] = useState(true);
   const [audioStatus, setAudioStatus] = useState(true);
   const [screenShareStatus, setScreenShareStatus] = useState(false);
-  const [timer, setTimer] = useState({'minuites': '00', 'seconds': '00'});
+  const [timer, setTimer] = useState({ 'minuites': '00', 'seconds': '00' });
   const [timerStatus, setTimerStatus] = useState(false);
   const videoCallConstraints = useRef(normalVideoConstraints)
 
   const [messageModalShow, setMessageModalShow] = useState(false);
   const [messages, setMessages] = useState([]);
-  const modalData = useRef(null);  
+  const modalData = useRef(null);
+
+  const recorder = useRef(false);
+  const mixedStream = useRef(false);
+  const userStream = useRef(false)
+  const partnerStream = useRef(false);
 
 
   useEffect(() => {
@@ -84,6 +91,7 @@ function VideoCall() {
       setStream(stream);
       if (userVideo.current) {
         userVideo.current.srcObject = stream;
+        userStream.current = stream;
         globalStream = stream
       }
     })
@@ -199,6 +207,7 @@ function VideoCall() {
     peer.current.on("stream", (stream) => {
       if (partnerVideo.current) {
         partnerVideo.current.srcObject = stream;
+        partnerStream.current = stream;
       }
     });
 
@@ -475,6 +484,36 @@ function VideoCall() {
     }, milisec);
   };
 
+  async function startRecording() {
+
+    let mixer = new MultiStreamsMixer([userStream.current, partnerStream.current]);
+
+    console.log(mixer);
+
+
+    mixedStream.current = mixer.getMixedStream();
+    mixer.frameInterval = 1;
+    mixer.startDrawingFrames();
+
+    recorder.current = new MediaRecorder(mixedStream.current);
+
+    const chunks = [];
+    recorder.current.ondataavailable = e => chunks.push(e.data);
+    recorder.current.onstop = (e) => {
+      const completeBlob = new Blob(chunks, { type: chunks[0].type });
+      console.log(chunks);
+      require("downloadjs")(completeBlob, "recording.webm", chunks[0].type);
+    };
+
+    recorder.current.start();
+  }
+
+  function stopRecording() {
+    recorder.current.stop();
+    // audioStream.current.getAudioTracks()[0].stop();
+    // displayStream.current.getVideoTracks()[0].stop();
+  }
+
   let UserVideo = <span></span>;
   let CallUserList;
   let callFaculty;
@@ -519,25 +558,32 @@ function VideoCall() {
 
   let PartnerVideo;
   let endCallButton;
-  let InterviewTime;
-  if (callAccepted) {    
+  let InterviewTime;  
+  if (callAccepted) {
     PartnerVideo = (
       <div className="partnervideo-wrapper"><video className="partnerVideo" playsInline ref={partnerVideo} autoPlay /></div>
     );
     endCallButton = (
       <div className="btn-toggle-styler"><FcEndCall size={30} onClick={() => endCall()} /></div>
     );
-    InterviewTime = <Timer timer={timer} setTimer={setTimer} timerStatus={timerStatus}/>
+    InterviewTime = <Timer timer={timer} setTimer={setTimer} timerStatus={timerStatus} />
   } else {
     // setTimerStatus(false);
   }
   let SpeakingReport;
+  let RecordingButtons;
   if (callAccepted && isAdminOrStaff) {
     SpeakingReport = <SubmitSpeakingReport email={users[remoteUserId]} handleSpeakingReportSubmit={handleSpeakingReportSubmit} timer={timer} />
+    RecordingButtons = (
+      <div>
+        <Button onClick={startRecording}>Start Recording</Button>
+        <Button onClick={stopRecording} variant="danger">Stop Recording</Button>
+      </div>
+    )
   }
 
   let ToggleMediaButtonsLoading = userMediaLoading ? <Spinner animation="grow" variant="primary" /> : <span></span>;
-  
+
   let ToggleMediaButtons;
   const videobutton = videoStatus ? <RiCameraLine size={30} color="green" /> : <RiCameraOffLine size={30} color="red" />;
   const audiobutton = audioStatus ? <RiMicFill size={30} color="green" /> : <RiMicOffFill size={30} color="red" />;
@@ -587,11 +633,11 @@ function VideoCall() {
   if (users[calling]) {
     callingUser = (
       <div className="incoming-call-wrapper">
-         <h2>Calling {users[calling]}</h2>        
-      </div>      
+        <h2>Calling {users[calling]}</h2>
+      </div>
     )
   }
-  
+
 
   return (
     <>
@@ -614,7 +660,7 @@ function VideoCall() {
           </div>
           {InterviewTime}
           {SpeakingReport}
-          <Link to="/record" target="_blank">Record</Link>
+          {/* <Link to="/record" target="_blank">Record</Link> */}
         </Row>
         <MessageModal
           show={messageModalShow}
@@ -623,6 +669,7 @@ function VideoCall() {
           messages={messages}
           handleSendMessage={handleSendMessage}
         />
+        {/* {RecordingButtons} */}
         <ToastContainer autoClose={2000} />
       </Container>
       {/* ABSOLUTE POSITIONED components  */}
