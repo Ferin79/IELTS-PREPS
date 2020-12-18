@@ -33,7 +33,7 @@ const Header = () => {
     return () => {
       unsubscribe();
     };
-  }, [institution]);
+  }, [institution, notifications]);
 
   return (
     <>

@@ -6,9 +6,9 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Spinner from "react-bootstrap/Spinner";
 import { ToastContainer, toast } from "react-toastify";
-import { useHistory } from "react-router-dom";
 import firebase from "../data/firebase";
 import { Context } from "../data/context";
+import { useHistory } from "react-router-dom";
 
 const Login = () => {
   const { setInstitution, setRole, isLoading, setIsLoading } = useContext(
@@ -53,20 +53,20 @@ const Login = () => {
         }
         setInstitution(snapshot.data().institute_id);
         setRole(role);
-        localStorage.setItem(
-          "userInfo",
-          JSON.stringify({
-            role,
-            institute_id: snapshot.data().institute_id,
-          })
-        );
+
         firebase
           .auth()
           .signInWithEmailAndPassword(email, password)
-          .then((user) => {
-            console.log(user);
+          .then(() => {
             setIsLoading(false);
-            history.push("/");
+            localStorage.setItem(
+              "userInfo",
+              JSON.stringify({
+                role,
+                institute_id: snapshot.data().institute_id,
+              })
+            );
+            window.location.reload();
           })
           .catch((error) => {
             console.log(error.message);
