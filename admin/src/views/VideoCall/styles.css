@@ -1,0 +1,120 @@
+.speak-conatiner-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+.incoming-call-section {
+  height: 100vh;
+  width: 100%;
+}
+.incoming-call-wrapper {
+  height: 100vh;
+  width: 100%;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.incoming-call-wrapper h3,
+.incoming-call-wrapper h6 {
+  margin: 20px;
+}
+.incomming-call-btn {
+  margin-top: 50px;
+}
+.incomming-call-btn button {
+  margin: 25px;
+}
+.row-second-section {
+  height: 75vh;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: flex-start;
+}
+.all-video-wrapper-section {
+  width: 75% !important;
+}
+.sidebar-message-section {
+  width: 25% !important;
+}
+.all-video-wrapper {
+  position: relative;
+}
+.partnervideo-wrapper {
+  position: relative;
+  height: 75vh;
+  width: 100%;
+}
+.partnervideo-wrapper video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.userVideo-Wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.userVideo-Wrapper video {
+  height: 250px;
+  width: 250px;
+  object-fit: cover;
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg); /* Safari and Chrome */
+  -moz-transform: rotateY(180deg); /* Firefox */
+}
+.videoToggle-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 20px 0;
+}
+.btn-toggle-styler {
+  padding: 10px;
+  background: white;
+  border-radius: 50%;
+}
+
+@media (max-width: 1500px) {
+  .all-video-wrapper-section {
+    width: 70% !important;
+  }
+  .sidebar-message-section {
+    width: 30% !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  .all-video-wrapper-section {
+    width: 70% !important;
+  }
+  .sidebar-message-section {
+    width: 30% !important;
+  }
+}
+@media (max-width: 768px) {
+  .row-second-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .all-video-wrapper-section {
+    width: 100% !important;
+  }
+  .sidebar-message-section {
+    width: 100% !important;
+  }
+  .userVideo-Wrapper video {
+    height: 150px;
+    width: 150px;
+    object-fit: cover;
+  }
+}

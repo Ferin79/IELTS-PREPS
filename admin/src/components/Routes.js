@@ -7,6 +7,7 @@ import Student from "../pages/student";
 import Listening from "../views/listening";
 import Reading from "../views/reading";
 import Writing from "../views/writing";
+import Speaking from "../views/VideoCall/VideoCall-NewUi-OldLogic";
 import Login from "../pages/login";
 import Home from "../pages/home";
 import Profile from "../pages/profile";
@@ -25,6 +26,7 @@ const Routes = () => {
         <Route path="/listening" component={Listening} />
         <Route path="/reading" component={Reading} />
         <Route path="/writing" component={Writing} />
+        <Route path="/speaking" component={Speaking} />
         <Route path="/profile" component={Profile} />
         <Route path="/check-writing" component={CheckWriting} />
         <Route path="/students/:email" component={StudentStats} />

@@ -1,0 +1,137 @@
+.chat-wrapper {
+  height: 75vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black !important;
+  padding: 5px;
+  margin: 50px 0;
+}
+.sidebar-chat-user-list {
+  width: 35% !important;
+  height: 75vh;
+  overflow-y: scroll;
+}
+.main-chat-wrapper {
+  width: 65% !important;
+  height: 75vh;
+  overflow-y: scroll;
+}
+.modal-lg,
+.modal-xl {
+  max-width: 500px !important;
+}
+.user-info {
+  height: 5vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px;
+  border-bottom: 2px solid coral;
+}
+.new-chat-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.new-chat-icon {
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+  margin: 20px;
+}
+.new-chat-user {
+  border: 1px solid black;
+  width: 100%;
+  padding: 5px;
+  margin: 5px;
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+}
+.new-chat-user:hover {
+  background: cornsilk;
+}
+
+.chatter-list-wrapper {
+  height: 70vh;
+  overflow-y: scroll;
+  margin-top: 50px;
+}
+.chatter-item {
+  display: flex !important;
+  justify-content: flex-start;
+  align-items: center;
+  border-bottom: 1px solid white;
+  margin: 5px;
+  padding: 5px;
+}
+.chatter-user-icon {
+  height: 75px;
+  width: 75px;
+  object-fit: cover;
+  margin-right: 20px;
+}
+.main-chat-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.main-message-display {
+  height: 65vh;
+  width: 100%;
+  overflow-y: scroll;
+  border-bottom: 1px solid black;
+}
+.message-send-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.message-send-wrapper input {
+  margin: 5px;
+}
+.message-item {
+  width: 90%;
+  margin: 20px;
+}
+.message-item p {
+  font-size: 13px;
+}
+.message-parent {
+  width: 100%;
+}
+.message-parent-text-float-right {
+  text-align: right;
+}
+
+@media only screen and (max-width: 1024px) {
+  .sidebar-chat-user-list {
+    width: 100% !important;
+    height: auto;
+    overflow-y: scroll;
+  }
+  .main-chat-wrapper {
+    width: 100% !important;
+    height: 75vh;
+    overflow-y: scroll;
+  }
+  .chat-wrapper {
+    height: auto;
+    margin: auto;
+    flex-direction: column;
+  }
+  .message-item p {
+    font-size: 12px;
+  }
+  .message-item h5 {
+    font-size: 18px;
+  }
+}

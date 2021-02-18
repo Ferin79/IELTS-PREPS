@@ -1,0 +1,28 @@
+.read-message-wrapper {
+    height: 50vh;
+    width: 100%;
+    display: block;
+    overflow-y: scroll;
+  }
+  .message-item {
+    width: 100%;
+    border-bottom: 1px solid black;
+    padding: 5px 0;
+  }
+  .float-right-item {
+    text-align: right;
+  }
+  .send-message-wrapper {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-top: 1px solid black;
+    padding: 5px;
+  }
+  .send-message-wrapper .form-message {
+    width: 95% !important;
+  }
+  .message-p-tag {
+    font-size: 12px;
+  }
+  
