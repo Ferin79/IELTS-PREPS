@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -64,6 +64,31 @@ const Dashboard = () => {
       })
       .catch((error) => console.log(error));
   };
+
+  useEffect(() => {
+    try {
+      const messaging = firebase.messaging();
+      messaging
+        .getToken()
+        .then((token) => {
+          console.log(token);
+          firebase
+            .firestore()
+            .doc(`/usersNotificationToken/${firebase.auth().currentUser.email}`)
+            .set({
+              email: firebase.auth().currentUser.email,
+              institute_id: institution,
+              browserToken: token,
+              appToken: "",
+            });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  }, [institution]);
 
   if (isLoading) {
     return <LoadingScreen />;
@@ -142,7 +167,7 @@ const Dashboard = () => {
           <h5>Writing Module</h5>
         </Col>
       </Row>
-      <Row className="m-5" style={{ border: "1px solid black" }}></Row>      
+      <Row className="m-5" style={{ border: "1px solid black" }}></Row>
       <Row>
         <Col
           onClick={() => handleShow()}
