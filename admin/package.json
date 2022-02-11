@@ -21,7 +21,7 @@
     "firebase": "^7.15.1",
     "jwt-decode": "^2.2.0",
     "multistreamsmixer": "^1.2.2",
-    "node-sass": "^4.0.0",
+    "node-sass": "^7.0.0",
     "notistack": "^0.9.17",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
