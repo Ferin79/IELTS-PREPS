@@ -76,7 +76,8 @@ You will listen to recordings of native English speakers and then write your ans
 
 The test can be of two type in this system.
 
-- PDF & Audio
+- PDF
+- Audio
 - Video Only
 
 <img src="https://raw.githubusercontent.com/Ferin79/IELTS-PREP/master/assets/listening.PNG" height="500" width="275" alt="Listening Screen">
